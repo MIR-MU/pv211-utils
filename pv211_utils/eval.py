@@ -36,7 +36,7 @@ def average_precision(query: Query, results: Iterable[Document],
     return sum(precisions) / num_relevant[query]
 
 
-def mean_average_precision(ir_system_instance: IRSystem, log_result=True, author_name: str = None) -> float:
+def mean_average_precision(ir_system_instance: IRSystem, submit_result=True, author_name: str = None) -> float:
     """Mean average precision of the information retrieval system.
 
     Returns
@@ -59,7 +59,12 @@ def mean_average_precision(ir_system_instance: IRSystem, log_result=True, author
         results = ir_system_instance.search(query)
         average_precisions.append(average_precision(query, results, relevant, num_relevant))
     result = float(mean(average_precisions))
-    if log_result:
+    print(f'Mean average precision: {result* 100:.3f} % ')
+
+    if submit_result:
         from pv211_utils.gdrive_upload import log_precision_entry
         log_precision_entry(author_name, result)
+        # TODO: give more info
+        print("Submitted!")
+
     return result

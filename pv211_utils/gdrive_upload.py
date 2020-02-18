@@ -42,4 +42,4 @@ def log_precision_entry(competitor_name: str, precision: float = 0):
     current_week = "Week %s" % _get_week(now)
     # append entry
     logs_worksheet.append_row([current_len, current_time, current_week, competitor_name, float(precision)])
-    return True
+    return "ok"
