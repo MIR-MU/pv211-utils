@@ -43,7 +43,7 @@ def load_documents() -> OrderedDict:
 def load_judgements(queries, documents) -> Set[Tuple[int, int]]:
     relevant = set()
 
-    with open(pkg_resources.resource_filename('data/cranqrel.json'), 'r') as f:
+    with open(pkg_resources.resource_filename("pv211_utils", 'data/cranqrel.json'), 'r') as f:
         for raw_relevance in json.load(f):
             query_id = queries[int(raw_relevance['query_num'])]
             document_id = documents[int(raw_relevance['id'])]
