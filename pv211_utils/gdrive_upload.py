@@ -3,14 +3,12 @@
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-# from google.colab import drive
 import pkg_resources
 import datetime
 
 
-def _get_week(current_date, competition_end=datetime.date(2020, 5, 8)):
+def _get_week(current_date: datetime.datetime, competition_end=datetime.date(2020, 5, 8)):
     competition_start_w = datetime.date(2020, 2, 17).isocalendar()[1]
-    competition_end_w = competition_end.isocalendar()[1]
     if current_date.date() > competition_end:
         raise ValueError("Sorry, the competition has ended in %s. No more submissions."
                          % competition_end.strftime("%d.%m.%Y %H:%M:%S"))
