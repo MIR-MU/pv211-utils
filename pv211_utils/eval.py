@@ -39,10 +39,6 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
 def mean_average_precision(ir_system_instance: IRSystem, submit_result=True, author_name: str = None) -> float:
     """Mean average precision of the information retrieval system.
 
-    Returns
-    -------
-    float
-        Mean average precision of the information retrieval system.
     """
     queries = loader.load_queries()
     documents = loader.load_documents()
