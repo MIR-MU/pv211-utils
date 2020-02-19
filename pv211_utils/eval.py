@@ -68,5 +68,3 @@ def mean_average_precision(ir_system_instance: IRSystem, submit_result=True, aut
         print("Submitted!")
     else:
         print("Not submitted.")
-
-    return result
