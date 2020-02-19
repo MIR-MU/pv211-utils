@@ -25,13 +25,9 @@ def load_documents(document_class=DocumentBase) -> OrderedDict:
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranfield_data.json'), 'r') as f:
         for raw_document in json.load(f):
-            authors = [
-                sub(r' et al.$', '', author)
-                for author in raw_document['author'].split(' and ')
-            ]
             document = document_class(
                 document_id=raw_document['id'],
-                authors=authors,
+                authors=raw_document['author'],
                 bibliography=raw_document['bibliography'],
                 title=raw_document['title'],
                 body=raw_document['body']

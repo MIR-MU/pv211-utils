@@ -10,7 +10,7 @@ class DocumentBase(object):
     ----------
     document_id : int
         A unique identifier of the document.
-    authors : list of str
+    authors : str
         A unique identifiers of the authors of the document.
     bibliography : str
         The bibliographical entry for the document.
@@ -23,7 +23,7 @@ class DocumentBase(object):
     ----------
     document_id : int
         A unique identifier of the document.
-    authors : list of str
+    authors : str
         A unique identifiers of the authors of the document.
     bibliography : str
         The bibliographical entry for the document.
@@ -39,7 +39,7 @@ class DocumentBase(object):
     title = None
     body = None
 
-    def __init__(self, document_id, authors, bibliography, title, body):
+    def __init__(self, document_id: int, authors: str, bibliography: str, title: str, body: str):
         self.document_id = document_id
         self.authors = authors
         self.bibliography = bibliography
@@ -49,12 +49,12 @@ class DocumentBase(object):
     def __hash__(self):
         return hash(self.document_id)
 
-    def __eq__(self, other):
+    def __eq__(self, other: DocumentBase):
         if isinstance(other, DocumentBase):
             return self.document_id == other.document_id
         return NotImplemented
 
-    def __lt__(self, other):
+    def __lt__(self, other: DocumentBase):
         if isinstance(other, DocumentBase):
             return self.document_id < other.document_id
         return NotImplemented
@@ -90,12 +90,12 @@ class QueryBase(object):
     def __hash__(self):
         return hash(self.query_id)
 
-    def __eq__(self, other):
+    def __eq__(self, other: QueryBase):
         if isinstance(other, QueryBase):
             return self.query_id == other.query_id
         return NotImplemented
 
-    def __lt__(self, other):
+    def __lt__(self, other: QueryBase):
         if isinstance(other, QueryBase):
             return self.query_id < other.query_id
         return NotImplemented
