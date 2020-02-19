@@ -49,12 +49,12 @@ class DocumentBase(object):
     def __hash__(self):
         return hash(self.document_id)
 
-    def __eq__(self, other: DocumentBase):
+    def __eq__(self, other):
         if isinstance(other, DocumentBase):
             return self.document_id == other.document_id
         return NotImplemented
 
-    def __lt__(self, other: DocumentBase):
+    def __lt__(self, other):
         if isinstance(other, DocumentBase):
             return self.document_id < other.document_id
         return NotImplemented
@@ -90,12 +90,12 @@ class QueryBase(object):
     def __hash__(self):
         return hash(self.query_id)
 
-    def __eq__(self, other: QueryBase):
+    def __eq__(self, other):
         if isinstance(other, QueryBase):
             return self.query_id == other.query_id
         return NotImplemented
 
-    def __lt__(self, other: QueryBase):
+    def __lt__(self, other):
         if isinstance(other, QueryBase):
             return self.query_id < other.query_id
         return NotImplemented
