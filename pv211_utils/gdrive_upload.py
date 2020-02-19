@@ -7,7 +7,7 @@ import pkg_resources
 import datetime
 
 
-def _get_week(current_date: datetime.datetime, competition_end=datetime.date(2020, 5, 8)):
+def _get_week(current_date: datetime.datetime, competition_end=datetime.date(2020, 5, 8)) -> int:
     competition_start_w = datetime.date(2020, 2, 17).isocalendar()[1]
     if current_date.date() > competition_end:
         raise ValueError("Sorry, the competition has ended in %s. No more submissions."
@@ -40,6 +40,7 @@ def log_precision_entry(competitor_name: str, precision: float = 0):
     logs_list = logs_worksheet.get_all_values()
     current_len = len(logs_list)
     current_week = "Week %s" % _get_week(now)
+    header_cell = "=CONCAT(D%s;E%s)" % (current_len+1, current_len+1)
     # append entry
-    logs_worksheet.append_row([current_len, current_time, current_week, competitor_name, float(precision)])
-    return "ok"
+    logs_worksheet.append_row([header_cell, current_len, current_time, current_week, competitor_name, float(precision)])
+    return "Alles gutte!"
