@@ -1,14 +1,14 @@
-from typing import Iterable, Dict, Tuple
+from typing import Iterable, Dict, Tuple, Set
 
 from numpy import mean, sum
-from pv211_utils.entities import Query, Document, QueryBase
+from pv211_utils.entities import QueryBase, DocumentBase
 
 from pv211_utils.irsystem import IRSystem
 from pv211_utils import loader
 
 
-def average_precision(query: Query, results: Iterable[Document],
-                      relevant: Iterable[Tuple[int, int]], num_relevant: Dict[int, int]) -> float:
+def average_precision(query: QueryBase, results: Iterable[DocumentBase],
+                      relevant: Set[Tuple[QueryBase, DocumentBase]], num_relevant: Dict[QueryBase, int]) -> float:
     """Average precision of ranked retrieval results for a query.
 
     Parameters
@@ -64,7 +64,7 @@ def mean_average_precision(ir_system_instance: IRSystem, submit_result=True, aut
     if submit_result:
         from pv211_utils.gdrive_upload import log_precision_entry
         log_precision_entry(author_name, result)
-        # TODO: provide more info
+        # TODO: provide some more info
         print("Submitted!")
     else:
         print("Not submitted.")
