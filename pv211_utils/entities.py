@@ -2,7 +2,7 @@ from functools import total_ordering
 
 
 @total_ordering
-class Document(object):
+class DocumentBase(object):
     """
     A Cranfield collection document.
 
@@ -33,6 +33,11 @@ class Document(object):
         The abstract of the document.
 
     """
+    document_id = None
+    authors = None
+    bibliography = None
+    title = None
+    body = None
 
     def __init__(self, document_id, authors, bibliography, title, body):
         self.document_id = document_id
@@ -45,12 +50,12 @@ class Document(object):
         return hash(self.document_id)
 
     def __eq__(self, other):
-        if isinstance(other, Document):
+        if isinstance(other, DocumentBase):
             return self.document_id == other.document_id
         return NotImplemented
 
     def __lt__(self, other):
-        if isinstance(other, Document):
+        if isinstance(other, DocumentBase):
             return self.document_id < other.document_id
         return NotImplemented
 
@@ -59,7 +64,7 @@ class Document(object):
 
 
 @total_ordering
-class Query(object):
+class QueryBase(object):
     """
     A Cranfield collection query.
 
@@ -78,8 +83,7 @@ class Query(object):
         The text of the query.
 
     """
-
-    def __init__(self, query_id, body):
+    def __init__(self, query_id: int, body: str):
         self.query_id = query_id
         self.body = body
 
@@ -87,12 +91,12 @@ class Query(object):
         return hash(self.query_id)
 
     def __eq__(self, other):
-        if isinstance(other, Document):
+        if isinstance(other, QueryBase):
             return self.query_id == other.query_id
         return NotImplemented
 
     def __lt__(self, other):
-        if isinstance(other, Document):
+        if isinstance(other, QueryBase):
             return self.query_id < other.query_id
         return NotImplemented
 

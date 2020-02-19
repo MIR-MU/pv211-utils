@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 setup(
     name="pv211_utils",
-    version='0.2.2',
+    version='0.3',
     description="Utilities for PV211 project",
     long_description="",
     classifiers=[],

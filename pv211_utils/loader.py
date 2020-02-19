@@ -4,15 +4,15 @@ from typing import Set, Tuple
 from re import sub
 import pkg_resources
 
-from pv211_utils.entities import Query, Document
+from pv211_utils.entities import QueryBase, DocumentBase
 
 
-def load_queries() -> OrderedDict:
+def load_queries(query_class=QueryBase) -> OrderedDict:
     queries = OrderedDict()
 
     with open(pkg_resources.resource_filename("pv211_utils", "data/cran.qry.json"), 'r') as f:
         for raw_query in json.load(f)[:-1]:
-            query = Query(
+            query = query_class(
                 query_id=raw_query['query number'],
                 body=raw_query['query'],
             )
@@ -20,7 +20,7 @@ def load_queries() -> OrderedDict:
     return queries
 
 
-def load_documents() -> OrderedDict:
+def load_documents(document_class=DocumentBase) -> OrderedDict:
     documents = OrderedDict()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranfield_data.json'), 'r') as f:
@@ -29,18 +29,18 @@ def load_documents() -> OrderedDict:
                 sub(r' et al.$', '', author)
                 for author in raw_document['author'].split(' and ')
             ]
-            document = Document(
+            document = document_class(
                 document_id=raw_document['id'],
                 authors=authors,
                 bibliography=raw_document['bibliography'],
                 title=raw_document['title'],
-                body=raw_document['body'],
+                body=raw_document['body']
             )
             documents[document.document_id] = document
     return documents
 
 
-def load_judgements(queries, documents) -> Set[Tuple[int, int]]:
+def load_judgements(queries: OrderedDict, documents: OrderedDict) -> Set[Tuple[QueryBase, DocumentBase]]:
     relevant = set()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranqrel.json'), 'r') as f:

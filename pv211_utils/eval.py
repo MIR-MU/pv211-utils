@@ -1,7 +1,7 @@
 from typing import Iterable, Dict, Tuple
 
 from numpy import mean, sum
-from pv211_utils.entities import Query, Document
+from pv211_utils.entities import Query, Document, QueryBase
 
 from pv211_utils.irsystem import IRSystem
 from pv211_utils import loader
