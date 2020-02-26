@@ -35,6 +35,11 @@ Leaderboard sheet, cell C3, Czech localisation:
 =IFERROR(SVYHLEDAT(C$2&$B3;SORT(submissions!$A:$F;4;NEPRAVDA;5;NEPRAVDA;6;NEPRAVDA);6;NEPRAVDA))
 ```
 
+Submissions sheet, cell A1, Czech localisation:
+```
+=CONCAT(D1;E1)
+```
+
 #### Leader of the week
 
 Leaderboard sheet, week n.1, Czech localisation:
