@@ -28,7 +28,12 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
     """
     result_relevances = []
     precisions = []
+    seen_documents = set()
     for document in results:
+        if document in seen_documents:
+            continue
+        else:
+            seen_documents.add(document)
         result_relevance = (query, document) in relevant
         result_relevances.append(float(result_relevance))
         if result_relevance:
