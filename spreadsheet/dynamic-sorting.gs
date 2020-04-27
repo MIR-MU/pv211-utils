@@ -11,7 +11,7 @@ function onEdit(event){
   // var editedCell = sheet.getActiveCell();
 
   // MANUAL INPUT NEEDED
-  var tableRange = "B3:N77"; // What to sort.
+  var tableRange = "B3:M77"; // What to sort.
   var range = sheet.getRange(tableRange);
 
   //var columnToSortBy = editedCell.getColumn();
@@ -36,9 +36,9 @@ function onEdit(event){
 
   Logger.log('Formatting the first 3 places...');
   range.setBackground("white");
-  sheet.getRange("A3:N3").setBackground("gold");
-  sheet.getRange("A4:N4").setBackground("silver");
-  sheet.getRange("A5:N5").setBackground("#ffd0a2");
+  sheet.getRange("A3:M3").setBackground("gold");
+  sheet.getRange("A4:M4").setBackground("silver");
+  sheet.getRange("A5:M5").setBackground("#ffd0a2");
 
   // Reduced range without the first three places
   var reducedRange = range.offset(3,0,range.getNumRows()-3,range.getNumColumns());
