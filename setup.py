@@ -19,11 +19,13 @@ setup(
     setup_requires=["setuptools_scm"],
     include_package_data=True,
     zip_safe=True,
-    install_requires=[
+    requires=[
         "setuptools",
         "gspread",
         "oauth2client",
         "google",
+        "numpy",
+        "tqdm",
     ],
     package_data={"pv211_utils": ["data/*"]},
 )

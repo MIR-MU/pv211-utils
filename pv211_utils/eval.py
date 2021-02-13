@@ -1,6 +1,8 @@
 from typing import Iterable, Dict, Tuple, Set
 
 from numpy import mean, sum
+from tqdm import tqdm
+
 from pv211_utils.entities import QueryBase, DocumentBase
 
 from pv211_utils.irsystem import IRSystem
@@ -56,7 +58,7 @@ def mean_average_precision(ir_system_instance: IRSystem, submit_result=True, aut
         num_relevant[query] += 1
 
     average_precisions = []
-    for query in queries.values():
+    for query in tqdm(queries.values()):
         results = ir_system_instance.search(query)
         average_precisions.append(average_precision(query, results, relevant, num_relevant))
     result = float(mean(average_precisions))
