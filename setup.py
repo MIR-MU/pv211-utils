@@ -19,6 +19,9 @@ setup(
     setup_requires=["setuptools_scm"],
     include_package_data=True,
     zip_safe=True,
+    setup_requires=[
+        "setuptools",
+    ],
     requires=[
         "setuptools",
         "gspread",
