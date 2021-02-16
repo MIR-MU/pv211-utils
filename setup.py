@@ -16,7 +16,6 @@ setup(
     packages=["pv211_utils"],
     package_dir={"pv211_utils": "pv211_utils"},
     use_scm_version={"write_to": ".version", "write_to_template": "{version}\n"},
-    setup_requires=["setuptools_scm"],
     include_package_data=True,
     zip_safe=True,
     setup_requires=[
