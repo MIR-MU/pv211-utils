@@ -40,22 +40,37 @@ time-driven trigger every minute
 
 #### Importing data from logs (submissions sheet) to the leaderboard sheet
 
-Leaderboard sheet, cell C3, Czech localisation:
+Leaderboard sheet, cell C3, Czech / English localisation:
 ```
 =IFERROR(SVYHLEDAT(C$2&$B3;SORT(submissions!$A:$F;4;NEPRAVDA;5;NEPRAVDA;6;NEPRAVDA);6;NEPRAVDA))
 ```
+```
+=IFERROR(VLOOKUP(C$2&$B3;SORT(submissions!$A:$F;4;FALSE;5;FALSE;6;FALSE);6;FALSE))
+```
 
-Submissions sheet, cell A1, Czech localisation:
+Expand the formula for every student and every week.
+
+<!--
+Submissions sheet, cell A1, Czech equals English localisation:
 ```
 =CONCAT(D1;E1)
 ```
+-->
 
 #### Leader of the week
 
-Leaderboard sheet, week n.1, Czech localisation:
+Leaderboard sheet, week n.1, Czech / English localisation:
 ```
-=SORTN($B$3:$B$77;3;0;C3:C77;NEPRAVDA())
+=SORTN($B$3:$B$84;3;0;C3:C84;NEPRAVDA())
 ```
+```
+=SORTN($B$3:$B$84;3;0;C3:C84;FALSE())
+```
+
+Analogously for other weeks. Text colour is initially set to the
+background color of the cell, so when there are some real submissions
+for a given week, just reset text color and go live.
+
 
 ## Backup snapshots
 
