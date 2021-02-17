@@ -1,6 +1,16 @@
 This subdirectory contains code to reproduce the leaderboard spreadsheet in
 Google Sheets.
 
+[Live public leaderboard Spring 2020][leaderboard-2020] | [Edit leaderboard][leaderboard-2020-sheets]
+
+[Live public leaderboard Spring 2021][leaderboard-2021] | [Edit leaderboard][leaderboard-2021-sheets]
+
+
+[leaderboard-2020]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSGTg_Agc0SowDIsDDsaBN_UD-9r-F2eSpozyvVA8F51YHt3GmAle3niaCoj0ocazjDm01OJNgNEykZ/pubhtml
+[leaderboard-2021]: https://docs.google.com/spreadsheets/d/e/2PACX-1vRRR4eDkQIWx5FSU08Uj5DciWwxNfHJeLruNR1T0WW9xmSsYl457Zqv5SlA1jfvsYHpsaUw_8P3z1OF/pubhtml
+[leaderboard-2020-sheets]: https://docs.google.com/spreadsheets/d/1f9P3bn17n2rHGCxBnn3GVr57PF5hMWJEILp06Uq7Jnk/edit?usp=sharing
+[leaderboard-2021-sheets]: https://docs.google.com/spreadsheets/d/1CNeZESOrPxBs3U0FeGtaDPLJQkb2Ubsr0aCvyNIwdtM/edit?usp=sharing
+
 ## Google Apps Script
 
 The code is available in [dynamic-sorting.gs](./dynamic-sorting.gs).
