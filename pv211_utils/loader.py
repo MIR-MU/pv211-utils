@@ -1,7 +1,6 @@
 from collections import OrderedDict
 import json
 from typing import Set, Tuple
-from re import sub
 import pkg_resources
 
 from pv211_utils.entities import QueryBase, DocumentBase

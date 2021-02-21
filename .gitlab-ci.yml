@@ -1,0 +1,30 @@
+image: python:latest
+
+cache:
+  paths:
+  - ~/.cache/pip/
+
+stages:
+  - build
+
+flake8:
+  stage: build
+  tags:
+    - shared-fi
+  before_script:
+    - python -V
+    - pip install -U pip
+    - pip install flake8
+  script:
+    - flake8
+
+test:
+  stage: build
+  tags:
+    - shared-fi
+  before_script:
+    - python -V
+    - pip install -U pip
+  script:
+    - pip install .
+    - python setup.py test
