@@ -8,8 +8,8 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-def _get_week(current_date: datetime.datetime, competition_end=datetime.date(2020, 5, 8)) -> int:
-    competition_start_w = datetime.date(2020, 2, 17).isocalendar()[1]
+def _get_week(current_date: datetime.datetime, competition_end=datetime.date(2021, 4, 18)) -> int:
+    competition_start_w = datetime.date(2021, 3, 1).isocalendar()[1]
     if current_date.date() > competition_end:
         raise ValueError("Sorry, the competition has ended in %s. No more submissions."
                          % competition_end.strftime("%d.%m.%Y %H:%M:%S"))
@@ -29,7 +29,7 @@ def log_precision_entry(competitor_name: str, precision: float = 0):
     now = datetime.datetime.now()
     current_time = now.strftime("%d.%m.%Y %H:%M:%S")
 
-    spreadsheet_key = '1f9P3bn17n2rHGCxBnn3GVr57PF5hMWJEILp06Uq7Jnk'
+    spreadsheet_key = '1CNeZESOrPxBs3U0FeGtaDPLJQkb2Ubsr0aCvyNIwdtM'
     spreadsheet = gc.open_by_key(spreadsheet_key)
     logs_worksheet = spreadsheet.worksheet("submissions")
     scores_worksheet = spreadsheet.worksheet("leaderboard")
