@@ -6,19 +6,9 @@ cache:
 
 stages:
   - build
+  - test
 
-flake8:
-  stage: build
-  tags:
-    - shared-fi
-  before_script:
-    - python -V
-    - pip install -U pip
-    - pip install flake8
-  script:
-    - flake8
-
-test:
+Build:
   stage: build
   tags:
     - shared-fi
@@ -27,4 +17,28 @@ test:
     - pip install -U pip
   script:
     - pip install .
+
+Coding style check:
+  stage: test
+  tags:
+    - shared-fi
+  before_script:
+    - pip install flake8
+  script:
+    - flake8
+
+Type check:
+  stage: test
+  tags:
+    - shared-fi
+  before_script:
+    - pip install mypy
+  script:
+    - mypy pv211_utils/ test/
+
+Unit tests:
+  stage: test
+  tags:
+    - shared-fi
+  script:
     - python setup.py test

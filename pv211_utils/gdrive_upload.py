@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import pkg_resources
 import datetime
+
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 def _get_week(current_date: datetime.datetime, competition_end=datetime.date(2020, 5, 8)) -> int:
