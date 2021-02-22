@@ -1,16 +1,18 @@
-from typing import Iterable, Tuple, Set
+from collections import OrderedDict
+from typing import Iterable, Tuple, Set, Optional
+from statistics import mean
 
-from numpy import mean, sum
 from tqdm import tqdm
 
-from pv211_utils.entities import QueryBase, DocumentBase
+from .leaderboard import LeaderboardBase
+from .entities import QueryBase, DocumentBase
+from .irsystem import IRSystem
 
-from pv211_utils.irsystem import IRSystem
-from pv211_utils import loader
 
-
-def average_precision(query: QueryBase, results: Iterable[DocumentBase],
-                      relevant: Set[Tuple[QueryBase, DocumentBase]], num_relevant: int) -> float:
+def average_precision(query: QueryBase,
+                      results: Iterable[DocumentBase],
+                      judgements: Set[Tuple[QueryBase, DocumentBase]],
+                      num_relevant: int) -> float:
     """Average precision of ranked retrieval results for a query.
 
     Parameters
@@ -19,7 +21,7 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
         The query.
     results : list of DocumentBase
         Ranked retrieval results.
-    relevant: set of tuple of (QueryBase, DocumentBase)
+    judgements: set of tuple of (QueryBase, DocumentBase)
         Pairs of queries and relevant documents.
     num_relevant: int
         Number of relevant documents.
@@ -27,7 +29,7 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
     Returns
     -------
     float
-        Average precision of ranked retrieval results for the query.
+        Average precision of the ranked retrieval results with respect to the query.
 
     """
     result_relevances = []
@@ -38,36 +40,64 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
             continue
         else:
             seen_documents.add(document)
-        result_relevance = (query, document) in relevant
+        result_relevance = (query, document) in judgements
         result_relevances.append(float(result_relevance))
         if result_relevance:
             precisions.append(mean(result_relevances))
     return float(sum(precisions) / num_relevant)
 
 
-def mean_average_precision(ir_system_instance: IRSystem, submit_result: bool = True, author_name: str = None) -> float:
-    """Mean average precision of the information retrieval system.
+def mean_average_precision(system: IRSystem,
+                           queries: OrderedDict,
+                           documents: OrderedDict,
+                           judgements: Set[Tuple[QueryBase, DocumentBase]],
+                           leaderboard: Optional[LeaderboardBase] = None,
+                           submit_result: bool = True,
+                           author_name: Optional[str] = None) -> float:
+    """The mean average precision of an information retrieval system.
+
+    Parameters
+    ----------
+    system : IRSystem
+        The information retrieval system.
+    queries : OrderedDict of (int, QueryBase)
+        All queries to be submitted to the information retrieval system.
+    documents : OrderedDict of (int, DocumentBase)
+        All documents available to the information retrieval system.
+    judgements : set of tuple of (QueryBase, DocumentBase)
+        Pairs of queries and relevant documents.
+    leaderboard : LoaderboardBase or None, optional
+        A leaderboard to which we may submit the mean average precision.
+        If None, then the mean average precision will not be submitted.
+        Default is None.
+    submit_results : bool, optional
+        Whether the mean average precision should be submitted to the leaderboard.
+        Default is True.
+    author_name : str or None, optional
+        The name of the author submitted to the leaderboard when `submit_results` is True.
+        If None, then the mean average precision will not be submitted. Default is None.
+
+    Returns
+    -------
+    float
+        Mean average precision of the information retrieval system.
 
     """
-    queries = loader.load_queries()
-    documents = loader.load_documents()
-    relevant = loader.load_judgements(queries, documents)
-
     num_relevant = {}
-    for query, _ in relevant:
+    for query, _ in judgements:
         if query not in num_relevant:
             num_relevant[query] = 0
         num_relevant[query] += 1
 
     average_precisions = []
     for query in tqdm(queries.values()):
-        results = ir_system_instance.search(query)
-        precision = average_precision(query, results, relevant, num_relevant[query])
+        results = system.search(query)
+        precision = average_precision(query, results, judgements, num_relevant[query])
         average_precisions.append(precision)
     result = float(mean(average_precisions))
 
-    if submit_result and author_name is not None:
-        from .gdrive_upload import log_precision_entry
-        log_precision_entry(author_name, result)
+    submit_results = leaderboard is not None and submit_result and author_name is not None
+    if submit_results:
+        leaderboard.log_precision_entry(author_name, result)
 
     return result

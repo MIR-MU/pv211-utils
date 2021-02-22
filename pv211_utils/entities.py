@@ -3,42 +3,27 @@ from typing import Any
 
 
 @total_ordering
-class DocumentBase(object):
+class DocumentBase:
     """
-    A Cranfield collection document.
+    A document.
 
     Parameters
     ----------
     document_id : int
         A unique identifier of the document.
-    authors : Any
-        A unique identifiers of the authors of the document.
-    bibliography : Any
-        The bibliographical entry for the document.
-    title : Any
-        The title of the document.
     body : Any
         The abstract of the document.
 
     Attributes
     ----------
-    document_id : int
-        A unique identifier of the document.
-    authors : Any
-        A unique identifiers of the authors of the document.
-    bibliography : Any
-        The bibliographical entry for the document.
-    title : Any
-        The title of the document.
     body : Any
         The abstract of the document.
 
     """
-    def __init__(self, document_id: int, authors: Any, bibliography: Any, title: Any, body: Any):
+    SUMMARY_LENGTH = 50
+
+    def __init__(self, document_id: int, body: Any):
         self.document_id = document_id
-        self.authors = authors
-        self.bibliography = bibliography
-        self.title = title
         self.body = body
 
     def __hash__(self):
@@ -55,13 +40,16 @@ class DocumentBase(object):
         return NotImplemented
 
     def __repr__(self):
-        return f'<Document {self.document_id} titled “{self.title}”>'
+        summary = ' '.join(self.body.split())
+        if len(summary) > self.SUMMARY_LENGTH:
+            summary = '{} ...'.format(summary[:self.SUMMARY_LENGTH])
+        return f'<Document {self.document_id} “{summary}”>'
 
 
 @total_ordering
-class QueryBase(object):
+class QueryBase:
     """
-    A Cranfield collection query.
+    A query.
 
     Parameters
     ----------

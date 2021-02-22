@@ -24,7 +24,6 @@ setup(
         "gspread",
         "oauth2client",
         "google",
-        "numpy",
         "tqdm",
     ],
     package_data={"pv211_utils": ["data/*"]},

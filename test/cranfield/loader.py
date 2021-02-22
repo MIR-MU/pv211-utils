@@ -1,6 +1,6 @@
 import unittest
 
-from pv211_utils.loader import load_queries, load_documents, load_judgements
+from pv211_utils.cranfield.loader import load_queries, load_documents, load_judgements
 
 
 NUM_QUERIES = 225

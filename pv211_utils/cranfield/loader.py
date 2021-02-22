@@ -3,10 +3,10 @@ import json
 from typing import Set, Tuple
 import pkg_resources
 
-from pv211_utils.entities import QueryBase, DocumentBase
+from .entities import CranfieldQueryBase, CranfieldDocumentBase
 
 
-def load_queries(query_class=QueryBase) -> OrderedDict:
+def load_queries(query_class=CranfieldQueryBase) -> OrderedDict:
     queries = OrderedDict()
 
     with open(pkg_resources.resource_filename("pv211_utils", "data/cran.qry.json"), 'r') as f:
@@ -19,7 +19,7 @@ def load_queries(query_class=QueryBase) -> OrderedDict:
     return queries
 
 
-def load_documents(document_class=DocumentBase) -> OrderedDict:
+def load_documents(document_class=CranfieldDocumentBase) -> OrderedDict:
     documents = OrderedDict()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranfield_data.json'), 'r') as f:
@@ -35,7 +35,7 @@ def load_documents(document_class=DocumentBase) -> OrderedDict:
     return documents
 
 
-def load_judgements(queries: OrderedDict, documents: OrderedDict) -> Set[Tuple[QueryBase, DocumentBase]]:
+def load_judgements(queries: OrderedDict, documents: OrderedDict) -> Set[Tuple[CranfieldQueryBase, CranfieldDocumentBase]]:
     relevant = set()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranqrel.json'), 'r') as f:

@@ -1,6 +1,6 @@
 import unittest
 
-from pv211_utils.entities import QueryBase, DocumentBase
+from pv211_utils.cranfield.entities import CranfieldQueryBase, CranfieldDocumentBase
 
 
 QUERY_ID = 123
@@ -18,13 +18,13 @@ DOCUMENT_BODY_INPUT = 'some  body text'
 DOCUMENT_BODY_OUTPUT = ['some', 'body', 'text']
 
 
-class Query(QueryBase):
+class CranfieldQuery(CranfieldQueryBase):
     def __init__(self, query_id: int, body: str):
         body = body.split()
         super().__init__(query_id, body)
 
 
-class Document(DocumentBase):
+class CranfieldDocument(CranfieldDocumentBase):
     def __init__(self, document_id: int, authors: str, bibliography: str, title: str, body: str):
         authors = authors.split(' and ')
         bibliography = bibliography.split(', ')
@@ -33,9 +33,9 @@ class Document(DocumentBase):
         super().__init__(document_id, authors, bibliography, title, body)
 
 
-class TestQueryBase(unittest.TestCase):
+class TestCranfieldQueryBase(unittest.TestCase):
     def setUp(self):
-        self.query = Query(QUERY_ID, QUERY_BODY_INPUT)
+        self.query = CranfieldQuery(QUERY_ID, QUERY_BODY_INPUT)
 
     def test_query_id(self):
         self.assertEqual(QUERY_ID, self.query.query_id)
@@ -44,10 +44,10 @@ class TestQueryBase(unittest.TestCase):
         self.assertEqual(QUERY_BODY_OUTPUT, self.query.body)
 
 
-class TestDocumentBase(unittest.TestCase):
+class TestCranfieldDocumentBase(unittest.TestCase):
     def setUp(self):
-        self.document = Document(DOCUMENT_ID, DOCUMENT_AUTHORS_INPUT, DOCUMENT_BIBLIOGRAPHY_INPUT,
-                                 DOCUMENT_TITLE_INPUT, DOCUMENT_BODY_INPUT)
+        self.document = CranfieldDocument(DOCUMENT_ID, DOCUMENT_AUTHORS_INPUT, DOCUMENT_BIBLIOGRAPHY_INPUT,
+                                          DOCUMENT_TITLE_INPUT, DOCUMENT_BODY_INPUT)
 
     def test_document_id(self):
         self.assertEqual(DOCUMENT_ID, self.document.document_id)
