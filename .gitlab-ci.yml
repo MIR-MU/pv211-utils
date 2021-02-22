@@ -29,7 +29,7 @@ Type check:
     - pip install .
     - pip install mypy
   script:
-    - mypy pv211_utils/ test/
+    - mypy .
 
 Unit tests:
   stage: build
