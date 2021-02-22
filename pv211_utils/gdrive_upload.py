@@ -8,8 +8,8 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-def _get_week(current_date : datetime.datetime,
-              competition_end : datetime.datetime = datetime.date(2021, 4, 18)) -> int:
+def _get_week(current_date: datetime.datetime,
+              competition_end: datetime.datetime = datetime.date(2021, 4, 18)) -> int:
     competition_start_w = datetime.date(2021, 3, 1).isocalendar()[1]
     if current_date.date() > competition_end:
         message = 'Sorry, the competition has ended in {}. No more submissions.'
@@ -20,7 +20,9 @@ def _get_week(current_date : datetime.datetime,
 
 def log_precision_entry(competitor_name: str, precision: float = 0.0) -> None:
     if precision > 1.0 or precision < 0.0:
-        raise ValueError('That precision (%f) looks suspicious. Is it real?'.format(precision))
+        message = 'That precision ({:.2f}%) looks suspicious. Is it real?'
+        message = message.format(100.0 * precision)
+        raise ValueError(message)
 
     key_path = pkg_resources.resource_filename('pv211_utils', 'data/pv211-leaderboard-b8e892e3e8bb.json')
 
