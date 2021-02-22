@@ -9,7 +9,7 @@ NUM_JUDGEMENTS = 1837
 
 
 class TestLoadQueries(unittest.TestCase):
-    def __init__(self):
+    def setUp(self):
         self.queries = load_queries()
         self.query = self.queries[14]
 
@@ -21,7 +21,7 @@ class TestLoadQueries(unittest.TestCase):
 
 
 class TestLoadDocuments(unittest.TestCase):
-    def __init__(self):
+    def setUp(self):
         self.documents = load_documents()
         self.document = self.documents[14]
 
@@ -43,7 +43,7 @@ class TestLoadDocuments(unittest.TestCase):
 
 
 class TestLoadJudgements(unittest.TestCase):
-    def __init__(self):
+    def setUp(self):
         queries = load_queries()
         documents = load_documents()
         self.judgements = load_judgements(queries, documents)
@@ -55,7 +55,7 @@ class TestLoadJudgements(unittest.TestCase):
         self.assertEqual(NUM_JUDGEMENTS, len(self.judgements))
 
     def test_relevant_document(self):
-        self.assertIn(self.judgements, (self.query, self.relevant_document))
+        self.assertIn((self.query, self.relevant_document), self.judgements)
 
     def test_irrelevant_document(self):
-        self.assertNotIn(self.judgements, (self.query, self.irrelevant_document))
+        self.assertNotIn((self.query, self.irrelevant_document), self.judgements)
