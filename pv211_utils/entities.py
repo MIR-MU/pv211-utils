@@ -4,8 +4,7 @@ from typing import Any
 
 @total_ordering
 class DocumentBase:
-    """
-    A document.
+    """A document.
 
     Parameters
     ----------
@@ -48,8 +47,7 @@ class DocumentBase:
 
 @total_ordering
 class QueryBase:
-    """
-    A query.
+    """A query.
 
     Parameters
     ----------

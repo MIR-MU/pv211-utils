@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import abc
 import datetime
 
@@ -9,6 +6,24 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 class LeaderboardBase(abc.ABC):
+    """A leaderboard with information retrieval system results.
+
+    """
+    @abc.abstractmethod
+    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> None:
+        """Logs mean average precision of an author to the leaderboard.
+
+        Parameters
+        ----------
+        author_name : str
+            The name of the information retrieval system author.
+        mean_average_precision : float
+            The mean average precision.
+        """
+        pass
+
+
+class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
     @abc.abstractmethod
     def _get_week(self, current_date: datetime.datetime) -> int:
         pass
@@ -21,7 +36,7 @@ class LeaderboardBase(abc.ABC):
     def _get_spreadsheet_key(self) -> str:
         pass
 
-    def log_precision_entry(self, competitor_name: str, precision: float = 0.0) -> None:
+    def log_precision_entry(self, competitor_name: str, precision: float) -> None:
         if precision > 1.0 or precision < 0.0:
             message = 'That precision ({:.2f}%) looks suspicious. Is it real?'
             message = message.format(100.0 * precision)

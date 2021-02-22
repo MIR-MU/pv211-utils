@@ -1,10 +1,10 @@
 import datetime
 import pkg_resources
 
-from ..leaderboard import LeaderboardBase
+from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 
-class CranfieldLeaderboard(LeaderboardBase):
+class CranfieldLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def _get_week(self, current_date: datetime.datetime) -> int:
         competition_start_w = datetime.date(2021, 3, 1).isocalendar()[1]
         competition_end = datetime.date(2021, 4, 18)

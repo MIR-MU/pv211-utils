@@ -4,8 +4,7 @@ from ..entities import DocumentBase, QueryBase
 
 
 class CranfieldDocumentBase(DocumentBase):
-    """
-    A Cranfield collection document.
+    """A Cranfield collection document.
 
     Parameters
     ----------
@@ -38,8 +37,7 @@ class CranfieldDocumentBase(DocumentBase):
 
 
 class CranfieldQueryBase(QueryBase):
-    """
-    A Cranfield collection query.
+    """A Cranfield collection query.
 
     Parameters
     ----------
