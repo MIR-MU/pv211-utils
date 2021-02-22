@@ -1,4 +1,5 @@
 from functools import total_ordering
+from typing import Any
 
 
 @total_ordering
@@ -10,36 +11,30 @@ class DocumentBase(object):
     ----------
     document_id : int
         A unique identifier of the document.
-    authors : str
+    authors : Any
         A unique identifiers of the authors of the document.
-    bibliography : str
+    bibliography : Any
         The bibliographical entry for the document.
-    title : str
+    title : Any
         The title of the document.
-    body : str
+    body : Any
         The abstract of the document.
 
     Attributes
     ----------
     document_id : int
         A unique identifier of the document.
-    authors : str
+    authors : Any
         A unique identifiers of the authors of the document.
-    bibliography : str
+    bibliography : Any
         The bibliographical entry for the document.
-    title : str
+    title : Any
         The title of the document.
-    body : str
+    body : Any
         The abstract of the document.
 
     """
-    document_id = None
-    authors = None
-    bibliography = None
-    title = None
-    body = None
-
-    def __init__(self, document_id: int, authors: str, bibliography: str, title: str, body: str):
+    def __init__(self, document_id: int, authors: Any, bibliography: Any, title: Any, body: Any):
         self.document_id = document_id
         self.authors = authors
         self.bibliography = bibliography
@@ -72,18 +67,18 @@ class QueryBase(object):
     ----------
     query_id : int
         A unique identifier of the query.
-    body : str
+    body : Any
         The text of the query.
 
     Attributes
     ----------
     query_id : int
         A unique identifier of the query.
-    body : str
+    body : Any
         The text of the query.
 
     """
-    def __init__(self, query_id: int, body: str):
+    def __init__(self, query_id: int, body: Any):
         self.query_id = query_id
         self.body = body
 
