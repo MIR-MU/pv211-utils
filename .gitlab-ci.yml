@@ -7,7 +7,7 @@ cache:
 stages:
   - build
 
-Coding style check:
+Style check:
   stage: build
   tags:
     - shared-fi
