@@ -5,12 +5,14 @@ import pkg_resources
 
 from pv211_utils.entities import QueryBase, DocumentBase
 
+from tqdm import tqdm
+
 
 def load_queries(query_class=QueryBase) -> OrderedDict:
     queries = OrderedDict()
 
     with open(pkg_resources.resource_filename("pv211_utils", "data/cran.qry.json"), 'r') as f:
-        for raw_query in json.load(f)[:-1]:
+        for raw_query in tqdm(json.load(f)[:-1]):
             query = query_class(
                 query_id=raw_query['query number'],
                 body=raw_query['query'],
@@ -23,7 +25,7 @@ def load_documents(document_class=DocumentBase) -> OrderedDict:
     documents = OrderedDict()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranfield_data.json'), 'r') as f:
-        for raw_document in json.load(f):
+        for raw_document in tqdm(json.load(f)):
             document = document_class(
                 document_id=raw_document['id'],
                 authors=raw_document['author'],
@@ -39,7 +41,7 @@ def load_judgements(queries: OrderedDict, documents: OrderedDict) -> Set[Tuple[Q
     relevant = set()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranqrel.json'), 'r') as f:
-        for raw_relevance in json.load(f):
+        for raw_relevance in tqdm(json.load(f)):
             query_id = queries[int(raw_relevance['query_num'])]
             document_id = documents[int(raw_relevance['id'])]
             relevance = (query_id, document_id)
