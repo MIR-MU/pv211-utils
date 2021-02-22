@@ -15,7 +15,6 @@ setup(
     license="MIT",
     packages=["pv211_utils"],
     package_dir={"pv211_utils": "pv211_utils"},
-    use_scm_version={"write_to": ".version", "write_to_template": "{version}\n"},
     include_package_data=True,
     zip_safe=True,
     setup_requires=[
