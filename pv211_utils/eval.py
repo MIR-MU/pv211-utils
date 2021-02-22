@@ -40,7 +40,7 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
         result_relevances.append(float(result_relevance))
         if result_relevance:
             precisions.append(mean(result_relevances))
-    return sum(precisions) / num_relevant[query]
+    return float(sum(precisions) / num_relevant[query])
 
 
 def mean_average_precision(ir_system_instance: IRSystem, submit_result: bool = True, author_name: str = None) -> float:
