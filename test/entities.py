@@ -1,5 +1,4 @@
 import unittest
-from typing import List
 
 from pv211_utils.entities import QueryBase, DocumentBase
 
