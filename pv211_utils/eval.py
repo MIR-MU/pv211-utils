@@ -10,17 +10,19 @@ from pv211_utils import loader
 
 
 def average_precision(query: QueryBase, results: Iterable[DocumentBase],
-                      relevant: Set[Tuple[QueryBase, DocumentBase]], num_relevant: Dict[QueryBase, int]) -> float:
+                      relevant: Set[Tuple[QueryBase, DocumentBase]], num_relevant: int) -> float:
     """Average precision of ranked retrieval results for a query.
 
     Parameters
     ----------
     query : Query
         The query.
-    results : list of Documents
+    results : list of DocumentBase
         Ranked retrieval results.
-    relevant: list of relevant Documents
-    num_relevant: number of relevant Documents
+    relevant: set of tuple of (QueryBase, DocumentBase)
+        Pairs of queries and relevant documents.
+    num_relevant: int
+        Number of relevant documents.
 
     Returns
     -------
@@ -40,7 +42,7 @@ def average_precision(query: QueryBase, results: Iterable[DocumentBase],
         result_relevances.append(float(result_relevance))
         if result_relevance:
             precisions.append(mean(result_relevances))
-    return float(sum(precisions) / num_relevant[query])
+    return float(sum(precisions) / num_relevant)
 
 
 def mean_average_precision(ir_system_instance: IRSystem, submit_result: bool = True, author_name: str = None) -> float:
@@ -60,15 +62,12 @@ def mean_average_precision(ir_system_instance: IRSystem, submit_result: bool = T
     average_precisions = []
     for query in tqdm(queries.values()):
         results = ir_system_instance.search(query)
-        average_precisions.append(average_precision(query, results, relevant, num_relevant))
+        precision = average_precision(query, results, relevant, num_relevant[query])
+        average_precisions.append(precision)
     result = float(mean(average_precisions))
 
     if submit_result and author_name is not None:
         from .gdrive_upload import log_precision_entry
         log_precision_entry(author_name, result)
-        # TODO: provide some more info
-        print("Submitted!")
-    else:
-        print("Not submitted.")
 
     return result
