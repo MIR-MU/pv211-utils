@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 from .leaderboard import LeaderboardBase
 from .entities import QueryBase, DocumentBase
-from .irsystem import IRSystem
+from .irsystem import IRSystemBase
 
 
 def average_precision(query: QueryBase,
@@ -47,7 +47,7 @@ def average_precision(query: QueryBase,
     return float(sum(precisions) / num_relevant)
 
 
-def mean_average_precision(system: IRSystem,
+def mean_average_precision(system: IRSystemBase,
                            queries: OrderedDict,
                            documents: OrderedDict,
                            judgements: Set[Tuple[QueryBase, DocumentBase]],

@@ -1,11 +1,11 @@
 import abc
 from typing import Iterable
 
-from ..irsystem import IRSystem
+from ..irsystem import IRSystemBase
 from .entities import CranfieldQueryBase, CranfieldDocumentBase
 
 
-class CranfieldIRSystem(IRSystem):
+class CranfieldIRSystemBase(IRSystemBase):
     @abc.abstractmethod
     def search(self, query: CranfieldQueryBase) -> Iterable[CranfieldDocumentBase]:
         pass
