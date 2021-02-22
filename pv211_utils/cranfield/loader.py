@@ -6,6 +6,9 @@ import pkg_resources
 from .entities import CranfieldQueryBase, CranfieldDocumentBase
 
 
+CranfieldJudgements = Set[Tuple[CranfieldQueryBase, CranfieldDocumentBase]]
+
+
 def load_queries(query_class=CranfieldQueryBase) -> OrderedDict:
     queries = OrderedDict()
 
@@ -35,7 +38,7 @@ def load_documents(document_class=CranfieldDocumentBase) -> OrderedDict:
     return documents
 
 
-def load_judgements(queries: OrderedDict, documents: OrderedDict) -> Set[Tuple[CranfieldQueryBase, CranfieldDocumentBase]]:
+def load_judgements(queries: OrderedDict, documents: OrderedDict) -> CranfieldJudgements:
     relevant = set()
 
     with open(pkg_resources.resource_filename("pv211_utils", 'data/cranqrel.json'), 'r') as f:
