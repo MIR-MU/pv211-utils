@@ -1,8 +1,5 @@
-from collections import OrderedDict
 from typing import Iterable, Tuple, Set, Optional
 from statistics import mean
-
-from tqdm import tqdm
 
 from .leaderboard import LeaderboardBase
 from .entities import QueryBase, DocumentBase
@@ -48,8 +45,7 @@ def average_precision(query: QueryBase,
 
 
 def mean_average_precision(system: IRSystemBase,
-                           queries: OrderedDict,
-                           documents: OrderedDict,
+                           queries: Iterable[QueryBase],
                            judgements: Set[Tuple[QueryBase, DocumentBase]],
                            leaderboard: Optional[LeaderboardBase] = None,
                            submit_result: bool = True,
@@ -60,10 +56,8 @@ def mean_average_precision(system: IRSystemBase,
     ----------
     system : IRSystem
         The information retrieval system.
-    queries : OrderedDict of (int, QueryBase)
+    queries : sequence of QueryBase
         All queries to be submitted to the information retrieval system.
-    documents : OrderedDict of (int, DocumentBase)
-        All documents available to the information retrieval system.
     judgements : set of tuple of (QueryBase, DocumentBase)
         Pairs of queries and relevant documents.
     leaderboard : LoaderboardBase or None, optional
@@ -90,7 +84,7 @@ def mean_average_precision(system: IRSystemBase,
         num_relevant[query] += 1
 
     average_precisions = []
-    for query in tqdm(queries.values()):
+    for query in queries:
         results = system.search(query)
         precision = average_precision(query, results, judgements, num_relevant[query])
         average_precisions.append(precision)

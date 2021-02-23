@@ -1,4 +1,3 @@
-from collections import OrderedDict
 import unittest
 from typing import List, Callable
 
@@ -85,24 +84,10 @@ class TestAveragePrecision(unittest.TestCase):
 class TestMeanAveragePrecision(unittest.TestCase):
     def setUp(self):
         query = QueryBase(QUERY_ID, None)
-
-        self.queries = OrderedDict()
-        self.queries[query.query_id] = query
+        self.queries = [query]
 
         first_relevant_document = DocumentBase(FIRST_RELEVANT_DOCUMENT_ID, None)
         second_relevant_document = DocumentBase(SECOND_RELEVANT_DOCUMENT_ID, None)
-        first_irrelevant_document = DocumentBase(FIRST_IRRELEVANT_DOCUMENT_ID, None)
-        second_irrelevant_document = DocumentBase(SECOND_IRRELEVANT_DOCUMENT_ID, None)
-
-        self.documents = OrderedDict()
-        for document in (
-                    first_relevant_document,
-                    second_relevant_document,
-                    first_irrelevant_document,
-                    second_irrelevant_document,
-                ):
-            self.documents[document.document_id] = document
-
         self.judgements = set([
             (query, first_relevant_document),
             (query, second_relevant_document),
@@ -112,11 +97,11 @@ class TestMeanAveragePrecision(unittest.TestCase):
         self.bad_irsystem = BadIRSystem()
 
     def test_mean_average_precision_zero(self):
-        precision = mean_average_precision(self.bad_irsystem, self.queries, self.documents, self.judgements)
+        precision = mean_average_precision(self.bad_irsystem, self.queries, self.judgements)
         self.assertEqual(0.0, precision)
 
     def test_mean_average_precision_one(self):
-        precision = mean_average_precision(self.good_irsystem, self.queries, self.documents, self.judgements)
+        precision = mean_average_precision(self.good_irsystem, self.queries, self.judgements)
         self.assertEqual(1.0, precision)
 
     def test_mean_average_precision_logging(self):
@@ -130,8 +115,8 @@ class TestMeanAveragePrecision(unittest.TestCase):
             logged_precision = precision
 
         leaderboard = Leaderboard(callback)
-        mean_average_precision(self.good_irsystem, self.queries, self.documents, self.judgements,
-                               leaderboard, True, AUTHOR_NAME)
+        mean_average_precision(self.good_irsystem, self.queries, self.judgements, leaderboard,
+                               True, AUTHOR_NAME)
 
         self.assertEqual(AUTHOR_NAME, logged_author_name)
         self.assertEqual(1.0, logged_precision)
