@@ -7,7 +7,7 @@ QUERY_ID = 123
 QUERY_BODY_INPUT = 'some body  text'
 QUERY_BODY_OUTPUT = ['some', 'body', 'text']
 
-DOCUMENT_ID = 123
+DOCUMENT_ID = '123'
 DOCUMENT_AUTHORS_INPUT = 'ashley,h. and zartarian,g.'
 DOCUMENT_AUTHORS_OUTPUT = ['ashley,h.', 'zartarian,g.']
 DOCUMENT_BIBLIOGRAPHY_INPUT = 'j. ae. scs. 23, 1956, 1109.'
@@ -25,7 +25,7 @@ class CranfieldQuery(CranfieldQueryBase):
 
 
 class CranfieldDocument(CranfieldDocumentBase):
-    def __init__(self, document_id: int, authors: str, bibliography: str, title: str, body: str):
+    def __init__(self, document_id: str, authors: str, bibliography: str, title: str, body: str):
         authors = authors.split(' and ')
         bibliography = bibliography.split(', ')
         title = title.split()

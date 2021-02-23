@@ -12,8 +12,8 @@ CranfieldJudgements = Set[Tuple[CranfieldQueryBase, CranfieldDocumentBase]]
 def load_queries(query_class=CranfieldQueryBase) -> OrderedDict:
     queries = OrderedDict()
 
-    with open(pkg_resources.resource_filename("pv211_utils", "data/cran.qry.json"), 'r') as f:
-        for raw_query in json.load(f)[:-1]:
+    with open(pkg_resources.resource_filename('pv211_utils', 'data/cran.qry.json'), 'rt') as f:
+        for raw_query in json.load(f):
             query = query_class(
                 query_id=raw_query['query number'],
                 body=raw_query['query'],
@@ -25,10 +25,10 @@ def load_queries(query_class=CranfieldQueryBase) -> OrderedDict:
 def load_documents(document_class=CranfieldDocumentBase) -> OrderedDict:
     documents = OrderedDict()
 
-    with open(pkg_resources.resource_filename("pv211_utils", 'data/cranfield_data.json'), 'r') as f:
+    with open(pkg_resources.resource_filename('pv211_utils', 'data/cranfield_data.json'), 'rt') as f:
         for raw_document in json.load(f):
             document = document_class(
-                document_id=raw_document['id'],
+                document_id=str(raw_document['id']),
                 authors=raw_document['author'],
                 bibliography=raw_document['bibliography'],
                 title=raw_document['title'],
@@ -41,10 +41,10 @@ def load_documents(document_class=CranfieldDocumentBase) -> OrderedDict:
 def load_judgements(queries: OrderedDict, documents: OrderedDict) -> CranfieldJudgements:
     relevant = set()
 
-    with open(pkg_resources.resource_filename("pv211_utils", 'data/cranqrel.json'), 'r') as f:
+    with open(pkg_resources.resource_filename('pv211_utils', 'data/cranqrel.json'), 'rt') as f:
         for raw_relevance in json.load(f):
             query_id = queries[int(raw_relevance['query_num'])]
-            document_id = documents[int(raw_relevance['id'])]
+            document_id = documents[raw_relevance['id']]
             relevance = (query_id, document_id)
             relevant.add(relevance)
     return relevant

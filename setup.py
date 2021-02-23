@@ -22,6 +22,7 @@ setup(
     ],
     install_requires=[
         "gspread",
+        "gdown~=3.12.2",
         "oauth2client",
         "google",
         "tqdm",

@@ -8,20 +8,22 @@ class DocumentBase:
 
     Parameters
     ----------
-    document_id : int
+    document_id : str
         A unique identifier of the document.
     body : Any
         The abstract of the document.
 
     Attributes
     ----------
+    document_id : str
+        A unique identifier of the document.
     body : Any
         The abstract of the document.
 
     """
     SUMMARY_LENGTH = 50
 
-    def __init__(self, document_id: int, body: Any):
+    def __init__(self, document_id: str, body: Any):
         self.document_id = document_id
         self.body = body
 

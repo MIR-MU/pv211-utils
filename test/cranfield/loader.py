@@ -3,7 +3,7 @@ import unittest
 from pv211_utils.cranfield.loader import load_queries, load_documents, load_judgements
 
 
-NUM_QUERIES = 225
+NUM_QUERIES = 226
 NUM_DOCUMENTS = 1400
 NUM_JUDGEMENTS = 1837
 
@@ -23,7 +23,7 @@ class TestLoadQueries(unittest.TestCase):
 class TestLoadDocuments(unittest.TestCase):
     def setUp(self):
         self.documents = load_documents()
-        self.document = self.documents[14]
+        self.document = self.documents['14']
 
     def test_number_of_documents(self):
         self.assertEqual(NUM_DOCUMENTS, len(self.documents))
@@ -48,8 +48,8 @@ class TestLoadJudgements(unittest.TestCase):
         documents = load_documents()
         self.judgements = load_judgements(queries, documents)
         self.query = queries[1]
-        self.relevant_document = documents[486]
-        self.irrelevant_document = documents[487]
+        self.relevant_document = documents['486']
+        self.irrelevant_document = documents['487']
 
     def test_number_of_judgements(self):
         self.assertEqual(NUM_JUDGEMENTS, len(self.judgements))
