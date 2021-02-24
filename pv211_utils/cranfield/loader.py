@@ -43,8 +43,8 @@ def load_judgements(queries: OrderedDict, documents: OrderedDict) -> CranfieldJu
 
     with open(pkg_resources.resource_filename('pv211_utils', 'data/cranqrel.json'), 'rt') as f:
         for raw_relevance in json.load(f):
-            query_id = queries[int(raw_relevance['query_num'])]
-            document_id = documents[raw_relevance['id']]
-            relevance = (query_id, document_id)
+            query = queries[int(raw_relevance['query_num'])]
+            document = documents[raw_relevance['id']]
+            relevance = (query, document)
             relevant.add(relevance)
     return relevant
