@@ -41,7 +41,7 @@ class DocumentBase:
         return NotImplemented
 
     def __repr__(self):
-        summary = ' '.join(self.body.split())
+        summary = ' '.join(str(self.body).split())
         if len(summary) > self.SUMMARY_LENGTH:
             summary = '{} ...'.format(summary[:self.SUMMARY_LENGTH])
         return f'<Document {self.document_id} “{summary}”>'
