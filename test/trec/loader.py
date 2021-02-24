@@ -76,10 +76,10 @@ class TestLoadJudgements(unittest.TestCase):
         self.assertEqual(NUM_JUDGEMENTS_TRAIN, len(self.judgements_train))
 
     def test_number_of_judgements_validation(self):
-        self.assertEqual(NUM_JUDGEMENTS_TRAIN, len(self.judgements_validation))
+        self.assertEqual(NUM_JUDGEMENTS_VALIDATION, len(self.judgements_validation))
 
     def test_number_of_judgements_test(self):
-        self.assertEqual(NUM_JUDGEMENTS_TRAIN, len(self.judgements_test))
+        self.assertEqual(NUM_JUDGEMENTS_TEST, len(self.judgements_test))
 
     def test_relevant_document_train(self):
         self.assertIn((self.query_train, self.relevant_document_train), self.judgements_train)

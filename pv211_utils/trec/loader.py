@@ -55,9 +55,9 @@ def load_judgements(queries: OrderedDict, documents: OrderedDict, subset: str = 
 
     filename = 'data/trec_judgements_{}.json'.format(subset)
     with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt') as f:
-        for raw_relevance in json.load(f):
-            query_id = queries[int(raw_relevance['query_id'])]
-            document_id = documents[raw_relevance['document_id']]
-            relevance = (query_id, document_id)
+        for query_id, document_id in json.load(f):
+            query = queries[query_id]
+            document = documents[document_id]
+            relevance = (query, document)
             relevant.add(relevance)
     return relevant
