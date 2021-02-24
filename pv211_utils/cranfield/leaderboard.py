@@ -18,6 +18,6 @@ class CranfieldLeaderboard(GoogleSpreadsheetLeaderboardBase):
         key_path = pkg_resources.resource_filename('pv211_utils', 'data/pv211-leaderboard-b8e892e3e8bb.json')
         return key_path
 
-    def _get_speadsheet_key(self) -> str:
+    def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '1CNeZESOrPxBs3U0FeGtaDPLJQkb2Ubsr0aCvyNIwdtM'
         return spreadsheet_key
