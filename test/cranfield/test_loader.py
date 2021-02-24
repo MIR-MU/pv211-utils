@@ -3,7 +3,7 @@ import unittest
 from pv211_utils.cranfield.loader import load_queries, load_documents, load_judgements
 
 
-NUM_QUERIES = 226
+NUM_QUERIES = 225
 NUM_DOCUMENTS = 1400
 NUM_JUDGEMENTS = 1837
 

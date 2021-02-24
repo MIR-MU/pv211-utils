@@ -13,7 +13,7 @@ def load_queries(query_class=CranfieldQueryBase) -> OrderedDict:
     queries = OrderedDict()
 
     with open(pkg_resources.resource_filename('pv211_utils', 'data/cran.qry.json'), 'rt') as f:
-        for raw_query in json.load(f):
+        for raw_query in json.load(f)[:-1]:
             query = query_class(
                 query_id=raw_query['query number'],
                 body=raw_query['query'],
