@@ -64,11 +64,11 @@ def mean_average_precision(system: IRSystemBase,
         A leaderboard to which we may submit the mean average precision.
         If None, then the mean average precision will not be submitted.
         Default is None.
-    submit_results : bool, optional
+    submit_result : bool, optional
         Whether the mean average precision should be submitted to the leaderboard.
         Default is True.
     author_name : str or None, optional
-        The name of the author submitted to the leaderboard when `submit_results` is True.
+        The name of the author submitted to the leaderboard when `submit_result` is True.
         If None, then the mean average precision will not be submitted. Default is None.
 
     Returns
@@ -90,8 +90,8 @@ def mean_average_precision(system: IRSystemBase,
         average_precisions.append(precision)
     result = float(mean(average_precisions))
 
-    submit_results = leaderboard is not None and submit_result and author_name is not None
-    if submit_results:
+    submit_result = leaderboard is not None and submit_result and author_name is not None
+    if submit_result:
         leaderboard.log_precision_entry(author_name, result)
 
     return result
