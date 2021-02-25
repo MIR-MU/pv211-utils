@@ -21,4 +21,7 @@ class TrecLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:
-        return None
+        return (
+            'https://docs.google.com/spreadsheets/d/e/'
+            '2PACX-1vQ33YdFZtGH6g2bDbkD9aLozLdVVGNuP09sRh-F9d_EY9nWntOrLHSyNATFsXw4v9lw3UA3vOzl5l0s/pubhtml'
+        )
