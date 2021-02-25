@@ -57,7 +57,7 @@ class EvaluationBase(abc.ABC):
 
     def _get_num_relevant(self, query: QueryBase) -> int:
         if query not in self.num_relevant:
-            raise KeyError('No relevant documents for {} in self.judgements')
+            raise KeyError('No relevant documents for {} in self.judgements'.format(query))
         return self.num_relevant[query]
 
     def _average_precision(self, query: QueryBase, results: Iterable[DocumentBase]) -> float:
