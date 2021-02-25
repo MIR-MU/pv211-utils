@@ -22,12 +22,55 @@ class LeaderboardBase(abc.ABC):
         """
         pass
 
-
-class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
     @abc.abstractmethod
-    def _get_week(self, current_date: datetime.datetime) -> int:
+    def get_competition_start(self) -> datetime.date:
+        """Gets the starting date of the competition.
+
+        Returns
+        -------
+        datetime.date
+            The starting date of the competition.
+
+        """
         pass
 
+    @abc.abstractmethod
+    def get_competition_end(self) -> datetime.date:
+        """Gets the end date of the competition.
+
+        Returns
+        -------
+        datetime.date
+            The end date of the competition.
+
+        """
+        pass
+
+    def get_week(self, current_date: datetime.date) -> int:
+        """Gets the current week of the competition.
+
+        Parameters
+        ----------
+        current_date : datetime.date
+            The current date.
+
+        Returns
+        -------
+        int
+            The current week of the competition.
+
+        """
+        competition_start = self.get_competition_start()
+        competition_end = self.get_competition_end()
+        if current_date > competition_end:
+            message = 'Sorry, the competition has ended in {}. No more submissions.'
+            message = message.format(competition_end.strftime('%d.%m.%Y %H:%M:%S'))
+            raise ValueError(message)
+        week = current_date.isocalendar()[1] - competition_start.isocalendar()[1] + 1
+        return week
+
+
+class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
     @abc.abstractmethod
     def _get_key_path(self) -> str:
         pass
@@ -62,7 +105,7 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
 
         logs_list = logs_worksheet.get_all_values()
         current_len = len(logs_list)
-        current_week = 'Week {}'.format(self._get_week(now))
+        current_week = 'Week {}'.format(self.get_week(now.date()))
         header_cell = '=CONCAT(D%s;E%s)' % (current_len+1, current_len+1)
         # append entry
         logs_worksheet.append_row(["", current_len, current_time, current_week, competitor_name, precision])
