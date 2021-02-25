@@ -3,7 +3,6 @@ import gzip
 import json
 from typing import Set, Tuple
 import pkg_resources
-from functools import lru_cache
 
 from gdown import cached_download
 
@@ -29,7 +28,6 @@ def load_queries(query_class=TrecQueryBase, subset: str = 'validation') -> Order
     return queries
 
 
-@lru_cache(maxsize=None)
 def load_documents(document_class=TrecDocumentBase) -> OrderedDict:
     with open(pkg_resources.resource_filename('pv211_utils', 'data/trec_documents_manifest.json'), 'rt') as f:
         manifest = json.load(f)
