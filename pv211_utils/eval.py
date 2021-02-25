@@ -152,16 +152,16 @@ class EvaluationBase(abc.ABC):
             display(Markdown('Try playing with the preprocessing of queries and documents! 💡'))
         else:
             display(Markdown('Congratulations, you passed the **{:g}%** minimum! 🥳'.format(minimum_map_score)))
-            if not submit_result:
-                message = (
-                    'Set `submit_result = True` and write your name to the `author_name` variable '
-                    'to submit your result to {}. 🏆\n\nThe best submissions on the '
-                    'leaderboard will receive *small awards during the semester*, and some '
-                    '*__seriously big__ awards* after the personal check at the end of the competition '
-                    '({}). Please be polite, do not spoil the game for the others, and **have fun!** 😉'
-                ).format(leaderboard_text, competition_end)
-                display(Markdown(message))
 
         if submit_result:
             self.leaderboard.log_precision_entry(self.author_name, result)
             display(Markdown('Submitted your result to {}! 🏆'.format(leaderboard_text)))
+        else:
+            message = (
+                'Set `submit_result = True` and write your name to the `author_name` variable '
+                'to submit your result to {}. 🏆\n\nThe best submissions on the '
+                'leaderboard will receive *small awards during the semester*, and some '
+                '*__seriously big__ awards* after the personal check at the end of the competition '
+                '({}). Please be polite, do not spoil the game for the others, and **have fun!** 😉'
+            ).format(leaderboard_text, competition_end)
+            display(Markdown(message))
