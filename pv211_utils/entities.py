@@ -66,6 +66,8 @@ class QueryBase:
         The text of the query.
 
     """
+    SUMMARY_LENGTH = 50
+
     def __init__(self, query_id: int, body: Any):
         self.query_id = query_id
         self.body = body
@@ -84,7 +86,10 @@ class QueryBase:
         return NotImplemented
 
     def __repr__(self):
-        return f'<Query {self.query_id} “{self.body}”>'
+        summary = ' '.join(str(self.body).split())
+        if len(summary) > self.SUMMARY_LENGTH:
+            summary = '{} ...'.format(summary[:self.SUMMARY_LENGTH])
+        return f'<Query {self.query_id} “{summary}”>'
 
 
 JudgementBase = Tuple[QueryBase, DocumentBase]
