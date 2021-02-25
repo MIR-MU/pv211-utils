@@ -1,9 +1,8 @@
 import unittest
-from typing import List, Callable
+from typing import List
 
 from pv211_utils.entities import QueryBase, DocumentBase
 from pv211_utils.irsystem import IRSystemBase
-from pv211_utils.leaderboard import LeaderboardBase
 from pv211_utils.eval import average_precision, mean_average_precision
 
 
@@ -28,14 +27,6 @@ class BadIRSystem(IRSystemBase):
         first_irrelevant_document = DocumentBase(FIRST_IRRELEVANT_DOCUMENT_ID, None)
         second_irrelevant_document = DocumentBase(SECOND_IRRELEVANT_DOCUMENT_ID, None)
         return [first_irrelevant_document, second_irrelevant_document]
-
-
-class Leaderboard(LeaderboardBase):
-    def __init__(self, callback: Callable[[str, float], None]):
-        self.callback = callback
-
-    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> None:
-        self.callback(author_name, mean_average_precision)
 
 
 class TestAveragePrecision(unittest.TestCase):
@@ -103,20 +94,3 @@ class TestMeanAveragePrecision(unittest.TestCase):
     def test_mean_average_precision_one(self):
         precision = mean_average_precision(self.good_irsystem, self.queries, self.judgements)
         self.assertEqual(1.0, precision)
-
-    def test_mean_average_precision_logging(self):
-        logged_author_name = None
-        logged_precision = None
-
-        def callback(author_name: str, precision: float):
-            nonlocal logged_author_name
-            nonlocal logged_precision
-            logged_author_name = author_name
-            logged_precision = precision
-
-        leaderboard = Leaderboard(callback)
-        mean_average_precision(self.good_irsystem, self.queries, self.judgements, leaderboard,
-                               True, AUTHOR_NAME)
-
-        self.assertEqual(AUTHOR_NAME, logged_author_name)
-        self.assertEqual(1.0, logged_precision)

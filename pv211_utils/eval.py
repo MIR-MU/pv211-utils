@@ -1,7 +1,6 @@
-from typing import Iterable, Tuple, Set, Optional
+from typing import Iterable, Tuple, Set
 from statistics import mean
 
-from .leaderboard import LeaderboardBase
 from .entities import QueryBase, DocumentBase
 from .irsystem import IRSystemBase
 
@@ -46,35 +45,22 @@ def average_precision(query: QueryBase,
 
 def mean_average_precision(system: IRSystemBase,
                            queries: Iterable[QueryBase],
-                           judgements: Set[Tuple[QueryBase, DocumentBase]],
-                           leaderboard: Optional[LeaderboardBase] = None,
-                           submit_result: bool = True,
-                           author_name: Optional[str] = None) -> float:
+                           judgements: Set[Tuple[QueryBase, DocumentBase]]) -> float:
     """The mean average precision of an information retrieval system.
 
     Parameters
     ----------
     system : IRSystem
         The information retrieval system.
-    queries : sequence of QueryBase
+    queries : iterable of QueryBase
         All queries to be submitted to the information retrieval system.
     judgements : set of tuple of (QueryBase, DocumentBase)
         Pairs of queries and relevant documents.
-    leaderboard : LoaderboardBase or None, optional
-        A leaderboard to which we may submit the mean average precision.
-        If None, then the mean average precision will not be submitted.
-        Default is None.
-    submit_result : bool, optional
-        Whether the mean average precision should be submitted to the leaderboard.
-        Default is True.
-    author_name : str or None, optional
-        The name of the author submitted to the leaderboard when `submit_result` is True.
-        If None, then the mean average precision will not be submitted. Default is None.
 
     Returns
     -------
     float
-        Mean average precision of the information retrieval system.
+        The mean average precision of the information retrieval system.
 
     """
     num_relevant = {}
@@ -89,9 +75,5 @@ def mean_average_precision(system: IRSystemBase,
         precision = average_precision(query, results, judgements, num_relevant[query])
         average_precisions.append(precision)
     result = float(mean(average_precisions))
-
-    submit_result = leaderboard is not None and submit_result and author_name is not None
-    if submit_result:
-        leaderboard.log_precision_entry(author_name, result)
 
     return result

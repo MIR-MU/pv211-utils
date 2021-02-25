@@ -67,5 +67,3 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         # append entry
         logs_worksheet.append_row(["", current_len, current_time, current_week, competitor_name, precision])
         logs_worksheet.update_cell(current_len+1, 1, header_cell)
-
-        print('{} submitted MAP {:.2f}% to the leaderboard!'.format(competitor_name, 100.0 * precision))
