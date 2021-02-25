@@ -1,5 +1,5 @@
 from functools import total_ordering
-from typing import Any
+from typing import Any, Tuple
 
 
 @total_ordering
@@ -85,3 +85,6 @@ class QueryBase:
 
     def __repr__(self):
         return f'<Query {self.query_id} “{self.body}”>'
+
+
+JudgementBase = Tuple[QueryBase, DocumentBase]

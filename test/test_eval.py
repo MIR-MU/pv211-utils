@@ -1,9 +1,9 @@
 import unittest
-from typing import List
+from typing import List, Set
 
-from pv211_utils.entities import QueryBase, DocumentBase
+from pv211_utils.entities import QueryBase, DocumentBase, JudgementBase
 from pv211_utils.irsystem import IRSystemBase
-from pv211_utils.eval import average_precision, mean_average_precision
+from pv211_utils.eval import EvaluationBase
 
 
 AUTHOR_NAME = 'John Doe'
@@ -29,26 +29,40 @@ class BadIRSystem(IRSystemBase):
         return [first_irrelevant_document, second_irrelevant_document]
 
 
-class TestAveragePrecision(unittest.TestCase):
+class Evaluation(EvaluationBase):
+    def __init__(self, system: IRSystemBase, judgements: Set[JudgementBase]):
+        super().__init__(system, judgements)
+
+    def _get_minimum_mean_average_precision(self) -> float:
+        return 0.5
+
+
+class TestEvaluation(unittest.TestCase):
     def setUp(self):
         self.query = QueryBase(QUERY_ID, None)
+        self.queries = [self.query]
+
         self.first_relevant_document = DocumentBase(FIRST_RELEVANT_DOCUMENT_ID, None)
         self.second_relevant_document = DocumentBase(SECOND_RELEVANT_DOCUMENT_ID, None)
         self.first_irrelevant_document = DocumentBase(FIRST_IRRELEVANT_DOCUMENT_ID, None)
         self.second_irrelevant_document = DocumentBase(SECOND_IRRELEVANT_DOCUMENT_ID, None)
 
-        self.relevant = set([
+        judgements = set([
             (self.query, self.first_relevant_document),
             (self.query, self.second_relevant_document),
         ])
-        self.num_relevant = len(self.relevant)
+        good_system = GoodIRSystem()
+        bad_system = BadIRSystem()
+
+        self.good_evaluation = Evaluation(good_system, judgements)
+        self.bad_evaluation = Evaluation(bad_system, judgements)
 
     def test_average_precision_zero(self):
         results = [
             self.first_irrelevant_document,
             self.second_irrelevant_document,
         ]
-        precision = average_precision(self.query, results, self.relevant, self.num_relevant)
+        precision = self.good_evaluation._average_precision(self.query, results)
         self.assertEqual(0.0, precision)
 
     def test_average_precision_one(self):
@@ -56,7 +70,7 @@ class TestAveragePrecision(unittest.TestCase):
             self.first_relevant_document,
             self.second_relevant_document,
         ]
-        precision = average_precision(self.query, results, self.relevant, self.num_relevant)
+        precision = self.good_evaluation._average_precision(self.query, results)
         self.assertEqual(1.0, precision)
 
     def test_average_precision_repeated_documents(self):
@@ -68,29 +82,13 @@ class TestAveragePrecision(unittest.TestCase):
             self.first_relevant_document,
             self.second_relevant_document,
         ]
-        precision = average_precision(self.query, results, self.relevant, self.num_relevant)
+        precision = self.good_evaluation._average_precision(self.query, results)
         self.assertEqual(1.0, precision)
-
-
-class TestMeanAveragePrecision(unittest.TestCase):
-    def setUp(self):
-        query = QueryBase(QUERY_ID, None)
-        self.queries = [query]
-
-        first_relevant_document = DocumentBase(FIRST_RELEVANT_DOCUMENT_ID, None)
-        second_relevant_document = DocumentBase(SECOND_RELEVANT_DOCUMENT_ID, None)
-        self.judgements = set([
-            (query, first_relevant_document),
-            (query, second_relevant_document),
-        ])
-
-        self.good_irsystem = GoodIRSystem()
-        self.bad_irsystem = BadIRSystem()
 
     def test_mean_average_precision_zero(self):
-        precision = mean_average_precision(self.bad_irsystem, self.queries, self.judgements)
-        self.assertEqual(0.0, precision)
+        mean_average_precision = self.bad_evaluation.mean_average_precision(self.queries)
+        self.assertEqual(0.0, mean_average_precision)
 
     def test_mean_average_precision_one(self):
-        precision = mean_average_precision(self.good_irsystem, self.queries, self.judgements)
-        self.assertEqual(1.0, precision)
+        mean_average_precision = self.good_evaluation.mean_average_precision(self.queries)
+        self.assertEqual(1.0, mean_average_precision)

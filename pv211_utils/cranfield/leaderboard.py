@@ -1,5 +1,6 @@
 import datetime
 import pkg_resources
+from typing import Optional
 
 from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
@@ -18,3 +19,9 @@ class CranfieldLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '1CNeZESOrPxBs3U0FeGtaDPLJQkb2Ubsr0aCvyNIwdtM'
         return spreadsheet_key
+
+    def get_public_url(self) -> Optional[str]:
+        return (
+            'https://docs.google.com/spreadsheets/d/e/'
+            '2PACX-1vRRR4eDkQIWx5FSU08Uj5DciWwxNfHJeLruNR1T0WW9xmSsYl457Zqv5SlA1jfvsYHpsaUw_8P3z1OF/pubhtml'
+        )

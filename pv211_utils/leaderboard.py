@@ -1,4 +1,5 @@
 import abc
+from typing import Optional
 import datetime
 
 import gspread
@@ -68,6 +69,17 @@ class LeaderboardBase(abc.ABC):
             raise ValueError(message)
         week = current_date.isocalendar()[1] - competition_start.isocalendar()[1] + 1
         return week
+
+    def get_public_url(self) -> Optional[str]:
+        """Gets the public URL of the leaderboard.
+
+        Returns
+        -------
+        str or None
+            The public URL of the leaderboard. If None, then there is no public URL.
+
+        """
+        return None
 
 
 class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):

@@ -27,7 +27,7 @@ Type check:
     - python -V
     - pip install -U pip
     - pip install .
-    - pip install ipython pytype
+    - pip install pytype
   script:
     - pytype .
 

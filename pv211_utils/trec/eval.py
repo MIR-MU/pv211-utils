@@ -1,21 +1,21 @@
 from typing import Set, Optional
 
 from ..eval import EvaluationBase
-from .leaderboard import CranfieldLeaderboard
-from .entities import CranfieldJudgementBase
-from .irsystem import CranfieldIRSystemBase
+from .leaderboard import TrecLeaderboard
+from .entities import TrecJudgementBase
+from .irsystem import TrecIRSystemBase
 
 
-class CranfieldEvaluation(EvaluationBase):
-    """A Cranfield collection information retrieval system evaluation.
+class TrecEvaluation(EvaluationBase):
+    """A Trec collection information retrieval system evaluation.
 
     Parameters
     ----------
-    system : CranfieldIRSystemBase
+    system : TrecIRSystemBase
         The information retrieval system.
-    judgements : set of CranfieldJudgementBase
+    judgements : set of TrecJudgementBase
         Pairs of queries and relevant documents.
-    leaderboard : CranfieldLeaderboard or None, optional
+    leaderboard : TrecLeaderboard or None, optional
         A leaderboard to which we may later submit evaluation results.
         If None, then evaluation results will not be submitted. Default is None.
     author_name : str or None, optional
@@ -23,10 +23,10 @@ class CranfieldEvaluation(EvaluationBase):
         If None, then the result will not be submitted. Default is None.
 
     """
-    def __init__(self, system: CranfieldIRSystemBase, judgements: Set[CranfieldJudgementBase],
-                 leaderboard: Optional[CranfieldLeaderboard] = None,
+    def __init__(self, system: TrecIRSystemBase, judgements: Set[TrecJudgementBase],
+                 leaderboard: Optional[TrecLeaderboard] = None,
                  author_name: Optional[str] = None):
         super().__init__(system, judgements, leaderboard, author_name)
 
     def _get_minimum_mean_average_precision(self) -> float:
-        return 0.35
+        return 0.1

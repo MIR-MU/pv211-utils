@@ -1,5 +1,6 @@
 import datetime
 import pkg_resources
+from typing import Optional
 
 from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
@@ -18,3 +19,6 @@ class TrecLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '1eiyase14FrSJs24_LjTSdPwOWOdqutDZhnl33ztBycc'
         return spreadsheet_key
+
+    def get_public_url(self) -> Optional[str]:
+        return None

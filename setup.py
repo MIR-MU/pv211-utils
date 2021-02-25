@@ -26,6 +26,7 @@ setup(
         "oauth2client",
         "google",
         "tqdm",
+        "ipython",
     ],
     package_data={"pv211_utils": ["data/*"]},
 )

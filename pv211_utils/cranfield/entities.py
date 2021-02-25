@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Tuple
 
 from ..entities import DocumentBase, QueryBase
 
@@ -49,3 +49,6 @@ class CranfieldQueryBase(QueryBase):
     """
     def __init__(self, query_id: int, body: Any):
         super().__init__(query_id, body)
+
+
+CranfieldJudgementBase = Tuple[CranfieldQueryBase, CranfieldDocumentBase]

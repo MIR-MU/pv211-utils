@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Tuple
 
 from ..entities import DocumentBase, QueryBase
 
@@ -44,3 +44,6 @@ class TrecQueryBase(QueryBase):
         super().__init__(query_id, body)
         self.title = title
         self.narrative = narrative
+
+
+TrecJudgementBase = Tuple[TrecQueryBase, TrecDocumentBase]
