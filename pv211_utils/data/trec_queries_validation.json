@@ -1,0 +1,122 @@
+[
+    {
+        "query_id": 381,
+        "title": "alternative medicine",
+        "description": "What forms of alternative medicine are being\nused in the treatment of illnesses or diseases\nand how successful are they?",
+        "narrative": "A relevant document should identify a form of\nalternative medicine which is being utilized \nin the treatment of a disease or illness, \nidentify the illness or disease being treated,\nand provide an indication of the success of the\nprocedure."
+    },
+    {
+        "query_id": 382,
+        "title": "hydrogen fuel automobiles",
+        "description": "Identify documents that discuss the use of hydrogen as \na fuel for piston driven automobiles (safe storage a\nconcern) or the use of hydrogen in fuel cells to generate\nelectricity to drive the car.",
+        "narrative": "A relevant document may discuss either hydrogen using fuel \ncells to electrically power automobiles or it may discuss \nthe safe storage of hydrogen gas in a fuel tank through \nthe use of metal hydrides for use in piston engines."
+    },
+    {
+        "query_id": 383,
+        "title": "mental illness drugs",
+        "description": "Identify drugs used in the treatment of mental illness.",
+        "narrative": "A relevant document will include the name of a specific\nor generic type of drug.  Generalities are not relevant."
+    },
+    {
+        "query_id": 384,
+        "title": "space station moon",
+        "description": "Identify documents that discuss the building of\na space station with the intent of colonizing the\nmoon.",
+        "narrative": "A relevant document will discuss the purpose of a \nspace station, initiatives towards colonizing the \nmoon, impediments which thus far have thwarted such a \nproject, plans currently underway or in the planning\nstages for such a venture; cost, countries prepared\nto make a commitment of men, resources, facilities\nand money to accomplish such a feat."
+    },
+    {
+        "query_id": 385,
+        "title": "hybrid fuel cars",
+        "description": "Identify documents that discuss the current status of\nhybrid automobile engines, (i.e., cars fueled by something\nother than gasoline only).",
+        "narrative": "A relevant document may include research on non-gasoline \npowered engines or prototypes that may be fueled by natural \ngas, methanol, alcohol; cost to the consumer; health benefits \nderived; and shortcomings in horsepower and passenger comfort."
+    },
+    {
+        "query_id": 386,
+        "title": "teaching disabled children",
+        "description": "What methods are currently utilized or anticipated in \nthe teaching of disabled children?",
+        "narrative": "A relevant document should identify a method or procedure\ncurrently used in the teaching of disabled children or one \nthat is anticipated being available in the near future."
+    },
+    {
+        "query_id": 387,
+        "title": "radioactive waste",
+        "description": "Identify documents that discuss effective and safe ways to \npermanently handle long-lived radioactive wastes.",
+        "narrative": "Documents that discuss incineration, cementation, bitumenization, \nvitrification, and in underground nuclear explosion are relevant."
+    },
+    {
+        "query_id": 388,
+        "title": "organic soil enhancement",
+        "description": "Identify documents that discuss the use of organic\nfertilizers (composted sludge, ash, vegetable waste, \nmicroorganisms, etc.) as soil enhancers.",
+        "narrative": "The focus of the topic is on soil enhancement.  \nDocuments that discuss other uses of organic material\nare not relevant, nor are documents that concentrate\nsolely on chemical fertilizers."
+    },
+    {
+        "query_id": 389,
+        "title": "illegal technology transfer",
+        "description": "What specific entities have been accused of illegal \ntechnology transfer such as: selling their products, \nformulas, etc. directly or indirectly to foreign \nentities for other than peaceful purposes?",
+        "narrative": "To be relevant, a selected document must specifically\nidentify a person, company, or governmental entity \nwhich provided articles useful for hostile purposes\nto entities outside of their own country and such \nprovision violated the laws of the provider's country."
+    },
+    {
+        "query_id": 390,
+        "title": "orphan drugs",
+        "description": "Find documents that discuss issues associated with so-called \n\"orphan drugs\", that is, drugs that treat diseases affecting \nrelatively few people.",
+        "narrative": "A relevant document will discuss how the Orphan Drug Act \nis working on behalf of those who suffer from orphan \ndiseases and conditions, or how this matter is handled in \nother countries."
+    },
+    {
+        "query_id": 391,
+        "title": "R drug prices",
+        "description": "Identify documents that discuss the impact of the cost of research\nand development (R) on the price of drugs.",
+        "narrative": "Documents that describe how any aspect of the development of a drug\naffects its price are relevant.  Documents that discuss other factors\nthat affect drug prices, such as advertising, without also discussing\nR costs, are not relevant."
+    },
+    {
+        "query_id": 392,
+        "title": "robotics",
+        "description": "What are the applications of robotics in the world today?",
+        "narrative": "Documents concerning R or testing of robotic equipment\nare not relevant, nor are documents discussing future \napplications of robotics.  If the task completed seems to\nbe merely another computer function rather than a task \nusually done by people, then it is not relevant."
+    },
+    {
+        "query_id": 393,
+        "title": "mercy killing",
+        "description": "Identify documents that discuss mercy killings.",
+        "narrative": "All individual cases of mercy killing are relevant, except\nthat \"letters to the editor\" mentioning cases are not relevant.  \nThe removal of life support systems is relevant.  A general \nmention or description of a case without specifics, such as \nvictim's name are not relevant.  Cases determined to be a\nmurder-suicide are not relevant."
+    },
+    {
+        "query_id": 394,
+        "title": "home schooling",
+        "description": "Identify documents that discuss the education of \nchildren at home (home schooling).",
+        "narrative": "A relevant document would contain any data on\nthe education of children in a home environment.\nIncluded could be data on where, by whom, \ncommunity acceptance, and successes.  Additional\ndata on programs aiding the education of \ndisadvantaged children in an away-from-school\nenvironment such as mobile vehicle classrooms\nwould be considered as home schooling and are \ntherefore relevant."
+    },
+    {
+        "query_id": 395,
+        "title": "tourism",
+        "description": "Provide examples of successful attempts to attract \ntourism as a means to improve a local economy.",
+        "narrative": "To be relevant, a selected document will specify\nthe entity (city, state, country, governmental unit)\nwhich has achieved an economic increase due to the \nentity's efforts at boosting tourism.  Documents \nwhich only concern plans for increasing tourism are\nnot relevant, only documents which detail an actual\nincrease are relevant."
+    },
+    {
+        "query_id": 396,
+        "title": "sick building syndrome",
+        "description": "Identify documents that discuss sick building syndrome or\nbuilding-related illnesses.",
+        "narrative": "A relevant document would contain any data that refers to \nthe sick building or building-related illnesses, including\nillnesses caused by asbestos, air conditioning, pollution\ncontrols.  Work-related illnesses not caused by the building,\nsuch as carpal tunnel syndrome, are not relevant."
+    },
+    {
+        "query_id": 397,
+        "title": "automobile recalls",
+        "description": "Identify documents that discuss the reasons for \nautomobile recalls.",
+        "narrative": "A relevant document will specify major or minor reasons \nfor automobile recalls by car manufacturers.  Documents \nthat discuss truck recalls are not relevant."
+    },
+    {
+        "query_id": 398,
+        "title": "dismantling Europe's arsenal",
+        "description": "Identify documents that discuss the \nEuropean Conventional Arms Cut as it\nrelates to the dismantling of Europe's\narsenal.",
+        "narrative": "Relevant documents may address any of the\nfollowing issues:  reducing conventional (non-\nnuclear) forces in Europe (CFE), efforts toward \nreduction that have begun or have been accomplished, \nthe numbers of weapons or manpower reduced through \nthis treaty, comparisons of numbers of reductions \nmade by the Warsaw Pact and NATO, and the effect \nthis arms cut is having on European nations."
+    },
+    {
+        "query_id": 399,
+        "title": "oceanographic vessels",
+        "description": "Identify documents that discuss the \nactivities or equipment of oceanographic \nvessels.",
+        "narrative": "Relevant documents will contain information on\nthe activity of oceanographic vessels regardless\nof nationality.  Such items as undersea mapping,\nmonitoring global warming, marine environmental\nmonitoring and the use of deep sea robots to \nsearch for sunken ships are relevant to oceanography\nactivity.  Also relevant are such actions as using\nthe vessel for research and development of new \nequipment or exploring oceanic resources.  Any \nreference to equipment in use aboard an oceanographic\nvessel is relevant.  Documents that identify a vessel\nas a survey ship which is involved in oceanographic\nactivity is also relevant."
+    },
+    {
+        "query_id": 400,
+        "title": "Amazon rain forest",
+        "description": "What measures are being taken by local South\nAmerican authorities to preserve the Amazon\ntropical rain forest?",
+        "narrative": "Relevant documents may identify: the official \norganizations, institutions, and individuals\nof the countries included in the Amazon rain\nforest; the measures being taken by them to\npreserve the rain forest; and indications of\ndegrees of success in these endeavors."
+    }
+]

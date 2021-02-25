@@ -13,10 +13,11 @@ from .entities import TrecQueryBase, TrecDocumentBase
 TrecJudgements = Set[Tuple[TrecQueryBase, TrecDocumentBase]]
 
 
-def load_queries(query_class=TrecQueryBase) -> OrderedDict:
+def load_queries(query_class=TrecQueryBase, subset: str = 'validation') -> OrderedDict:
     queries = OrderedDict()
 
-    with open(pkg_resources.resource_filename('pv211_utils', 'data/trec_queries.json'), 'rt') as f:
+    filename = 'data/trec_queries_{}.json'.format(subset)
+    with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt') as f:
         for raw_query in json.load(f):
             query = query_class(
                 query_id=raw_query['query_id'],

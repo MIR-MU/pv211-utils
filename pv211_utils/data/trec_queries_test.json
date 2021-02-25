@@ -1,0 +1,302 @@
+[
+    {
+        "query_id": 401,
+        "title": "foreign minorities, Germany",
+        "description": "What language and cultural differences impede the integration \nof foreign minorities in Germany?",
+        "narrative": "A relevant document will focus on the causes of the lack of\nintegration in a significant way; that is, the mere mention of\nimmigration difficulties is not relevant.  Documents that discuss\nimmigration problems unrelated to Germany are also not relevant."
+    },
+    {
+        "query_id": 402,
+        "title": "behavioral genetics",
+        "description": "What is happening in the field of behavioral genetics,\nthe study of the relative influence of genetic\nand environmental factors on an individual's behavior\nor personality?",
+        "narrative": "Documents describing genetic or environmental factors relating\nto understanding and preventing substance abuse and addictions\nare relevant.  Documents pertaining to attention deficit disorders\ntied in with genetics are also relevant, as are genetic disorders \naffecting hearing or muscles.  The genome project is relevant\nwhen tied in with behavior disorders (i.e., mood disorders,\nAlzheimer's disease)."
+    },
+    {
+        "query_id": 403,
+        "title": "osteoporosis",
+        "description": "Find information on the effects of the dietary intakes\nof potassium, magnesium and fruits and vegetables as\ndeterminants of bone mineral density in elderly men\nand women thus preventing osteoporosis (bone decay).",
+        "narrative": "A relevant document may include one or more of the\ndietary intakes in the prevention of osteoporosis.\nAny discussion of the disturbance of nutrition and\nmineral metabolism that results in a decrease in \nbone mass is also relevant."
+    },
+    {
+        "query_id": 404,
+        "title": "Ireland, peace talks",
+        "description": "How often were the peace talks in Ireland delayed\nor disrupted as a result of acts of violence?",
+        "narrative": "Any interruptions to the peace process not directly\nattributable to acts of violence are not relevant."
+    },
+    {
+        "query_id": 405,
+        "title": "cosmic events",
+        "description": "What unexpected or unexplained cosmic events or\ncelestial phenomena, such as radiation and \nsupernova outbursts or new comets, have been detected?",
+        "narrative": "New theories or new interpretations concerning \nknown celestial objects made as a result of new \ntechnology are not relevant."
+    },
+    {
+        "query_id": 406,
+        "title": "Parkinson's disease",
+        "description": "What is being done to treat the symptoms of \nParkinson's disease and keep the patient \nfunctional as long as possible?",
+        "narrative": "A relevant document identifies a drug or treatment \nprogram utilized in patient care and provides \nan indication of success or failure."
+    },
+    {
+        "query_id": 407,
+        "title": "poaching, wildlife preserves",
+        "description": "What is the impact of poaching on \nthe world's various wildlife preserves?",
+        "narrative": "A relevant document must discuss poaching in wildlife\npreserves, not in the wild itself.  Also deemed relevant\nis evidence of preventive measures being taken by local\nauthorities."
+    },
+    {
+        "query_id": 408,
+        "title": "tropical storms",
+        "description": "What tropical storms (hurricanes and typhoons) have\ncaused significant property damage and loss of life?",
+        "narrative": "The date of the storm, the area affected, and the extent of \ndamage/casualties are all of interest.  Documents that describe\nthe damage caused by a tropical storm as \"slight\", \"limited\", or\n\"small\" are not relevant."
+    },
+    {
+        "query_id": 409,
+        "title": "legal, Pan Am, 103",
+        "description": "What legal actions have resulted from the destruction\nof Pan Am Flight 103 over Lockerbie, Scotland, on\nDecember 21, 1988?",
+        "narrative": "Documents describing any charges, claims, or fines \npresented to or imposed by any court or tribunal are\nrelevant, but documents that discuss charges made in\ndiplomatic jousting are not relevant."
+    },
+    {
+        "query_id": 410,
+        "title": "Schengen agreement",
+        "description": "Who is involved in the Schengen agreement to eliminate border\ncontrols in Western Europe and what do they hope to accomplish?",
+        "narrative": "Relevant documents will contain any information about the\nactions of signatories of the Schengen agreement such as:\nmeasures to eliminate border controls (removal of traffic\nobstacles, lifting of traffic restrictions); implementation\nof the information system data bank that contains unified\nvisa issuance procedures; or strengthening of border controls\nat the external borders of the treaty area in exchange for \nfree movement at the internal borders.  Discussions of border \ncrossovers for business purposes are not relevant."
+    },
+    {
+        "query_id": 411,
+        "title": "salvaging, shipwreck, treasure",
+        "description": "Find information on shipwreck salvaging: the\nrecovery or attempted recovery of treasure from\nsunken ships.",
+        "narrative": "A relevant document will provide information on\nthe actual locating and recovery of treasure; \non the technology which makes possible the discovery,\nlocation and investigation of wreckages which \ncontain or are suspected of containing treasure; or\non the disposition of the recovered treasure."
+    },
+    {
+        "query_id": 412,
+        "title": "airport security",
+        "description": "What security measures are in effect or are proposed\nto go into effect in airports?",
+        "narrative": "A relevant document could identify a specific airport\nand describe the security measures already in effect \nor proposed for use at that airport.  Relevant items\ncould also describe a failure of security that was\ncited as a contributing cause of a tragedy which came \nto pass or which was later averted.  Comparisons between\nand among airports based on the effectiveness of the\nsecurity of each are also relevant."
+    },
+    {
+        "query_id": 413,
+        "title": "steel production",
+        "description": "What are new methods of producing steel?",
+        "narrative": "Relevant documents will discuss the processes adapted\nby entrepreneurs who have organized so-called \"minimills\"\nand are producing steel by methods which differ from\nthe old blast furnace method of production.  Documents \nthat identify the new companies, the problems they have\nhave encountered, and/or their successes or failures in\nthe national and international markets are also relevant."
+    },
+    {
+        "query_id": 414,
+        "title": "Cuba, sugar, exports",
+        "description": "How much sugar does Cuba export and which\ncountries import it?",
+        "narrative": "A relevant document will provide information\nregarding Cuba's sugar trade.  Sugar production\nstatistics are not relevant unless exports\nare mentioned explicitly."
+    },
+    {
+        "query_id": 415,
+        "title": "drugs, Golden Triangle",
+        "description": "What is known about drug trafficking in the\n\"Golden Triangle\", the area where Burma,\nThailand and Laos meet?",
+        "narrative": "A relevant document will discuss drug\ntrafficking in the Golden Triangle,\nincluding organizations that produce or\ndistribute the drugs; international efforts\nto combat the traffic; or the quantities of\ndrugs produced in the area."
+    },
+    {
+        "query_id": 416,
+        "title": "Three Gorges Project",
+        "description": "What is the status of The Three Gorges Project?",
+        "narrative": "A relevant document will provide the projected\ndate of completion of the project, its estimated\ntotal cost, or the estimated electrical output of\nthe the finished project.  Discussions of the\nsocial, political, or ecological impact of the\nproject are not relevant."
+    },
+    {
+        "query_id": 417,
+        "title": "creativity",
+        "description": "Find ways of measuring creativity.",
+        "narrative": "Relevant items include definitions of creativity,\ndescriptions of characteristics associated with\ncreativity, and factors linked to creativity."
+    },
+    {
+        "query_id": 418,
+        "title": "quilts, income",
+        "description": "In what ways have quilts been used to generate income?",
+        "narrative": "Documents mentioning quilting books, quilting classes,\nquilted objects, and museum exhibits of quilts are all relevant.  \nDocuments that discuss AIDs quilts are irrelevant, unless \nthere is specific mention that the quilts are being used \nfor fundraising."
+    },
+    {
+        "query_id": 419,
+        "title": "recycle, automobile tires",
+        "description": "What new uses have been developed for old\nautomobile tires as a means of tire recycling?",
+        "narrative": "A relevant document must show advantageous uses of\nrecycled tires, such as:  destructive distillation of \nscrap rubber for valuable chemicals, reef building\nfor fish habitats, filler or binder in asphalt\nroadway mixes, and burning in a controlled \nenvironment for heat generation."
+    },
+    {
+        "query_id": 420,
+        "title": "carbon monoxide poisoning",
+        "description": "How widespread is carbon monoxide poisoning on \na global scale?",
+        "narrative": "Relevant documents will contain data on\nwhat carbon monoxide poisoning is, symptoms,\ncauses, and/or prevention.  Advertisements for\ncarbon monoxide protection products or services \nare not relevant.  Discussions of auto emissions\nand air pollution are not relevant even though\nthey can contain carbon monoxide."
+    },
+    {
+        "query_id": 421,
+        "title": "industrial waste disposal",
+        "description": "How is the disposal of industrial waste being accomplished\nby industrial management throughout the world?",
+        "narrative": "Documents that discuss the disposal, storage, or management\nof industrial waste---both standard and hazardous---are\nrelevant.  However, documents that discuss disposal or\nstorage of nuclear or radioactive waste, or the illegal\nshipment or dumping of waste to avoid legal disposal\nmethods are not relevant."
+    },
+    {
+        "query_id": 422,
+        "title": "art, stolen, forged",
+        "description": "What incidents have there been of stolen or forged art?",
+        "narrative": "Instances of stolen or forged art in any media are relevant. \nStolen mass-produced things, even though they might be \ndecorative, are not relevant (unless they are mass-\nproduced art reproductions). Pirated software, music, movies, \netc. are not relevant."
+    },
+    {
+        "query_id": 423,
+        "title": "Milosevic, Mirjana Markovic",
+        "description": "Find references to Milosevic's wife, Mirjana Markovic.",
+        "narrative": "Any mention of the Serbian president's wife is\nrelevant, even if she is not named.  She may be referred to\nby her nickname, Mira.  A general mention of his family, \nwithout specifying his wife, is not relevant."
+    },
+    {
+        "query_id": 424,
+        "title": "suicides",
+        "description": "Give examples of alleged suicides that aroused suspicion\nof the death actually being murder.",
+        "narrative": "The intent of this query is to find criminal murders that \nare being disguised as suicide, but assisted suicides done\nout of compassion would be relevant if someone refers to \nthem as murder."
+    },
+    {
+        "query_id": 425,
+        "title": "counterfeiting money",
+        "description": "What counterfeiting of money is being done in\nmodern times?",
+        "narrative": "Relevant documents must cite actual instances\nof counterfeiting.   Anti-counterfeiting measures by\nthemselves are not relevant."
+    },
+    {
+        "query_id": 426,
+        "title": "law enforcement, dogs",
+        "description": "Provide information on the use of dogs worldwide for \nlaw enforcement purposes.",
+        "narrative": "Relevant items include specific information on the\nuse of dogs during an operation.  Training of dogs\nand their handlers are also relevant."
+    },
+    {
+        "query_id": 427,
+        "title": "UV damage, eyes",
+        "description": "Find documents that discuss the damage ultraviolet (UV)\nlight from the sun can do to eyes.",
+        "narrative": "A relevant document will discuss diseases that result\nfrom exposure of the eyes to UV light, treatments\nfor the damage, and/or education programs that help\nprevent damage.  Documents discussing treatment\nmethods for cataracts and ocular melanoma are relevant\neven when a specific cause is not mentioned.  However,\ndocuments that discuss radiation damage from nuclear\nsources or lasers are not relevant."
+    },
+    {
+        "query_id": 428,
+        "title": "declining birth rates",
+        "description": "Do any countries other than the U.S. and China have\na declining birth rate?",
+        "narrative": "To be relevant, a document will name a country other than the U.S. \nor China in which the birth rate fell from the rate of the\nprevious year.  The decline need not have occurred in more\nthan the one preceding year."
+    },
+    {
+        "query_id": 429,
+        "title": "Legionnaires' disease",
+        "description": "Identify outbreaks of Legionnaires' disease.",
+        "narrative": "To be relevant, a document must discuss a specific outbreak\nof Legionnaires' disease.  Documents that address prevention of\nor cures for the disease without citing a specific case are \nnot relevant."
+    },
+    {
+        "query_id": 430,
+        "title": "killer bee attacks",
+        "description": "Identify instances of attacks on humans by Africanized \n(killer) bees.",
+        "narrative": "Relevant documents must cite a specific instance of a human\nattacked by killer bees.  Documents that note migration patterns\nor report attacks on other animals are not relevant unless they\nalso cite an attack on a human."
+    },
+    {
+        "query_id": 431,
+        "title": "robotic technology",
+        "description": "What are the latest developments in robotic technology?",
+        "narrative": "A relevant document will contain information on \ncurrent applications of robotic technology.  Discussions\nof robotics research or simulations of robots are\nnot relevant."
+    },
+    {
+        "query_id": 432,
+        "title": "profiling, motorists, police",
+        "description": "Do police departments use \"profiling\" to stop motorists?",
+        "narrative": "A relevant document will report or discuss police department \ncriteria for identifying motorists considered likely to be\ncarrying contraband.  Documents discussing the detention of\nindividuals by foreign security forces are not relevant."
+    },
+    {
+        "query_id": 433,
+        "title": "Greek, philosophy, stoicism",
+        "description": "Is there contemporary interest in the Greek\nphilosophy of stoicism?",
+        "narrative": "Actual references to the philosophy or philosophers, \nproductions of Greek stoic plays, and new \"stoic\" \nartistic productions are all relevant."
+    },
+    {
+        "query_id": 434,
+        "title": "Estonia, economy",
+        "description": "What is the state of the economy of Estonia?",
+        "narrative": "Documents that give concrete economic information\nsuch as economic statistics, entering economic unions\nand treaties, or monetary performance are relevant,\nas are discussions of economic issues such as \ntransportation or pollution."
+    },
+    {
+        "query_id": 435,
+        "title": "curbing population growth",
+        "description": "What measures have been taken worldwide and what \ncountries have been effective in curbing\npopulation growth?",
+        "narrative": "A relevant document must describe an actual case in which \npopulation measures have been taken and their results are known.\nThe reduction measures must have been actively pursued;\nthat is, passive events such as disease or famine\ninvoluntarily reducing the population are not relevant."
+    },
+    {
+        "query_id": 436,
+        "title": "railway accidents",
+        "description": "What are the causes of railway accidents throughout\nthe world?",
+        "narrative": "A relevant document provides data on railway accidents\nof any sort (i.e., locomotive, trolley, streetcar) where\neither the railroad system or the vehicle or pedestrian\ninvolved caused the accident.  Documents that discuss\nrailroading in general, new rail lines, new technology\nfor safety, and safety and accident prevention \nare not relevant, unless an actual accident is described."
+    },
+    {
+        "query_id": 437,
+        "title": "deregulation, gas, electric",
+        "description": "What has been the experience of residential utility\ncustomers following deregulation of gas and electric?",
+        "narrative": "Documents that discuss privatization of government-\nowned utilities alone are not relevant.  Also, not\nrelevant are documents that discuss the deregulation \nof utilities for commercial customers."
+    },
+    {
+        "query_id": 438,
+        "title": "tourism, increase",
+        "description": "What countries are experiencing an increase in\ntourism?",
+        "narrative": "A relevant document will name a country that\nhas experienced an increase in tourism.\nThe increase must represent the nation as a whole\nand tourism in general, not be restricted to only\ncertain regions of the country or to some specific\ntype of tourism (e.g., adventure travel).  Documents\ndiscussing only projected increases are not relevant."
+    },
+    {
+        "query_id": 439,
+        "title": "inventions, scientific discoveries",
+        "description": "What new inventions or scientific discoveries have been\nmade?",
+        "narrative": "The word \"new\" in the description is defined as occurring\nin the 1990s.  Documents that indicate a \"recent\" \ninvention or scientific discovery are considered relevant.\nDiscoveries made in astronomy or any scientific discoveries\nthat are not patentable are not relevant."
+    },
+    {
+        "query_id": 440,
+        "title": "child labor",
+        "description": "What steps are being taken by governments or corporations \nto eliminate abuse of child labor?",
+        "narrative": "A relevant document identifies an action taken by either \na private commercial corporation or governmental organization \nto reduce or eliminate the use of child labor in manufacturing \noperations."
+    },
+    {
+        "query_id": 441,
+        "title": "Lyme disease",
+        "description": "How do you prevent and treat Lyme disease?",
+        "narrative": "Documents that discuss current prevention and\ntreatment techniques for Lyme disease are\nrelevant.  Reports of research on new\ntreatments of the disease are also relevant."
+    },
+    {
+        "query_id": 442,
+        "title": "heroic acts",
+        "description": "Find accounts of selfless heroic acts by individuals or \nsmall groups for the benefit of others or a cause.",
+        "narrative": "Relevant documents will contain a description of specific\nacts.  General statements concerning heroic acts are not\nrelevant."
+    },
+    {
+        "query_id": 443,
+        "title": "U.S., investment, Africa",
+        "description": "What is the extent of U.S. (government and private)\ninvestment in sub-Saharan Africa?",
+        "narrative": "All references to U.S. Governmental and private assistance\nto sub-Saharan Africa are relevant.  Documents discussing\ncontributions by reason of U.S. membership in international\naid organizations are also relevant."
+    },
+    {
+        "query_id": 444,
+        "title": "supercritical fluids",
+        "description": "What are the potential uses for supercritical fluids\nas an environmental protection measure?",
+        "narrative": "To be relevant, a document must indicate that the \nfluid involved is achieved by a process of pressurization\nproducing the supercritical fluid."
+    },
+    {
+        "query_id": 445,
+        "title": "women clergy",
+        "description": "What other countries besides the United States are considering \nor have approved women as clergy persons?",
+        "narrative": "To be relevant, a document must indicate either a country \nwhere a woman has been installed as clergy or a country\nthat is considering such an installation.  The clergy position\nmust be as church pastor rather than some other church capacity\n(e.g., nun or choir member)."
+    },
+    {
+        "query_id": 446,
+        "title": "tourists, violence",
+        "description": "Where are tourists likely to be subjected to\nacts of violence causing bodily harm or death?",
+        "narrative": "A relevant document must contain accounts of known \nharm to tourists.  Evidence of single, isolated\nincidents are not relevant."
+    },
+    {
+        "query_id": 447,
+        "title": "Stirling engine",
+        "description": "What new developments and applications are there\nfor the Stirling engine?",
+        "narrative": "Any discussion of new developments and applications of the\nStirling engine (also known as the Stirling cycle) are relevant."
+    },
+    {
+        "query_id": 448,
+        "title": "ship losses",
+        "description": "Identify instances in which weather was a main or contributing\nfactor in the loss of a ship at sea.",
+        "narrative": "Any ship loss due to weather is relevant, either in international\nor coastal waters."
+    },
+    {
+        "query_id": 449,
+        "title": "antibiotics ineffectiveness",
+        "description": "What has caused the current ineffectiveness of\nantibiotics against infections and what is\nthe prognosis for new drugs?",
+        "narrative": "To be relevant, a document must discuss the reasons or \ncauses for the ineffectiveness of current antibiotics.\nRelevant documents may also include efforts by pharmaceutical\ncompanies and federal government agencies to find new cures, \nupdating current testing phases, new drugs being tested,\nand the prognosis for the availability of new and effective\nantibiotics."
+    },
+    {
+        "query_id": 450,
+        "title": "King Hussein, peace",
+        "description": "How significant a figure over the years was the late\nJordanian King Hussein in furthering peace in the \nMiddle East?",
+        "narrative": "A relevant document must include mention of Israel;\nKing Hussein himself as opposed to other Jordanian\nofficials; discussion of the King's on-going, previous \nor upcoming efforts; and efforts pertinent to the peace \nprocess, not merely Jordan's relationship with other \nmiddle-east countries or the U.S."
+    }
+]

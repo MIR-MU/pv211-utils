@@ -3,7 +3,9 @@ import unittest
 from pv211_utils.trec.loader import load_queries, load_documents, load_judgements
 
 
-NUM_QUERIES = 150
+NUM_QUERIES_TRAIN = 80
+NUM_QUERIES_VALIDATION = 20
+NUM_QUERIES_TEST = 50
 NUM_DOCUMENTS = 527890
 NUM_JUDGEMENTS_TRAIN = 7102
 NUM_JUDGEMENTS_VALIDATION = 1858
@@ -12,11 +14,19 @@ NUM_JUDGEMENTS_TEST = 4726
 
 class TestLoadQueries(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries()
-        self.query = self.queries[409]
+        self.queries_train = load_queries(subset='train')
+        self.queries_validation = load_queries(subset='validation')
+        self.queries_test = load_queries(subset='test')
+        self.query = self.queries_test[409]
 
-    def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+    def test_number_of_queries_train(self):
+        self.assertEqual(NUM_QUERIES_TRAIN, len(self.queries_train))
+
+    def test_number_of_queries_validation(self):
+        self.assertEqual(NUM_QUERIES_VALIDATION, len(self.queries_validation))
+
+    def test_number_of_queries_test(self):
+        self.assertEqual(NUM_QUERIES_TEST, len(self.queries_test))
 
     def test_query_title(self):
         self.assertEqual('legal, Pan Am, 103', self.query.title)
@@ -54,16 +64,18 @@ class TestLoadDocuments(unittest.TestCase):
 
 class TestLoadJudgements(unittest.TestCase):
     def setUp(self):
-        queries = load_queries()
+        queries_train = load_queries(subset='train')
+        queries_validation = load_queries(subset='validation')
+        queries_test = load_queries(subset='test')
         documents = load_documents()
 
-        self.judgements_train = load_judgements(queries, documents, 'train')
-        self.judgements_validation = load_judgements(queries, documents, 'validation')
-        self.judgements_test = load_judgements(queries, documents, 'test')
+        self.judgements_train = load_judgements(queries_train, documents, 'train')
+        self.judgements_validation = load_judgements(queries_validation, documents, 'validation')
+        self.judgements_test = load_judgements(queries_test, documents, 'test')
 
-        self.query_train = queries[301]
-        self.query_validation = queries[400]
-        self.query_test = queries[401]
+        self.query_train = queries_train[301]
+        self.query_validation = queries_validation[400]
+        self.query_test = queries_test[401]
 
         self.relevant_document_train = documents['FBIS3-10937']
         self.irrelevant_document_train = documents['FBIS3-10634']
