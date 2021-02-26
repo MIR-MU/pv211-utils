@@ -155,7 +155,7 @@ class EvaluationBase(abc.ABC):
 
         if submit_result:
             self.leaderboard.log_precision_entry(self.author_name, result)
-            display(Markdown('Submitted your result to {}! 🏆'.format(leaderboard_text)))
+            display(Markdown('Your result has been submitted to {}! 🏆'.format(leaderboard_text)))
         else:
             message = (
                 'Set `submit_result = True` and write your name to the `author_name` variable '
