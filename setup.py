@@ -13,7 +13,7 @@ setup(
     author_email="stefanik.m@fi.muni.cz",
     url="https://gitlab.fi.muni.cz",
     license="MIT",
-    packages=["pv211_utils"],
+    packages=["pv211_utils", "pv211_utils.trec", "pv211_utils.cranfield"],
     package_dir={"pv211_utils": "pv211_utils"},
     include_package_data=True,
     zip_safe=True,
