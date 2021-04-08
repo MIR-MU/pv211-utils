@@ -1,7 +1,8 @@
 from collections import OrderedDict
 import gzip
 import json
-from typing import Set, Tuple
+from typing import Set, Tuple, Union
+from pathlib import Path
 import pkg_resources
 
 from gdown import cached_download
@@ -28,12 +29,17 @@ def load_queries(query_class=TrecQueryBase, subset: str = 'validation') -> Order
     return queries
 
 
-def load_documents(document_class=TrecDocumentBase) -> OrderedDict:
+def load_documents(document_class=TrecDocumentBase, download_path: Union[str, Path] = None) -> OrderedDict:
+    download_path = Path(download_path)
+    if not download_path.parent.exists():  # If the specified download path contains a non-existent directory, ignore it
+        download_path = None
+
     with open(pkg_resources.resource_filename('pv211_utils', 'data/trec_documents_manifest.json'), 'rt') as f:
         manifest = json.load(f)
         filename = cached_download(
             url='https://drive.google.com/uc?id={}'.format(manifest['id']),
             md5=manifest['md5'],
+            path=download_path,
             quiet=True,
         )
 
