@@ -30,9 +30,10 @@ def load_queries(query_class=TrecQueryBase, subset: str = 'validation') -> Order
 
 
 def load_documents(document_class=TrecDocumentBase, download_path: Union[str, Path] = None) -> OrderedDict:
-    download_path = Path(download_path)
-    if not download_path.parent.exists():  # If the specified download path contains a non-existent directory, ignore it
-        download_path = None
+    if download_path is not None:
+        download_path = Path(download_path)
+        if not download_path.parent.exists():  # If the download path contains a non-existent directory, ignore it
+            download_path = None
 
     with open(pkg_resources.resource_filename('pv211_utils', 'data/trec_documents_manifest.json'), 'rt') as f:
         manifest = json.load(f)
