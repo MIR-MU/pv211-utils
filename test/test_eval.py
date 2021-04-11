@@ -24,9 +24,9 @@ class GoodIRSystem(IRSystemBase):
 
 class MediocreIRSystem(IRSystemBase):
     def search(self, query: QueryBase) -> List[DocumentBase]:
-        first_irrelevant_document = DocumentBase(FIRST_IRRELEVANT_DOCUMENT_ID, None)
-        second_relevant_document = DocumentBase(SECOND_RELEVANT_DOCUMENT_ID, None)
-        return [first_irrelevant_document, second_relevant_document]
+        first_relevant_document = DocumentBase(FIRST_RELEVANT_DOCUMENT_ID, None)
+        second_irrelevant_document = DocumentBase(SECOND_IRRELEVANT_DOCUMENT_ID, None)
+        return [first_relevant_document, second_irrelevant_document]
 
 
 class BadIRSystem(IRSystemBase):
@@ -76,8 +76,8 @@ class TestEvaluation(unittest.TestCase):
 
     def test_average_precision_half(self):
         results = [
-            self.first_irrelevant_document,
-            self.second_relevant_document,
+            self.first_relevant_document,
+            self.second_irrelevant_document,
         ]
         precision = self.mediocre_evaluation._average_precision(self.query, results)
         self.assertEqual(0.5, precision)
