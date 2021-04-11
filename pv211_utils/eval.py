@@ -77,18 +77,16 @@ class EvaluationBase(abc.ABC):
 
         """
         num_relevant = 0
-        precisions = [0.0]
+        precision = 0.0
         seen_documents = set()
         for document_number, document in enumerate(results):
             if document in seen_documents:
                 continue
-            else:
-                seen_documents.add(document)
+            seen_documents.add(document)
             if (query, document) in self.judgements:
                 num_relevant += 1
-                precision = float(num_relevant) / (document_number + 1)
-                precisions.append(precision)
-        return sum(precisions) / self._get_num_relevant(query)
+                precision += float(num_relevant) / (document_number + 1)
+        return precision / self._get_num_relevant(query)
 
     def mean_average_precision(self, queries: Iterable[QueryBase]) -> float:
         """The mean average precision of the information retrieval system.
@@ -109,7 +107,7 @@ class EvaluationBase(abc.ABC):
             results = self.system.search(query)
             precision = self._average_precision(query, results)
             average_precisions.append(precision)
-        return float(mean(average_precisions))
+        return mean(average_precisions)
 
     @abc.abstractmethod
     def _get_minimum_mean_average_precision(self) -> float:
