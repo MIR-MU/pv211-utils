@@ -76,19 +76,19 @@ class EvaluationBase(abc.ABC):
             Average precision of the ranked retrieval results with respect to the query.
 
         """
-        result_relevances = []
-        precisions = []
+        num_relevant = 0
+        precisions = [0.0]
         seen_documents = set()
-        for document in results:
+        for document_number, document in enumerate(results):
             if document in seen_documents:
                 continue
             else:
                 seen_documents.add(document)
-            result_relevance = (query, document) in self.judgements
-            result_relevances.append(float(result_relevance))
-            if result_relevance:
-                precisions.append(mean(result_relevances))
-        return float(sum(precisions) / self._get_num_relevant(query))
+            if (query, document) in self.judgements:
+                num_relevant += 1
+                precision = float(num_relevant) / (document_number + 1)
+                precisions.append(precision)
+        return sum(precisions) / self._get_num_relevant(query)
 
     def mean_average_precision(self, queries: Iterable[QueryBase]) -> float:
         """The mean average precision of the information retrieval system.
