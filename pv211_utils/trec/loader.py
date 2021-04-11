@@ -41,7 +41,6 @@ def load_documents(document_class=TrecDocumentBase, download_path: Union[str, Pa
             url='https://drive.google.com/uc?id={}'.format(manifest['id']),
             md5=manifest['md5'],
             path=download_path,
-            quiet=True,
         )
 
     documents = OrderedDict()
