@@ -1,7 +1,7 @@
 from collections import OrderedDict
 import gzip
 import json
-from typing import Set, Tuple, Union
+from typing import Optional, Set, Tuple, Union
 from pathlib import Path
 import pkg_resources
 
@@ -29,11 +29,14 @@ def load_queries(query_class=TrecQueryBase, subset: str = 'validation') -> Order
     return queries
 
 
-def load_documents(document_class=TrecDocumentBase, download_path: Union[str, Path] = None) -> OrderedDict:
-    if download_path is not None:
-        download_path = Path(download_path)
+def load_documents(document_class=TrecDocumentBase,
+                   cache_download: Optional[Union[str, Path, bool]] = None) -> OrderedDict:
+    if isinstance(cache_download, Path) or isinstance(cache_download, str):
+        download_path = Path(cache_download)
         if not download_path.parent.exists():  # If the download path contains a non-existent directory, ignore it
             download_path = None
+    else:
+        download_path = None
 
     with open(pkg_resources.resource_filename('pv211_utils', 'data/trec_documents_manifest.json'), 'rt') as f:
         manifest = json.load(f)
@@ -42,6 +45,7 @@ def load_documents(document_class=TrecDocumentBase, download_path: Union[str, Pa
             md5=manifest['md5'],
             path=download_path,
         )
+        filename = Path(filename)
 
     documents = OrderedDict()
 
@@ -52,6 +56,10 @@ def load_documents(document_class=TrecDocumentBase, download_path: Union[str, Pa
                 body=raw_document['text']
             )
             documents[document.document_id] = document
+
+    if isinstance(cache_download, bool) and cache_download is False:  # If caching is disabled, remove downloaded file
+        filename.unlink()
+
     return documents
 
 

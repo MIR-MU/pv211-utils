@@ -10,6 +10,7 @@ NUM_DOCUMENTS = 527890
 NUM_JUDGEMENTS_TRAIN = 7102
 NUM_JUDGEMENTS_VALIDATION = 1858
 NUM_JUDGEMENTS_TEST = 4726
+DOCUMENTS = load_documents(cache_download=False)
 
 
 class TestLoadQueries(unittest.TestCase):
@@ -40,14 +41,13 @@ class TestLoadQueries(unittest.TestCase):
 
 class TestLoadDocuments(unittest.TestCase):
     def setUp(self):
-        self.documents = load_documents()
-        self.financial_times_document = self.documents['FT911-3']
-        self.federal_register_document = self.documents['FR940104-0-00002']
-        self.fbis_document = self.documents['FBIS3-1']
-        self.la_times_document = self.documents['LA010189-0001']
+        self.financial_times_document = DOCUMENTS['FT911-3']
+        self.federal_register_document = DOCUMENTS['FR940104-0-00002']
+        self.fbis_document = DOCUMENTS['FBIS3-1']
+        self.la_times_document = DOCUMENTS['LA010189-0001']
 
     def test_number_of_documents(self):
-        self.assertEqual(NUM_DOCUMENTS, len(self.documents))
+        self.assertEqual(NUM_DOCUMENTS, len(DOCUMENTS))
 
     def test_financial_times_document_body(self):
         self.assertTrue(self.financial_times_document.body.startswith('CONTIGAS, the German gas group'))
@@ -67,22 +67,21 @@ class TestLoadJudgements(unittest.TestCase):
         queries_train = load_queries(subset='train')
         queries_validation = load_queries(subset='validation')
         queries_test = load_queries(subset='test')
-        documents = load_documents()
 
-        self.judgements_train = load_judgements(queries_train, documents, 'train')
-        self.judgements_validation = load_judgements(queries_validation, documents, 'validation')
-        self.judgements_test = load_judgements(queries_test, documents, 'test')
+        self.judgements_train = load_judgements(queries_train, DOCUMENTS, 'train')
+        self.judgements_validation = load_judgements(queries_validation, DOCUMENTS, 'validation')
+        self.judgements_test = load_judgements(queries_test, DOCUMENTS, 'test')
 
         self.query_train = queries_train[301]
         self.query_validation = queries_validation[400]
         self.query_test = queries_test[401]
 
-        self.relevant_document_train = documents['FBIS3-10937']
-        self.irrelevant_document_train = documents['FBIS3-10634']
-        self.relevant_document_validation = documents['FT944-6336']
-        self.irrelevant_document_validation = documents['FT944-3328']
-        self.relevant_document_test = documents['LA100290-0174']
-        self.irrelevant_document_test = documents['LA100490-0070']
+        self.relevant_document_train = DOCUMENTS['FBIS3-10937']
+        self.irrelevant_document_train = DOCUMENTS['FBIS3-10634']
+        self.relevant_document_validation = DOCUMENTS['FT944-6336']
+        self.irrelevant_document_validation = DOCUMENTS['FT944-3328']
+        self.relevant_document_test = DOCUMENTS['LA100290-0174']
+        self.irrelevant_document_test = DOCUMENTS['LA100490-0070']
 
     def test_number_of_judgements_train(self):
         self.assertEqual(NUM_JUDGEMENTS_TRAIN, len(self.judgements_train))
