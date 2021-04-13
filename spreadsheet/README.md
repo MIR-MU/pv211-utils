@@ -1,4 +1,4 @@
-This subdirectory contains code to reproduce the leaderboard spreadsheet in
+This subdirectory contains code to reproduce the leaderboard spreadsheets in
 Google Sheets.
 
 [Live public Cranfield leaderboard Spring 2020][leaderboard-cranfield-2020] | [Edit leaderboard][leaderboard-cranfield-2020-sheets]
@@ -7,6 +7,8 @@ Google Sheets.
 
 [Live public TREC leaderboard Spring 2021][leaderboard-trec-2021] | [Edit leaderboard][leaderboard-trec-2021-sheets]
 
+[Live public ARQMath leaderboard Spring 2021][leaderboard-arqmath-2021] | [Edit leaderboard][leaderboard-arqmath-2021-sheets]
+
 [leaderboard-cranfield-2020]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSGTg_Agc0SowDIsDDsaBN_UD-9r-F2eSpozyvVA8F51YHt3GmAle3niaCoj0ocazjDm01OJNgNEykZ/pubhtml
 [leaderboard-cranfield-2021]: https://docs.google.com/spreadsheets/d/e/2PACX-1vRRR4eDkQIWx5FSU08Uj5DciWwxNfHJeLruNR1T0WW9xmSsYl457Zqv5SlA1jfvsYHpsaUw_8P3z1OF/pubhtml
 [leaderboard-cranfield-2020-sheets]: https://docs.google.com/spreadsheets/d/1f9P3bn17n2rHGCxBnn3GVr57PF5hMWJEILp06Uq7Jnk/edit?usp=sharing
@@ -14,6 +16,9 @@ Google Sheets.
 
 [leaderboard-trec-2021]:https://docs.google.com/spreadsheets/d/e/2PACX-1vQ33YdFZtGH6g2bDbkD9aLozLdVVGNuP09sRh-F9d_EY9nWntOrLHSyNATFsXw4v9lw3UA3vOzl5l0s/pubhtml
 [leaderboard-trec-2021-sheets]: https://docs.google.com/spreadsheets/d/1eiyase14FrSJs24_LjTSdPwOWOdqutDZhnl33ztBycc/edit?usp=sharing
+
+[leaderboard-arqmath-2021]: https://docs.google.com/spreadsheets/d/e/2PACX-1vQb_L4ZL5vglRMJBMDn334JHL6xfGVXVz-D1YnZduXTZe4Pj_abKSpe_qnu2gkQEBV5jXEgFyge_Jtu/pubhtml
+[leaderboard-arqmath-2021-sheets]: https://docs.google.com/spreadsheets/d/1XXR_3UsjUTxQApU5RRce1Zv4G_0uMJXoaEb0GejU868/edit?usp=sharing
 
 ## Google Apps Script
 
