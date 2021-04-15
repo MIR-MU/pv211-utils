@@ -3,6 +3,8 @@ import unittest
 from pv211_utils.trec.loader import load_queries, load_documents, load_judgements
 
 
+CACHE_DOWNLOAD = False
+
 NUM_QUERIES_TRAIN = 80
 NUM_QUERIES_VALIDATION = 20
 NUM_QUERIES_TEST = 50
@@ -10,7 +12,17 @@ NUM_DOCUMENTS = 527890
 NUM_JUDGEMENTS_TRAIN = 7102
 NUM_JUDGEMENTS_VALIDATION = 1858
 NUM_JUDGEMENTS_TEST = 4726
-DOCUMENTS = load_documents(cache_download=False)
+DOCUMENTS = None
+
+
+def setUpModule():
+    global DOCUMENTS
+    DOCUMENTS = load_documents(cache_download=CACHE_DOWNLOAD)
+
+
+def tearDownModule():
+    global DOCUMENTS
+    del DOCUMENTS
 
 
 class TestLoadQueries(unittest.TestCase):

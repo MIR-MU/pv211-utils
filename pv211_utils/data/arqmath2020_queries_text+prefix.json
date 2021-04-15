@@ -1,0 +1,722 @@
+[
+    {
+        "query_id": "A.1",
+        "title": "Finding value of V!𝑐 such that the range of the rational function U!eq U!times V!𝑓 V!𝑥 O!divide U!plus O!SUP V!𝑥 N!2 V!𝑥 V!𝑐 U!plus O!SUP V!𝑥 N!2 U!times N!2 V!𝑥 V!𝑐 does not contain O!interval(C-C) O!minus N!1 O!minus O!divide N!1 N!3",
+        "body": "I am comfortable when I am asked to calculate the range of a rational function, but how do we do the reverse? I came across this problem.  If U!eq U!times V!𝑓 V!𝑥 O!divide U!plus O!SUP V!𝑥 N!2 V!𝑥 V!𝑐 U!plus O!SUP V!𝑥 N!2 U!times N!2 V!𝑥 V!𝑐 then find the value of V!𝑐 for which the range of U!times V!𝑓 V!𝑥 does not contain O!interval(C-C) O!minus N!1 O!minus O!divide N!1 N!3.",
+        "tags": [
+            "functions"
+        ]
+    },
+    {
+        "query_id": "A.3",
+        "title": "Approximation to O!root N!5 N!2 correct to an exactitude of O!SUP N!10 O!minus N!10",
+        "body": "I am attempting to resolve the following problem:     Find an approximation to O!root N!5 N!2 correct to an exactitude of O!SUP N!10 O!minus N!10 using the bisection algorithm.   From what I understand, O!root N!5 N!2 has to be placed in function of V!𝑥 but I am not sure where to go from there.  Also, a function in Mathematica are given to do the calculations in which the function U!times V!𝑓 V!𝑥, V!𝑎 and V!𝑏 (from the interval O!interval(C-C) V!𝑎 V!𝑏 where U!times V!𝑓 V!𝑎 and U!times V!𝑓 V!𝑏 have opposite signs), the tolerance and the number of iterations.",
+        "tags": [
+            "numerical-methods",
+            "algorithms",
+            "bisection"
+        ]
+    },
+    {
+        "query_id": "A.4",
+        "title": "How to compute this combinatoric sum?",
+        "body": "I have the sum  +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑘 N!0 V!𝑛 U!times T!\\binom V!𝑛 V!𝑘 V!𝑘  I know the result is U!times V!𝑛 O!SUP N!2 O!minus V!𝑛 N!1 but I don't know how you get there. How does one even begin to simplify a sum like this that has binomial coefficients.",
+        "tags": [
+            "combinatorics",
+            "number-theory",
+            "summation",
+            "proof-explanation"
+        ]
+    },
+    {
+        "query_id": "A.5",
+        "title": "A family has two children. Given that one of the children is a boy, what is the probability that both children are boys?",
+        "body": "A family has two children. Given that one of the children is a boy, what is the probability that both children are boys?   I was doing this question using conditional probability formula.   Suppose, (1) is the event, that the first child is a boy, and (2) is the event that the second child is a boy.  Then the probability of the second child to be boy given that first child is a boys by formula, E! O!fragments -!p E! O!fragments V!( E! O!fragments V!( N!2 V!) V!| E! O!fragments V!( N!1 V!) V!) U!eq O!divide U!times V!𝑃 U!intersect N!2 N!1 U!times V!𝑃 N!1 U!eq O!divide U!times V!𝑃 N!2 V!𝑃 N!1 U!times V!𝑃 N!1 U!eq -!p E! O!fragments V!( E! O!fragments V!( N!2 V!) V!) ...since second child to be boy doesn't depend on first child and vice versa. Please provide the detailed solution and correct me if I am wrong.",
+        "tags": [
+            "probability",
+            "proof-verification",
+            "conditional-probability"
+        ]
+    },
+    {
+        "query_id": "A.7",
+        "title": "Finding out the remainder of O!divide O!minus U!times O!SUP N!11 T!\\text N!10 N!1 N!100 using modulus",
+        "body": "If O!minus U!times O!SUP N!11 T!\\text N!10 N!1 is divided by N!100, then solve for 'V!𝑥' of the below term U!eq O!minus U!times O!SUP N!11 T!\\text N!10 N!1 O!annotated V!𝑥 F!pmod N!100   Whatever I tried:  U!equivalent U!times O!SUP N!11 T!\\text N!2 O!annotated N!21 F!pmod N!100.....(1)  U!equivalent U!times O!SUP U!times O!SUP N!11 T!\\text N!2 T!\\text N!2 O!annotated U!times O!SUP N!21 T!\\text N!2 F!pmod N!100  U!equivalent U!times O!SUP N!11 T!\\text N!4 O!annotated N!441 F!pmod N!100  U!equivalent U!times O!SUP N!11 T!\\text N!4 O!annotated N!41 F!pmod N!100  U!equivalent U!times O!SUP U!times O!SUP N!11 T!\\text N!4 T!\\text N!2 O!annotated U!times O!SUP N!41 T!\\text N!2 F!pmod N!100  U!equivalent U!times O!SUP N!11 T!\\text N!8 O!annotated N!1681 F!pmod N!100  U!equivalent U!times O!SUP N!11 T!\\text N!8 O!annotated N!81 F!pmod N!100  U!equivalent U!times O!SUP N!11 T!\\text N!8 V!italic-Ã V! O!SUP N!11 T!\\text N!2 O!annotated U!times N!81 V!italic-Ã V! N!21 F!pmod N!100 ......{from (1)}  E! O!fragments O!SUP N!11 T!\\text N!10 U!equivalent N!1701 F!pmod N!100 T!\\implies O!SUP N!11 T!\\text N!10 U!equivalent N!1 F!pmod N!100  Hence, E! O!fragments O!SUP N!11 T!\\text N!10 O!minus N!1 U!equivalent E! O!fragments V!( N!1 O!minus N!1 V!) F!pmod N!100 T!\\implies O!SUP N!11 T!\\text N!10 O!minus N!1 U!equivalent N!0 F!pmod N!100 and thus we get the value of V!𝑥 and it is U!eq V!𝑥 N!0 and O!minus U!times O!SUP N!11 T!\\text N!10 N!1 is divisible by N!100.  But this approach take a long time for any competitive exam or any math contest without using calculator. Any easier process on how to determine the remainder of the above problem quickly? That will be very much helpful for me. Thanks in advance.",
+        "tags": [
+            "elementary-number-theory",
+            "modular-arithmetic",
+            "divisibility",
+            "alternative-proof"
+        ]
+    },
+    {
+        "query_id": "A.8",
+        "title": "finding value of +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity O!root O!divide U!times O!SUP N!27 V!𝑛 O!SUP O!factorial V!𝑛 N!3 O!factorial U!times N!3 V!𝑛 V!𝑛",
+        "body": "Finding value of +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity O!root O!divide U!times O!SUP N!27 V!𝑛 O!SUP O!factorial V!𝑛 N!3 O!factorial U!times N!3 V!𝑛 V!𝑛  what i try  U!eq V!𝑙 +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity O!SUP O!divide U!times O!SUP N!27 V!𝑛 O!SUP O!factorial V!𝑛 N!3 O!factorial U!times N!3 V!𝑛 O!divide N!1 V!𝑛  U!eq F!ln V!𝑙 +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity U!times O!divide N!1 V!𝑛 M!D-lsqb;&rsqb; O!minus U!plus U!times V!𝑛 F!ln N!27 U!times N!3 F!ln O!factorial V!𝑛 F!ln O!factorial U!times N!3 V!𝑛  How do i solve it help me please",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.9",
+        "title": "Simplifying this series",
+        "body": "I need to write the series   +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑛 N!0 V!𝑁 U!times V!𝑛 O!SUP V!𝑥 V!𝑛   in a form that does not involve the summation notation, for example U!eq +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!0 V!𝑛 O!SUP V!𝑖 N!2 O!divide U!times U!plus O!SUP V!𝑛 N!2 V!𝑛 U!plus U!times N!2 V!𝑛 N!1 N!6. Does anyone have any idea how to do this? I've attempted multiple ways including using generating functions however no luck",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.10",
+        "title": "Find the values of a>0 for which the improper integral +!O!SUB O!SUP O!SUB O!int N!0 C!infinity O!divide F!sin V!𝑥 O!SUP V!𝑥 V!𝑎 converges .",
+        "body": "Find the values of a>0 for which the improper integral +!O!SUB O!SUP O!SUB O!int N!0 C!infinity O!divide F!sin V!𝑥 O!SUP V!𝑥 V!𝑎 converges .  Do  I have to expand integrand using series expansion??",
+        "tags": [
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.11",
+        "title": "What's the cross product in 2 dimensions?",
+        "body": "The math book i'm using states that the cross product for two vectors is defined over O!SUP V!𝑅 N!3:  U!eq V!𝑢 M!V-3 V!𝑎 V!𝑏 V!𝑐 U!eq V!𝑣 M!V-3 V!𝑑 V!𝑒 V!𝑓  is:  U!eq U!times V!𝑢 V!𝑣 M!L-7 U!times T!{vmatrix} F!^ V!𝑖 V!& V!𝑎 V!𝑚 V!𝑝 U!times F!^ V!𝑗 V!& V!𝑎 V!𝑚 V!𝑝 U!times F!^ V!𝑘 V!𝑎 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!𝑏 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!𝑐 V!𝑑 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!𝑒 V!& V!𝑎 V!𝑚 V!𝑝 V!𝑓  and the direction of the resultant is determined by curling fingers from vector v to u with thumb pointing in direction of the cross product of u x v.    Out of curiosity, what's the cross product if u and v are defined over O!SUP V!𝑅 N!2 instead of O!SUP V!𝑅 N!3 instead:  U!eq V!𝑢 O!interval(O-O) V!𝑎 V!𝑏 U!eq V!𝑣 O!interval(O-O) V!𝑑 V!𝑒  Is there a \"degenerate\" case for the cross product of O!SUP V!𝑅 N!2 instead O!SUP V!𝑅 N!3?  like this is some type of 2x2 determinant instead?  for instance if had a parameterization:  U!eq U!times V!Φ O!interval(O-O) V!𝑢 V!𝑣 O!interval(O-O) U!times V!𝑓 V!𝑢 U!times V!𝑔 V!𝑣  and needed to calculate in O!SUP V!𝑅 N!2:  U!eq V!𝐷 F!abs U!times O!divide O!partialdiff V!Φ O!partialdiff V!𝑢 O!divide O!partialdiff V!Φ O!partialdiff V!𝑣  There are plenty of examples in the book for calculating the determinate D in O!SUP V!𝑅 N!3 but none at all for O!SUP V!𝑅 N!2 case.  As in:  E! O!fragments O!SUB T!\\iint V!𝑉 -!f E! O!fragments V!( -!x V!&comma; -!y V!) T!dxdy U!eq O!SUB T!\\iint V!𝑄 -!f E! O!fragments V!( -!φ E! O!fragments V!( -!u V!&comma; -!v V!) V!| O!divide O!partialdiff V!Φ O!partialdiff V!𝑢 U!times O!divide O!partialdiff V!Φ O!partialdiff V!𝑣 V!|  U!eq U!times V!Φ O!interval(O-O) V!𝑢 V!𝑣 O!interval(O-O) U!times N!2 V!𝑢 F!cos V!𝑣 U!times V!𝑢 F!sin V!𝑣",
+        "tags": [
+            "multivariable-calculus",
+            "vectors"
+        ]
+    },
+    {
+        "query_id": "A.12",
+        "title": "Finding the roots of a complex number",
+        "body": "I was solving practice problems for my upcoming midterm and however I got stuck with this question type.  It is asking me to find all roots and then sketch it.  O!SUP U!plus N!1 U!times V!𝑖 O!root N!3 N!2 O!divide N!1 N!2  How do we proceed?",
+        "tags": [
+            "linear-algebra",
+            "complex-numbers",
+            "polar-coordinates"
+        ]
+    },
+    {
+        "query_id": "A.13",
+        "title": "How to simplify expression U!plus +!O!SUB O!SUP O!SUB O!int V!𝑎 V!𝑏 U!times V!𝑓 V!𝑥 O!differential-d V!𝑥 +!O!SUB O!SUP O!SUB O!int U!times V!𝑓 V!𝑎 U!times V!𝑓 V!𝑏 U!times O!SUP V!𝑓 O!minus N!1 V!𝑥 O!differential-d V!𝑥 V!&quest;",
+        "body": "How to simplify expression  U!plus +!O!SUB O!SUP O!SUB O!int V!𝑎 V!𝑏 U!times V!𝑓 V!𝑥 O!differential-d V!𝑥 +!O!SUB O!SUP O!SUB O!int U!times V!𝑓 V!𝑎 U!times V!𝑓 V!𝑏 U!times O!SUP V!𝑓 O!minus N!1 V!𝑥 O!differential-d V!𝑥 V!&quest;  The answer is O!minus U!times V!𝑏 V!𝑓 V!𝑏 U!times V!𝑎 V!𝑓 V!𝑎  but I am wondering how to get the answer.",
+        "tags": [
+            "calculus"
+        ]
+    },
+    {
+        "query_id": "A.14",
+        "title": "Help solving first-order differential equation",
+        "body": "I have first-order differential equation U!eq V!𝑦 U!plus U!times V!𝑥 O!SUP V!𝑦 V!′ U!times O!divide N!1 N!2 O!SUP O!SUP V!𝑦 V!′ N!2 Maybe, with this someone will find way to solve it U!eq U!times O!divide N!1 N!2 O!SUP V!𝑦 V!′ U!plus U!times N!2 V!𝑥 O!SUP V!𝑦 V!′ V!𝑦 I thought I can use U!eq U!plus O!SUP V!𝑥 N!2 V!𝑦 V!𝑡 for subtitution and when I derivate, I have  which is acctualy the same as previous. I don't have idea how to start..",
+        "tags": [
+            "ordinary-differential-equations"
+        ]
+    },
+    {
+        "query_id": "A.15",
+        "title": "Derive the sum of +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 U!times V!𝑖 O!SUP V!𝑥 O!minus V!𝑖 N!1",
+        "body": "For the series      U!plus N!1 U!times N!2 V!𝑥 U!times N!3 O!SUP V!𝑥 N!2 U!times N!4 O!SUP V!𝑥 N!3 U!times N!5 O!SUP V!𝑥 N!4 V!… U!times V!𝑛 O!SUP V!𝑥 O!minus V!𝑛 N!1 V!…    and U!neq V!𝑥 M!L-3 N!1 U!times F!abs V!𝑥 V!& V!𝑙 V!𝑡 N!1.  I need to find partial sums and finally, the sum O!SUB V!𝑆 V!𝑛 of series. Here is what I've tried:    We can take a series U!eq O!SUB V!𝑆 N!2 U!plus N!1 V!𝑥 O!SUP V!𝑥 N!2 O!SUP V!𝑥 N!3 O!SUP V!𝑥 N!4 V!… so that U!eq O!divide U!times V!𝑑 O!SUB V!𝑆 N!2 U!times V!𝑑 V!𝑥 O!SUB V!𝑆 N!1 (source series). For the M!L-2 U!times F!abs V!𝑥 V!& V!𝑙 V!𝑡 N!1 the sum of O!SUB V!𝑆 N!2 (here is geometric progression): U!eq O!divide O!minus N!1 O!SUP V!𝑥 V!𝑛 O!minus N!1 V!𝑥 O!divide N!1 O!minus N!1 V!𝑥    But this answer is incorrect. Where is my mistake? Thank you.",
+        "tags": [
+            "sequences-and-series",
+            "convergence",
+            "summation",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.16",
+        "title": "Finding +!O!SUB O!SUP O!SUB O!int N!0 N!1 U!times O!divide U!times F!ln U!plus N!1 V!𝑥 F!ln O!minus N!1 V!𝑥 U!plus N!1 V!𝑥 O!differential-d V!𝑥",
+        "body": "Calculate   +!O!SUB O!SUP O!SUB O!int N!0 N!1 U!times O!divide U!times F!ln U!plus N!1 V!𝑥 F!ln O!minus N!1 V!𝑥 U!plus N!1 V!𝑥 O!differential-d V!𝑥   My try :   Let : U!eq U!times V!𝐼 O!interval(O-O) V!𝑎 V!𝑏 +!O!SUB O!SUP O!SUB O!int N!0 N!1 U!times O!divide U!times F!ln O!minus N!1 U!times V!𝑎 V!𝑥 F!ln U!plus N!1 U!times V!𝑏 V!𝑥 U!plus N!1 V!𝑥 O!differential-d V!𝑥  Then compute O!divide U!times O!SUP V!𝑑 N!2 V!𝐼 O!interval(O-O) V!𝑎 V!𝑏 U!times V!𝑑 V!𝑎 V!𝑑 V!𝑏.  I'm happy to see ideas in order to kill this integral.",
+        "tags": [
+            "integration",
+            "sequences-and-series",
+            "definite-integrals",
+            "closed-form"
+        ]
+    },
+    {
+        "query_id": "A.17",
+        "title": "Calculate +!O!SUB O!SUP O!SUB O!int U!eq V!𝑥 N!0 C!infinity O!divide F!sin V!𝑥 V!𝑥 with the function O!divide O!SUP V!𝑒 U!times V!𝑖 V!𝑧 V!𝑧",
+        "body": "I want to calculate +!O!SUB O!SUP O!SUB O!int U!eq V!𝑥 N!0 C!infinity O!divide F!sin V!𝑥 V!𝑥 with the function U!eq U!times V!𝑓 V!𝑧 O!divide O!SUP V!𝑒 U!times V!𝑖 V!𝑧 V!𝑧.  I thought about using the closed path U!eq V!Γ U!plus O!SUB V!𝛾 N!1 O!SUB V!𝛾 V!𝑅 O!SUB V!𝛾 N!2 O!SUB V!𝛾 V!italic-ϵ, when:  O!form-seq U!eq U!times O!SUB V!𝛾 N!1 V!𝑡 V!𝑡 O!in V!𝑡 O!interval(C-C) U!times V!𝑖 V!italic-ϵ U!times V!𝑖 V!𝑅  O!form-seq U!eq U!times O!SUB V!𝛾 V!𝑅 V!𝑡 U!times V!𝑅 O!SUP V!𝑒 U!times V!𝑖 V!𝑡 O!in V!𝑡 O!interval(C-C) O!minus O!divide V!𝜋 N!2 O!divide V!𝜋 N!2  O!form-seq U!eq U!times O!SUB V!𝛾 N!2 V!𝑡 V!𝑡 O!in V!𝑡 O!interval(C-C) O!minus U!times V!𝑖 V!𝑅 O!minus U!times V!𝑖 V!italic-ϵ  O!form-seq U!eq U!times O!SUB V!𝛾 V!italic-ϵ V!𝑡 U!times V!italic-ϵ O!SUP V!𝑒 U!times V!𝑖 V!𝑡 O!in V!𝑡 O!interval(C-C) O!minus O!divide V!𝜋 N!2 O!divide V!𝜋 N!2  I use the fact that O!divide F!sin V!𝑥 V!𝑥 is an even function and has an anti derivative, so the integral on a closed path is zero.  I managed to show that U!eq +!O!int O!SUB O!int O!SUB V!𝛾 V!italic-ϵ V!𝑓 O!minus U!times V!𝑖 V!𝜋 when F!→ V!italic-ϵ N!0.  However I am struggling to show that U!eq +!O!int O!SUB O!int O!SUB V!𝛾 V!𝑅 V!𝑓 N!0 when F!→ V!𝑅 C!infinity  Help would be appreciated",
+        "tags": [
+            "complex-analysis",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.18",
+        "title": "Evaluate +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity O!divide O!SUP M!D-lsqb;&rsqb; U!times U!plus V!𝑛 N!1 U!plus V!𝑛 N!2 V!⋯ U!plus V!𝑛 V!𝑛 O!divide N!1 V!𝑛 V!𝑛",
+        "body": "Evaluate +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity U!times T!\\dfrac O!SUP M!D-lsqb;&rsqb; U!times U!plus V!𝑛 N!1 U!plus V!𝑛 N!2 V!⋯ U!plus V!𝑛 V!𝑛 U!times T!\\dfrac N!1 V!𝑛 V!𝑛 using Cesáro-Stolz theorem.  I know there are many question like this, but i want to solve it using Cesáro-Stolz method and no others.  I took log and applied Cesáro-Stolz, I get U!plus F!log N!2 U!times V!𝑛 F!log U!times T!\\cfrac V!𝑛 V!𝑛 N!1  Which gives me answer as O!divide N!2 V!𝑒 . But answer is O!divide N!4 V!𝑒. Could someone help?.  Edit:  On taking log,   Which gives O!divide N!2 V!𝑒",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.19",
+        "title": "Greatest common factor of O!minus O!SUP V!𝑝 N!4 N!1",
+        "body": "I was asked to find the greatest common factor of O!minus O!SUP V!𝑝 N!4 N!1 for all primes > 5, First I got the value of O!minus O!SUP N!7 N!4 N!1 which has divisors of U!times O!SUP N!2 N!4 N!3 N!5 N!2 and O!minus O!SUP N!11 N!4 N!1 which has divisors U!times O!SUP N!2 N!4 N!3 N!5 N!61 which has a GCF of U!times O!SUP N!2 N!4 N!3 N!5 I can prove that O!minus O!SUP V!𝑝 N!4 N!1 is divisible by 3 and 5 by casework and 8  by U!times U!plus O!SUP V!𝑝 N!2 N!1 O!minus V!𝑝 N!1 U!plus V!𝑝 N!1 are even integers, but I don't know how to prove divisibility of O!SUP N!2 N!4, I do not want to bash it since we must check about 7 numbers to prove its divisibility by assigning U!plus U!times N!16 V!𝑛 V!𝑥 where x <16",
+        "tags": [
+            "divisibility",
+            "greatest-common-divisor"
+        ]
+    },
+    {
+        "query_id": "A.20",
+        "title": "Calculate all O!in V!𝑛 O!setdiff U!times T!\\Bbb V!𝑁 M!S-1 N!41 such that U!eq U!times V!italic-ϕ V!𝑛 N!40?",
+        "body": "I'm looking for an O!in V!𝑛 U!times T!\\Bbb V!𝑁 for which U!eq U!times V!italic-ϕ V!𝑛 N!40 where V!italic-ϕ is a Euler-Totient Function    I already found one, namely, U!eq V!𝑛 N!41  How the calculate the U!times O!SUP V!𝑛 V!′ V!𝑠?",
+        "tags": [
+            "totient-function"
+        ]
+    },
+    {
+        "query_id": "A.21",
+        "title": "Finding the last two digits of O!SUP N!9 O!SUP N!9 O!SUP N!9 E! O!fragments T!â¦ N!9 (nine 9s)",
+        "body": "I'm continuing on my journey learning about modular arithmetic and got confused with this question:  Find the last two digits of O!SUP N!9 O!SUP N!9 O!SUP N!9 E! O!fragments T!â¦ N!9 (nine 9s). The phi function is supposed to be used in this problem and so far this is what I've got:  U!times O!SUP N!9 O!SUP N!9 O!SUP N!9 E! O!fragments T!â¦ N!9 V!italic-â V! V!¡ V!𝑥 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!100 Where U!times N!0 V!italic-â V! V!¤ V!𝑥 V!italic-â V! V!¤ N!100  U!eq U!times O!SUP N!9 O!SUP N!9 O!SUP N!9 E! O!fragments T!â¦ N!9 T!\\text U!times V!𝑛 V!𝑖 V!𝑛 V!𝑒 N!9 V!𝑠 O!SUP N!9 V!𝑎 In order to know U!times O!SUP N!9 V!𝑎 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!100, we need to know U!times V!𝑎 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 V!italic-ϕ N!100 As U!eq U!times V!italic-ϕ N!100 N!40, we get U!eq V!𝑎 U!times V!𝑏 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!40  U!eq U!times O!SUP N!9 O!SUP N!9 O!SUP N!9 E! O!fragments T!â¦ N!9 T!\\text U!times V!𝑒 V!𝑖 V!𝑔 V!ℎ V!𝑡 N!9 V!𝑠 O!SUP N!9 V!𝑏 In order to know U!times O!SUP N!9 V!𝑏 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!40, we need to know U!times V!𝑏 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 V!italic-ϕ N!40 As U!eq U!times V!italic-ϕ N!40 N!16, we get U!eq V!𝑏 U!times V!𝑐 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!16  U!eq U!times O!SUP N!9 O!SUP N!9 O!SUP N!9 E! O!fragments T!â¦ N!9 T!\\text U!times V!𝑠 V!𝑒 V!𝑣 V!𝑒 V!𝑛 N!9 V!𝑠 O!SUP N!9 V!𝑐 In order to know U!times O!SUP N!9 V!𝑐 U!times V!𝑚 V!𝑜 V!𝑑 N!16, we need to know U!times V!𝑐 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 V!𝑝 V!ℎ V!𝑖 N!16 as U!eq U!times V!italic-ϕ N!16 N!8 we need to find U!times V!𝑐 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!8  As U!eq N!9 U!times N!1 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!8 U!eq V!𝑐 U!times N!1 U!times T!\\text V!𝑚 V!𝑜 V!𝑑 N!8  I feel like I might have made a mistake somewhere along the way because I'm having a lot of trouble stitching it all back together in order to get a value for the last two digits. Could anyone please help me with this? Thank you!",
+        "tags": [
+            "number-theory",
+            "modular-arithmetic"
+        ]
+    },
+    {
+        "query_id": "A.23",
+        "title": "How do i find the lcm",
+        "body": "Qn: If the product of two integers is  F!⋅ O!SUP N!2 N!7 O!SUP N!3 N!8 O!SUP N!5 N!2 O!SUP N!7 N!11 and their greatest common divisor is F!⋅ O!SUP N!2 N!3 O!SUP N!3 N!4 N!5, what is their least common multiple?  I have issue with this question please help me solve it.  I tried assuming that lcm is V!𝑥 =. Then,        Gcd E! O!fragments V!⋅ -!x U!eq O!SUP N!2 N!3 V!⋅ O!SUP N!3 N!4 V!⋅ N!5 -!x. And, product factors /Gcd V!𝑥",
+        "tags": [
+            "prime-numbers",
+            "greatest-common-divisor",
+            "least-common-multiple"
+        ]
+    },
+    {
+        "query_id": "A.24",
+        "title": "Is this the only way to evaluate U!times O!root O!minus U!times N!2 V!𝑖 N!1 N!2 V!&quest;",
+        "body": "work out the U!times O!root O!minus U!times N!2 V!𝑖 N!1 N!2 V!&quest;  U!eq O!minus U!times N!2 V!𝑖 N!1 O!SUP U!plus V!𝑎 U!times V!𝑏 V!𝑖 N!2  O!minus U!plus O!SUP V!𝑎 N!2 U!times N!2 V!𝑎 V!𝑏 V!𝑖 O!SUP V!𝑏 N!2  U!eq O!minus O!SUP V!𝑎 N!2 O!SUP V!𝑏 N!2 O!minus N!1  U!eq U!times N!2 V!𝑎 V!𝑏 N!2    U!eq O!SUP V!𝑎 N!2 O!SUP V!𝑏 O!minus N!2  U!eq O!minus O!SUP V!𝑏 O!minus N!2 O!SUP V!𝑏 N!2 O!minus N!1  U!eq U!plus O!minus O!SUP V!𝑏 N!4 N!1 O!minus N!1  U!eq O!SUP V!𝑏 N!4 N!2  U!eq V!𝑏 O!root N!2 N!4  Can we solve O!root O!minus U!times N!2 V!𝑖 N!1 N!2 in another way?",
+        "tags": [
+            "algebra-precalculus"
+        ]
+    },
+    {
+        "query_id": "A.26",
+        "title": "How to solve an indefinite integral using the Taylor series?",
+        "body": "I am trying to show that the following integral is convergent but not absolutely.     +!O!SUB O!SUP O!SUB O!int N!0 C!infinity U!times O!divide F!sin V!𝑥 V!𝑥 O!differential-d V!𝑥   My attempt:     I first obtained the taylor series of +!O!SUB O!SUP O!SUB O!int N!0 V!𝑥 U!times O!divide U!times V!𝑠 V!𝑖 V!𝑛 V!𝑥 V!𝑥 O!differential-d V!𝑥 which is as follows:   U!eq U!plus O!minus U!plus O!minus V!𝑥 O!divide O!SUP V!𝑥 N!3 U!times N!3 O!factorial N!3 O!divide O!SUP V!𝑥 N!5 U!times N!5 O!factorial N!5 O!divide O!SUP V!𝑥 N!7 U!times N!7 O!factorial N!7 V!⋯ +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑛 N!0 C!infinity U!times O!SUP O!minus N!1 V!𝑛 O!divide O!SUP V!𝑥 U!plus U!times N!2 V!𝑛 N!1 U!times U!plus U!times N!2 V!𝑛 N!1 O!factorial U!plus U!times N!2 V!𝑛 N!1   Now U!eq +!O!SUB O!SUP O!SUB O!int N!0 C!infinity U!times O!divide F!sin V!𝑥 V!𝑥 O!differential-d V!𝑥 +!O!limit O!SUB O!limit F!→ V!𝑥 C!infinity +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑛 N!0 C!infinity U!times O!SUP O!minus N!1 V!𝑛 O!divide O!SUP V!𝑥 U!plus U!times N!2 V!𝑛 N!1 U!times U!plus U!times N!2 V!𝑛 N!1 O!factorial U!plus U!times N!2 V!𝑛 N!1  and I got stuck here! What is the next step?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "integration",
+            "taylor-expansion",
+            "riemann-integration"
+        ]
+    },
+    {
+        "query_id": "A.27",
+        "title": "What is the value of O!SUP V!𝑒 O!divide U!times N!3 V!𝑖 V!𝜋 N!2?",
+        "body": "When solving for the value, we know that U!eq O!SUP V!𝑒 U!times V!𝜋 V!𝑖 O!minus N!1 . I am confused as to what is the right answer when you evaluate this.I am getting two possible answers: O!SUP V!𝑒 O!divide U!times N!3 V!𝜋 V!𝑖 N!2 = O!SUP O!SUP V!𝑒 U!times V!𝜋 V!𝑖 O!divide N!3 N!2 so this could be  or it could be . Which one is the correct answer, and where am I going wrong? Thanks.",
+        "tags": [
+            "complex-numbers",
+            "exponentiation"
+        ]
+    },
+    {
+        "query_id": "A.28",
+        "title": "If U!eq F!sin O!SUP N!18 O!compose O!divide U!plus V!𝑎 O!root V!𝑏 N!2 V!𝑐, then what is U!plus V!𝑎 V!𝑏 V!𝑐?",
+        "body": "If U!eq F!sin N!18 O!divide U!plus V!𝑎 O!root V!𝑏 N!2 V!𝑐 in the simplest form, then what is U!plus V!𝑎 V!𝑏 V!𝑐?  Attempt: F!sin N!18 in a right triangle with sides V!𝑥 (in front of corner with angle N!18 degrees), V!𝑦, and hypotenuse V!𝑧, is actually just O!divide V!𝑥 V!𝑧, then O!form-seq U!eq V!𝑥 U!plus V!𝑎 O!root V!𝑏 N!2 U!eq V!𝑧 V!𝑐. We can find V!𝑦 as U!eq V!𝑦 O!root O!minus O!SUP V!𝑐 N!2 O!SUP U!plus V!𝑎 O!root V!𝑏 N!2 N!2 N!2 so we have    I also found out that   I got no clue after this.    The solution says that U!eq F!sin N!18 O!divide U!plus O!minus N!1 O!root N!5 N!2 N!4  I gotta intuition that we must find M!L-3 V!𝐴 V!𝐵 V!𝐶 such that E! O!fragments -!a F!sin O!SUP E! O!fragments V!( N!18 V!) N!2 U!plus -!b F!sin E! O!fragments V!( N!18 V!) U!plus -!c U!eq N!0  then F!sin N!18 is a root iof U!plus U!times V!𝐴 O!SUP V!𝑥 N!2 U!times V!𝐵 V!𝑥 V!𝐶, and O!form-seq U!eq V!𝑎 O!minus V!𝐵 O!form-seq U!eq V!𝑏 O!minus O!SUP V!𝐵 N!2 U!times N!4 V!𝐴 V!𝐶 U!eq V!𝑐 U!times N!2 V!𝐴.    Totally different. This question is not asking to prove that U!eq U!times V!𝑠 V!𝑖 V!𝑛 N!18 O!divide U!plus O!minus N!1 O!root N!5 N!2 N!4, that is just part of the solution.",
+        "tags": [
+            "algebra-precalculus",
+            "trigonometry",
+            "euclidean-geometry",
+            "contest-math"
+        ]
+    },
+    {
+        "query_id": "A.29",
+        "title": "Dividing Complex Numbers by Infinity",
+        "body": "My PreCalculus teacher recently reviewed the properties of limits with us before our test and stated that any real number divided by infinity equals zero. This got me thinking and I asked them whether a complex number (i.e. U!plus N!3 U!times N!2 V!𝑖 or O!minus U!times N!4 V!𝑖) divided by infinity would equal zero.   This completely stumped them and I was unable to get an answer. After doing some theoretical calculation, knowing that U!eq V!𝑖 O!root O!minus N!1 N!2, I calculated that a complex number such as U!eq O!divide U!times N!5 V!𝑖 C!infinity N!0 since    using properties utilized with real numbers that would state that U!eq O!divide U!times N!5 V!𝑥 C!infinity N!0 since  Is this theoretical calculation correct or is there more to the concept than this?",
+        "tags": [
+            "algebra-precalculus",
+            "limits",
+            "complex-numbers",
+            "infinity"
+        ]
+    },
+    {
+        "query_id": "A.30",
+        "title": "Find O!minus U!plus O!SUP V!𝑎 N!3 O!SUP V!𝑏 N!3 O!SUP V!𝑐 N!3 U!times N!3 V!𝑎 V!𝑏 V!𝑐 (binomial theorem)",
+        "body": "Find O!minus U!plus O!SUP V!𝑎 N!3 O!SUP V!𝑏 N!3 O!SUP V!𝑐 N!3 U!times N!3 V!𝑎 V!𝑏 V!𝑐:      U!times V!𝑎 N!1      U!times V!𝑏 N!0      O!minus V!𝑐 N!1      O!minus V!𝑑 N!2   Please help me solve this question.  I added M!L-2 V!𝑎 V!𝑏 and V!𝑐. It gives me the expansion of O!SUP V!𝑒 V!𝑥.  But i dont know how to use it.",
+        "tags": [
+            "binomial-theorem"
+        ]
+    },
+    {
+        "query_id": "A.32",
+        "title": "Are definitions axioms?",
+        "body": "I just want to ask a very elementary question.  When we introduce a \"definition\" in a first order logical system. For example when we say   Define: E! O!fragments T!empty E! O!fragments V!( -!x V!) U!iff O!not-exists -!y E! O!fragments V!( -!y O!in -!x V!)   Isn't that definition itself an \"axiom\", call it a definitional axiom.  I'm asking this because the one place predicate symbol Empty() is actually new, it is not among the listed primitives of say Zermelo, which has only identity and membership as primitive symbols.   So when we are stating definitions are we in effect stating axioms? but instead of being about characterizing a primitive, they are definitional axioms giving a complete reference to a specified set of symbols in the system.  Is that correct?  Now if that is the case, then why we don't call it axiom when we state it, I mean why we don't say for example:  Definitional axiom 1) E! O!fragments T!empty E! O!fragments V!( -!x V!) U!iff O!not-exists -!y E! O!fragments V!( -!y O!in -!x V!)  Zuhair",
+        "tags": [
+            "terminology",
+            "definition",
+            "first-order-logic",
+            "axioms"
+        ]
+    },
+    {
+        "query_id": "A.33",
+        "title": "Physical meaning and significance of third derivative of a function",
+        "body": "Given a physical quantity represented by a function U!times V!𝑓 O!interval(O-O) V!𝑡 V!𝑥 what is (if there is any) the actual meaning of the third derivative of V!𝑓, O!divide +!O!partialdiff O!SUP O!partialdiff N!3 V!𝑓 O!partialdiff O!SUP V!𝑡 N!3 or O!divide +!O!partialdiff O!SUP O!partialdiff N!3 V!𝑓 O!partialdiff O!SUP V!𝑥 N!3",
+        "tags": [
+            "physics"
+        ]
+    },
+    {
+        "query_id": "A.35",
+        "title": "When does a function NOT have an antiderivative?",
+        "body": "I know this question may sound naïve but why can't we write O!int U!times O!SUP V!𝑒 O!SUP V!𝑥 N!2 O!differential-d V!𝑥 W! W! as O!int U!times O!SUP V!𝑒 U!times N!2 V!𝑥 O!differential-d V!𝑥 W! W!? The former does not have an antiderivative, while the latter has.  In light of this question, what are sufficient conditions for a function NOT to have an antiderivative. That is, do we need careful examination of a function to say it does not have an antiderivative or is there any way that once you see the function, you can right away say it does not have an antiderivative?",
+        "tags": [
+            "integration"
+        ]
+    },
+    {
+        "query_id": "A.36",
+        "title": "Proof by contradiction, status of initial assumption after the proof is complete.",
+        "body": "First of all I'd like to say that I have looked for the answers to my specific question and have not found it in the existing topics.  The question is fairly simple. Say, we need to  prove statement P by the method of contradiction. Assuming that U!times O!not V!𝑃 holds, using the list of statements proven earlier to hold or derived by us during the proof, we arrive to P being U!times V!𝑡 V!𝑟 V!𝑢 V!𝑒.     We can therefore add P to the list of our proven statements, because it was derived. Most of the proofs contain something in the lines of \"the obtained contradiction proves that our initial assumption (U!times O!not V!𝑃) was wrong and so V!𝑃 holds\".  What I don't understand is, if the initial assumption (U!times O!not V!𝑃) is thus proven to be false, then why can we be sure that anything derived from it holds (in particular, that P holds)? On the other hand, if it cannot be derived then the assumption (U!times O!not V!𝑃) can in fact be true.   Can someone explain why this type of argument cannot be used?",
+        "tags": [
+            "logic",
+            "proof-writing"
+        ]
+    },
+    {
+        "query_id": "A.37",
+        "title": "Non trivial examples of U!eq O!compose V!𝑓 V!𝑔 O!compose V!𝑔 V!𝑓 but U!neq O!SUP V!𝑓 O!minus N!1 V!𝑔 and .",
+        "body": "Are there real-valued functions V!𝑓 and V!𝑔 which are neither each other's inverses, the identity, nor linear, yet exhibit the behaviour U!eq O!compose V!𝑓 V!𝑔 U!times O!compose V!𝑔 V!𝑓 V!&quest;  Examples such as U!eq U!times V!𝑓 V!𝑥 U!times N!2 V!𝑥 and U!eq U!times V!𝑔 V!𝑥 U!times N!3 V!𝑥 are \"trivial\" in this sense.   Moreover, given a function V!𝑓, can one go about obtaining an example of a function V!𝑔 which commutes with V!𝑓?   I suppose this would be similar to fixed point iteration? E.g. if F!: V!𝑓 F!→ U!times T!\\mathbb V!𝑅 T!\\smallsetminus M!S-1 N!1 U!times T!\\mathbb V!𝑅 is defined by U!eq U!times V!𝑓 V!𝑥 O!divide U!times N!2 V!𝑥 O!minus N!1 V!𝑥, I would need a function V!𝑔 such that   so maybe choosing an appropriate \"starting function\" O!SUB V!𝑔 N!0 and finding a fixed point of O!maps-to O!SUB V!𝑔 U!plus V!𝑛 N!1 O!compose O!SUP V!𝑓 O!minus N!1 O!SUB V!𝑔 V!𝑛 V!𝑓 would be a possible strategy, but I can't seem to find a suitable O!SUB V!𝑔 N!0.",
+        "tags": [
+            "real-analysis",
+            "functional-analysis",
+            "functions"
+        ]
+    },
+    {
+        "query_id": "A.38",
+        "title": "Uses of Axiom of Choice",
+        "body": "I am a first-year maths student but I occasionally drift away from our taught material. Some years ago I saw the ZFC axioms for the first time, but now that I am in college, and although the stuff I've been taught so far is nowhere near ZFC (in terms of difficulty), it happened to me that we use the axiom of choice all the time in every module, even if we don't know it by name yet.  For example, in the proof that, for every non-negative integers M!L-2 V!𝑎 V!𝑏, there exist integers F!: M!L-2 V!𝑞 V!𝑟 U!eq V!𝑎 U!plus U!times V!𝑏 V!𝑞 V!𝑟 (with the known restrictions on r), and the proof starts like this: U!times V!𝐶 V!ℎ V!𝑜 V!𝑜 V!𝑠 V!𝑒 the largest integer E! O!fragments -!q V!: T!qb&lt V!; U!eq -!a... blah blah blah.  Is it the axiom of choice that allows us to execute this simple yet so important step?   And a couple more questions: Can you name some other simple proofs, theorems, results etc for which the axiom of choice is essential?  Also, I've read that AOC has long been a topic of dispute for mathematicians, and that even today, some people do not accept it. Are there any alternative axiomatic systems that work equally well without needing AOC? Thanks!",
+        "tags": [
+            "set-theory"
+        ]
+    },
+    {
+        "query_id": "A.39",
+        "title": "How to know which value is bigger?",
+        "body": "Which is bigger between O!SUP N!2018 N!2019 or O!SUP N!2019 N!2018?  When taking logs of both sides and  I get:   U!times N!2019 F!log N!2018 and U!times N!2018 F!log N!2019  I know F!log U!times N!2019 T!\\gt F!log N!2018 so does this mean that O!SUP N!2019 N!2018 is the biggest one? And did I do it properly?",
+        "tags": [
+            "algebra-precalculus",
+            "logarithms"
+        ]
+    },
+    {
+        "query_id": "A.40",
+        "title": "What is the meaning of the term \"linear\"",
+        "body": "U!eq U!plus U!times O!SUB V!𝑎 N!1 O!SUB V!𝑥 N!1 U!times O!SUB V!𝑎 N!2 O!SUB V!𝑥 N!2 U!times O!SUB V!𝑎 N!3 O!SUB V!𝑥 N!3 V!… U!times O!SUB V!𝑎 V!𝑛 O!SUB V!𝑥 V!𝑛 W! is called a linear equation because it represents the equation of a line in an n dimensional space. So \"linear\" comes from the word \"line\".Basically there should not be any higher power of x failing which the graph of the function will not be a straight line.  simillarly  U!eq U!plus U!times V!𝑎 V!𝑥 V!𝑦 U!times V!𝑏 V!𝑥 O!SUP V!𝑦 V!′ U!times V!𝑐 V!𝑥 V!𝑦 V!\" U!times V!𝑑 V!𝑥 O!SUP V!𝑦 V!′′′ V!… U!times V!𝑞 V!𝑥 N!0 is also called linear differential equation because all the derivatives have power equal to 1 which is similar to the above definition of a linear equation.  A function f is called linear if: U!eq U!times V!𝑓 U!plus V!𝑥 V!𝑦 U!plus U!times V!𝑓 V!𝑥 U!times V!𝑓 V!𝑦 and U!eq U!times V!𝑓 U!times V!𝑐 V!𝑥 U!times V!𝑐 V!𝑓 V!𝑥. Here c is a constant. In this definition of linearity of function \"V!𝑓\" what does the word linear means? How does it relate to a straight line?  Finally what does the term linear means in case of linear vector spaces? Where is the reference to a straight line?  So, whether linear is just a word used in different contexts? Does it have different meaning in different situation? Or linearity refers to some relation to a straight line? At Least please explain how the linearity of function f and linear vector space relate to the equation of a line.",
+        "tags": [
+            "linear-algebra"
+        ]
+    },
+    {
+        "query_id": "A.41",
+        "title": "Confusion in how to find number of onto functions if two sets are given",
+        "body": "In the book it is given if A and B are two finite sets containing V!𝑚 and V!𝑛 elements, respectively, then the number of onto functions from A to B will be if   O!leq V!𝑛 V!𝑚   +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑟 N!1 V!𝑛 U!times O!SUP O!minus N!1 O!minus V!𝑛 V!𝑟 O!binomial V!𝑛 V!𝑟 O!SUP V!𝑟 V!𝑚  well I can't understand it and I am aware with combinations.",
+        "tags": [
+            "combinatorics",
+            "functions",
+            "combinations"
+        ]
+    },
+    {
+        "query_id": "A.42",
+        "title": "What is a simple, physical situation where complex numbers emerge naturally?",
+        "body": "I'm trying to teach middle schoolers about the emergence of complex numbers and I want to motivate this organically. By this, I mean some sort of real world problem that people were trying to solve that led them to realize that we needed to extend the real numbers to the complex.   For instance, the Greeks were forced to recognize irrational numbers not for pure mathematical reasons, but because the length of the diagonal of a square with unit length really is irrational, and this is the kind of geometrical situation they were already dealing with. What similar situation would lead to complex numbers in terms that kids could appreciate?  I could just say, try to solve the equation U!eq U!plus O!SUP V!𝑥 N!2 N!1 N!0, but that's not something from the physical world. I could also give an abstract sort of answer, like that O!root O!minus N!1 N!2 is just an object that we define to have certain properties that turn out to be consistent and important, but I think that won't be entirely satisfying to kids either.",
+        "tags": [
+            "complex-numbers",
+            "physics",
+            "applications"
+        ]
+    },
+    {
+        "query_id": "A.43",
+        "title": "Prove U!eq +!O!sum O!SUB O!sum O!geq V!𝑛 N!1 O!divide N!1 U!plus O!SUP V!𝑛 N!2 N!1 O!divide O!minus U!times V!𝜋 F!coth V!𝜋 N!1 N!2",
+        "body": "I am trying to prove  U!eq +!O!sum O!SUB O!sum O!geq V!𝑛 N!1 O!divide N!1 U!plus O!SUP V!𝑛 N!2 N!1 O!divide O!minus U!times V!𝜋 F!coth V!𝜋 N!1 N!2 Letting U!eq V!𝑆 +!O!sum O!SUB O!sum O!geq V!𝑛 N!1 O!divide N!1 U!plus O!SUP V!𝑛 N!2 N!1 we recall the Fourier series for the exponential function U!eq O!SUP V!𝑒 V!𝑥 U!plus O!divide F!sinh V!𝜋 V!𝜋 U!times O!divide U!times N!2 F!sinh V!𝜋 V!𝜋 +!O!sum O!SUB O!sum O!geq V!𝑛 N!1 U!times O!divide O!SUP O!minus N!1 V!𝑛 U!plus O!SUP V!𝑛 N!2 N!1 O!minus F!cos U!times V!𝑛 V!𝑥 U!times V!𝑛 F!sin U!times V!𝑛 V!𝑥 Plugging in U!eq V!𝑥 V!𝜋 U!eq O!SUP V!𝑒 V!𝜋 U!plus O!divide F!sinh V!𝜋 V!𝜋 U!times O!divide U!times N!2 F!sinh V!𝜋 V!𝜋 +!O!sum O!SUB O!sum O!geq V!𝑛 N!1 U!times O!divide O!SUP O!minus N!1 V!𝑛 U!plus O!SUP V!𝑛 N!2 N!1 O!minus F!cos U!times V!𝑛 V!𝜋 U!times V!𝑛 F!sin U!times V!𝑛 V!𝜋 U!eq O!SUP V!𝑒 V!𝜋 U!plus O!divide F!sinh V!𝜋 V!𝜋 U!times O!divide U!times N!2 F!sinh V!𝜋 V!𝜋 +!O!sum O!SUB O!sum O!geq V!𝑛 N!1 U!times O!divide O!SUP O!minus N!1 V!𝑛 U!plus O!SUP V!𝑛 N!2 N!1 O!minus O!SUP O!minus N!1 V!𝑛 F!⋅ V!𝑛 N!0 U!eq O!SUP V!𝑒 V!𝜋 U!plus O!divide F!sinh V!𝜋 V!𝜋 U!times O!divide U!times N!2 F!sinh V!𝜋 V!𝜋 V!𝑆 U!eq V!𝑆 O!minus O!divide U!times V!𝜋 O!SUP V!𝑒 V!𝜋 U!times N!2 F!sinh V!𝜋 O!divide N!1 N!2 But that is nowhere near to correct. What did I do wrong, and how do can I prove the identity? Thanks.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.44",
+        "title": "For O!in M!L-2 V!𝐴 V!𝐵 U!times O!SUB V!ℳ U!times N!2 N!2 U!times T!\\mathbb V!𝑄 of finite order, show that U!times V!𝐴 V!𝐵 has infinite order",
+        "body": "Let V!𝐺 be the group O!interval(O-O) U!times O!SUB V!ℳ U!times N!2 N!2 U!times T!\\mathbb V!𝑄 U!times of nonsingular matrices.  Let U!eq V!𝐴 M!L-3 U!times M!M-1x1 M!R! N!0 V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times N!1 N!1 V!& V!𝑎 V!𝑚 V!𝑝 N!0, the order of V!𝐴 is N!4;  Let U!eq V!𝐵 M!L-3 U!times M!M-1x1 M!R! N!0 V!& V!𝑎 V!𝑚 V!𝑝 O!minus N!1 U!times N!1 V!& V!𝑎 V!𝑚 V!𝑝 O!minus N!1, the order of V!𝐵 is N!3.  Show that U!times V!𝐴 V!𝐵 has infinite order.    The only reasoning possible here is by contradiction as V!𝐺 is not abelian. And so I tried, but I got stuck before any concrete development.  Any hints are welcome, Thanks.",
+        "tags": [
+            "matrices",
+            "group-theory",
+            "cyclic-groups"
+        ]
+    },
+    {
+        "query_id": "A.45",
+        "title": "How to prove that {M!L-5 F!sin V!𝑥 F!sin U!times N!2 V!𝑥 F!sin U!times N!3 V!𝑥 V!… F!sin U!times V!𝑛 V!𝑥} is independent in U!times T!\\mathbb V!𝑅?",
+        "body": "Prove that {M!L-5 F!sin V!𝑥 F!sin U!times N!2 V!𝑥 F!sin U!times N!3 V!𝑥 V!… F!sin U!times V!𝑛 V!𝑥} is independent in U!times T!\\mathbb V!𝑅   my trial :  we know that the Wronsekian shouldn't be N!0 to get the trivial solution and thus they are independent. its not trivial to show that U!neq V!𝑊 N!0  W =   M!L-17 U!times T!{vmatrix} N!1 F!sin V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times N!1 F!sin U!times N!2 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times N!1 F!sin U!times N!3 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!… V!& V!𝑎 V!𝑚 V!𝑝 U!times N!1 F!sin U!times V!𝑛 V!𝑥 N!1 F!cos V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times N!2 F!cos U!times N!2 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times N!3 F!cos U!times N!3 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!… V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times V!𝑛 F!cos U!times V!𝑛 V!𝑥 U!times O!SUP N!1 N!2 F!sin V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times O!SUP N!2 N!2 F!sin U!times N!2 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times O!SUP N!3 N!2 F!sin U!times N!3 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!… V!& V!𝑎 V!𝑚 V!𝑝 O!minus O!minus U!times O!SUP V!𝑛 N!2 F!sin U!times V!𝑛 V!𝑥 U!times O!SUP N!1 N!3 F!cos V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times O!SUP N!2 N!3 F!cos U!times N!2 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times O!SUP N!3 N!3 F!cos U!times N!3 V!𝑥 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!… V!& V!𝑎 V!𝑚 V!𝑝 O!minus U!times O!SUP V!𝑛 N!3 F!cos U!times V!𝑛 V!𝑥  and so on. it looks like Vandermonde matrix but i cant prove that and so we conclude that its U!neq V!𝑊 N!0",
+        "tags": [
+            "ordinary-differential-equations"
+        ]
+    },
+    {
+        "query_id": "A.47",
+        "title": "Prove that for a given prime V!𝑝 and each , there exists a V!𝑞 such that U!equivalent U!times V!𝑟 V!𝑞 O!rem N!1 V!𝑝",
+        "body": "Prove that for a given prime V!𝑝 and each M!L-3 U!times N!0 V!& V!𝑙 V!𝑡 U!times V!𝑟 V!& V!𝑙 V!𝑡 O!minus V!𝑝 N!1, there exists a V!𝑞 such that   U!equivalent U!times V!𝑟 V!𝑞 O!rem N!1 V!𝑝  I've only taken one intro number theory course (years ago), and this just popped up in a computer science class (homework). I was assuming that this proof would be elementary since my current class in an algorithm cours, but after the few basic attempts I've tried it didn't look promising. Here's a couple approaches I thought of:    (reverse engineer)  To arrive at the conclusion we would need  U!eq O!minus U!times V!𝑟 V!𝑞 N!1 U!times V!𝑘 V!𝑝  for some V!𝑘. A little manipulation:  U!eq O!minus U!times V!𝑞 V!𝑟 U!times V!𝑘 V!𝑝 N!1  That looks familiar, but I can't see anything from it.    (sum on V!𝑟)    which looks good but I don't know how to incorporate V!𝑟 int0 the final equality.      (Wilson's Theorem—proved by Lagrange)    I vaguely recall this theorem, but I was looking at it in an old book and it wasn't easy to see how we arrived there. Anyways, V!𝑝 is prime iff U!equivalent O!factorial O!minus V!𝑝 N!1 O!rem O!minus N!1 V!𝑝  Here the V!𝑟 multiplier is built in to the factorial expression so I was thinking of adding N!2 to either side  U!equivalent U!plus O!factorial O!minus V!𝑝 N!1 N!2 O!rem N!1 V!𝑝  which is a dead end (pretty sure). But then I was thinking, maybe multiplying Wilson't Thm by U!plus V!𝑝 N!1? Then getting  U!eq U!times U!plus V!𝑝 N!1 O!factorial O!minus V!𝑝 N!1 O!rem O!minus U!plus V!𝑝 N!1 V!𝑝  which I think results in  U!eq U!times U!plus V!𝑝 N!1 O!factorial O!minus V!𝑝 N!1 O!rem N!1 V!𝑝  of which V!𝑟 is a multiple and V!𝑞 is obvious. But I'm not sure if that's valid.",
+        "tags": [
+            "elementary-number-theory",
+            "proof-verification"
+        ]
+    },
+    {
+        "query_id": "A.48",
+        "title": "Hints for showing that if O!geq M!L-2 V!𝑥 V!𝑦 N!0, then O!geq O!SUP U!plus V!𝑥 V!𝑦 V!𝑘 U!plus O!SUP V!𝑥 V!𝑘 O!SUP V!𝑦 V!𝑘 for all O!geq V!𝑘 N!1",
+        "body": "I'm trying to show the following:          If O!geq M!L-2 V!𝑥 V!𝑦 N!0, then O!geq O!SUP U!plus V!𝑥 V!𝑦 V!𝑘 U!plus O!SUP V!𝑥 V!𝑘 O!SUP V!𝑦 V!𝑘 for all O!in V!𝑘 U!times T!\\mathbb O!SUB V!𝑅 O!geq W! N!1      So, far I've tried a few things, but nothing seems to stick. Clearly O!leq V!𝑥 U!plus V!𝑥 V!𝑦 and since both sides of the inequality are positive, the inequality O!leq O!SUP V!𝑥 V!𝑘 O!SUP U!plus V!𝑥 V!𝑦 V!𝑘 will hold for O!geq V!𝑘 N!1. Similarly, O!leq O!SUP V!𝑦 V!𝑘 O!SUP U!plus V!𝑥 V!𝑦 V!𝑘. Adding both inequalities together, we obtain: O!leq U!plus O!SUP V!𝑥 V!𝑘 O!SUP V!𝑦 V!𝑘 U!times N!2 O!SUP U!plus V!𝑥 V!𝑦 V!𝑘. While this is close, of course, it is not what we want to show.  Alternatively, I was thinking that if we fix O!geq M!L-2 V!𝑥 V!𝑦 N!0, let U!eq U!times V!𝑓 V!𝑘 O!SUP U!plus V!𝑥 V!𝑦 V!𝑘, and let U!eq U!times V!𝑔 V!𝑘 U!plus O!SUP V!𝑥 V!𝑘 O!SUP V!𝑦 V!𝑘, we can show using the binomial theorem that O!geq O!SUP U!plus V!𝑥 V!𝑦 V!𝑟 U!plus O!SUP V!𝑥 V!𝑟 O!SUP V!𝑦 V!𝑟 for all O!in V!𝑟 U!times T!\\mathbb O!SUP V!𝑍 U!plus. Then, if we can show both V!𝑓 and V!𝑔 intersect only when U!eq V!𝑘 N!1, we might have better luck proving the statement since then we would have M!L-2 U!times O!SUP U!plus V!𝑥 V!𝑦 V!𝑟 V!& V!𝑔 V!𝑡 U!plus O!SUP V!𝑥 V!𝑟 O!SUP V!𝑦 V!𝑟 for all positive integers O!geq V!𝑟 N!2. A real number O!notin V!𝑚 U!times T!\\mathbb V!𝑍 with the property that U!eq U!times V!𝑓 V!𝑚 U!times V!𝑔 V!𝑚 could not then exist since then that would violate the fact that U!eq V!𝑘 N!1 is the only intersection. We could then invoke the continuity of V!𝑓 and V!𝑔 together with the fact that M!L-2 U!times O!SUP U!plus V!𝑥 V!𝑦 V!𝑟 V!& V!𝑔 V!𝑡 U!plus O!SUP V!𝑥 V!𝑟 O!SUP V!𝑦 V!𝑟 for all positive integers O!geq V!𝑟 N!2 to obtain our result. Of course, all of this is dependent on rigorously showing that V!𝑓 and V!𝑔 intersect only when U!eq V!𝑘 N!1.  Otherwise, I'm running low on ideas. Any hints would be greatly appreciated.",
+        "tags": [
+            "real-analysis",
+            "functions",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.49",
+        "title": "Is there a simple combinatoric interpretation of this identity?",
+        "body": "I came across an exercise in which we are asked to prove the identity:  U!eq O!binomial U!times N!2 V!𝑛 V!𝑛 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑘 N!0 V!𝑛 O!SUP O!binomial V!𝑛 V!𝑘 N!2  The exercise gives the hint:  U!eq O!SUP U!plus N!1 V!𝑥 U!times N!2 V!𝑛 O!SUP M!D-lsqb;&rsqb; O!SUP U!plus N!1 V!𝑥 V!𝑛 N!2  It's not too difficult to use the hint to prove the identity (the expressions in the identity are the coefficients of O!SUP V!𝑥 V!𝑛 in the respective expansions of the expressions in the hint, which of course must be the same number), but I was wondering whether there is a neater equivalent-counting interpretation...  It's clear that O!binomial U!times N!2 V!𝑛 V!𝑛 is the number of ways in which we can choose half the elements in a set (where this is possible): how can we interpret +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑘 N!0 V!𝑛 O!SUP O!binomial V!𝑛 V!𝑘 N!2 equivalently?",
+        "tags": [
+            "combinatorics",
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.50",
+        "title": "Divergent series O!sum O!divide N!1 O!SUP V!𝑛 U!plus N!2 F!cos V!𝑛",
+        "body": "Bonjour.  Show that  O!sum O!divide N!1 O!SUP V!𝑛 U!plus N!2 F!cos V!𝑛 is a divergent serie. W!  My main problem is: If V!italic-ϵ is “infinitely small positive real number” define O!SUB V!𝐴 V!italic-ϵ as the set of all O!leq M!L-2 V!𝑛 F!abs U!plus N!2 F!cos V!𝑛 U!plus N!1 V!italic-ϵ . The divergence should come from the sum over O!SUB V!𝐴 V!italic-ϵ but I have no idea to how to handle this. W!",
+        "tags": [
+            "real-analysis",
+            "integration",
+            "sequences-and-series",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.51",
+        "title": "Sum of series having binomial coefficients",
+        "body": "Prove that U!eq +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑟 N!0 V!𝑛 U!times O!binomial U!plus V!𝑛 V!𝑟 V!𝑟 O!divide N!1 O!SUP N!2 V!𝑟 O!SUP N!2 V!𝑛  what i try  U!plus U!times T!\\binom V!𝑛 V!𝑛 U!times T!\\binom V!𝑛 U!plus N!11 O!divide N!1 N!2 U!times T!\\binom V!𝑛 U!times N!22 O!divide N!1 O!SUP N!2 N!2 U!times T!\\binom V!𝑛 U!times N!33 O!divide N!1 O!SUP N!2 N!3 V!⋯ U!times T!\\binom V!𝑛 U!times V!𝑛 V!𝑛 O!divide N!1 O!SUP N!2 V!𝑛  U!plus U!times T!\\binom V!𝑛 V!𝑛 U!times T!\\binom V!𝑛 U!times N!1 V!𝑛 O!divide N!1 N!2 U!times T!\\binom V!𝑛 U!times N!2 V!𝑛 O!divide N!1 O!SUP N!2 N!2 U!times T!\\binom V!𝑛 U!times N!3 V!𝑛 O!divide N!1 O!SUP N!2 N!3 V!⋯ U!times T!\\binom V!𝑛 U!times V!𝑛 V!𝑛 O!divide N!1 O!SUP N!2 V!𝑛  coefficient of O!SUP V!𝑥 V!𝑛 in   U!plus O!SUP U!plus N!1 V!𝑥 V!𝑛 U!times O!SUP U!plus N!1 V!𝑥 U!plus V!𝑛 N!1 O!divide N!1 N!2 U!times O!SUP U!plus N!1 V!𝑥 U!plus V!𝑛 N!2 O!divide N!1 O!SUP N!2 N!2 U!times V!⋯ V!⋯ U!times O!SUP U!plus N!1 V!𝑥 U!times N!2 V!𝑛 O!divide N!1 O!SUP N!2 V!𝑛  How do i solve ithelp me plesse",
+        "tags": [
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.52",
+        "title": "Prove O!in O!forall V!𝑛 U!times T!\\mathbb V!𝑁, O!in O!exists V!𝑚 U!times T!\\mathbb V!𝑁 s.t. O!gt V!𝑚 V!𝑛 and V!𝑚 is prime",
+        "body": "There are two parts I am having trouble getting started.  A. Prove that O!in M!L-4 O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 V!… O!SUB V!𝑛 V!𝑘 U!times T!\\mathbb V!𝑁 are each at least N!2 then U!eq V!𝑛 U!plus U!times O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 V!… O!SUB V!𝑛 V!𝑘 N!1 is not divisible by any numbers M!L-4 O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 V!… O!SUB V!𝑛 V!𝑘.   B. Prove that the truth of the negation leads to a contradiction. (Use theorem: For all O!in M!L-2 V!𝑎 V!𝑏 U!times T!\\mathbb V!𝑁 there exist a unique quotient V!𝑞 and remainder V!𝑟 in U!times T!\\mathbb O!SUP V!𝑍 U!plus such that we have both U!eq V!𝑎 U!plus U!times V!𝑞 V!𝑏 V!𝑟 and O!leq N!0 M!L-2 U!times V!𝑟 V!& V!𝑙 V!𝑡 V!𝑞.)  For part A, I started with, given O!in V!𝑘 U!times T!\\mathbb V!𝑁 and O!geq M!L-4 O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 V!… O!SUB V!𝑛 V!𝑘 N!1, I'll show that O!forall V!𝑖, U!eq U!times O!SUB V!𝑛 V!𝑖 T!\\nmid V!𝑛 U!plus U!times O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 V!… O!SUB V!𝑛 V!𝑘 N!1 to set it up, but I'm not sure how to actually go about starting it.  For part B, I know that the negation is O!in O!exists V!𝑛 U!times T!\\mathbb V!𝑁 s.t. O!in O!forall V!𝑚 U!times T!\\mathbb V!𝑁 either O!leq V!𝑚 V!𝑛 or V!𝑚 is not prime, but again I'm not sure what I should do to start the proof or exactly how to incorporate that theorem.",
+        "tags": [
+            "proof-writing",
+            "prime-numbers"
+        ]
+    },
+    {
+        "query_id": "A.53",
+        "title": "Show that one-sided inverse of a square matrix is a true inverse",
+        "body": "We know that for a group element O!in V!𝑔 V!𝐺, U!eq U!times V!𝑔 V!ℎ N!1 does not necessarily mean that U!eq U!times V!ℎ V!𝑔 N!1. In the case for matrices (linear maps between vector spaces), it is also true that . This happens when the V!𝐴 and V!𝐵 are not square matrices (in which case they do not even form a group under multiplication).  However if we restrict the square matrices, . What is simple proof of this that avoids chasing the entries, and makes use simply the vector space structure of linear transformations?  (In fact if we could prove this, I think this might imply that for a group to have one-sided(but not two-sided) inverses, it has to be infinite, since every finite group admits a finite dimensional representation.",
+        "tags": [
+            "linear-algebra",
+            "group-theory"
+        ]
+    },
+    {
+        "query_id": "A.54",
+        "title": "By using a diagonal argument, show that the powerset E! O!fragments -!p E! O!fragments V!( -!n V!) U!eq E! O!fragments V!( -!s V!| T!sân V!) is uncountable.",
+        "body": "Any tips or solutions for this one?  By using a diagonal argument, show that the powerset E! O!fragments -!p E! O!fragments V!( -!n V!) U!eq E! O!fragments V!( -!s V!| T!sân V!) is uncountable.",
+        "tags": [
+            "discrete-mathematics",
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.55",
+        "title": "U!eq O!divide N!1 O!root O!minus N!1 N!2 O!root O!minus N!1 N!2?",
+        "body": "I have trouble to comprehend what my mistake is in the following calculation:  If we set O!root O!minus N!1 N!2 to be the new number with the property that U!eq O!SUP O!root O!minus N!1 N!2 N!2 O!minus N!1 then I can write   But we also have (and I know this is the correct result)   What am I missing? Thanks.",
+        "tags": [
+            "complex-numbers",
+            "definition"
+        ]
+    },
+    {
+        "query_id": "A.56",
+        "title": "A curious logical formula involving prime numbers",
+        "body": "Let V!𝑆 be a nonempty set of natural numbers. Is the following formula E! O!fragments O!exists -!p E! O!fragments V!( T!\\textpisprime V!→ O!forall -!x T!\\text E! O!fragments V!( T!xisprime V!) V!) true or false on V!𝑆? I know the answer to this question, but what would be the shortest way to arrive to the conclusion using some deduction system?",
+        "tags": [
+            "logic",
+            "first-order-logic"
+        ]
+    },
+    {
+        "query_id": "A.58",
+        "title": "Prove that U!eq U!plus U!times N!3 F!arcsin O!divide N!1 N!4 F!arccos O!divide N!11 N!16 O!divide V!𝜋 N!2",
+        "body": "Can someone help me with this exercise? I honestly don't know where to start and how to prove it. You don't have to answer it fully, just give me a hint or something. Thank you in advance.     Exercise 1. Prove that  U!eq U!plus U!times N!3 F!arcsin O!divide N!1 N!4 F!arccos O!divide N!11 N!16 O!divide V!𝜋 N!2   Thanks.",
+        "tags": [
+            "trigonometry"
+        ]
+    },
+    {
+        "query_id": "A.59",
+        "title": "Multiple proofs of U!eq +!O!sum O!SUB O!sum E! O!fragments -!d V!| -!n U!times V!italic-ϕ V!𝑑 V!𝑛",
+        "body": "I am looking for multiple proofs of that statement: here U!times V!italic-ϕ V!𝑛 denotes the Euler’s totient  U!eq +!O!sum O!SUB O!sum E! O!fragments -!d V!| -!n U!times V!italic-ϕ V!𝑑 V!𝑛   Here’s one:   By unique factorisation theorem: U!eq V!𝑛 +!O!SUB O!SUP O!SUB O!product U!eq V!𝑘 N!1 V!𝑚 O!SUP O!SUB V!𝑝 V!𝑘 O!SUB V!𝛼 V!𝑘 and U!eq V!𝑑 +!O!SUB O!SUP O!SUB O!product U!eq V!𝑘 N!1 V!𝑚 O!SUP O!SUB V!𝑝 V!𝑘 O!SUB V!𝛽 V!𝑘 where  so:",
+        "tags": [
+            "group-theory",
+            "number-theory",
+            "alternative-proof",
+            "big-list"
+        ]
+    },
+    {
+        "query_id": "A.60",
+        "title": "Limiting value of a sequence when n tends to infinity",
+        "body": "Q) Let, U!eq O!SUB V!𝑎 V!𝑛 U!times O!minus N!1 O!divide N!1 O!root N!2 N!2 V!… O!minus N!1 O!divide N!1 O!root U!plus V!𝑛 N!1 N!2 , O!geq V!𝑛 N!1. Then +!O!limit O!SUB O!limit F!→ V!𝑛 C!infinity O!SUB V!𝑎 V!𝑛  (A) equals N!1  (B) does not exist  (C) equals O!divide N!1 O!root V!𝜋 N!2  (D) equals N!0    My Approach :- I am not getting a particular direction or any procedure to simplify O!SUB V!𝑎 V!𝑛 and find its value when n tends to infinity. So, I tried like this simple way to substitute values and trying to find the limiting value :- U!times U!times U!times O!minus N!1 O!divide N!1 O!root U!plus N!1 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!2 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!3 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!4 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!5 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!6 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!7 N!1 N!2 O!minus N!1 O!divide N!1 O!root U!plus N!8 N!1 N!2 V!… V!… V!… O!minus N!1 O!divide N!1 O!root U!plus V!𝑛 N!1 N!2     =U!times N!0.293 N!0.423 N!0.5 N!0.553 N!0.622 N!0.647 N!0.667 V!… =0.009*...  So, here value is tending to zero. I think option V!𝐷 is correct. I have tried like this O!form-seq U!times U!times O!divide O!minus O!root N!2 N!2 N!1 O!root N!2 N!2 O!divide O!minus O!root N!3 N!2 N!1 O!root N!3 N!2 O!divide O!minus O!root N!4 N!2 N!1 O!root N!4 N!2 V!… V!… O!divide O!minus O!root U!plus V!𝑛 N!1 N!2 N!1 O!root U!plus V!𝑛 N!1 N!2 = O!divide E! O!fragments E! O!fragments V!( O!root N!2 N!2 O!minus N!1 V!) U!times E! O!fragments V!( O!root N!3 N!2 O!minus N!1 V!) U!times E! O!fragments V!( O!root N!4 N!2 O!minus N!1 V!) U!times V!… V!… V!. U!times E! O!fragments V!( O!root U!plus V!𝑛 N!1 N!2 O!minus N!1 V!) O!root O!factorial U!plus V!𝑛 N!1 N!2 Now, again I stuck how to simplify further and find the value for which O!SUB V!𝑎 V!𝑛 converges when V!𝑛 tends to infinity . Please help if there is any procedure to solve this question.",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "limits",
+            "products"
+        ]
+    },
+    {
+        "query_id": "A.61",
+        "title": "There exists O!in M!L-2 V!𝑖 V!𝑗 U!times T!\\mathbb V!𝑁 such that U!eq V!𝑛 U!plus U!times N!3 V!𝑖 U!times N!5 V!𝑗 for O!geq V!𝑛 N!8",
+        "body": "Prove that there exists O!in M!L-2 V!𝑖 V!𝑗 U!times T!\\mathbb V!𝑁 such that U!eq V!𝑛 U!plus U!times N!3 V!𝑖 U!times N!5 V!𝑗 for O!geq V!𝑛 N!8   I'm having a hard time with this exercise, I'm trying to prove it by induction:  Basis step:        Induction step:  If it's true for U!eq V!𝑛 V!ℎ then it must be true for U!eq V!𝑛 U!plus V!ℎ N!1.  So now, I don't know how to begin proving that U!eq U!plus V!𝑘 N!1 U!plus U!times N!3 V!𝑖 U!times N!5 V!𝑗.",
+        "tags": [
+            "elementary-number-theory",
+            "discrete-mathematics",
+            "induction",
+            "diophantine-equations"
+        ]
+    },
+    {
+        "query_id": "A.62",
+        "title": "Prove that the cardinality of the set of rational numbers and the set of integers is equal",
+        "body": "I just learned about cardinality in my discrete class a few days ago, and this is in the homework. This is all fairly confusing to me, and I'm not entirely sure where to even start. Here's the full question:  Let U!times T!\\mathbb V!𝑄 denote the set of rational numbers and U!times T!\\mathbb V!𝑍 denote the set of integers. Prove that U!eq F!abs U!times T!\\mathbb V!𝑄 F!abs U!times T!\\mathbb V!𝑍.  I thought about saying that every element in U!times T!\\mathbb V!𝑄 can be written as some element in U!times U!times U!times T!\\mathbb V!𝑍 T!\\mathbb V!𝑍, but I still don't know how to prove that that is a bijection, or even how to prove that U!eq F!abs U!times U!times U!times T!\\mathbb V!𝑍 T!\\mathbb V!𝑍 F!abs U!times T!\\mathbb V!𝑍.  Any help would be greatly appreciated.",
+        "tags": [
+            "discrete-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.63",
+        "title": "F!gcd and U!times T!\\text V!𝑙 V!𝑐 V!𝑚 of more than N!2 positive integers",
+        "body": "For any two positive integers M!L-2 O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2, the relationship between their greatest common divisor and their least common multiple is given by  U!eq U!times T!\\text V!𝑙 V!𝑐 V!𝑚 O!interval(O-O) O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 O!divide U!times O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 F!gcd O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2  If I have a set of V!𝑟 positive integers M!L-5 O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 O!SUB V!𝑛 N!3 V!… O!SUB V!𝑛 V!𝑟, does the same relationship hold? Is it true that  U!eq U!times T!\\text V!𝑙 V!𝑐 V!𝑚 M!V-5 O!SUB V!𝑛 N!1 O!SUB V!𝑛 N!2 O!SUB V!𝑛 N!3 V!… O!SUB V!𝑛 V!𝑟 O!divide +!O!SUB O!SUP O!SUB O!product U!eq V!𝑖 N!1 V!𝑟 O!SUB V!𝑛 V!𝑖 U!times V!𝑔 V!𝑐 V!𝑑 M!V-5 O!SUB V!𝑛 N!1 U!times V!𝑛 N!2 O!SUB V!𝑛 N!3 V!… O!SUB V!𝑛 V!𝑟  I feel like this should be easy to prove, but I'm struggling to get a handle on it.",
+        "tags": [
+            "proof-explanation",
+            "greatest-common-divisor",
+            "least-common-multiple"
+        ]
+    },
+    {
+        "query_id": "A.65",
+        "title": "How can we show that O!leq U!times O!SUP V!𝑒 O!minus U!times N!2 V!𝜆 V!𝑡 O!SUP V!𝜆 N!2 O!divide N!1 U!times O!SUP V!𝑒 N!2 O!SUP V!𝑡 N!2 for all O!geq M!L-2 V!𝜆 V!𝑡 N!0?",
+        "body": "How can we show that O!leq U!times O!SUP V!𝑒 O!minus U!times N!2 V!𝜆 V!𝑡 O!SUP V!𝜆 N!2 U!times O!divide N!1 U!times O!SUP V!𝑒 N!2 O!SUP V!𝑡 N!2 T!\\tag N!1 for all O!geq M!L-2 V!𝜆 V!𝑡 N!0?  Applying F!ln to both sides yields that N!1 should be equivalent to O!leq U!times V!𝑡 V!𝜆 U!times O!SUP V!𝑒 O!minus U!times V!𝑡 V!𝜆 N!1 T!\\tag N!2 So, if I did no mistake, it should suffice to show O!leq V!𝑥 O!SUP V!𝑒 O!minus V!𝑥 N!1 for all O!geq V!𝑥 N!0. How can we do this?",
+        "tags": [
+            "calculus",
+            "inequality",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.66",
+        "title": "if O!in M!L-2 V!𝑥 V!ℎ U!times T!\\mathbb O!SUP V!𝑅 V!𝑑 and O!in V!𝐴 U!times T!\\mathbb O!SUP V!𝑅 U!times V!𝑑 V!𝑑 is it possible to justify that U!eq O!SUP U!times O!SUP V!𝑥 V!𝑇 V!𝐴 V!ℎ V!𝑇 U!times O!SUP V!ℎ V!𝑇 O!SUP V!𝐴 V!𝑇 V!𝑥?",
+        "body": "if O!in M!L-2 V!𝑥 V!ℎ U!times T!\\mathbb O!SUP V!𝑅 V!𝑑 and O!in V!𝐴 U!times T!\\mathbb O!SUP V!𝑅 U!times V!𝑑 V!𝑑  is it possible to justify that U!eq O!SUP U!times O!SUP V!𝑥 V!𝑇 V!𝐴 V!ℎ V!𝑇 U!times O!SUP V!ℎ V!𝑇 O!SUP V!𝐴 V!𝑇 V!𝑥?",
+        "tags": [
+            "linear-algebra",
+            "transpose"
+        ]
+    },
+    {
+        "query_id": "A.67",
+        "title": "Combination of matrixes",
+        "body": "If A is a U!times V!𝑘 V!𝑘 matrix,B is a U!times V!𝑘 V!𝑙 matrix and C is a U!times V!𝑙 V!𝑙 matrix prove that:  U!eq M!L-3 F!det U!times T!{bmatrix} V!𝐴 V!& V!𝑎 V!𝑚 V!𝑝 U!times V!𝐵 V!𝑂 V!& V!𝑎 V!𝑚 V!𝑝 V!𝐶 F!det U!times V!𝐴 F!det V!𝐶  O is the matrix that all it's elements are equal to zero.  I know some rules for calculating determinants but I don't know how to begin in this question.",
+        "tags": [
+            "calculus",
+            "determinant"
+        ]
+    },
+    {
+        "query_id": "A.68",
+        "title": "Prove U!plus O!SUP V!𝑎 V!𝑛 N!1 is divisible by U!plus V!𝑎 N!1 if V!𝑛 is odd",
+        "body": "Prove U!plus O!SUP V!𝑎 V!𝑛 N!1 is divisible by U!plus V!𝑎 N!1 if V!𝑛 is odd:  We know V!𝑎 cannot be O!minus N!1 and the O!in V!𝑛 U!times T!\\mathbb V!𝑁. Since V!𝑛 must be odd, we can rewrite V!𝑛 as U!plus U!times N!2 V!𝑘 N!1. Now we assume it holds for prove that it holds for the next term.  U!plus O!SUP V!𝑎 U!plus U!times N!2 U!plus V!𝑘 N!1 N!1 N!1 U!eq W! U!plus O!SUP V!𝑎 U!plus U!times N!2 V!𝑘 N!3 N!1 U!eq W! U!plus F!⋅ O!SUP V!𝑎 N!3 O!SUP V!𝑎 U!times N!2 V!𝑘 N!1 U!eq W! U!plus O!minus F!⋅ U!plus O!SUP V!𝑎 N!3 N!1 O!SUP V!𝑎 U!times N!2 V!𝑘 O!SUP V!𝑎 U!times N!2 V!𝑘 N!1  Im not sure on what to do next. Since O!SUP V!𝑎 U!times N!2 V!𝑘 means that the exponential term will be even and thus you cant use the fact that U!plus O!SUP V!𝑎 V!𝑛 N!1 is divisible by U!plus V!𝑎 N!1 if V!𝑛 is odd.",
+        "tags": [
+            "polynomials",
+            "induction",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.69",
+        "title": "Induction with two variable parameters",
+        "body": "So I was assigned this homework problem: U!eq U!plus O!binomial V!𝑠 V!𝑠 O!binomial U!plus V!𝑠 N!1 V!𝑠 V!… O!binomial V!𝑛 V!𝑠 O!binomial U!plus V!𝑛 N!1 U!plus V!𝑠 N!1 for all s and all O!geq V!𝑛 V!𝑠 I've tried to email both my professor and my TA and their explanations seem contradictory. My professor responded saying the statement I need to prove is \"The formula is correct for .\" Whereas my TA told me I need to use induction on both variables and I'm not sure how to do that. Any help is appreciated!",
+        "tags": [
+            "combinatorics"
+        ]
+    },
+    {
+        "query_id": "A.72",
+        "title": "Is it possible that U!eq V!𝒳 V!𝒴, yet O!in V!𝒳 V!𝒴?",
+        "body": "Is it possible for a set to equal another set, yet the former set be an element in the latter set?  I.e.:  U!eq V!𝒳 V!𝒴, yet O!in V!𝒳 V!𝒴",
+        "tags": [
+            "set-theory",
+            "axioms"
+        ]
+    },
+    {
+        "query_id": "A.74",
+        "title": "Show that the image of the function F!: V!𝑓 F!→ O!interval(O-O) N!0 C!infinity U!times T!\\mathbb V!𝑅, U!eq U!times V!𝑓 V!𝑥 U!plus V!𝑥 U!times T!\\dfrac N!1 V!𝑥 is the interval O!interval(C-O) N!2 C!infinity.",
+        "body": "Show that the image of the function F!: V!𝑓 F!→ O!interval(O-O) N!0 C!infinity U!times T!\\mathbb V!𝑅, U!eq U!times V!𝑓 V!𝑥 U!plus V!𝑥 U!times T!\\dfrac N!1 V!𝑥 is the interval O!interval(C-O) N!2 C!infinity.   If U!eq V!𝑥 N!1, then U!eq U!times V!𝑓 N!1 N!2. So how can I show that the mage of the function is the interval O!interval(C-O) N!2 C!infinity?",
+        "tags": [
+            "functions",
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.75",
+        "title": "Prove that for each integer V!𝑚, U!eq +!O!limit O!SUB O!limit F!→ V!𝑢 C!infinity O!divide O!SUP V!𝑢 V!𝑚 O!SUP V!𝑒 V!𝑢 N!0",
+        "body": "I'm unsure how to show  that for each integer V!𝑚, U!eq +!O!limit O!SUB O!limit F!→ V!𝑢 C!infinity O!divide O!SUP V!𝑢 V!𝑚 O!SUP V!𝑒 V!𝑢 N!0.   Looking at the solutions it starts with O!SUP V!𝑒 V!𝑢 U!times V!& V!𝑔 V!𝑡 O!divide O!SUP V!𝑢 U!plus V!𝑚 N!1 O!factorial U!plus V!𝑚 N!1 but not sure how this is a logical step.",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.77",
+        "title": "Show that the relation U!eq U!times O!minus N!1 O!minus N!1 N!1 is a consequence of the distributive law",
+        "body": "Show that the relation U!eq U!times O!minus N!1 O!minus N!1 N!1 is a consequence of the distributive law.   This question is the first problem from 'Number Theory for Beginners\" by Andre Weil. I cannot get the point from where to begin. I tried using U!eq F!⋅ N!1 N!1 N!1 and U!eq F!⋅ N!1 V!𝑥 V!𝑥, but couldn't get somewhere. Can you help me just with a hint? I would be willing to work up from there.",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.79",
+        "title": "Inequality with complex exponential",
+        "body": "Rudin in Real and Complex Analysis uses this in a proof near the beginning of chapter 9:     O!leq F!abs O!divide O!minus O!SUP V!𝑒 O!minus U!times V!𝑖 V!𝑥 V!𝑢 N!1 V!𝑢 F!abs V!𝑥 for all real U!neq V!𝑢 N!0   Why is this true?  Edit: I believe V!𝑥 is real",
+        "tags": [
+            "inequality",
+            "exponential-function",
+            "fourier-transform"
+        ]
+    },
+    {
+        "query_id": "A.80",
+        "title": "Why does this proof that the set of all finite subsets of N is a countable set not work for the set of all subsets of N?",
+        "body": "I found this proof in a StackExchange thread and found it pretty understandable and simple:  \"The other answers give some sort of formula, like you were trying to do.  But, the simplest way to see that the set of all finite subsets of U!times T!\\mathbb V!𝑁 is countable is probably the following.  If you can list out the elements of a set, with one coming first, then the next, and so on, then that shows the set is countable.  There is an easy pattern to see here.  Just start out with the least elements.  M!L-10 C!emptyset M!S-1 N!1 M!S-1 N!2 M!S-2 N!1 N!2 M!S-1 N!3 M!S-2 N!1 N!3 M!S-2 N!2 N!3 M!S-3 N!1 N!2 N!3 M!S-1 N!4 V!…  In other words, first comes M!S-1 N!1, then comes M!S-1 N!2.  Each time you introduce a new integer, V!𝑛, list all the subsets of U!eq M!D-lsqb;&rsqb; V!𝑛 M!S-4 N!1 N!2 V!… V!𝑛 that contain V!𝑛 (the ones that don't contain V!𝑛 have already showed up).  Therefore, all subsets of M!D-lsqb;&rsqb; V!𝑛 show up in the first O!SUP N!2 V!𝑛 elements of this sequence.\"  I understand how it applies for finite subsets of N, but I cant really pinpoint of why it would not apply to a set of all subsets of N. We could continue this scheme for ever, couldnt we?  I assume that I think in a wrong way about infinity but I am not quite sure. Any help is greatly appreciated!",
+        "tags": [
+            "analysis",
+            "elementary-set-theory",
+            "proof-explanation"
+        ]
+    },
+    {
+        "query_id": "A.83",
+        "title": "Is the sequence of sums of inverse of natural numbers bounded?",
+        "body": "I'm reading through Spivak Ch.22 (Infinite Sequences) right now. He mentioned in the written portion that it's often not a trivial matter to determine the boundedness of sequences. With that in mind, he gave us a sequence to chew on before we learn more about boundedness. That sequence is:  M!L-5 N!1 U!plus N!1 O!divide N!1 N!2 U!plus N!1 O!divide N!1 N!2 O!divide N!1 N!3 U!plus N!1 O!divide N!1 N!2 O!divide N!1 N!3 O!divide N!1 N!4 V!…  I know that a sequence is bounded above if there is a number V!𝑀 such that O!leq O!SUB V!𝑎 V!𝑛 V!𝑀 for all V!𝑛. Any hints here?",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "harmonic-numbers"
+        ]
+    },
+    {
+        "query_id": "A.85",
+        "title": "Expected number of steps for a bug to reach position V!𝑁",
+        "body": "A bug starts at time N!0 at position N!0. At each step, the bug either moves to the right by N!1 step U!plus N!1 with probability O!divide N!1 N!2, or returns to the origin with probability O!divide N!1 N!2. What is the expected number of steps for this bug to reach position V!𝑁?  I tried to first find the possibility that this bug reaches V!𝑁 as the number of steps goes to infinity. The recurrence equation I find is U!eq O!SUB V!𝑝 V!𝑛 U!times O!divide N!1 N!2 O!SUB V!𝑝 O!minus V!𝑛 N!1, where O!SUB V!𝑝 V!𝑛 is the possibility for the bug starting at position V!𝑛 to reach V!𝑁. We also have the boundary condition U!eq O!SUB V!𝑝 V!𝑁 N!1. Then we see that U!eq O!SUB V!𝑝 O!minus V!𝑁 N!1 N!2, and that U!eq O!SUB V!𝑝 N!0 O!SUP N!2 V!𝑁, which doesn't make sense at all because it is greater than N!1. I think I should sort out the value of probability first, and think about the number of expected steps later.  I'm sure there is something wrong with the recurrence equation, but what's wrong about it?",
+        "tags": [
+            "markov-chains",
+            "random-walk"
+        ]
+    },
+    {
+        "query_id": "A.86",
+        "title": "Is it true that U!eq +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑘 N!0 V!𝑛 F!⋅ V!𝑘 M!M-2x1 M!R! V!𝑛 M!R! V!𝑘 U!times V!𝑂 O!SUP N!2 U!times V!𝑛 +!F!log O!SUB F!log N!3 V!𝑛 V!&quest;",
+        "body": "Problem: Is it true that U!eq +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑘 N!0 V!𝑛 F!⋅ V!𝑘 M!M-2x1 M!R! V!𝑛 M!R! V!𝑘 U!times V!𝑂 O!SUP N!2 U!times V!𝑛 +!F!log O!SUB F!log N!3 V!𝑛 V!&quest;  My start of solution:   I think this upper bound is way too large and I can't seem to find a solution.",
+        "tags": [
+            "combinatorics",
+            "elementary-number-theory",
+            "discrete-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.87",
+        "title": "Is it true that F!: O!in O!forall V!𝑛 U!times T!\\Bbb V!𝑁 O!geq U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 O!SUP V!𝑛 N!2 , if all O!SUB V!𝑎 V!𝑖 are positive?",
+        "body": "If  F!: O!in O!forall V!𝑖 U!times T!\\Bbb V!𝑁 O!in O!SUB V!𝑎 V!𝑖 U!times T!\\Bbb O!SUP V!𝑅 U!plus , is it true that F!: O!in O!forall V!𝑛 U!times T!\\Bbb V!𝑁 O!geq U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 O!SUP V!𝑛 N!2 ?   I have been able to prove that this holds for U!eq V!𝑛 N!1 , U!eq V!𝑛 N!2, and U!eq V!𝑛 N!3 using the following lemma:     Lemma 1:  Let O!in M!L-2 V!𝑎 V!𝑏 U!times T!\\Bbb O!SUP V!𝑅 U!plus. If U!eq U!times V!𝑎 V!𝑏 N!1 then O!geq U!plus V!𝑎 V!𝑏 N!2   For example, the case for U!eq V!𝑛 N!3 can be proven like this:  Let O!in M!L-3 V!𝑎 V!𝑏 V!𝑐 U!times T!\\Bbb O!SUP V!𝑅 U!plus. Then we have:  U!eq U!times U!plus V!𝑎 V!𝑏 V!𝑐 U!plus O!divide N!1 V!𝑎 O!divide N!1 V!𝑏 O!divide N!1 V!𝑐 U!plus N!1 O!divide V!𝑎 V!𝑏 O!divide V!𝑎 V!𝑐 O!divide V!𝑏 V!𝑎 N!1 O!divide V!𝑏 V!𝑐 O!divide V!𝑐 V!𝑎 O!divide V!𝑐 V!𝑏 N!1  U!eq W! U!plus N!3 U!plus O!divide V!𝑎 V!𝑏 O!divide V!𝑏 V!𝑎 U!plus O!divide V!𝑎 V!𝑐 O!divide V!𝑐 V!𝑎 U!plus O!divide V!𝑏 V!𝑐 O!divide V!𝑐 V!𝑏  By lemma 1, O!geq U!plus O!divide V!𝑎 V!𝑏 O!divide V!𝑏 V!𝑎 N!2,  O!geq U!plus O!divide V!𝑎 V!𝑐 O!divide V!𝑐 V!𝑎 N!2 and  O!geq U!plus O!divide V!𝑏 V!𝑐 O!divide V!𝑐 V!𝑏 N!2 , therefore:    However I'm not sure the generalized version for all natural V!𝑛 is true. I can't come up with a counterexample and when I try to prove it by induction I get stuck.  Here is my attempt:  Let E! O!fragments -!p E! O!fragments V!( -!n V!) V!: V!: E! O!fragments V!( O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 V!) E! O!fragments V!( O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 V!) O!geq O!SUP V!𝑛 N!2  Base case:  , so U!times V!𝑃 N!1 is true.  Inductive hypothesis:  I assume U!times V!𝑃 V!𝑛 is true.  Inductive step:  U!eq U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 U!plus V!𝑛 N!1 O!SUB V!𝑎 V!𝑖 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 U!plus V!𝑛 N!1 O!divide N!1 O!SUB V!𝑎 V!𝑖 U!times M!D-lsqb;&rsqb; U!plus +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 O!SUB V!𝑎 U!plus V!𝑛 N!1 M!D-lsqb;&rsqb; U!plus +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1  U!eq W! U!plus U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 M!D-lsqb;&rsqb; U!plus +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1 U!times O!SUB V!𝑎 U!plus V!𝑛 N!1 M!D-lsqb;&rsqb; U!plus +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1  U!eq W! U!plus U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1 U!times O!SUB V!𝑎 U!plus V!𝑛 N!1 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 U!times O!SUB V!𝑎 U!plus V!𝑛 N!1 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1  U!eq W! U!plus U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1 U!times O!SUB V!𝑎 U!plus V!𝑛 N!1 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 N!1  U!plus U!times O!SUB F!⏟ O!geq U!times V!𝐼 V!𝐻 O!SUP V!𝑛 N!2 U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1 U!times O!SUB V!𝑎 U!plus V!𝑛 N!1 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 N!1  And here I don't know what to do with the U!plus U!times +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUB V!𝑎 U!plus V!𝑛 N!1 U!times O!SUB V!𝑎 U!plus V!𝑛 N!1 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 N!1 V!𝑛 O!divide N!1 O!SUB V!𝑎 V!𝑖 term.  Is this inequality true? If it is, how can I prove it? If it isn't, can anyone show me a counterexample?",
+        "tags": [
+            "algebra-precalculus",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.88",
+        "title": "Is the polynomial U!plus O!SUP V!𝑥 N!4 U!times N!10 O!SUP V!𝑥 N!2 N!1 reducible over U!times T!\\mathbb V!𝑍 M!D-lsqb;&rsqb; V!𝑥?",
+        "body": "Is the polynomial  U!plus O!SUP V!𝑥 N!4 U!times N!10 O!SUP V!𝑥 N!2 N!1  reducible over  U!times T!\\mathbb V!𝑍 M!D-lsqb;&rsqb; V!𝑥?",
+        "tags": [
+            "abstract-algebra",
+            "ring-theory",
+            "field-theory",
+            "irreducible-polynomials"
+        ]
+    },
+    {
+        "query_id": "A.89",
+        "title": "Parametrization of pythagorean-like equation",
+        "body": "Is there any known complete parametrization of the Diophantine equation U!eq U!plus O!SUP V!𝐴 N!2 O!SUP V!𝐵 N!2 U!plus O!SUP V!𝐶 N!2 O!SUP V!𝐷 N!2 where M!L-4 V!𝐴 V!𝐵 V!𝐶 V!𝐷 are (positive) rational numbers, or equivalently, integers?",
+        "tags": [
+            "number-theory",
+            "diophantine-equations"
+        ]
+    },
+    {
+        "query_id": "A.90",
+        "title": "Question on the definition of an Inverse matrix",
+        "body": "By definition, if V!𝐴 is a U!times V!𝑛 V!𝑛 matrix, an inverse of V!𝐴 is an U!times V!𝑛 V!𝑛 matrix O!SUP V!𝐴 O!minus N!1 with the property that:  O!form-seq U!eq U!times O!SUP V!𝐴 O!minus N!1 V!𝐴 M!L-2 U!times T!\\mathbb O!SUB V!𝐼 V!𝑛 U!and U!eq U!times V!𝐴 O!SUP V!𝐴 O!minus N!1 M!L-2 U!times T!\\mathbb O!SUB V!𝐼 V!𝑛 N!1   where U!times T!\\mathbb O!SUB V!𝐼 V!𝑛 is the U!times V!𝑛 V!𝑛 identity matrix.  Are there any cases where U!eq U!times O!SUP V!𝐴 O!minus N!1 V!𝐴 U!times T!\\mathbb O!SUB V!𝐼 V!𝑛 but U!neq U!times V!𝐴 O!SUP V!𝐴 O!minus N!1 U!times T!\\mathbb O!SUB V!𝐼 V!𝑛 or the other way around (and thus making (1) a false statement) ?",
+        "tags": [
+            "linear-algebra",
+            "matrices"
+        ]
+    },
+    {
+        "query_id": "A.93",
+        "title": "Characteristic Polynomial U!eq U!times V!𝐴 V!𝐵 W! characteristic polynomial U!times V!𝐵 V!𝐴?",
+        "body": "Let M!L-2 V!𝐴 V!𝐵 matrix on U!times T!\\mathbb V!𝑅 size U!times V!𝑛 V!𝑥 V!𝑛. How can I prove that U!eq U!times V!𝑑 V!𝑒 V!𝑡 O!minus U!times V!𝑥 V!𝐼 U!times V!𝐴 V!𝐵 U!times V!𝑑 V!𝑒 V!𝑡 O!minus U!times V!𝑥 V!𝐼 U!times V!𝐵 V!𝐴 if V!𝐴 and V!𝐵 are singular matrix",
+        "tags": [
+            "linear-algebra",
+            "polynomials"
+        ]
+    },
+    {
+        "query_id": "A.96",
+        "title": "Let +!O!sum O!SUB O!sum V!𝑖 O!SUB V!𝑎 V!𝑖 be a convergent sum with positive O!SUB V!𝑎 V!𝑖. Does +!O!sum O!SUB O!sum V!𝑖 O!divide O!SUB V!𝑎 V!𝑖 U!plus O!SUB V!𝑎 V!𝑖 O!SUB V!𝑎 U!plus V!𝑖 N!1 O!SUB V!𝑎 U!plus V!𝑖 N!2 V!⋯ always diverge?",
+        "body": "Let +!O!sum O!SUB O!sum V!𝑖 O!SUB V!𝑎 V!𝑖 be a convergent sum, with all O!SUB V!𝑎 V!𝑖 positive.  Let U!eq O!SUB V!𝑠 V!𝑛 +!O!SUB O!SUP O!SUB O!sum U!eq V!𝑖 V!𝑛 C!infinity O!SUB V!𝑎 V!𝑖.      Does +!O!sum O!SUB O!sum V!𝑖 O!divide O!SUB V!𝑎 V!𝑖 O!SUB V!𝑠 V!𝑖 always diverge?   I've tried a few examples such as U!eq O!SUB V!𝑎 V!𝑖 O!SUP V!𝑟 V!𝑖 (geometric series) and U!eq O!SUB V!𝑎 V!𝑖 O!divide N!1 O!SUP V!𝑖 N!2 and it seems to always diverge.",
+        "tags": [
+            "sequences-and-series",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.98",
+        "title": "If F!: V!𝑅 F!→ O!SUP V!𝑆 N!1 O!SUP V!𝑆 N!1 is a irrational rotation, M!S-1 U!times O!SUP V!𝑅 V!𝑛 M!D-lsqb;&rsqb; V!𝑥 is dense in O!SUP V!𝑆 N!1 for all points.",
+        "body": "Let V!𝛼 a irrational number, and F!: V!𝑅 F!→ O!SUP V!𝑆 N!1 O!SUP V!𝑆 N!1 the irrational rotation, i.e., F!→ M!D-lsqb;&rsqb; V!𝑥 M!D-lsqb;&rsqb; U!plus V!𝑥 V!𝛼. I need to prove that, for all O!in M!D-lsqb;&rsqb; V!𝑥 O!SUP V!𝑆 N!1, the set M!S-1 U!times O!SUP V!𝑅 V!𝑛 M!D-lsqb;&rsqb; V!𝑥 is dense in O!SUP V!𝑆 N!1.  First, I can write V!𝑅 by  U!eq U!times V!𝑅 O!SUP V!𝑒 U!times N!2 V!𝜋 V!𝑖 V!𝑥 O!SUP V!𝑒 U!times N!2 V!𝜋 V!𝑖 U!plus V!𝑥 V!𝛼  So, I can write U!times O!SUP V!𝑅 V!𝑛 V!𝑥, O!in V!𝑛 U!times T!\\mathbb V!𝑍 by  U!eq U!times O!SUP V!𝑅 V!𝑛 O!SUP V!𝑒 U!times N!2 V!𝜋 V!𝑖 V!𝑥 O!SUP V!𝑒 U!times N!2 V!𝜋 V!𝑖 U!plus V!𝑥 U!times V!𝑛 V!𝛼  I need to prove that, for all O!in O!SUP V!𝑒 U!times N!2 V!𝜋 V!𝑖 V!𝑥 O!SUP V!𝑆 N!1 and for all , every neighborhood V!𝑉 of M!D-lsqb;&rsqb; V!𝑦 contains a point U!eq M!D-lsqb;&rsqb; O!SUB V!𝑧 V!𝑦 O!SUP V!𝑒 U!times N!2 V!𝜋 V!𝑖 V!𝑧 such that U!eq M!D-lsqb;&rsqb; O!SUB V!𝑧 V!𝑦 U!times O!SUP V!𝑅 V!𝑛 M!D-lsqb;&rsqb; V!𝑥 for some O!in V!𝑛 U!times T!\\mathbb V!𝑍. That is,    Is my way correct? If it does, how can I proceed now? If it doesn't, what I need to do?  I don't think this question is duplicate. I'm showing my attempt to proof, that is different from other proofs.",
+        "tags": [
+            "general-topology",
+            "circles",
+            "rotations",
+            "irrational-numbers"
+        ]
+    },
+    {
+        "query_id": "A.99",
+        "title": "Rationals can be the set of continuity of a function?",
+        "body": "Most of the functions that I have seen have their discontinuities on rationals and continuities on irrationals!  I am wondering if there is any exampe of some function whose continuities are rationals? Or is other words      The set of continuities of a function F!: V!𝑓 F!→ U!times T!\\mathbb V!𝑅 U!times T!\\mathbb V!𝑅 can be U!times T!\\mathbb V!𝑄?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "continuity"
+        ]
+    }
+]

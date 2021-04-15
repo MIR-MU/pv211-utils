@@ -1,0 +1,722 @@
+[
+    {
+        "query_id": "A.1",
+        "title": "Finding value of $c$ such that the range of the rational function $f(x) = \\frac{x^2 + x + c}{x^2 + 2x + c}$ does not contain $[-1, -\\frac{1}{3}]$",
+        "body": "I am comfortable when I am asked to calculate the range of a rational function, but how do we do the reverse? I came across this problem.  If $f(x)= \\frac{x^2 + x + c}{x^2 + 2x + c}$ then find the value of $c$ for which the range of $f(x)$ does not contain $[-1, -\\frac{1}{3}]$.",
+        "tags": [
+            "functions"
+        ]
+    },
+    {
+        "query_id": "A.3",
+        "title": "Approximation to $\\sqrt{5}$ correct to an exactitude of $10^{-10}$",
+        "body": "I am attempting to resolve the following problem:     Find an approximation to $\\sqrt{5}$ correct to an exactitude of $10^{-10}$ using the bisection algorithm.   From what I understand, $\\sqrt{5}$ has to be placed in function of $x$ but I am not sure where to go from there.  Also, a function in Mathematica are given to do the calculations in which the function $f(x)$, $a$ and $b$ (from the interval $[a, b]$ where $f(a)$ and $f(b)$ have opposite signs), the tolerance and the number of iterations.",
+        "tags": [
+            "numerical-methods",
+            "algorithms",
+            "bisection"
+        ]
+    },
+    {
+        "query_id": "A.4",
+        "title": "How to compute this combinatoric sum?",
+        "body": "I have the sum  $\\sum_{k=0}^{n} \\binom{n}{k} k$  I know the result is $n 2^{n-1}$ but I don't know how you get there. How does one even begin to simplify a sum like this that has binomial coefficients.",
+        "tags": [
+            "combinatorics",
+            "number-theory",
+            "summation",
+            "proof-explanation"
+        ]
+    },
+    {
+        "query_id": "A.5",
+        "title": "A family has two children. Given that one of the children is a boy, what is the probability that both children are boys?",
+        "body": "A family has two children. Given that one of the children is a boy, what is the probability that both children are boys?   I was doing this question using conditional probability formula.   Suppose, (1) is the event, that the first child is a boy, and (2) is the event that the second child is a boy.  Then the probability of the second child to be boy given that first child is a boys by formula, $P((2)|(1))=\\frac{P((2) \\cap (1))}{P((1))}=\\frac{P((2))P((1))}{P((1))} = P((2))$ ...since second child to be boy doesn't depend on first child and vice versa. Please provide the detailed solution and correct me if I am wrong.",
+        "tags": [
+            "probability",
+            "proof-verification",
+            "conditional-probability"
+        ]
+    },
+    {
+        "query_id": "A.7",
+        "title": "Finding out the remainder of $\\frac{11^\\text{10}-1}{100}$ using modulus",
+        "body": "If $11^\\text{10}-1$ is divided by $100$, then solve for '$x$' of the below term $11^\\text{10}-1 = x \\pmod{100}$   Whatever I tried:  $11^\\text{2} \\equiv 21 \\pmod{100}$.....(1)  $(11^\\text{2})^\\text{2} \\equiv (21)^\\text{2} \\pmod{100}$  $11^\\text{4} \\equiv 441 \\pmod{100}$  $11^\\text{4} \\equiv 41 \\pmod{100}$  $(11^\\text{4})^\\text{2} \\equiv (41)^\\text{2} \\pmod{100}$  $11^\\text{8} \\equiv 1681 \\pmod{100}$  $11^\\text{8} \\equiv 81 \\pmod{100}$  $11^\\text{8} × 11^\\text{2} \\equiv (81×21) \\pmod{100}$ ......{from (1)}  $11^\\text{10} \\equiv 1701 \\pmod{100} \\implies 11^\\text{10} \\equiv 1 \\pmod{100}$  Hence, $11^\\text{10} -1 \\equiv (1-1) \\pmod{100} \\implies 11^\\text{10} - 1 \\equiv 0 \\pmod{100}$ and thus we get the value of $x$ and it is $x = 0$ and $11^\\text{10}-1$ is divisible by $100$.  But this approach take a long time for any competitive exam or any math contest without using calculator. Any easier process on how to determine the remainder of the above problem quickly? That will be very much helpful for me. Thanks in advance.",
+        "tags": [
+            "elementary-number-theory",
+            "modular-arithmetic",
+            "divisibility",
+            "alternative-proof"
+        ]
+    },
+    {
+        "query_id": "A.8",
+        "title": "finding value of $\\lim_{n\\rightarrow \\infty}\\sqrt[n]{\\frac{(27)^n(n!)^3}{(3n)!}}$",
+        "body": "Finding value of $\\lim_{n\\rightarrow \\infty}\\sqrt[n]{\\frac{(27)^n(n!)^3}{(3n)!}}$  what i try  $\\displaystyle l=\\lim_{n\\rightarrow \\infty}\\bigg(\\frac{(27)^n(n!)^3}{(3n)!}\\bigg)^{\\frac{1}{n}}$  $\\displaystyle \\ln(l)=\\lim_{n\\rightarrow \\infty}\\frac{1}{n}\\bigg[n\\ln(27)+3\\ln(n!)-\\ln((3n)!)\\bigg]$  How do i solve it help me please",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.9",
+        "title": "Simplifying this series",
+        "body": "I need to write the series   $\\sum_{n=0}^N nx^n$   in a form that does not involve the summation notation, for example $\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$. Does anyone have any idea how to do this? I've attempted multiple ways including using generating functions however no luck",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.10",
+        "title": "Find the values of a>0 for which the improper integral $\\int_{0}^{\\infty}\\frac{\\sin x}{x^{a}} $ converges .",
+        "body": "Find the values of a>0 for which the improper integral $\\int_{0}^{\\infty}\\frac{\\sin x}{x^{a}} $ converges .  Do  I have to expand integrand using series expansion??",
+        "tags": [
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.11",
+        "title": "What's the cross product in 2 dimensions?",
+        "body": "The math book i'm using states that the cross product for two vectors is defined over $R^3$:  $u = (a,b,c)$ $v = (d,e,f)$  is:  $u \\times v = \\begin{vmatrix} \\hat{i} &amp; \\hat{j} &amp; \\hat{k} \\\\ a &amp; b &amp; c \\\\ d &amp; e &amp; f \\\\ \\end{vmatrix} $  and the direction of the resultant is determined by curling fingers from vector v to u with thumb pointing in direction of the cross product of u x v.    Out of curiosity, what's the cross product if u and v are defined over $R^2$ instead of $R^3$ instead:  $u = (a,b)$ $v = (d,e)$  Is there a \"degenerate\" case for the cross product of $R^2$ instead $R^3$?  like this is some type of 2x2 determinant instead?  for instance if had a parameterization:  $\\Phi(u,\\ v) = (\\ f(u),\\ \\ g(v)\\ )$  and needed to calculate in $R^2$:  $ D = \\Bigg| \\frac{\\partial{\\Phi}}{\\partial{u}} \\times \\frac{\\partial{\\Phi}}{\\partial{v}} \\Bigg| $  There are plenty of examples in the book for calculating the determinate D in $R^3$ but none at all for $R^2$ case.  As in:  $ \\iint_{V} f(x,y) dx\\ dy = \\iint_{Q} f(\\Phi(u,v) \\Bigg| \\frac{\\partial{\\Phi}}{\\partial{u}} \\times \\frac{\\partial{\\Phi}}{\\partial{v}} \\Bigg| $  $ \\Phi(u,v)=(2u \\cos v,\\ \\ u \\sin v) $",
+        "tags": [
+            "multivariable-calculus",
+            "vectors"
+        ]
+    },
+    {
+        "query_id": "A.12",
+        "title": "Finding the roots of a complex number",
+        "body": "I was solving practice problems for my upcoming midterm and however I got stuck with this question type.  It is asking me to find all roots and then sketch it.  $(1+i\\sqrt{3})^{1/2}$  How do we proceed?",
+        "tags": [
+            "linear-algebra",
+            "complex-numbers",
+            "polar-coordinates"
+        ]
+    },
+    {
+        "query_id": "A.13",
+        "title": "How to simplify expression $\\int_a^b f(x)dx+\\int_{f(a)}^{f(b)} f^{-1}(x)dx \\ ?$",
+        "body": "How to simplify expression  $\\int_a^b f(x)dx+\\int_{f(a)}^{f(b)} f^{-1}(x)dx \\ ?$  The answer is $bf(b)-af(a)$  but I am wondering how to get the answer.",
+        "tags": [
+            "calculus"
+        ]
+    },
+    {
+        "query_id": "A.14",
+        "title": "Help solving first-order differential equation",
+        "body": "I have first-order differential equation $y=xy'+ \\frac{1}{2}(y')^{2}$ Maybe, with this someone will find way to solve it $\\frac{1}{2}y'(2x+y')=y$ I thought I can use $x^2+y=t$ for subtitution and when I derivate, I have $t'=2x+y'\\\\(t'-2x)t'=2t-2x^2$ which is acctualy the same as previous. I don't have idea how to start..",
+        "tags": [
+            "ordinary-differential-equations"
+        ]
+    },
+    {
+        "query_id": "A.15",
+        "title": "Derive the sum of $\\sum_{i=1}^n ix^{i-1}$",
+        "body": "For the series      $1 + 2x + 3x^2 + 4x^3 + 5x^4 + ... + nx^{n-1}+... $    and $x \\ne 1, |x| &lt; 1$.  I need to find partial sums and finally, the sum $S_n$ of series. Here is what I've tried:    We can take a series $S_2 = 1 + x + x^2 + x^3 + x^4 + ...$ so that $\\frac{d(S_2)}{dx} = S_1$ (source series). For the $|x| &lt; 1$ the sum of $S_2$ (here is geometric progression): $\\frac{1-x^n}{1-x} = \\frac{1}{1-x}$ $S_1 = \\frac{d(S_2)}{dx} = \\frac{d(\\frac{1}{1-x})}{dx} = \\frac{1}{(1-x)^2}$   But this answer is incorrect. Where is my mistake? Thank you.",
+        "tags": [
+            "sequences-and-series",
+            "convergence",
+            "summation",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.16",
+        "title": "Finding $ \\int_0^1\\frac{\\ln(1+x)\\ln(1-x)}{1+x}dx$",
+        "body": "Calculate   $\\int_0^1\\frac{\\ln(1+x)\\ln(1-x)}{1+x}\\,dx$   My try :   Let : $I(a,b)=\\int_0^1\\frac{\\ln(1-ax)\\ln(1+bx)}{1+x}\\,dx$  Then compute $\\frac{d^2 I(a,b)}{dadb}$.  I'm happy to see ideas in order to kill this integral.",
+        "tags": [
+            "integration",
+            "sequences-and-series",
+            "definite-integrals",
+            "closed-form"
+        ]
+    },
+    {
+        "query_id": "A.17",
+        "title": "Calculate $\\int _{x=0}^{\\infty} \\frac{\\sin(x)}{x}$ with the function $\\frac{e^{iz}}{z}$",
+        "body": "I want to calculate $\\int _{x=0}^{\\infty} \\frac{\\sin(x)}{x}$ with the function $f(z) = \\frac{e^{iz}}{z}$.  I thought about using the closed path $\\Gamma = \\gamma _1 + \\gamma _R + \\gamma _2 + \\gamma _{\\epsilon}$, when:  $\\gamma_1 (t) = t, t \\in [i\\epsilon, iR]$  $\\gamma_R (t) = Re^{it}, t \\in [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$  $\\gamma_2 (t) = t, t \\in [-iR, -i\\epsilon]$  $\\gamma_{\\epsilon} (t) = \\epsilon e^{it}, t \\in [-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$  I use the fact that $\\frac{\\sin(x)}{x}$ is an even function and has an anti derivative, so the integral on a closed path is zero.  I managed to show that $\\int_{\\gamma _{\\epsilon}} f = -i\\pi$ when $\\epsilon \\to 0$.  However I am struggling to show that $\\int_{\\gamma _R} f = 0$ when $R \\to \\infty$  Help would be appreciated",
+        "tags": [
+            "complex-analysis",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.18",
+        "title": "Evaluate $\\lim_{n \\rightarrow \\infty } \\frac {[(n+1)(n+2)\\cdots(n+n)]^{1/n}}{n}$",
+        "body": "Evaluate $\\lim_{n \\rightarrow \\infty~} \\dfrac {[(n+1)(n+2)\\cdots(n+n)]^{\\dfrac {1}{n}}}{n}$ using Cesáro-Stolz theorem.  I know there are many question like this, but i want to solve it using Cesáro-Stolz method and no others.  I took log and applied Cesáro-Stolz, I get $\\log{2}+n\\log\\cfrac{n}{n+1}$  Which gives me answer as $\\frac{2}{e}$ . But answer is $\\frac{4}{e}$. Could someone help?.  Edit:  On taking log,  $\\lim_{n \\to \\infty} \\frac{-n\\log n + \\sum\\limits_{k=1}^{n} \\log \\left(k+n\\right)}{n} \\\\= \\lim_{n \\to \\infty} \\left(-(n+1)\\log (n+1) + \\sum\\limits_{k=1}^{n+1} \\log \\left(k+n\\right)\\right) - \\left(-n\\log n + \\sum\\limits_{k=1}^{n} \\log \\left(k+n\\right)\\right) \\\\ = \\lim_{n \\to \\infty} \\log \\frac{2n+1}{n+1} - n\\log \\left(1+\\frac{1}{n}\\right) = \\log 2 - 1$ Which gives $2/e$",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.19",
+        "title": "Greatest common factor of $ p^4-1$",
+        "body": "I was asked to find the greatest common factor of $p^4-1$ for all primes > 5, First I got the value of $7^4 - 1$ which has divisors of $2^4* 3 *5*2$ and $11^4 - 1$ which has divisors $2^4 *3 * 5*61$ which has a GCF of $2^4*3*5$ I can prove that $p^4 - 1$ is divisible by 3 and 5 by casework and 8  by $(p^2+1)(p-1)(p+1)$ are even integers, but I don't know how to prove divisibility of $2^4$, I do not want to bash it since we must check about 7 numbers to prove its divisibility by assigning $16n + x$ where x <16",
+        "tags": [
+            "divisibility",
+            "greatest-common-divisor"
+        ]
+    },
+    {
+        "query_id": "A.20",
+        "title": "Calculate all $n \\in \\Bbb N \\setminus \\{41\\}$ such that $\\phi(n)=40$?",
+        "body": "I'm looking for an $n \\in \\Bbb N$ for which $\\phi(n) = 40$ where $\\phi$ is a Euler-Totient Function    I already found one, namely, $n=41$  How the calculate the $n's$?",
+        "tags": [
+            "totient-function"
+        ]
+    },
+    {
+        "query_id": "A.21",
+        "title": "Finding the last two digits of $9^{9^{9^{…{^9}}}}$ (nine 9s)",
+        "body": "I'm continuing on my journey learning about modular arithmetic and got confused with this question:  Find the last two digits of $9^{9^{9^{…{^9}}}}$ (nine 9s). The phi function is supposed to be used in this problem and so far this is what I've got:  $9^{9^{9^{…{^9}}}} ≡ x (\\text{mod } 100)$ Where $0 ≤ x ≤ 100$  $9^{9^{9^{…{^9}}}} \\text{ (nine 9s) }= 9^a$ In order to know $9^a (\\text{mod } 100)$, we need to know $a (\\text{mod } \\phi(100))$ As $\\phi(100)= 40$, we get $a = b (\\text{mod } 40)$  $9^{9^{9^{…{^9}}}} \\text{ (eight 9s) }= 9^b$ In order to know $9^b (\\text{mod } 40)$, we need to know $b (\\text{mod } \\phi(40))$ As $\\phi(40)= 16$, we get $b = c ( \\text{mod }16)$  $9^{9^{9^{…{^9}}}}\\text{ (seven 9s) }= 9^c $ In order to know $9^c (mod 16)$, we need to know $c (\\text{mod } phi(16))$ as $\\phi(16)= 8 $ we need to find $c (\\text{mod } 8)$  As $9 = 1 (\\text{mod } 8)$ $c = 1 (\\text{mod } 8)$  I feel like I might have made a mistake somewhere along the way because I'm having a lot of trouble stitching it all back together in order to get a value for the last two digits. Could anyone please help me with this? Thank you!",
+        "tags": [
+            "number-theory",
+            "modular-arithmetic"
+        ]
+    },
+    {
+        "query_id": "A.23",
+        "title": "How do i find the lcm",
+        "body": "Qn: If the product of two integers is  $2^7 \\cdot 3^8 \\cdot 5^2 \\cdot 7^{11}$ and their greatest common divisor is $2^3 \\cdot 3^4 \\cdot 5$, what is their least common multiple?  I have issue with this question please help me solve it.  I tried assuming that lcm is $x$ =. Then,        Gcd $\\cdot x = 2^3  \\cdot 3^4 \\cdot 5x$. And, product factors /Gcd $x$",
+        "tags": [
+            "prime-numbers",
+            "greatest-common-divisor",
+            "least-common-multiple"
+        ]
+    },
+    {
+        "query_id": "A.24",
+        "title": "Is this the only way to evaluate $\\sqrt{2i-1}?$",
+        "body": "work out the $\\sqrt{2i-1}?$  $2i-1=(a+bi)^2$  $a^2+2abi-b^2$  $a^2-b^2=-1$  $2ab=2$    $a^2=b^{-2}$  $b^{-2}-b^2=-1$  $-b^{4}+1=-1$  $b^4=2$  $b=\\sqrt[4]{2}$  Can we solve $\\sqrt{2i-1}$ in another way?",
+        "tags": [
+            "algebra-precalculus"
+        ]
+    },
+    {
+        "query_id": "A.26",
+        "title": "How to solve an indefinite integral using the Taylor series?",
+        "body": "I am trying to show that the following integral is convergent but not absolutely.     $\\int_0^\\infty\\frac{\\sin x}{x}dx.$   My attempt:     I first obtained the taylor series of $\\int_0^x\\frac{sin x}{x}dx$ which is as follows:   $x-\\frac{x^3}{3 \\times 3!}+\\frac{x^5}{5\\times5!}-\\frac{x^7}{7 \\times 7!}+\\cdots = \\sum_{n=0}^\\infty (-1)^n\\frac{x^{(2n+1)}}{(2n+1) \\times (2n+1)!} $   Now $\\int_0^\\infty\\frac{\\sin x}{x}dx=\\lim_{x\\to \\infty} \\sum_{n=0}^\\infty (-1)^n\\frac{x^{(2n+1)}}{(2n+1) \\times (2n+1)!}$  and I got stuck here! What is the next step?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "integration",
+            "taylor-expansion",
+            "riemann-integration"
+        ]
+    },
+    {
+        "query_id": "A.27",
+        "title": "What is the value of $e^{3i \\pi /2}$?",
+        "body": "When solving for the value, we know that $e^{\\pi i}=-1$ . I am confused as to what is the right answer when you evaluate this.I am getting two possible answers: $e^{3\\pi i/2}$ = $(e^{\\pi i})^{3/2}$ so this could be $(\\sqrt{-1})^3=i^3=-i$ or it could be $\\sqrt{(-1)^3}=\\sqrt{-1}=i$. Which one is the correct answer, and where am I going wrong? Thanks.",
+        "tags": [
+            "complex-numbers",
+            "exponentiation"
+        ]
+    },
+    {
+        "query_id": "A.28",
+        "title": "If $\\sin(18^\\circ)=\\frac{a + \\sqrt{b}}{c}$, then what is $a+b+c$?",
+        "body": "If $\\sin(18)=\\frac{a + \\sqrt{b}}{c}$ in the simplest form, then what is $a+b+c$? $$$ $$$ Attempt: $\\sin(18)$ in a right triangle with sides $x$ (in front of corner with angle $18$ degrees), $y$, and hypotenuse $z$, is actually just $\\frac{x}{z}$, then $x = a + \\sqrt{b}, z = c$. We can find $y$ as $ y = \\sqrt{c^{2}- (a + \\sqrt{b})^{2}} $ so we have  $ \\cos(18) = \\frac{y}{z} = \\frac{\\sqrt{c^{2}- (a + \\sqrt{b})^{2}}}{c}$  I also found out that $b = (c \\sin(18) - a)^{2} = c^{2} \\sin^{2}(18) - 2ac \\sin(18) + a^{2}$  I got no clue after this.    The solution says that $ \\sin(18) = \\frac{-1 + \\sqrt{5}}{4} $  I gotta intuition that we must find $A,B,C$ such that $ A \\sin(18)^{2} + B \\sin(18) + C = 0 $  then $\\sin(18)$ is a root iof $Ax^{2} + Bx + C$, and $a = -B, b = B^{2} - 4AC, c = 2A$.    Totally different. This question is not asking to prove that $sin(18)=(-1+\\sqrt{5})/4$, that is just part of the solution.",
+        "tags": [
+            "algebra-precalculus",
+            "trigonometry",
+            "euclidean-geometry",
+            "contest-math"
+        ]
+    },
+    {
+        "query_id": "A.29",
+        "title": "Dividing Complex Numbers by Infinity",
+        "body": "My PreCalculus teacher recently reviewed the properties of limits with us before our test and stated that any real number divided by infinity equals zero. This got me thinking and I asked them whether a complex number (i.e. $3+2i$ or $-4i$) divided by infinity would equal zero.   This completely stumped them and I was unable to get an answer. After doing some theoretical calculation, knowing that $i=\\sqrt{-1}$, I calculated that a complex number such as $\\frac{5i}{\\infty}=0$ since  $\\frac{5}{\\infty}\\cdot \\frac{\\sqrt{-1}}{\\infty} = 0\\cdot 0 = 0,$  using properties utilized with real numbers that would state that $\\frac{5x}{\\infty} = 0$ since $\\frac{5}{\\infty}\\cdot \\frac{x}{\\infty} = 0\\cdot 0 = 0.$ Is this theoretical calculation correct or is there more to the concept than this?",
+        "tags": [
+            "algebra-precalculus",
+            "limits",
+            "complex-numbers",
+            "infinity"
+        ]
+    },
+    {
+        "query_id": "A.30",
+        "title": "Find $a^3+b^3+c^3-3abc$ (binomial theorem)",
+        "body": "$a=\\sum_{n=0}^\\infty\\frac{x^{3n}}{(3n)!}\\\\b=\\sum_{n=1}^\\infty\\frac{x^{3n-2}}{(3n-2)!}\\\\c=\\sum_{n=1}^\\infty\\frac{x^{3n-1}}{(3n-1)!}$Find $a^3+b^3+c^3-3abc$:      $(a)\\ 1$      $(b)\\ 0$      $(c)-1$      $(d)-2$   Please help me solve this question.  I added $a,b$ and $c$. It gives me the expansion of $e^x$.  But i dont know how to use it.",
+        "tags": [
+            "binomial-theorem"
+        ]
+    },
+    {
+        "query_id": "A.32",
+        "title": "Are definitions axioms?",
+        "body": "I just want to ask a very elementary question.  When we introduce a \"definition\" in a first order logical system. For example when we say   Define: $Empty(x) \\iff \\not \\exists y (y \\in x) $   Isn't that definition itself an \"axiom\", call it a definitional axiom.  I'm asking this because the one place predicate symbol Empty() is actually new, it is not among the listed primitives of say Zermelo, which has only identity and membership as primitive symbols.   So when we are stating definitions are we in effect stating axioms? but instead of being about characterizing a primitive, they are definitional axioms giving a complete reference to a specified set of symbols in the system.  Is that correct?  Now if that is the case, then why we don't call it axiom when we state it, I mean why we don't say for example:  Definitional axiom 1) $Empty(x) \\iff \\not \\exists y (y \\in x)$  Zuhair",
+        "tags": [
+            "terminology",
+            "definition",
+            "first-order-logic",
+            "axioms"
+        ]
+    },
+    {
+        "query_id": "A.33",
+        "title": "Physical meaning and significance of third derivative of a function",
+        "body": "Given a physical quantity represented by a function $f(t,x)$ what is (if there is any) the actual meaning of the third derivative of $f$, $\\frac{\\partial^3 f}{\\partial t^3}$ or $\\frac{\\partial^3 f}{\\partial x^3}$",
+        "tags": [
+            "physics"
+        ]
+    },
+    {
+        "query_id": "A.35",
+        "title": "When does a function NOT have an antiderivative?",
+        "body": "I know this question may sound naïve but why can't we write $\\int e^{x^2} dx$ as $\\int e^{2x} dx$? The former does not have an antiderivative, while the latter has.  In light of this question, what are sufficient conditions for a function NOT to have an antiderivative. That is, do we need careful examination of a function to say it does not have an antiderivative or is there any way that once you see the function, you can right away say it does not have an antiderivative?",
+        "tags": [
+            "integration"
+        ]
+    },
+    {
+        "query_id": "A.36",
+        "title": "Proof by contradiction, status of initial assumption after the proof is complete.",
+        "body": "First of all I'd like to say that I have looked for the answers to my specific question and have not found it in the existing topics.  The question is fairly simple. Say, we need to  prove statement P by the method of contradiction. Assuming that $\\lnot P$ holds, using the list of statements proven earlier to hold or derived by us during the proof, we arrive to P being $true$.  $\\lnot P  \\to A_1 \\to\\ ... \\ \\to A_n \\to P$ $\\lnot P  \\to  P \\iff \\lnot(\\lnot P) \\lor P \\iff P $  We can therefore add P to the list of our proven statements, because it was derived. Most of the proofs contain something in the lines of \"the obtained contradiction proves that our initial assumption ($\\lnot P$) was wrong and so $P$ holds\".  What I don't understand is, if the initial assumption ($\\lnot P$) is thus proven to be false, then why can we be sure that anything derived from it holds (in particular, that P holds)? On the other hand, if it cannot be derived then the assumption ($\\lnot P$) can in fact be true.   Can someone explain why this type of argument cannot be used?",
+        "tags": [
+            "logic",
+            "proof-writing"
+        ]
+    },
+    {
+        "query_id": "A.37",
+        "title": "Non trivial examples of $f\\circ g = g \\circ f$ but $f^{-1} \\neq g$ and $f\\neq\\mathrm{id}\\neq g$.",
+        "body": "Are there real-valued functions $f$ and $g$ which are neither each other's inverses, the identity, nor linear, yet exhibit the behaviour $f\\circ g = g \\circ f?$  Examples such as $f(x) = 2x$ and $g(x)=3x$ are \"trivial\" in this sense.   Moreover, given a function $f$, can one go about obtaining an example of a function $g$ which commutes with $f$?   I suppose this would be similar to fixed point iteration? E.g. if $f\\colon\\mathbb R\\smallsetminus\\{1\\}\\to\\mathbb R$ is defined by $f(x) = 2x/(1-x)$, I would need a function $g$ such that  $g(x) = f^{-1}\\circ g\\circ f =\\frac{g(\\frac{2x}{1-x})}{2+g(\\frac{2x}{1-x})},$ so maybe choosing an appropriate \"starting function\" $g_0$ and finding a fixed point of $g_{n+1} \\mapsto f^{-1}\\circ g_n\\circ f$ would be a possible strategy, but I can't seem to find a suitable $g_0$.",
+        "tags": [
+            "real-analysis",
+            "functional-analysis",
+            "functions"
+        ]
+    },
+    {
+        "query_id": "A.38",
+        "title": "Uses of Axiom of Choice",
+        "body": "I am a first-year maths student but I occasionally drift away from our taught material. Some years ago I saw the ZFC axioms for the first time, but now that I am in college, and although the stuff I've been taught so far is nowhere near ZFC (in terms of difficulty), it happened to me that we use the axiom of choice all the time in every module, even if we don't know it by name yet.  For example, in the proof that, for every non-negative integers $a, b$, there exist integers $q, r: a = bq + r$ (with the known restrictions on r), and the proof starts like this: $Choose$ the largest integer $q : qb &lt;= a$... blah blah blah.  Is it the axiom of choice that allows us to execute this simple yet so important step?   And a couple more questions: Can you name some other simple proofs, theorems, results etc for which the axiom of choice is essential?  Also, I've read that AOC has long been a topic of dispute for mathematicians, and that even today, some people do not accept it. Are there any alternative axiomatic systems that work equally well without needing AOC? Thanks!",
+        "tags": [
+            "set-theory"
+        ]
+    },
+    {
+        "query_id": "A.39",
+        "title": "How to know which value is bigger?",
+        "body": "Which is bigger between $2018^{2019}$ or $\\ 2019^{2018}\\ $?  When taking logs of both sides and  I get:   $2019\\log(2018)\\ $ and $\\ 2018 \\log(2019)$  I know $\\log 2019\\gt \\log 2018$ so does this mean that $2019^{2018}$ is the biggest one? And did I do it properly?",
+        "tags": [
+            "algebra-precalculus",
+            "logarithms"
+        ]
+    },
+    {
+        "query_id": "A.40",
+        "title": "What is the meaning of the term \"linear\"",
+        "body": "$a_1x_1+a_2x_2+a_3x_3+...+a_nx_n=$ is called a linear equation because it represents the equation of a line in an n dimensional space. So \"linear\" comes from the word \"line\".Basically there should not be any higher power of x failing which the graph of the function will not be a straight line.  simillarly  $a(x)y+b(x)y'+c(x)y\"+d(x)y'''+...+q(x)=0$ is also called linear differential equation because all the derivatives have power equal to 1 which is similar to the above definition of a linear equation.  A function f is called linear if: $f(x+y)=f(x)+f(y)$ and $f(cx)=cf(x)$. Here c is a constant. In this definition of linearity of function \"$f$\" what does the word linear means? How does it relate to a straight line?  Finally what does the term linear means in case of linear vector spaces? Where is the reference to a straight line?  So, whether linear is just a word used in different contexts? Does it have different meaning in different situation? Or linearity refers to some relation to a straight line? At Least please explain how the linearity of function f and linear vector space relate to the equation of a line.",
+        "tags": [
+            "linear-algebra"
+        ]
+    },
+    {
+        "query_id": "A.41",
+        "title": "Confusion in how to find number of onto functions if two sets are given",
+        "body": "In the book it is given if A and B are two finite sets containing $m$ and $n$ elements, respectively, then the number of onto functions from A to B will be if   $n \\leq m$   $\\sum_{r=1}^n (-1)^{(n-r)} {n \\choose r}(r)^m $  well I can't understand it and I am aware with combinations.",
+        "tags": [
+            "combinatorics",
+            "functions",
+            "combinations"
+        ]
+    },
+    {
+        "query_id": "A.42",
+        "title": "What is a simple, physical situation where complex numbers emerge naturally?",
+        "body": "I'm trying to teach middle schoolers about the emergence of complex numbers and I want to motivate this organically. By this, I mean some sort of real world problem that people were trying to solve that led them to realize that we needed to extend the real numbers to the complex.   For instance, the Greeks were forced to recognize irrational numbers not for pure mathematical reasons, but because the length of the diagonal of a square with unit length really is irrational, and this is the kind of geometrical situation they were already dealing with. What similar situation would lead to complex numbers in terms that kids could appreciate?  I could just say, try to solve the equation $x^2 + 1 = 0$, but that's not something from the physical world. I could also give an abstract sort of answer, like that $\\sqrt{-1}$ is just an object that we define to have certain properties that turn out to be consistent and important, but I think that won't be entirely satisfying to kids either.",
+        "tags": [
+            "complex-numbers",
+            "physics",
+            "applications"
+        ]
+    },
+    {
+        "query_id": "A.43",
+        "title": "Prove $\\sum_{n\\geq1}\\frac1{n^2+1}=\\frac{\\pi\\coth\\pi-1}2$",
+        "body": "I am trying to prove  $\\sum_{n\\geq1}\\frac1{n^2+1}=\\frac{\\pi\\coth\\pi-1}2$ Letting $S=\\sum_{n\\geq1}\\frac1{n^2+1}$ we recall the Fourier series for the exponential function $e^x=\\frac{\\sinh\\pi}\\pi+\\frac{2\\sinh\\pi}\\pi\\sum_{n\\geq1}\\frac{(-1)^n}{n^2+1}(\\cos nx-n\\sin nx)$ Plugging in $x=\\pi$ $e^\\pi=\\frac{\\sinh\\pi}\\pi+\\frac{2\\sinh\\pi}\\pi\\sum_{n\\geq1}\\frac{(-1)^n}{n^2+1}(\\cos n\\pi-n\\sin n\\pi)$ $e^\\pi=\\frac{\\sinh\\pi}\\pi+\\frac{2\\sinh\\pi}\\pi\\sum_{n\\geq1}\\frac{(-1)^n}{n^2+1}((-1)^n-n\\cdot0)$ $e^\\pi=\\frac{\\sinh\\pi}\\pi+\\frac{2\\sinh\\pi}\\pi S$ $S=\\frac{\\pi e^\\pi}{2\\sinh\\pi}-\\frac12$ But that is nowhere near to correct. What did I do wrong, and how do can I prove the identity? Thanks.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.44",
+        "title": "For $A,B \\in \\mathscr{M}_{2\\times2}(\\mathbb{Q}) $ of finite order, show that $AB$ has infinite order",
+        "body": "Let $G$ be the group $ ( \\mathscr{M}_{2\\times2}(\\mathbb{Q}) , \\times ) $ of nonsingular matrices.  Let $ A = \\left ( \\begin{matrix}  0 &amp; -1 \\\\   1 &amp; 0  \\end{matrix} \\right ) $, the order of $A$ is $4$;  Let $ B = \\left ( \\begin{matrix}  0 &amp; 1 \\\\   -1 &amp; -1  \\end{matrix} \\right ) $, the order of $B$ is $3$.  Show that $AB$ has infinite order.    The only reasoning possible here is by contradiction as $G$ is not abelian. And so I tried, but I got stuck before any concrete development.  Any hints are welcome, Thanks.",
+        "tags": [
+            "matrices",
+            "group-theory",
+            "cyclic-groups"
+        ]
+    },
+    {
+        "query_id": "A.45",
+        "title": "How to prove that {$\\sin(x) , \\sin(2x) , \\sin(3x) ,...,\\sin(nx)$} is independent in $\\mathbb{R}$?",
+        "body": "Prove that {$\\sin(x) , \\sin(2x) , \\sin(3x) ,...,\\sin(nx)$} is independent in $\\mathbb{R}$   my trial :  we know that the Wronsekian shouldn't be $0$ to get the trivial solution and thus they are independent. its not trivial to show that $ W \\not = 0$  W =   $\\begin{vmatrix} (1)\\sin(x) &amp; (1)\\sin(2x) &amp; (1)\\sin(3x) &amp;  ... &amp;   (1)\\sin(nx) \\\\ (1)\\cos(x) &amp; (2)\\cos(2x) &amp; (3)\\cos(3x) &amp;  ... &amp;   (n)\\cos(nx) \\\\  -(1)^2\\sin(x) &amp; -(2)^2\\sin(2x) &amp; -(3)^2\\sin(3x) &amp;  ... &amp;   -(n)^2\\sin(nx) \\\\ -(1)^3\\cos(x) &amp; -(2)^3\\cos(2x) &amp; -(3)^3\\cos(3x) &amp;  ... &amp;   -(n)^3\\cos(nx) \\\\ \\end{vmatrix}$  and so on. it looks like Vandermonde matrix but i cant prove that and so we conclude that its $W\\not =0$",
+        "tags": [
+            "ordinary-differential-equations"
+        ]
+    },
+    {
+        "query_id": "A.47",
+        "title": "Prove that for a given prime $p$ and each $0 < r < p-1$, there exists a $q$ such that $rq \\equiv 1 \\bmod p$",
+        "body": "Prove that for a given prime $p$ and each $0 &lt; r &lt; p-1$, there exists a $q$ such that   $rq \\equiv 1 \\bmod p$  I've only taken one intro number theory course (years ago), and this just popped up in a computer science class (homework). I was assuming that this proof would be elementary since my current class in an algorithm cours, but after the few basic attempts I've tried it didn't look promising. Here's a couple approaches I thought of:    (reverse engineer)  To arrive at the conclusion we would need  $rq - 1 = kp$  for some $k$. A little manipulation:  $qr - kp = 1$  That looks familiar, but I can't see anything from it.    (sum on $r$)  $\\sum_{r=1}^{p-2} r = \\frac{(p-2)(p-1)}{2} = p\\frac{p - 3}{2} + 1 \\equiv 1 \\bmod p$  which looks good but I don't know how to incorporate $r$ int0 the final equality.      (Wilson's Theorem—proved by Lagrange)    I vaguely recall this theorem, but I was looking at it in an old book and it wasn't easy to see how we arrived there. Anyways, $p$ is prime iff $(p-1)! \\equiv -1 \\bmod p$  Here the $r$ multiplier is built in to the factorial expression so I was thinking of adding $2$ to either side  $(p-1)! + 2 \\equiv 1 \\bmod p$  which is a dead end (pretty sure). But then I was thinking, maybe multiplying Wilson't Thm by $(p+1)$? Then getting  $(p+1)(p-1)! = -(p+1) \\bmod p$  which I think results in  $(p+1)(p-1)! = 1 \\bmod p$  of which $r$ is a multiple and $q$ is obvious. But I'm not sure if that's valid.",
+        "tags": [
+            "elementary-number-theory",
+            "proof-verification"
+        ]
+    },
+    {
+        "query_id": "A.48",
+        "title": "Hints for showing that if $x,y \\geq 0$, then $(x+y)^k \\geq x^k + y^k$ for all $k \\geq 1$",
+        "body": "I'm trying to show the following:          If $x,y \\geq 0$, then $(x+y)^k \\geq x^k + y^k$ for all $k \\in \\mathbb{R_{\\geq 1}}$      So, far I've tried a few things, but nothing seems to stick. Clearly $x \\leq x+ y$ and since both sides of the inequality are positive, the inequality $x^k \\leq (x + y)^k$ will hold for $k \\geq 1$. Similarly, $y^k \\leq (x+y)^k$. Adding both inequalities together, we obtain: $x^k + y^k \\leq 2(x+y)^k$. While this is close, of course, it is not what we want to show.  Alternatively, I was thinking that if we fix $x,y \\geq 0$, let $f(k) = (x+y)^k$, and let $g(k) = x^k + y^k$, we can show using the binomial theorem that $(x+y)^r \\geq x^r + y^r$ for all $r \\in \\mathbb{Z^+}$. Then, if we can show both $f$ and $g$ intersect only when $k =1 $, we might have better luck proving the statement since then we would have $(x+y)^r &gt; x^r + y^r$ for all positive integers $r \\geq 2$. A real number $m \\notin \\mathbb{Z}$ with the property that $f(m) = g(m)$ could not then exist since then that would violate the fact that $k=1$ is the only intersection. We could then invoke the continuity of $f$ and $g$ together with the fact that $(x+y)^r &gt; x^r + y^r$ for all positive integers $r \\geq 2$ to obtain our result. Of course, all of this is dependent on rigorously showing that $f$ and $g$ intersect only when $k=1$.  Otherwise, I'm running low on ideas. Any hints would be greatly appreciated.",
+        "tags": [
+            "real-analysis",
+            "functions",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.49",
+        "title": "Is there a simple combinatoric interpretation of this identity?",
+        "body": "I came across an exercise in which we are asked to prove the identity:  ${2n\\choose n}=\\sum_{k=0}^n{n\\choose k}^2$  The exercise gives the hint:  $\\left(1+x\\right)^{2n}=\\left[(1+x)^n\\right]^2$  It's not too difficult to use the hint to prove the identity (the expressions in the identity are the coefficients of $x^n$ in the respective expansions of the expressions in the hint, which of course must be the same number), but I was wondering whether there is a neater equivalent-counting interpretation...  It's clear that ${2n \\choose n}$ is the number of ways in which we can choose half the elements in a set (where this is possible): how can we interpret $\\sum_{k=0}^n{n\\choose k}^2$ equivalently?",
+        "tags": [
+            "combinatorics",
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.50",
+        "title": "Divergent series $\\sum{\\frac{1}{n^{2+\\cos{n}}}}$",
+        "body": "Bonjour.  Show that  $\\sum{\\frac{1}{n^{2+\\cos{n}}}}$ is a divergent serie. $\\\\$  My main problem is: If $\\epsilon$ is “infinitely small positive real number” define $A_{\\epsilon}$ as the set of all $n, |2+\\cos n|\\leq 1+\\epsilon$ $(n \\in A_{\\epsilon}\\iff-1\\leq \\cos n \\leq -1+\\epsilon)$. The divergence should come from the sum over $A_{\\epsilon}$ but I have no idea to how to handle this. $\\\\$",
+        "tags": [
+            "real-analysis",
+            "integration",
+            "sequences-and-series",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.51",
+        "title": "Sum of series having binomial coefficients",
+        "body": "Prove that $\\displaystyle \\sum_{r=0}^n {n+r\\choose r} \\frac{1}{2^{r}}= 2^{n}$  what i try  $\\binom{n}{n}+\\binom{n+1}{1}\\frac{1}{2}+\\binom{n+2}{2}\\frac{1}{2^2}+\\binom{n+3}{3}\\frac{1}{2^3}+\\cdots +\\binom{n+n}{n}\\frac{1}{2^n}$  $\\binom{n}{n}+\\binom{n+1}{n}\\frac{1}{2}+\\binom{n+2}{n}\\frac{1}{2^2}+\\binom{n+3}{n}\\frac{1}{2^3}+\\cdots +\\binom{n+n}{n}\\frac{1}{2^n}.$  coefficient of $x^n$ in   $(1+x)^n+(1+x)^{n+1}\\frac{1}{2}+(1+x)^{n+2}\\frac{1}{2^2}+\\cdots\\cdots +(1+x)^{2n}\\frac{1}{2^n}.$  How do i solve ithelp me plesse",
+        "tags": [
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.52",
+        "title": "Prove $\\forall n\\in\\mathbb{N}$, $\\exists m\\in\\mathbb{N}$ s.t. $m>n$ and $m$ is prime",
+        "body": "There are two parts I am having trouble getting started.  A. Prove that $n_1, n_2,...,n_k\\in\\mathbb{N}$ are each at least $2$ then $n=n_1n_2...n_k+1$ is not divisible by any numbers $n_1, n_2,...,n_k$.   B. Prove that the truth of the negation leads to a contradiction. (Use theorem: For all $a,b\\in\\mathbb{N}$ there exist a unique quotient $q$ and remainder $r$ in $\\mathbb{Z^+}$ such that we have both $a=qb+r$ and $0\\leq r&lt;q$.)  For part A, I started with, given $k\\in\\mathbb{N}$ and $n_1, n_2,...,n_k\\geq1$, I'll show that $\\forall i$, $n_i \\nmid n=n_1n_2...n_k+1$ to set it up, but I'm not sure how to actually go about starting it.  For part B, I know that the negation is $\\exists n\\in\\mathbb{N}$ s.t. $\\forall m\\in\\mathbb{N}$ either $m\\leq n$ or $m$ is not prime, but again I'm not sure what I should do to start the proof or exactly how to incorporate that theorem.",
+        "tags": [
+            "proof-writing",
+            "prime-numbers"
+        ]
+    },
+    {
+        "query_id": "A.53",
+        "title": "Show that one-sided inverse of a square matrix is a true inverse",
+        "body": "We know that for a group element $g\\in G$, $gh=1$ does not necessarily mean that $hg = 1$. In the case for matrices (linear maps between vector spaces), it is also true that $AB = 1 \\nRightarrow BA = 1$. This happens when the $A$ and $B$ are not square matrices (in which case they do not even form a group under multiplication).  However if we restrict the square matrices, $AB = 1 \\Rightarrow BA = 1$. What is simple proof of this that avoids chasing the entries, and makes use simply the vector space structure of linear transformations?  (In fact if we could prove this, I think this might imply that for a group to have one-sided(but not two-sided) inverses, it has to be infinite, since every finite group admits a finite dimensional representation.",
+        "tags": [
+            "linear-algebra",
+            "group-theory"
+        ]
+    },
+    {
+        "query_id": "A.54",
+        "title": "By using a diagonal argument, show that the powerset $P(N) = (S|S ⊆ N)$ is uncountable.",
+        "body": "Any tips or solutions for this one?  By using a diagonal argument, show that the powerset $P(N) = (S|S ⊆ N)$ is uncountable.",
+        "tags": [
+            "discrete-mathematics",
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.55",
+        "title": "$\\frac{1}{\\sqrt{-1}}=\\sqrt{-1}$?",
+        "body": "I have trouble to comprehend what my mistake is in the following calculation:  If we set $\\sqrt{-1}$ to be the new number with the property that $(\\sqrt{-1})^2 = -1$ then I can write $\\frac{1}{\\sqrt{-1}}=\\sqrt{\\frac{1}{-1}}=\\sqrt{-1}.$  But we also have (and I know this is the correct result) $ \\frac{1}{\\sqrt{-1}}\\cdot\\frac{\\sqrt{-1}}{\\sqrt{-1}}=\\frac{\\sqrt{-1}}{-1}=-\\sqrt{-1}$  What am I missing? Thanks.",
+        "tags": [
+            "complex-numbers",
+            "definition"
+        ]
+    },
+    {
+        "query_id": "A.56",
+        "title": "A curious logical formula involving prime numbers",
+        "body": "Let $S$ be a nonempty set of natural numbers. Is the following formula $ \\exists p\\ \\bigl(\\text{$p$ is prime } \\rightarrow \\forall x  \\text{ ($x$ is prime)}\\bigr)  $ true or false on $S$? I know the answer to this question, but what would be the shortest way to arrive to the conclusion using some deduction system?",
+        "tags": [
+            "logic",
+            "first-order-logic"
+        ]
+    },
+    {
+        "query_id": "A.58",
+        "title": "Prove that $3\\arcsin \\frac{1}{4} + \\arccos \\frac {11}{16} = \\frac {\\pi}{2}$",
+        "body": "Can someone help me with this exercise? I honestly don't know where to start and how to prove it. You don't have to answer it fully, just give me a hint or something. Thank you in advance.     Exercise 1. Prove that  $3\\arcsin \\frac{1}{4} + \\arccos \\frac {11}{16} = \\frac {\\pi}{2}$   Thanks.",
+        "tags": [
+            "trigonometry"
+        ]
+    },
+    {
+        "query_id": "A.59",
+        "title": "Multiple proofs of $\\sum_{d|n}{\\phi(d)}=n$",
+        "body": "I am looking for multiple proofs of that statement: here $\\phi(n)$ denotes the Euler’s totient  $\\sum_{d|n}{\\phi(d)}=n$   Here’s one:   By unique factorisation theorem: $n=\\prod_{k=1}^{m}{p_k^{\\alpha_k}}$ and $d=\\prod_{k=1}^{m}{p_k^{\\beta_k}}$ where $0\\leq \\beta_k\\leq \\alpha_k$ so:   $\\begin{align} \\sum_{d|n}{\\phi(d)}&amp;=\\sum_{0\\leq \\beta_k\\leq \\alpha_k}{\\phi\\left(\\prod_{k=1}^{m}{p_k^{\\beta_k}}\\right)}\\\\ &amp;= \\sum_{0\\leq \\beta_k\\leq \\alpha_k}{\\prod_{k=1}^{m}\\phi({p_k^{\\beta_k})}}\\\\ &amp;=\\sum_{0\\leq \\beta_k\\leq \\alpha_k}{\\prod_{k=1}^{m}{(p_k^{\\beta_k}-p_k^{\\beta_k-1}})}\\\\ &amp;=\\prod_{k=1}^{m}{\\sum_{0\\leq \\beta_k\\leq \\alpha_k}{(p_k^{\\beta_k}-p_k^{\\beta_k-1}}})\\\\ &amp;= \\prod_{k=1}^{m}{p_k^{\\alpha_k}}\\\\ &amp;=n. \\end{align}$",
+        "tags": [
+            "group-theory",
+            "number-theory",
+            "alternative-proof",
+            "big-list"
+        ]
+    },
+    {
+        "query_id": "A.60",
+        "title": "Limiting value of a sequence when n tends to infinity",
+        "body": "Q) Let, $a_{n} \\;=\\; \\left ( 1-\\frac{1}{\\sqrt{2}} \\right ) ... \\left ( 1- \\frac{1}{\\sqrt{n+1}} \\right )$ , $n \\geq 1$. Then $\\lim_{n\\rightarrow \\infty } a_{n}$  (A) equals $1$  (B) does not exist  (C) equals $\\frac{1}{\\sqrt{\\pi }}$  (D) equals $0$    My Approach :- I am not getting a particular direction or any procedure to simplify $a_{n}$ and find its value when n tends to infinity. So, I tried like this simple way to substitute values and trying to find the limiting value :- $\\left ( 1-\\frac{1}{\\sqrt{1+1}} \\right ) * \\left ( 1-\\frac{1}{\\sqrt{2+1}} \\right )*\\left ( 1-\\frac{1}{\\sqrt{3+1}} \\right )*\\left ( 1-\\frac{1}{\\sqrt{4+1}} \\right )*\\left ( 1-\\frac{1}{\\sqrt{5+1}} \\right )*\\left ( 1-\\frac{1}{\\sqrt{6+1}} \\right )*\\left ( 1-\\frac{1}{\\sqrt{7+1}} \\right )*\\left ( 1-\\frac{1}{\\sqrt{8+1}} \\right )*.........*\\left ( 1-\\frac{1}{\\sqrt{n+1}}    \\right )$     =$(0.293)*(0.423)*(0.5)*(0.553)*(0.622)*(0.647)*(0.667)* ....$ =0.009*...  So, here value is tending to zero. I think option $(D)$ is correct. I have tried like this $\\left ( \\frac{\\sqrt{2}-1}{\\sqrt{2}} \\right )*\\left ( \\frac{\\sqrt{3}-1}{\\sqrt{3}} \\right )*\\left ( \\frac{\\sqrt{4}-1}{\\sqrt{4}} \\right )*.......\\left ( \\frac{\\sqrt{(n+1)}-1}{\\sqrt{n+1}} \\right )$ = $\\left ( \\frac{(\\sqrt{2}-1)*(\\sqrt{3}-1)*(\\sqrt{4}-1)*.......*(\\sqrt{n+1}-1)}{{\\sqrt{(n+1)!}}} \\right )$ Now, again I stuck how to simplify further and find the value for which $a_{n}$ converges when $n$ tends to infinity . Please help if there is any procedure to solve this question.",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "limits",
+            "products"
+        ]
+    },
+    {
+        "query_id": "A.61",
+        "title": "There exists $i, j \\in \\mathbb{N}$ such that $n=3i+5j$ for $n\\ge 8$",
+        "body": "Prove that there exists $i, j \\in \\mathbb{N}$ such that $n=3i+5j$ for $n\\ge 8$   I'm having a hard time with this exercise, I'm trying to prove it by induction:  Basis step:   $n=8 \\implies 8=3\\cdot1+5\\cdot 1$ $n=9 \\implies 9=3\\cdot3+5\\cdot0$ $n=10 \\implies 10=3\\cdot0+5\\cdot2$   Induction step:  If it's true for $n=h$ then it must be true for $n=h+1$.  So now, I don't know how to begin proving that $k+1=3i+5j$.",
+        "tags": [
+            "elementary-number-theory",
+            "discrete-mathematics",
+            "induction",
+            "diophantine-equations"
+        ]
+    },
+    {
+        "query_id": "A.62",
+        "title": "Prove that the cardinality of the set of rational numbers and the set of integers is equal",
+        "body": "I just learned about cardinality in my discrete class a few days ago, and this is in the homework. This is all fairly confusing to me, and I'm not entirely sure where to even start. Here's the full question:  Let $\\mathbb{Q}$ denote the set of rational numbers and $\\mathbb{Z}$ denote the set of integers. Prove that $|\\mathbb{Q}| = |\\mathbb{Z}|$.  I thought about saying that every element in $\\mathbb{Q}$ can be written as some element in $\\mathbb{Z} \\times \\mathbb{Z}$, but I still don't know how to prove that that is a bijection, or even how to prove that $|\\mathbb{Z} \\times \\mathbb{Z}| = |\\mathbb{Z}|$.  Any help would be greatly appreciated.",
+        "tags": [
+            "discrete-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.63",
+        "title": "$\\gcd$ and $\\text{lcm}$ of more than $2$ positive integers",
+        "body": "For any two positive integers ${n_1,n_2}$, the relationship between their greatest common divisor and their least common multiple is given by  $\\text{lcm}(n_1,n_2)=\\frac{n_1 n_2}{\\gcd(n_1,n_2)}$  If I have a set of $r$ positive integers ${n_1,n_2,n_3,...,n_r}$, does the same relationship hold? Is it true that  $\\text{lcm}(n_1,n_2,n_3,...,n_r)=\\frac{\\prod_{i=1}^r n_i}{gcd(n_1,n2,n_3,...,n_r)}$  I feel like this should be easy to prove, but I'm struggling to get a handle on it.",
+        "tags": [
+            "proof-explanation",
+            "greatest-common-divisor",
+            "least-common-multiple"
+        ]
+    },
+    {
+        "query_id": "A.65",
+        "title": "How can we show that $e^{-2\\lambda t}\\lambda^2\\le\\frac1{e^2t^2}$ for all $\\lambda,t\\ge0$?",
+        "body": "How can we show that $e^{-2\\lambda t}\\lambda^2\\le\\frac1{e^2t^2}\\tag1$ for all $\\lambda,t\\ge0$?  Applying $\\ln$ to both sides yields that $(1)$ should be equivalent to $t\\lambda\\le e^{t\\lambda-1}\\tag2.$ So, if I did no mistake, it should suffice to show $x\\le e^{x-1}$ for all $x\\ge0$. How can we do this?",
+        "tags": [
+            "calculus",
+            "inequality",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.66",
+        "title": "if $x,h \\in \\mathbb{R}^d$ and $A \\in \\mathbb{R}^{d\\times d}$ is it possible to justify that $(x^TAh)^T = h^TA^Tx$?",
+        "body": "if $x,h \\in \\mathbb{R}^d$ and $A \\in \\mathbb{R}^{d\\times d}$  is it possible to justify that $(x^TAh)^T = h^TA^Tx$?",
+        "tags": [
+            "linear-algebra",
+            "transpose"
+        ]
+    },
+    {
+        "query_id": "A.67",
+        "title": "Combination of matrixes",
+        "body": "If A is a $k\\times k$ matrix,B is a $k\\times l$ matrix and C is a $l\\times l$ matrix prove that:  $\\det{\\begin{bmatrix}A&amp;B\\\\O&amp;C\\end{bmatrix}}=\\det(A)\\det(C)$  O is the matrix that all it's elements are equal to zero.  I know some rules for calculating determinants but I don't know how to begin in this question.",
+        "tags": [
+            "calculus",
+            "determinant"
+        ]
+    },
+    {
+        "query_id": "A.68",
+        "title": "Prove $a^n+1$ is divisible by $a + 1$ if $n$ is odd",
+        "body": "Prove $a^n+1$ is divisible by $a + 1$ if $n$ is odd:  We know $a$ cannot be $-1$ and the $n \\in \\mathbb{N}$. Since $n$ must be odd, we can rewrite $n$ as $2k+1$. Now we assume it holds for prove that it holds for the next term.  $a^{2(k+1)+1}+1$ $=a^{2k+3}+1$ $=a^3\\cdot a^{2k}+1$ $=(a^3+1)\\cdot a^{2k} -a^{2k}+1$  Im not sure on what to do next. Since $a^{2k}$ means that the exponential term will be even and thus you cant use the fact that $a^n+1$ is divisible by $a + 1$ if $n$ is odd.",
+        "tags": [
+            "polynomials",
+            "induction",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.69",
+        "title": "Induction with two variable parameters",
+        "body": "So I was assigned this homework problem: $\\ {s \\choose s} + {s+1 \\choose s} +...+ {n \\choose s} = {n+1 \\choose s+1}$ for all s and all $n \\geq s$ I've tried to email both my professor and my TA and their explanations seem contradictory. My professor responded saying the statement I need to prove is \"The formula is correct for $0 \\leq s \\leq n$.\" Whereas my TA told me I need to use induction on both variables and I'm not sure how to do that. Any help is appreciated!",
+        "tags": [
+            "combinatorics"
+        ]
+    },
+    {
+        "query_id": "A.72",
+        "title": "Is it possible that $\\mathcal{X} = \\mathcal{Y}$, yet $\\mathcal{X} \\in \\mathcal{Y}$?",
+        "body": "Is it possible for a set to equal another set, yet the former set be an element in the latter set?  I.e.:  $\\mathcal{X} = \\mathcal{Y}$, yet $\\mathcal{X} \\in \\mathcal{Y}$",
+        "tags": [
+            "set-theory",
+            "axioms"
+        ]
+    },
+    {
+        "query_id": "A.74",
+        "title": "Show that the image of the function $f:(0,\\infty)\\rightarrow \\mathbb{R}$, $f(x)=x+\\dfrac{1}{x}$ is the interval $[2,\\infty)$.",
+        "body": "Show that the image of the function $f:(0,\\infty)\\rightarrow \\mathbb{R}$, $f(x)=x+\\dfrac{1}{x}$ is the interval $[2,\\infty)$.   If $x=1$, then $f(1)=2$. So how can I show that the mage of the function is the interval $[2,\\infty)$?",
+        "tags": [
+            "functions",
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.75",
+        "title": "Prove that for each integer $m$, $ \\lim_{u\\to \\infty} \\frac{u^m}{e^u} = 0 $",
+        "body": "I'm unsure how to show  that for each integer $m$, $ \\lim_{u\\to \\infty} \\frac{u^m}{e^u} = 0 $.   Looking at the solutions it starts with $e^u$ $&gt;$ $\\frac{u^{m+1}}{(m+1)!}$ but not sure how this is a logical step.",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.77",
+        "title": "Show that the relation $(- 1) (- 1) = 1$ is a consequence of the distributive law",
+        "body": "Show that the relation $(- 1) (- 1) =  1$ is a consequence of the distributive law.   This question is the first problem from 'Number Theory for Beginners\" by Andre Weil. I cannot get the point from where to begin. I tried using $1\\cdot 1 = 1$ and $ 1\\cdot x = x $, but couldn't get somewhere. Can you help me just with a hint? I would be willing to work up from there.",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.79",
+        "title": "Inequality with complex exponential",
+        "body": "Rudin in Real and Complex Analysis uses this in a proof near the beginning of chapter 9:     $\\displaystyle \\left \\vert{ \\frac {e^{-ixu}-1}{u}}\\right\\vert \\le \\vert x \\vert$ for all real $u \\ne 0$   Why is this true?  Edit: I believe $x$ is real",
+        "tags": [
+            "inequality",
+            "exponential-function",
+            "fourier-transform"
+        ]
+    },
+    {
+        "query_id": "A.80",
+        "title": "Why does this proof that the set of all finite subsets of N is a countable set not work for the set of all subsets of N?",
+        "body": "I found this proof in a StackExchange thread and found it pretty understandable and simple:  \"The other answers give some sort of formula, like you were trying to do.  But, the simplest way to see that the set of all finite subsets of $\\mathbb{N}$ is countable is probably the following.  If you can list out the elements of a set, with one coming first, then the next, and so on, then that shows the set is countable.  There is an easy pattern to see here.  Just start out with the least elements.  $\\emptyset, \\{1\\}, \\{2\\}, \\{1, 2\\}, \\{3\\}, \\{1, 3\\}, \\{2, 3\\}, \\{1, 2, 3\\}, \\{4\\}, \\ldots$  In other words, first comes $\\{1\\}$, then comes $\\{2\\}$.  Each time you introduce a new integer, $n$, list all the subsets of $[n] = \\{1, 2, \\ldots, n\\}$ that contain $n$ (the ones that don't contain $n$ have already showed up).  Therefore, all subsets of $[n]$ show up in the first $2^{n}$ elements of this sequence.\"  I understand how it applies for finite subsets of N, but I cant really pinpoint of why it would not apply to a set of all subsets of N. We could continue this scheme for ever, couldnt we?  I assume that I think in a wrong way about infinity but I am not quite sure. Any help is greatly appreciated!",
+        "tags": [
+            "analysis",
+            "elementary-set-theory",
+            "proof-explanation"
+        ]
+    },
+    {
+        "query_id": "A.83",
+        "title": "Is the sequence of sums of inverse of natural numbers bounded?",
+        "body": "I'm reading through Spivak Ch.22 (Infinite Sequences) right now. He mentioned in the written portion that it's often not a trivial matter to determine the boundedness of sequences. With that in mind, he gave us a sequence to chew on before we learn more about boundedness. That sequence is:  $1, 1+\\frac{1}{2}, 1+\\frac{1}{2}+\\frac{1}{3}, 1+\\frac{1}{2}+\\frac{1}{3}+\\frac{1}{4}, . . .$  I know that a sequence is bounded above if there is a number $M$ such that $a_n\\leq M$ for all $n$. Any hints here?",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "harmonic-numbers"
+        ]
+    },
+    {
+        "query_id": "A.85",
+        "title": "Expected number of steps for a bug to reach position $N$",
+        "body": "A bug starts at time $0$ at position $0$. At each step, the bug either moves to the right by $1$ step $(+1)$ with probability $1/2$, or returns to the origin with probability $1/2$. What is the expected number of steps for this bug to reach position $N$?  I tried to first find the possibility that this bug reaches $N$ as the number of steps goes to infinity. The recurrence equation I find is $p_n = \\frac{1}{2}p_{n-1}$, where $p_n$ is the possibility for the bug starting at position $n$ to reach $N$. We also have the boundary condition $p_N = 1$. Then we see that $p_{N-1}=2$, and that $p_0 = 2^N$, which doesn't make sense at all because it is greater than $1$. I think I should sort out the value of probability first, and think about the number of expected steps later.  I'm sure there is something wrong with the recurrence equation, but what's wrong about it?",
+        "tags": [
+            "markov-chains",
+            "random-walk"
+        ]
+    },
+    {
+        "query_id": "A.86",
+        "title": "Is it true that $\\sum_{k=0}^{n}k\\cdot \\left(\\begin{array}{l}{n}\\\\{k}\\end{array}\\right)=O\\left(2 ^ {n\\log _{3}n}\\right)?$",
+        "body": "Problem: Is it true that $\\sum_{k=0}^{n}k\\cdot \\left(\\begin{array}{l}{n}\\\\{k}\\end{array}\\right)=O\\left( 2 ^ {n\\log _{3}n}\\right)?$  My start of solution: $\\sum_{k=0}^{n}k\\cdot \\left(\\begin{array}{l}{n}\\\\{k}\\end{array}\\right)\\leq \\sum_{k=0}^{n}k\\cdot \\left(\\begin{array}{l}{n}\\\\{\\lfloor \\frac{n}{2}\\rfloor}\\end{array}\\right)\\leq \\frac{n\\cdot(n+1)}{2}\\cdot \\left(\\begin{array}{l}{n}\\\\{\\lfloor \\frac{n}{2}\\rfloor}\\end{array}\\right)\\leq n(n+1)! \\leq nn^n \\leq n^{n+1}$  I think this upper bound is way too large and I can't seem to find a solution.",
+        "tags": [
+            "combinatorics",
+            "elementary-number-theory",
+            "discrete-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.87",
+        "title": "Is it true that $\\forall n \\in \\Bbb{N} : (\\sum_{i=1}^{n} a_{i} ) (\\sum_{i=1}^{n} \\frac{1}{a_{i}} ) \\ge n^2$ , if all $a_{i}$ are positive?",
+        "body": "If  $\\forall i \\in \\Bbb{N}: a_{i} \\in \\Bbb{R}^+$ , is it true that $\\forall n \\in \\Bbb{N} : \\big(\\sum_{i=1}^{n}a_{i}\\big) \\big(\\sum_{i=1}^{n}  \\frac{1}{a_{i}}\\big) \\ge n^2$ ?   I have been able to prove that this holds for $n=1$ , $n=2$, and $n=3$ using the following lemma:     Lemma 1:  Let $a,b \\in \\Bbb{R}^+$. If $ab =1$ then $a+b \\ge 2$   For example, the case for $n=3$ can be proven like this:  Let $a,b,c \\in \\Bbb{R}^+$. Then we have:  $(a+b+c)\\big(\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c}\\big) = 1 + \\frac{a}{b} + \\frac{a}{c} + \\frac{b}{a} + 1 + \\frac{b}{c} + \\frac{c}{a} + \\frac{c}{b}  + 1 $  $= 3 + \\big(\\frac{a}{b}  + \\frac{b}{a}\\big) + \\big(\\frac{a}{c} + \\frac{c}{a}\\big) + \\big(\\frac{b}{c} + \\frac{c}{b}\\big) $  By lemma 1, $\\big(\\frac{a}{b}  + \\frac{b}{a}\\big) \\ge 2$,  $ \\big(\\frac{a}{c} + \\frac{c}{a}\\big) \\ge 2$ and  $\\big(\\frac{b}{c} + \\frac{c}{b}\\big) \\ge 2$ , therefore:  $3 + \\big(\\frac{a}{b}  + \\frac{b}{a}\\big) + \\big(\\frac{a}{c} + \\frac{c}{a}\\big) + \\big(\\frac{b}{c} + \\frac{c}{b}\\big) \\ge 3 + 2 + 2 +2 = 9 = 3^2 \\ \\blacksquare $  However I'm not sure the generalized version for all natural $n$ is true. I can't come up with a counterexample and when I try to prove it by induction I get stuck.  Here is my attempt:  Let $P(n)::\\big(\\sum_{i=1}^{n}a_{i}\\big) \\big(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\big) \\ge n^2$  Base case: $\\big(\\sum_{i=1}^{1}a_{i}\\big) \\big(\\sum_{i=1}^{1} \\frac{1}{a_{i}}\\big) = a_{1} \\frac{1}{a_{1}} = 1 = 1^2$ , so $P(1)$ is true.  Inductive hypothesis:  I assume $P(n)$ is true.  Inductive step:  $\\left(\\sum_{i=1}^{n+1}a_{i}\\right) \\left(\\sum_{i=1}^{n+1} \\frac{1}{a_{i}}\\right) = \\left[\\left(\\sum_{i=1}^{n}a_{i}\\right) + a_{n+1}\\right] \\left[\\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) + \\frac{1}{a_{n+1}}\\right]$  $=\\left(\\sum_{i=1}^{n}a_{i}\\right) \\left[\\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) + \\frac{1}{a_{n+1}}\\right] + a_{n+1} \\left[\\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) + \\frac{1}{a_{n+1}}\\right]$  $=\\left(\\sum_{i=1}^{n}a_{i}\\right)\\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) +\\left(\\sum_{i=1}^{n}a_{i}\\right) \\frac{1}{a_{n+1}} + a_{n+1} \\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) +a_{n+1} \\frac{1}{a_{n+1}}$  $=\\left(\\sum_{i=1}^{n}a_{i}\\right)\\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) +\\left(\\sum_{i=1}^{n}a_{i}\\right) \\frac{1}{a_{n+1}} + a_{n+1} \\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) +1 $  $\\underbrace{\\ge}_{IH} n^2 + \\left(\\sum_{i=1}^{n}a_{i}\\right) \\frac{1}{a_{n+1}} + a_{n+1} \\left(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\right) + 1$  And here I don't know what to do with the $\\big( \\sum_{i=1}^{n}a_{i} \\big) \\frac{1}{a_{n+1}} + a_{n+1} \\big(\\sum_{i=1}^{n} \\frac{1}{a_{i}}\\big)$ term.  Is this inequality true? If it is, how can I prove it? If it isn't, can anyone show me a counterexample?",
+        "tags": [
+            "algebra-precalculus",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.88",
+        "title": "Is the polynomial $x^4+10x^2+1$ reducible over $\\mathbb{Z}[x]$?",
+        "body": "Is the polynomial  $x^4+10x^2+1$  reducible over  $\\mathbb{Z}[x]$?",
+        "tags": [
+            "abstract-algebra",
+            "ring-theory",
+            "field-theory",
+            "irreducible-polynomials"
+        ]
+    },
+    {
+        "query_id": "A.89",
+        "title": "Parametrization of pythagorean-like equation",
+        "body": "Is there any known complete parametrization of the Diophantine equation $ A^{2} + B^{2} = C^{2} + D^{2} $ where $A, B, C, D$ are (positive) rational numbers, or equivalently, integers?",
+        "tags": [
+            "number-theory",
+            "diophantine-equations"
+        ]
+    },
+    {
+        "query_id": "A.90",
+        "title": "Question on the definition of an Inverse matrix",
+        "body": "By definition, if $A$ is a $ n \\times n $ matrix, an inverse of $A$ is an $ n \\times n $ matrix $A^{-1}$ with the property that:  $ A^{-1}A=\\mathbb I_n \\ \\ \\land \\ \\ AA^{-1}=\\mathbb I_n \\ \\ \\ \\ (1)$   where $ \\mathbb I_n $ is the $ n \\times n $ identity matrix.  Are there any cases where $ A^{-1}A=\\mathbb I_n$ but $AA^{-1} \\neq \\mathbb I_n$ or the other way around (and thus making (1) a false statement) ?",
+        "tags": [
+            "linear-algebra",
+            "matrices"
+        ]
+    },
+    {
+        "query_id": "A.93",
+        "title": "Characteristic Polynomial $AB =$ characteristic polynomial $ BA$?",
+        "body": "Let $A,B$ matrix on $\\mathbb{R}$ size $nxn$. How can I prove that $det(xI - AB) = det(xI - BA)$ if $A$ and $B$ are singular matrix",
+        "tags": [
+            "linear-algebra",
+            "polynomials"
+        ]
+    },
+    {
+        "query_id": "A.96",
+        "title": "Let $\\sum_i a_i$ be a convergent sum with positive $a_i$. Does $\\sum_i \\frac{a_i}{a_i+a_{i+1}+a_{i+2}+\\cdots}$ always diverge?",
+        "body": "Let $\\sum_i a_i$ be a convergent sum, with all $a_i$ positive.  Let $s_n=\\sum_{i=n}^{\\infty}a_i$.      Does $\\sum_i  \\frac{a_i}{s_i}$ always diverge?   I've tried a few examples such as $a_i= r^i$ (geometric series) and $a_i=1/i^2$ and it seems to always diverge.",
+        "tags": [
+            "sequences-and-series",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.98",
+        "title": "If $R:S^{1}\\rightarrow S^{1}$ is a irrational rotation, $\\{R^{n}([x])\\}$ is dense in $S^{1}$ for all points.",
+        "body": "Let $\\alpha$ a irrational number, and $R:S^{1}\\rightarrow S^{1}$ the irrational rotation, i.e., $[x]\\rightarrow[x+\\alpha]$. I need to prove that, for all $[x]\\in S^{1}$, the set $\\{R^{n}([x])\\}$ is dense in $S^{1}$.  First, I can write $R$ by  $R(e^{2\\pi ix})=e^{2\\pi i (x+\\alpha)}.$  So, I can write $R^{n}(x)$, $n\\in\\mathbb{Z}$ by  $R^{n}(e^{2\\pi i x})=e^{2\\pi i(x+n\\alpha)} $  I need to prove that, for all $e^{2\\pi i x}\\in S^{1}$ and for all $[y]=e^{2\\pi i y}\\in S^{1}$, every neighborhood $V$ of $[y]$ contains a point $[z_{y}]=e^{2\\pi i z}$ such that $[z_y]=R^{n}([x])$ for some $n\\in\\mathbb{Z}$. That is,  $e^{2\\pi i z}=e^{2\\pi i (x+\\alpha n)}\\Rightarrow 2\\pi iz=2\\pi i(x+\\alpha n)+2ik\\pi\\;\\textrm{for some}\\;k\\in\\mathbb{Z}\\Rightarrow z=x+\\alpha n+k.$  Is my way correct? If it does, how can I proceed now? If it doesn't, what I need to do?  I don't think this question is duplicate. I'm showing my attempt to proof, that is different from other proofs.",
+        "tags": [
+            "general-topology",
+            "circles",
+            "rotations",
+            "irrational-numbers"
+        ]
+    },
+    {
+        "query_id": "A.99",
+        "title": "Rationals can be the set of continuity of a function?",
+        "body": "Most of the functions that I have seen have their discontinuities on rationals and continuities on irrationals!  I am wondering if there is any exampe of some function whose continuities are rationals? Or is other words      The set of continuities of a function $f:\\mathbb{R}\\to\\mathbb{R}$ can be $\\mathbb{Q}$?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "continuity"
+        ]
+    }
+]

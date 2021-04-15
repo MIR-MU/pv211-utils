@@ -1,0 +1,722 @@
+[
+    {
+        "query_id": "A.1",
+        "title": "Finding value of  such that the range of the rational function  does not contain",
+        "body": "I am comfortable when I am asked to calculate the range of a rational function, but how do we do the reverse? I came across this problem.  If  then find the value of  for which the range of  does not contain .",
+        "tags": [
+            "functions"
+        ]
+    },
+    {
+        "query_id": "A.3",
+        "title": "Approximation to  correct to an exactitude of",
+        "body": "I am attempting to resolve the following problem:     Find an approximation to  correct to an exactitude of  using the bisection algorithm.   From what I understand,  has to be placed in function of  but I am not sure where to go from there.  Also, a function in Mathematica are given to do the calculations in which the function ,  and  (from the interval  where  and  have opposite signs), the tolerance and the number of iterations.",
+        "tags": [
+            "numerical-methods",
+            "algorithms",
+            "bisection"
+        ]
+    },
+    {
+        "query_id": "A.4",
+        "title": "How to compute this combinatoric sum?",
+        "body": "I have the sum    I know the result is  but I don't know how you get there. How does one even begin to simplify a sum like this that has binomial coefficients.",
+        "tags": [
+            "combinatorics",
+            "number-theory",
+            "summation",
+            "proof-explanation"
+        ]
+    },
+    {
+        "query_id": "A.5",
+        "title": "A family has two children. Given that one of the children is a boy, what is the probability that both children are boys?",
+        "body": "A family has two children. Given that one of the children is a boy, what is the probability that both children are boys?   I was doing this question using conditional probability formula.   Suppose, (1) is the event, that the first child is a boy, and (2) is the event that the second child is a boy.  Then the probability of the second child to be boy given that first child is a boys by formula,  ...since second child to be boy doesn't depend on first child and vice versa. Please provide the detailed solution and correct me if I am wrong.",
+        "tags": [
+            "probability",
+            "proof-verification",
+            "conditional-probability"
+        ]
+    },
+    {
+        "query_id": "A.7",
+        "title": "Finding out the remainder of  using modulus",
+        "body": "If  is divided by , then solve for '' of the below term    Whatever I tried:  .....(1)               ......{from (1)}    Hence,  and thus we get the value of  and it is  and  is divisible by .  But this approach take a long time for any competitive exam or any math contest without using calculator. Any easier process on how to determine the remainder of the above problem quickly? That will be very much helpful for me. Thanks in advance.",
+        "tags": [
+            "elementary-number-theory",
+            "modular-arithmetic",
+            "divisibility",
+            "alternative-proof"
+        ]
+    },
+    {
+        "query_id": "A.8",
+        "title": "finding value of",
+        "body": "Finding value of   what i try      How do i solve it help me please",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.9",
+        "title": "Simplifying this series",
+        "body": "I need to write the series      in a form that does not involve the summation notation, for example . Does anyone have any idea how to do this? I've attempted multiple ways including using generating functions however no luck",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.10",
+        "title": "Find the values of a>0 for which the improper integral  converges .",
+        "body": "Find the values of a>0 for which the improper integral  converges .  Do  I have to expand integrand using series expansion??",
+        "tags": [
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.11",
+        "title": "What's the cross product in 2 dimensions?",
+        "body": "The math book i'm using states that the cross product for two vectors is defined over :     is:    and the direction of the resultant is determined by curling fingers from vector v to u with thumb pointing in direction of the cross product of u x v.    Out of curiosity, what's the cross product if u and v are defined over  instead of  instead:     Is there a \"degenerate\" case for the cross product of  instead ?  like this is some type of 2x2 determinant instead?  for instance if had a parameterization:    and needed to calculate in :    There are plenty of examples in the book for calculating the determinate D in  but none at all for  case.  As in:",
+        "tags": [
+            "multivariable-calculus",
+            "vectors"
+        ]
+    },
+    {
+        "query_id": "A.12",
+        "title": "Finding the roots of a complex number",
+        "body": "I was solving practice problems for my upcoming midterm and however I got stuck with this question type.  It is asking me to find all roots and then sketch it.    How do we proceed?",
+        "tags": [
+            "linear-algebra",
+            "complex-numbers",
+            "polar-coordinates"
+        ]
+    },
+    {
+        "query_id": "A.13",
+        "title": "How to simplify expression",
+        "body": "How to simplify expression    The answer is   but I am wondering how to get the answer.",
+        "tags": [
+            "calculus"
+        ]
+    },
+    {
+        "query_id": "A.14",
+        "title": "Help solving first-order differential equation",
+        "body": "I have first-order differential equation  Maybe, with this someone will find way to solve it  I thought I can use  for subtitution and when I derivate, I have  which is acctualy the same as previous. I don't have idea how to start..",
+        "tags": [
+            "ordinary-differential-equations"
+        ]
+    },
+    {
+        "query_id": "A.15",
+        "title": "Derive the sum of",
+        "body": "For the series          and .  I need to find partial sums and finally, the sum  of series. Here is what I've tried:    We can take a series  so that  (source series). For the  the sum of  (here is geometric progression):     But this answer is incorrect. Where is my mistake? Thank you.",
+        "tags": [
+            "sequences-and-series",
+            "convergence",
+            "summation",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.16",
+        "title": "Finding",
+        "body": "Calculate      My try :   Let :   Then compute .  I'm happy to see ideas in order to kill this integral.",
+        "tags": [
+            "integration",
+            "sequences-and-series",
+            "definite-integrals",
+            "closed-form"
+        ]
+    },
+    {
+        "query_id": "A.17",
+        "title": "Calculate  with the function",
+        "body": "I want to calculate  with the function .  I thought about using the closed path , when:          I use the fact that  is an even function and has an anti derivative, so the integral on a closed path is zero.  I managed to show that  when .  However I am struggling to show that  when   Help would be appreciated",
+        "tags": [
+            "complex-analysis",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.18",
+        "title": "Evaluate",
+        "body": "Evaluate  using Cesáro-Stolz theorem.  I know there are many question like this, but i want to solve it using Cesáro-Stolz method and no others.  I took log and applied Cesáro-Stolz, I get   Which gives me answer as  . But answer is . Could someone help?.  Edit:  On taking log,   Which gives",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.19",
+        "title": "Greatest common factor of",
+        "body": "I was asked to find the greatest common factor of  for all primes > 5, First I got the value of  which has divisors of  and  which has divisors  which has a GCF of  I can prove that  is divisible by 3 and 5 by casework and 8  by  are even integers, but I don't know how to prove divisibility of , I do not want to bash it since we must check about 7 numbers to prove its divisibility by assigning  where x <16",
+        "tags": [
+            "divisibility",
+            "greatest-common-divisor"
+        ]
+    },
+    {
+        "query_id": "A.20",
+        "title": "Calculate all  such that ?",
+        "body": "I'm looking for an  for which  where  is a Euler-Totient Function    I already found one, namely,   How the calculate the ?",
+        "tags": [
+            "totient-function"
+        ]
+    },
+    {
+        "query_id": "A.21",
+        "title": "Finding the last two digits of  (nine 9s)",
+        "body": "I'm continuing on my journey learning about modular arithmetic and got confused with this question:  Find the last two digits of  (nine 9s). The phi function is supposed to be used in this problem and so far this is what I've got:   Where    In order to know , we need to know  As , we get    In order to know , we need to know  As , we get    In order to know , we need to know  as  we need to find   As    I feel like I might have made a mistake somewhere along the way because I'm having a lot of trouble stitching it all back together in order to get a value for the last two digits. Could anyone please help me with this? Thank you!",
+        "tags": [
+            "number-theory",
+            "modular-arithmetic"
+        ]
+    },
+    {
+        "query_id": "A.23",
+        "title": "How do i find the lcm",
+        "body": "Qn: If the product of two integers is   and their greatest common divisor is , what is their least common multiple?  I have issue with this question please help me solve it.  I tried assuming that lcm is  =. Then,        Gcd . And, product factors /Gcd",
+        "tags": [
+            "prime-numbers",
+            "greatest-common-divisor",
+            "least-common-multiple"
+        ]
+    },
+    {
+        "query_id": "A.24",
+        "title": "Is this the only way to evaluate",
+        "body": "work out the                       Can we solve  in another way?",
+        "tags": [
+            "algebra-precalculus"
+        ]
+    },
+    {
+        "query_id": "A.26",
+        "title": "How to solve an indefinite integral using the Taylor series?",
+        "body": "I am trying to show that the following integral is convergent but not absolutely.        My attempt:     I first obtained the taylor series of  which is as follows:      Now   and I got stuck here! What is the next step?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "integration",
+            "taylor-expansion",
+            "riemann-integration"
+        ]
+    },
+    {
+        "query_id": "A.27",
+        "title": "What is the value of ?",
+        "body": "When solving for the value, we know that  . I am confused as to what is the right answer when you evaluate this.I am getting two possible answers:  =  so this could be  or it could be . Which one is the correct answer, and where am I going wrong? Thanks.",
+        "tags": [
+            "complex-numbers",
+            "exponentiation"
+        ]
+    },
+    {
+        "query_id": "A.28",
+        "title": "If , then what is ?",
+        "body": "If  in the simplest form, then what is ?  Attempt:  in a right triangle with sides  (in front of corner with angle  degrees), , and hypotenuse , is actually just , then . We can find  as  so we have    I also found out that   I got no clue after this.    The solution says that   I gotta intuition that we must find  such that   then  is a root iof , and .    Totally different. This question is not asking to prove that , that is just part of the solution.",
+        "tags": [
+            "algebra-precalculus",
+            "trigonometry",
+            "euclidean-geometry",
+            "contest-math"
+        ]
+    },
+    {
+        "query_id": "A.29",
+        "title": "Dividing Complex Numbers by Infinity",
+        "body": "My PreCalculus teacher recently reviewed the properties of limits with us before our test and stated that any real number divided by infinity equals zero. This got me thinking and I asked them whether a complex number (i.e.  or ) divided by infinity would equal zero.   This completely stumped them and I was unable to get an answer. After doing some theoretical calculation, knowing that , I calculated that a complex number such as  since    using properties utilized with real numbers that would state that  since  Is this theoretical calculation correct or is there more to the concept than this?",
+        "tags": [
+            "algebra-precalculus",
+            "limits",
+            "complex-numbers",
+            "infinity"
+        ]
+    },
+    {
+        "query_id": "A.30",
+        "title": "Find  (binomial theorem)",
+        "body": "Find :                           Please help me solve this question.  I added  and . It gives me the expansion of .  But i dont know how to use it.",
+        "tags": [
+            "binomial-theorem"
+        ]
+    },
+    {
+        "query_id": "A.32",
+        "title": "Are definitions axioms?",
+        "body": "I just want to ask a very elementary question.  When we introduce a \"definition\" in a first order logical system. For example when we say   Define:    Isn't that definition itself an \"axiom\", call it a definitional axiom.  I'm asking this because the one place predicate symbol Empty() is actually new, it is not among the listed primitives of say Zermelo, which has only identity and membership as primitive symbols.   So when we are stating definitions are we in effect stating axioms? but instead of being about characterizing a primitive, they are definitional axioms giving a complete reference to a specified set of symbols in the system.  Is that correct?  Now if that is the case, then why we don't call it axiom when we state it, I mean why we don't say for example:  Definitional axiom 1)   Zuhair",
+        "tags": [
+            "terminology",
+            "definition",
+            "first-order-logic",
+            "axioms"
+        ]
+    },
+    {
+        "query_id": "A.33",
+        "title": "Physical meaning and significance of third derivative of a function",
+        "body": "Given a physical quantity represented by a function  what is (if there is any) the actual meaning of the third derivative of ,  or",
+        "tags": [
+            "physics"
+        ]
+    },
+    {
+        "query_id": "A.35",
+        "title": "When does a function NOT have an antiderivative?",
+        "body": "I know this question may sound naïve but why can't we write  as ? The former does not have an antiderivative, while the latter has.  In light of this question, what are sufficient conditions for a function NOT to have an antiderivative. That is, do we need careful examination of a function to say it does not have an antiderivative or is there any way that once you see the function, you can right away say it does not have an antiderivative?",
+        "tags": [
+            "integration"
+        ]
+    },
+    {
+        "query_id": "A.36",
+        "title": "Proof by contradiction, status of initial assumption after the proof is complete.",
+        "body": "First of all I'd like to say that I have looked for the answers to my specific question and have not found it in the existing topics.  The question is fairly simple. Say, we need to  prove statement P by the method of contradiction. Assuming that  holds, using the list of statements proven earlier to hold or derived by us during the proof, we arrive to P being .     We can therefore add P to the list of our proven statements, because it was derived. Most of the proofs contain something in the lines of \"the obtained contradiction proves that our initial assumption () was wrong and so  holds\".  What I don't understand is, if the initial assumption () is thus proven to be false, then why can we be sure that anything derived from it holds (in particular, that P holds)? On the other hand, if it cannot be derived then the assumption () can in fact be true.   Can someone explain why this type of argument cannot be used?",
+        "tags": [
+            "logic",
+            "proof-writing"
+        ]
+    },
+    {
+        "query_id": "A.37",
+        "title": "Non trivial examples of  but  and .",
+        "body": "Are there real-valued functions  and  which are neither each other's inverses, the identity, nor linear, yet exhibit the behaviour   Examples such as  and  are \"trivial\" in this sense.   Moreover, given a function , can one go about obtaining an example of a function  which commutes with ?   I suppose this would be similar to fixed point iteration? E.g. if  is defined by , I would need a function  such that   so maybe choosing an appropriate \"starting function\"  and finding a fixed point of  would be a possible strategy, but I can't seem to find a suitable .",
+        "tags": [
+            "real-analysis",
+            "functional-analysis",
+            "functions"
+        ]
+    },
+    {
+        "query_id": "A.38",
+        "title": "Uses of Axiom of Choice",
+        "body": "I am a first-year maths student but I occasionally drift away from our taught material. Some years ago I saw the ZFC axioms for the first time, but now that I am in college, and although the stuff I've been taught so far is nowhere near ZFC (in terms of difficulty), it happened to me that we use the axiom of choice all the time in every module, even if we don't know it by name yet.  For example, in the proof that, for every non-negative integers , there exist integers  (with the known restrictions on r), and the proof starts like this:  the largest integer ... blah blah blah.  Is it the axiom of choice that allows us to execute this simple yet so important step?   And a couple more questions: Can you name some other simple proofs, theorems, results etc for which the axiom of choice is essential?  Also, I've read that AOC has long been a topic of dispute for mathematicians, and that even today, some people do not accept it. Are there any alternative axiomatic systems that work equally well without needing AOC? Thanks!",
+        "tags": [
+            "set-theory"
+        ]
+    },
+    {
+        "query_id": "A.39",
+        "title": "How to know which value is bigger?",
+        "body": "Which is bigger between  or ?  When taking logs of both sides and  I get:    and   I know  so does this mean that  is the biggest one? And did I do it properly?",
+        "tags": [
+            "algebra-precalculus",
+            "logarithms"
+        ]
+    },
+    {
+        "query_id": "A.40",
+        "title": "What is the meaning of the term \"linear\"",
+        "body": "is called a linear equation because it represents the equation of a line in an n dimensional space. So \"linear\" comes from the word \"line\".Basically there should not be any higher power of x failing which the graph of the function will not be a straight line.  simillarly   is also called linear differential equation because all the derivatives have power equal to 1 which is similar to the above definition of a linear equation.  A function f is called linear if:  and . Here c is a constant. In this definition of linearity of function \"\" what does the word linear means? How does it relate to a straight line?  Finally what does the term linear means in case of linear vector spaces? Where is the reference to a straight line?  So, whether linear is just a word used in different contexts? Does it have different meaning in different situation? Or linearity refers to some relation to a straight line? At Least please explain how the linearity of function f and linear vector space relate to the equation of a line.",
+        "tags": [
+            "linear-algebra"
+        ]
+    },
+    {
+        "query_id": "A.41",
+        "title": "Confusion in how to find number of onto functions if two sets are given",
+        "body": "In the book it is given if A and B are two finite sets containing  and  elements, respectively, then the number of onto functions from A to B will be if        well I can't understand it and I am aware with combinations.",
+        "tags": [
+            "combinatorics",
+            "functions",
+            "combinations"
+        ]
+    },
+    {
+        "query_id": "A.42",
+        "title": "What is a simple, physical situation where complex numbers emerge naturally?",
+        "body": "I'm trying to teach middle schoolers about the emergence of complex numbers and I want to motivate this organically. By this, I mean some sort of real world problem that people were trying to solve that led them to realize that we needed to extend the real numbers to the complex.   For instance, the Greeks were forced to recognize irrational numbers not for pure mathematical reasons, but because the length of the diagonal of a square with unit length really is irrational, and this is the kind of geometrical situation they were already dealing with. What similar situation would lead to complex numbers in terms that kids could appreciate?  I could just say, try to solve the equation , but that's not something from the physical world. I could also give an abstract sort of answer, like that  is just an object that we define to have certain properties that turn out to be consistent and important, but I think that won't be entirely satisfying to kids either.",
+        "tags": [
+            "complex-numbers",
+            "physics",
+            "applications"
+        ]
+    },
+    {
+        "query_id": "A.43",
+        "title": "Prove",
+        "body": "I am trying to prove   Letting  we recall the Fourier series for the exponential function  Plugging in      But that is nowhere near to correct. What did I do wrong, and how do can I prove the identity? Thanks.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.44",
+        "title": "For  of finite order, show that  has infinite order",
+        "body": "Let  be the group  of nonsingular matrices.  Let , the order of  is ;  Let , the order of  is .  Show that  has infinite order.    The only reasoning possible here is by contradiction as  is not abelian. And so I tried, but I got stuck before any concrete development.  Any hints are welcome, Thanks.",
+        "tags": [
+            "matrices",
+            "group-theory",
+            "cyclic-groups"
+        ]
+    },
+    {
+        "query_id": "A.45",
+        "title": "How to prove that {} is independent in ?",
+        "body": "Prove that {} is independent in    my trial :  we know that the Wronsekian shouldn't be  to get the trivial solution and thus they are independent. its not trivial to show that   W =     and so on. it looks like Vandermonde matrix but i cant prove that and so we conclude that its",
+        "tags": [
+            "ordinary-differential-equations"
+        ]
+    },
+    {
+        "query_id": "A.47",
+        "title": "Prove that for a given prime  and each , there exists a  such that",
+        "body": "Prove that for a given prime  and each , there exists a  such that     I've only taken one intro number theory course (years ago), and this just popped up in a computer science class (homework). I was assuming that this proof would be elementary since my current class in an algorithm cours, but after the few basic attempts I've tried it didn't look promising. Here's a couple approaches I thought of:    (reverse engineer)  To arrive at the conclusion we would need    for some . A little manipulation:    That looks familiar, but I can't see anything from it.    (sum on )    which looks good but I don't know how to incorporate  int0 the final equality.      (Wilson's Theorem—proved by Lagrange)    I vaguely recall this theorem, but I was looking at it in an old book and it wasn't easy to see how we arrived there. Anyways,  is prime iff   Here the  multiplier is built in to the factorial expression so I was thinking of adding  to either side    which is a dead end (pretty sure). But then I was thinking, maybe multiplying Wilson't Thm by ? Then getting    which I think results in    of which  is a multiple and  is obvious. But I'm not sure if that's valid.",
+        "tags": [
+            "elementary-number-theory",
+            "proof-verification"
+        ]
+    },
+    {
+        "query_id": "A.48",
+        "title": "Hints for showing that if , then  for all",
+        "body": "I'm trying to show the following:          If , then  for all       So, far I've tried a few things, but nothing seems to stick. Clearly  and since both sides of the inequality are positive, the inequality  will hold for . Similarly, . Adding both inequalities together, we obtain: . While this is close, of course, it is not what we want to show.  Alternatively, I was thinking that if we fix , let , and let , we can show using the binomial theorem that  for all . Then, if we can show both  and  intersect only when , we might have better luck proving the statement since then we would have  for all positive integers . A real number  with the property that  could not then exist since then that would violate the fact that  is the only intersection. We could then invoke the continuity of  and  together with the fact that  for all positive integers  to obtain our result. Of course, all of this is dependent on rigorously showing that  and  intersect only when .  Otherwise, I'm running low on ideas. Any hints would be greatly appreciated.",
+        "tags": [
+            "real-analysis",
+            "functions",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.49",
+        "title": "Is there a simple combinatoric interpretation of this identity?",
+        "body": "I came across an exercise in which we are asked to prove the identity:    The exercise gives the hint:    It's not too difficult to use the hint to prove the identity (the expressions in the identity are the coefficients of  in the respective expansions of the expressions in the hint, which of course must be the same number), but I was wondering whether there is a neater equivalent-counting interpretation...  It's clear that  is the number of ways in which we can choose half the elements in a set (where this is possible): how can we interpret  equivalently?",
+        "tags": [
+            "combinatorics",
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.50",
+        "title": "Divergent series",
+        "body": "Bonjour.  Show that   is a divergent serie.   My main problem is: If  is “infinitely small positive real number” define  as the set of all  . The divergence should come from the sum over  but I have no idea to how to handle this.",
+        "tags": [
+            "real-analysis",
+            "integration",
+            "sequences-and-series",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.51",
+        "title": "Sum of series having binomial coefficients",
+        "body": "Prove that   what i try      coefficient of  in     How do i solve ithelp me plesse",
+        "tags": [
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.52",
+        "title": "Prove ,  s.t.  and  is prime",
+        "body": "There are two parts I am having trouble getting started.  A. Prove that  are each at least  then  is not divisible by any numbers .   B. Prove that the truth of the negation leads to a contradiction. (Use theorem: For all  there exist a unique quotient  and remainder  in  such that we have both  and .)  For part A, I started with, given  and , I'll show that ,  to set it up, but I'm not sure how to actually go about starting it.  For part B, I know that the negation is  s.t.  either  or  is not prime, but again I'm not sure what I should do to start the proof or exactly how to incorporate that theorem.",
+        "tags": [
+            "proof-writing",
+            "prime-numbers"
+        ]
+    },
+    {
+        "query_id": "A.53",
+        "title": "Show that one-sided inverse of a square matrix is a true inverse",
+        "body": "We know that for a group element ,  does not necessarily mean that . In the case for matrices (linear maps between vector spaces), it is also true that . This happens when the  and  are not square matrices (in which case they do not even form a group under multiplication).  However if we restrict the square matrices, . What is simple proof of this that avoids chasing the entries, and makes use simply the vector space structure of linear transformations?  (In fact if we could prove this, I think this might imply that for a group to have one-sided(but not two-sided) inverses, it has to be infinite, since every finite group admits a finite dimensional representation.",
+        "tags": [
+            "linear-algebra",
+            "group-theory"
+        ]
+    },
+    {
+        "query_id": "A.54",
+        "title": "By using a diagonal argument, show that the powerset  is uncountable.",
+        "body": "Any tips or solutions for this one?  By using a diagonal argument, show that the powerset  is uncountable.",
+        "tags": [
+            "discrete-mathematics",
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.55",
+        "title": "?",
+        "body": "I have trouble to comprehend what my mistake is in the following calculation:  If we set  to be the new number with the property that  then I can write   But we also have (and I know this is the correct result)   What am I missing? Thanks.",
+        "tags": [
+            "complex-numbers",
+            "definition"
+        ]
+    },
+    {
+        "query_id": "A.56",
+        "title": "A curious logical formula involving prime numbers",
+        "body": "Let  be a nonempty set of natural numbers. Is the following formula  true or false on ? I know the answer to this question, but what would be the shortest way to arrive to the conclusion using some deduction system?",
+        "tags": [
+            "logic",
+            "first-order-logic"
+        ]
+    },
+    {
+        "query_id": "A.58",
+        "title": "Prove that",
+        "body": "Can someone help me with this exercise? I honestly don't know where to start and how to prove it. You don't have to answer it fully, just give me a hint or something. Thank you in advance.     Exercise 1. Prove that     Thanks.",
+        "tags": [
+            "trigonometry"
+        ]
+    },
+    {
+        "query_id": "A.59",
+        "title": "Multiple proofs of",
+        "body": "I am looking for multiple proofs of that statement: here  denotes the Euler’s totient     Here’s one:   By unique factorisation theorem:  and  where  so:",
+        "tags": [
+            "group-theory",
+            "number-theory",
+            "alternative-proof",
+            "big-list"
+        ]
+    },
+    {
+        "query_id": "A.60",
+        "title": "Limiting value of a sequence when n tends to infinity",
+        "body": "Q) Let,  , . Then   (A) equals   (B) does not exist  (C) equals   (D) equals     My Approach :- I am not getting a particular direction or any procedure to simplify  and find its value when n tends to infinity. So, I tried like this simple way to substitute values and trying to find the limiting value :-      = =0.009*...  So, here value is tending to zero. I think option  is correct. I have tried like this  =  Now, again I stuck how to simplify further and find the value for which  converges when  tends to infinity . Please help if there is any procedure to solve this question.",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "limits",
+            "products"
+        ]
+    },
+    {
+        "query_id": "A.61",
+        "title": "There exists  such that  for",
+        "body": "Prove that there exists  such that  for    I'm having a hard time with this exercise, I'm trying to prove it by induction:  Basis step:        Induction step:  If it's true for  then it must be true for .  So now, I don't know how to begin proving that .",
+        "tags": [
+            "elementary-number-theory",
+            "discrete-mathematics",
+            "induction",
+            "diophantine-equations"
+        ]
+    },
+    {
+        "query_id": "A.62",
+        "title": "Prove that the cardinality of the set of rational numbers and the set of integers is equal",
+        "body": "I just learned about cardinality in my discrete class a few days ago, and this is in the homework. This is all fairly confusing to me, and I'm not entirely sure where to even start. Here's the full question:  Let  denote the set of rational numbers and  denote the set of integers. Prove that .  I thought about saying that every element in  can be written as some element in , but I still don't know how to prove that that is a bijection, or even how to prove that .  Any help would be greatly appreciated.",
+        "tags": [
+            "discrete-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.63",
+        "title": "and  of more than  positive integers",
+        "body": "For any two positive integers , the relationship between their greatest common divisor and their least common multiple is given by    If I have a set of  positive integers , does the same relationship hold? Is it true that    I feel like this should be easy to prove, but I'm struggling to get a handle on it.",
+        "tags": [
+            "proof-explanation",
+            "greatest-common-divisor",
+            "least-common-multiple"
+        ]
+    },
+    {
+        "query_id": "A.65",
+        "title": "How can we show that  for all ?",
+        "body": "How can we show that  for all ?  Applying  to both sides yields that  should be equivalent to  So, if I did no mistake, it should suffice to show  for all . How can we do this?",
+        "tags": [
+            "calculus",
+            "inequality",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.66",
+        "title": "if  and  is it possible to justify that ?",
+        "body": "if  and   is it possible to justify that ?",
+        "tags": [
+            "linear-algebra",
+            "transpose"
+        ]
+    },
+    {
+        "query_id": "A.67",
+        "title": "Combination of matrixes",
+        "body": "If A is a  matrix,B is a  matrix and C is a  matrix prove that:    O is the matrix that all it's elements are equal to zero.  I know some rules for calculating determinants but I don't know how to begin in this question.",
+        "tags": [
+            "calculus",
+            "determinant"
+        ]
+    },
+    {
+        "query_id": "A.68",
+        "title": "Prove  is divisible by  if  is odd",
+        "body": "Prove  is divisible by  if  is odd:  We know  cannot be  and the . Since  must be odd, we can rewrite  as . Now we assume it holds for prove that it holds for the next term.       Im not sure on what to do next. Since  means that the exponential term will be even and thus you cant use the fact that  is divisible by  if  is odd.",
+        "tags": [
+            "polynomials",
+            "induction",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.69",
+        "title": "Induction with two variable parameters",
+        "body": "So I was assigned this homework problem:  for all s and all  I've tried to email both my professor and my TA and their explanations seem contradictory. My professor responded saying the statement I need to prove is \"The formula is correct for .\" Whereas my TA told me I need to use induction on both variables and I'm not sure how to do that. Any help is appreciated!",
+        "tags": [
+            "combinatorics"
+        ]
+    },
+    {
+        "query_id": "A.72",
+        "title": "Is it possible that , yet ?",
+        "body": "Is it possible for a set to equal another set, yet the former set be an element in the latter set?  I.e.:  , yet",
+        "tags": [
+            "set-theory",
+            "axioms"
+        ]
+    },
+    {
+        "query_id": "A.74",
+        "title": "Show that the image of the function ,  is the interval .",
+        "body": "Show that the image of the function ,  is the interval .   If , then . So how can I show that the mage of the function is the interval ?",
+        "tags": [
+            "functions",
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.75",
+        "title": "Prove that for each integer ,",
+        "body": "I'm unsure how to show  that for each integer , .   Looking at the solutions it starts with    but not sure how this is a logical step.",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.77",
+        "title": "Show that the relation  is a consequence of the distributive law",
+        "body": "Show that the relation  is a consequence of the distributive law.   This question is the first problem from 'Number Theory for Beginners\" by Andre Weil. I cannot get the point from where to begin. I tried using  and , but couldn't get somewhere. Can you help me just with a hint? I would be willing to work up from there.",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.79",
+        "title": "Inequality with complex exponential",
+        "body": "Rudin in Real and Complex Analysis uses this in a proof near the beginning of chapter 9:      for all real    Why is this true?  Edit: I believe  is real",
+        "tags": [
+            "inequality",
+            "exponential-function",
+            "fourier-transform"
+        ]
+    },
+    {
+        "query_id": "A.80",
+        "title": "Why does this proof that the set of all finite subsets of N is a countable set not work for the set of all subsets of N?",
+        "body": "I found this proof in a StackExchange thread and found it pretty understandable and simple:  \"The other answers give some sort of formula, like you were trying to do.  But, the simplest way to see that the set of all finite subsets of  is countable is probably the following.  If you can list out the elements of a set, with one coming first, then the next, and so on, then that shows the set is countable.  There is an easy pattern to see here.  Just start out with the least elements.    In other words, first comes , then comes .  Each time you introduce a new integer, , list all the subsets of  that contain  (the ones that don't contain  have already showed up).  Therefore, all subsets of  show up in the first  elements of this sequence.\"  I understand how it applies for finite subsets of N, but I cant really pinpoint of why it would not apply to a set of all subsets of N. We could continue this scheme for ever, couldnt we?  I assume that I think in a wrong way about infinity but I am not quite sure. Any help is greatly appreciated!",
+        "tags": [
+            "analysis",
+            "elementary-set-theory",
+            "proof-explanation"
+        ]
+    },
+    {
+        "query_id": "A.83",
+        "title": "Is the sequence of sums of inverse of natural numbers bounded?",
+        "body": "I'm reading through Spivak Ch.22 (Infinite Sequences) right now. He mentioned in the written portion that it's often not a trivial matter to determine the boundedness of sequences. With that in mind, he gave us a sequence to chew on before we learn more about boundedness. That sequence is:    I know that a sequence is bounded above if there is a number  such that  for all . Any hints here?",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "harmonic-numbers"
+        ]
+    },
+    {
+        "query_id": "A.85",
+        "title": "Expected number of steps for a bug to reach position",
+        "body": "A bug starts at time  at position . At each step, the bug either moves to the right by  step  with probability , or returns to the origin with probability . What is the expected number of steps for this bug to reach position ?  I tried to first find the possibility that this bug reaches  as the number of steps goes to infinity. The recurrence equation I find is , where  is the possibility for the bug starting at position  to reach . We also have the boundary condition . Then we see that , and that , which doesn't make sense at all because it is greater than . I think I should sort out the value of probability first, and think about the number of expected steps later.  I'm sure there is something wrong with the recurrence equation, but what's wrong about it?",
+        "tags": [
+            "markov-chains",
+            "random-walk"
+        ]
+    },
+    {
+        "query_id": "A.86",
+        "title": "Is it true that",
+        "body": "Problem: Is it true that   My start of solution:   I think this upper bound is way too large and I can't seem to find a solution.",
+        "tags": [
+            "combinatorics",
+            "elementary-number-theory",
+            "discrete-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.87",
+        "title": "Is it true that  , if all  are positive?",
+        "body": "If   , is it true that  ?   I have been able to prove that this holds for  , , and  using the following lemma:     Lemma 1:  Let . If  then    For example, the case for  can be proven like this:  Let . Then we have:      By lemma 1, ,   and   , therefore:    However I'm not sure the generalized version for all natural  is true. I can't come up with a counterexample and when I try to prove it by induction I get stuck.  Here is my attempt:  Let   Base case:  , so  is true.  Inductive hypothesis:  I assume  is true.  Inductive step:            And here I don't know what to do with the  term.  Is this inequality true? If it is, how can I prove it? If it isn't, can anyone show me a counterexample?",
+        "tags": [
+            "algebra-precalculus",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.88",
+        "title": "Is the polynomial  reducible over ?",
+        "body": "Is the polynomial    reducible over  ?",
+        "tags": [
+            "abstract-algebra",
+            "ring-theory",
+            "field-theory",
+            "irreducible-polynomials"
+        ]
+    },
+    {
+        "query_id": "A.89",
+        "title": "Parametrization of pythagorean-like equation",
+        "body": "Is there any known complete parametrization of the Diophantine equation  where  are (positive) rational numbers, or equivalently, integers?",
+        "tags": [
+            "number-theory",
+            "diophantine-equations"
+        ]
+    },
+    {
+        "query_id": "A.90",
+        "title": "Question on the definition of an Inverse matrix",
+        "body": "By definition, if  is a  matrix, an inverse of  is an  matrix  with the property that:     where  is the  identity matrix.  Are there any cases where  but  or the other way around (and thus making (1) a false statement) ?",
+        "tags": [
+            "linear-algebra",
+            "matrices"
+        ]
+    },
+    {
+        "query_id": "A.93",
+        "title": "Characteristic Polynomial  characteristic polynomial ?",
+        "body": "Let  matrix on  size . How can I prove that  if  and  are singular matrix",
+        "tags": [
+            "linear-algebra",
+            "polynomials"
+        ]
+    },
+    {
+        "query_id": "A.96",
+        "title": "Let  be a convergent sum with positive . Does  always diverge?",
+        "body": "Let  be a convergent sum, with all  positive.  Let .      Does  always diverge?   I've tried a few examples such as  (geometric series) and  and it seems to always diverge.",
+        "tags": [
+            "sequences-and-series",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.98",
+        "title": "If  is a irrational rotation,  is dense in  for all points.",
+        "body": "Let  a irrational number, and  the irrational rotation, i.e., . I need to prove that, for all , the set  is dense in .  First, I can write  by    So, I can write ,  by    I need to prove that, for all  and for all , every neighborhood  of  contains a point  such that  for some . That is,    Is my way correct? If it does, how can I proceed now? If it doesn't, what I need to do?  I don't think this question is duplicate. I'm showing my attempt to proof, that is different from other proofs.",
+        "tags": [
+            "general-topology",
+            "circles",
+            "rotations",
+            "irrational-numbers"
+        ]
+    },
+    {
+        "query_id": "A.99",
+        "title": "Rationals can be the set of continuity of a function?",
+        "body": "Most of the functions that I have seen have their discontinuities on rationals and continuities on irrationals!  I am wondering if there is any exampe of some function whose continuities are rationals? Or is other words      The set of continuities of a function  can be ?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "continuity"
+        ]
+    }
+]
