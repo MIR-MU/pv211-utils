@@ -3,7 +3,9 @@ import gzip
 import json
 import pkg_resources
 import re
-from typing import Set
+from typing import Optional, Set
+
+import ijson
 
 from .entities import ArqmathQueryBase, ArqmathQuestionBase, ArqmathAnswerBase, ArqmathJudgementBase
 from ..util import google_drive_download
@@ -63,7 +65,7 @@ def load_queries(text_format: str, query_class=ArqmathQueryBase) -> OrderedDict:
 
 
 def load_questions(text_format: str, answers: OrderedDict, question_class=ArqmathQuestionBase,
-                   **kwargs) -> OrderedDict:
+                   filter_document_ids: Optional[Set] = None, **kwargs) -> OrderedDict:
     _check_text_format(text_format)
     questions = OrderedDict()
 
@@ -71,10 +73,13 @@ def load_questions(text_format: str, answers: OrderedDict, question_class=Arqmat
     manifest_filename = manifest_filename.format(text_format)
     with google_drive_download(manifest_filename, **kwargs) as filename:
         with gzip.open(filename, 'rt') as f:
-            for raw_question in json.load(f):
+            for raw_question in ijson.items(f, 'item'):
+                document_id = raw_question['document_id']
+                if filter_document_ids is not None and document_id not in filter_document_ids:
+                    continue
                 question_answers = [answers[document_id] for document_id in raw_question['answers']]
                 question = question_class(
-                    document_id=raw_question['document_id'],
+                    document_id=document_id,
                     title=raw_question['title'],
                     body=raw_question['body'],
                     tags=raw_question['tags'],
@@ -87,7 +92,8 @@ def load_questions(text_format: str, answers: OrderedDict, question_class=Arqmat
     return questions
 
 
-def load_answers(text_format: str, answer_class=ArqmathAnswerBase, **kwargs) -> OrderedDict:
+def load_answers(text_format: str, answer_class=ArqmathAnswerBase,
+                 filter_document_ids: Optional[Set] = None, **kwargs) -> OrderedDict:
     _check_text_format(text_format)
     answers = OrderedDict()
 
@@ -95,11 +101,14 @@ def load_answers(text_format: str, answer_class=ArqmathAnswerBase, **kwargs) -> 
     manifest_filename = manifest_filename.format(text_format)
     with google_drive_download(manifest_filename, **kwargs) as filename:
         with gzip.open(filename, 'rt') as f:
-            for raw_answer in json.load(f):
+            for raw_answer in ijson.items(f, 'item'):
+                document_id = raw_answer['document_id']
+                if filter_document_ids is not None and document_id not in filter_document_ids:
+                    continue
                 assert raw_answer['is_accepted'] in ('True', 'False')
                 is_accepted = raw_answer['is_accepted'] == 'True'
                 answer = answer_class(
-                    document_id=raw_answer['document_id'],
+                    document_id=document_id,
                     body=raw_answer['body'],
                     upvotes=raw_answer['upvotes'],
                     is_accepted=is_accepted,

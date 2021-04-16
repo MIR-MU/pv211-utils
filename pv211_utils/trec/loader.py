@@ -2,7 +2,9 @@ from collections import OrderedDict
 import gzip
 import json
 import pkg_resources
-from typing import Set
+from typing import Optional, Set
+
+import ijson
 
 from .entities import TrecQueryBase, TrecDocumentBase, TrecJudgementBase
 from ..util import google_drive_download
@@ -27,15 +29,18 @@ def load_queries(query_class=TrecQueryBase, subset: str = 'validation') -> Order
     return queries
 
 
-def load_documents(document_class=TrecDocumentBase, **kwargs) -> OrderedDict:
+def load_documents(document_class=TrecDocumentBase, filter_document_ids: Optional[Set] = None, **kwargs) -> OrderedDict:
     documents = OrderedDict()
 
     manifest_filename = 'data/trec_documents_manifest.json'
     with google_drive_download(manifest_filename, **kwargs) as filename:
         with gzip.open(filename, 'rt') as f:
-            for raw_document in json.load(f):
+            for raw_document in ijson.items(f, 'item'):
+                document_id = str(raw_document['document_id'])
+                if filter_document_ids is not None and document_id not in filter_document_ids:
+                    continue
                 document = document_class(
-                    document_id=str(raw_document['document_id']),
+                    document_id=document_id,
                     body=raw_document['text']
                 )
                 documents[document.document_id] = document
