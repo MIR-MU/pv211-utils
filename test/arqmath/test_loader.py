@@ -64,7 +64,7 @@ QUESTIONS_XHTML_PMML = load_questions('xhtml+pmml', ANSWERS_XHTML_PMML, cache_do
 
 class TestLoadQueriesText(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('text')
+        self.queries = load_queries('text', subset=None)
         self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
@@ -82,7 +82,7 @@ class TestLoadQueriesText(unittest.TestCase):
 
 class TestLoadQueriesLaTeX(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('text+latex')
+        self.queries = load_queries('text+latex', subset=None)
         self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
@@ -101,7 +101,7 @@ class TestLoadQueriesLaTeX(unittest.TestCase):
 
 class TestLoadQueriesPrefix(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('text+prefix')
+        self.queries = load_queries('text+prefix', subset=None)
         self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
@@ -123,7 +123,7 @@ class TestLoadQueriesPrefix(unittest.TestCase):
 
 class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('xhtml+latex')
+        self.queries = load_queries('xhtml+latex', subset=None)
         self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
@@ -146,7 +146,7 @@ class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
 
 class TestLoadQueriesXHTMLCMML(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('xhtml+cmml')
+        self.queries = load_queries('xhtml+cmml', subset=None)
         self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
@@ -177,7 +177,7 @@ class TestLoadQueriesXHTMLCMML(unittest.TestCase):
 
 class TestLoadQueriesXHTMLPMML(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('xhtml+pmml')
+        self.queries = load_queries('xhtml+pmml', subset=None)
         self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
@@ -475,14 +475,14 @@ class TestLoadQuestionsXHTMLPMML(unittest.TestCase):
 
 class TestLoadRelevanceJudgements(unittest.TestCase):
     def setUp(self):
-        queries = load_queries('text')
+        queries = load_queries('text', subset=None)
         answers = ANSWERS_TEXT
         self.high_relevance = (queries[HIGH_RELEVANCE[0]], answers[HIGH_RELEVANCE[1]])
         self.medium_relevance = (queries[MEDIUM_RELEVANCE[0]], answers[MEDIUM_RELEVANCE[1]])
         self.low_relevance = (queries[LOW_RELEVANCE[0]], answers[LOW_RELEVANCE[1]])
         self.no_relevance = (queries[NO_RELEVANCE[0]], answers[NO_RELEVANCE[1]])
         self.no_relevance_judgement = (queries[NO_RELEVANCE_JUDGEMENT[0]], answers[NO_RELEVANCE_JUDGEMENT[1]])
-        self.judgements = load_judgements(queries, answers, filter_document_ids=ANSWER_IDS)
+        self.judgements = load_judgements(queries, answers, filter_document_ids=ANSWER_IDS, subset=None)
 
     def test_judgements_high_relevance(self):
         self.assertIn(self.high_relevance, self.judgements)

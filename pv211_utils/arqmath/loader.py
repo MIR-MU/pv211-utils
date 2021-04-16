@@ -61,7 +61,7 @@ def _resolve_query_id(raw_query_id: str) -> int:
 
 
 def load_queries(text_format: str, query_class=ArqmathQueryBase,
-                 subset: Optional[str] = None) -> OrderedDict:
+                 subset: Optional[str] = 'validation') -> OrderedDict:
     _check_text_format(text_format)
     queries = OrderedDict()
 
@@ -136,7 +136,7 @@ def load_answers(text_format: str, answer_class=ArqmathAnswerBase,
     return answers
 
 
-def load_judgements(queries: OrderedDict, answers: OrderedDict, subset: Optional[str] = None,
+def load_judgements(queries: OrderedDict, answers: OrderedDict, subset: Optional[str] = 'validation',
                     filter_document_ids: Optional[Set] = None) -> ArqmathJudgements:
     relevant = set()
 
