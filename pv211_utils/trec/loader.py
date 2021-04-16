@@ -34,7 +34,7 @@ def load_documents(document_class=TrecDocumentBase, filter_document_ids: Optiona
 
     manifest_filename = 'data/trec_documents_manifest.json'
     with google_drive_download(manifest_filename, **kwargs) as filename:
-        with gzip.open(filename, 'rt') as f:
+        with gzip.open(filename, 'rb') as f:
             for raw_document in ijson.items(f, 'item'):
                 document_id = str(raw_document['document_id'])
                 if filter_document_ids is not None and document_id not in filter_document_ids:

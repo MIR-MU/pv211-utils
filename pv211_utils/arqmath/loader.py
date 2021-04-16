@@ -90,7 +90,7 @@ def load_questions(text_format: str, answers: OrderedDict, question_class=Arqmat
     manifest_filename = 'data/arqmath2020_questions_{}_manifest.json'
     manifest_filename = manifest_filename.format(text_format)
     with google_drive_download(manifest_filename, **kwargs) as filename:
-        with gzip.open(filename, 'rt') as f:
+        with gzip.open(filename, 'rb') as f:
             for raw_question in ijson.items(f, 'item'):
                 document_id = raw_question['document_id']
                 if filter_document_ids is not None and document_id not in filter_document_ids:
@@ -118,7 +118,7 @@ def load_answers(text_format: str, answer_class=ArqmathAnswerBase,
     manifest_filename = 'data/arqmath2020_answers_{}_manifest.json'
     manifest_filename = manifest_filename.format(text_format)
     with google_drive_download(manifest_filename, **kwargs) as filename:
-        with gzip.open(filename, 'rt') as f:
+        with gzip.open(filename, 'rb') as f:
             for raw_answer in ijson.items(f, 'item'):
                 document_id = raw_answer['document_id']
                 if filter_document_ids is not None and document_id not in filter_document_ids:
