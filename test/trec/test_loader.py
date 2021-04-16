@@ -9,20 +9,20 @@ NUM_QUERIES_TRAIN = 80
 NUM_QUERIES_VALIDATION = 20
 NUM_QUERIES_TEST = 50
 NUM_DOCUMENTS = 527890
-NUM_JUDGEMENTS_TRAIN = 7102
-NUM_JUDGEMENTS_VALIDATION = 1858
-NUM_JUDGEMENTS_TEST = 4726
-DOCUMENTS = None
 
-
-def setUpModule():
-    global DOCUMENTS
-    DOCUMENTS = load_documents(cache_download=CACHE_DOWNLOAD)
-
-
-def tearDownModule():
-    global DOCUMENTS
-    del DOCUMENTS
+DOCUMENT_IDS = set([
+    'FT911-3',
+    'FR940104-0-00002',
+    'FBIS3-1',
+    'LA010189-0001',
+    'FBIS3-10937',
+    'FBIS3-10634',
+    'FT944-6336',
+    'FT944-3328',
+    'LA100290-0174',
+    'LA100490-0070',
+])
+DOCUMENTS = load_documents(cache_download=CACHE_DOWNLOAD, filter_document_ids=DOCUMENT_IDS)
 
 
 class TestLoadQueries(unittest.TestCase):
@@ -58,9 +58,6 @@ class TestLoadDocuments(unittest.TestCase):
         self.fbis_document = DOCUMENTS['FBIS3-1']
         self.la_times_document = DOCUMENTS['LA010189-0001']
 
-    def test_number_of_documents(self):
-        self.assertEqual(NUM_DOCUMENTS, len(DOCUMENTS))
-
     def test_financial_times_document_body(self):
         self.assertTrue(self.financial_times_document.body.startswith('CONTIGAS, the German gas group'))
 
@@ -94,15 +91,6 @@ class TestLoadJudgements(unittest.TestCase):
         self.irrelevant_document_validation = DOCUMENTS['FT944-3328']
         self.relevant_document_test = DOCUMENTS['LA100290-0174']
         self.irrelevant_document_test = DOCUMENTS['LA100490-0070']
-
-    def test_number_of_judgements_train(self):
-        self.assertEqual(NUM_JUDGEMENTS_TRAIN, len(self.judgements_train))
-
-    def test_number_of_judgements_validation(self):
-        self.assertEqual(NUM_JUDGEMENTS_VALIDATION, len(self.judgements_validation))
-
-    def test_number_of_judgements_test(self):
-        self.assertEqual(NUM_JUDGEMENTS_TEST, len(self.judgements_test))
 
     def test_relevant_document_train(self):
         self.assertIn((self.query_train, self.relevant_document_train), self.judgements_train)

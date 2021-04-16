@@ -118,13 +118,16 @@ def load_answers(text_format: str, answer_class=ArqmathAnswerBase,
     return answers
 
 
-def load_judgements(queries: OrderedDict, answers: OrderedDict) -> ArqmathJudgements:
+def load_judgements(queries: OrderedDict, answers: OrderedDict,
+                    filter_document_ids: Optional[Set] = None) -> ArqmathJudgements:
     relevant = set()
 
     filename = 'data/arqmath2020_judgements.json'
     with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt') as f:
         for raw_query_id, document_id in json.load(f):
             query_id = _resolve_query_id(raw_query_id)
+            if filter_document_ids is not None and document_id not in filter_document_ids:
+                continue
             query: ArqmathQueryBase = queries[query_id]
             answer: ArqmathAnswerBase = answers[document_id]
             relevance = (query, answer)

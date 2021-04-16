@@ -6,9 +6,6 @@ from pv211_utils.arqmath.loader import load_queries, load_questions, load_answer
 CACHE_DOWNLOAD = False
 
 NUM_QUERIES = 77
-NUM_QUESTIONS = 1020585
-NUM_ANSWERS = 1445495
-NUM_JUDGEMENTS = 1804
 
 QUERY_ID = 1
 QUERY_TAGS = ['functions']
@@ -30,21 +27,48 @@ LOW_RELEVANCE = (20, '1764058')
 NO_RELEVANCE = (40, '2106624')
 NO_RELEVANCE_JUDGEMENT = (53, '377998')
 
+ANSWER_IDS = set(
+    QUESTION_ANSWER_DOCUMENT_IDS +
+    [
+        ANSWER_ID,
+        HIGH_RELEVANCE[1],
+        MEDIUM_RELEVANCE[1],
+        LOW_RELEVANCE[1],
+        NO_RELEVANCE[1],
+        NO_RELEVANCE_JUDGEMENT[1],
+    ]
+)
+ANSWERS_TEXT = load_answers('text', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+ANSWERS_TEXT_LATEX = load_answers('text+latex', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+ANSWERS_TEXT_PREFIX = load_answers('text+prefix', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+ANSWERS_XHTML_LATEX = load_answers('xhtml+latex', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+ANSWERS_XHTML_CMML = load_answers('xhtml+cmml', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+ANSWERS_XHTML_PMML = load_answers('xhtml+pmml', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+
+
+QUESTION_IDS = set([
+    QUESTION_ID,
+])
+QUESTIONS_TEXT = load_questions('text', ANSWERS_TEXT, cache_download=CACHE_DOWNLOAD, filter_document_ids=QUESTION_IDS)
+QUESTIONS_TEXT_LATEX = load_questions('text+latex', ANSWERS_TEXT_LATEX, cache_download=CACHE_DOWNLOAD,
+                                      filter_document_ids=QUESTION_IDS)
+QUESTIONS_TEXT_PREFIX = load_questions('text+prefix', ANSWERS_TEXT_PREFIX, cache_download=CACHE_DOWNLOAD,
+                                       filter_document_ids=QUESTION_IDS)
+QUESTIONS_XHTML_LATEX = load_questions('xhtml+latex', ANSWERS_XHTML_LATEX, cache_download=CACHE_DOWNLOAD,
+                                       filter_document_ids=QUESTION_IDS)
+QUESTIONS_XHTML_CMML = load_questions('xhtml+cmml', ANSWERS_XHTML_CMML, cache_download=CACHE_DOWNLOAD,
+                                      filter_document_ids=QUESTION_IDS)
+QUESTIONS_XHTML_PMML = load_questions('xhtml+pmml', ANSWERS_XHTML_PMML, cache_download=CACHE_DOWNLOAD,
+                                      filter_document_ids=QUESTION_IDS)
+
 
 class TestLoadQueriesText(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.queries = load_queries('text')
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.queries
-
     def setUp(self):
-        self.query = self.queries[QUERY_ID]  # pytype: disable=attribute-error
+        self.queries = load_queries('text')
+        self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))  # pytype: disable=attribute-error
+        self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of  such that', self.query.title)
@@ -57,19 +81,12 @@ class TestLoadQueriesText(unittest.TestCase):
 
 
 class TestLoadQueriesLaTeX(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.queries = load_queries('text+latex')
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.queries
-
     def setUp(self):
-        self.query = self.queries[QUERY_ID]  # pytype: disable=attribute-error
+        self.queries = load_queries('text+latex')
+        self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))  # pytype: disable=attribute-error
+        self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of $c$ such that', self.query.title)
@@ -83,19 +100,12 @@ class TestLoadQueriesLaTeX(unittest.TestCase):
 
 
 class TestLoadQueriesPrefix(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.queries = load_queries('text+prefix')
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.queries
-
     def setUp(self):
-        self.query = self.queries[QUERY_ID]  # pytype: disable=attribute-error
+        self.queries = load_queries('text+prefix')
+        self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))  # pytype: disable=attribute-error
+        self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of V!𝑐 such that', self.query.title)
@@ -112,19 +122,12 @@ class TestLoadQueriesPrefix(unittest.TestCase):
 
 
 class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.queries = load_queries('xhtml+latex')
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.queries
-
     def setUp(self):
-        self.query = self.queries[QUERY_ID]  # pytype: disable=attribute-error
+        self.queries = load_queries('xhtml+latex')
+        self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))  # pytype: disable=attribute-error
+        self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of <span class="math-container" id="q_1">$c$</span> such that',
@@ -142,19 +145,12 @@ class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
 
 
 class TestLoadQueriesXHTMLCMML(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.queries = load_queries('xhtml+cmml')
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.queries
-
     def setUp(self):
-        self.query = self.queries[QUERY_ID]  # pytype: disable=attribute-error
+        self.queries = load_queries('xhtml+cmml')
+        self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))  # pytype: disable=attribute-error
+        self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_title(self):
         expected_title = (
@@ -180,19 +176,12 @@ class TestLoadQueriesXHTMLCMML(unittest.TestCase):
 
 
 class TestLoadQueriesXHTMLPMML(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.queries = load_queries('xhtml+pmml')
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.queries
-
     def setUp(self):
-        self.query = self.queries[QUERY_ID]  # pytype: disable=attribute-error
+        self.queries = load_queries('xhtml+pmml')
+        self.query = self.queries[QUERY_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))  # pytype: disable=attribute-error
+        self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_title(self):
         expected_title = (
@@ -217,21 +206,9 @@ class TestLoadQueriesXHTMLPMML(unittest.TestCase):
         self.assertEqual(QUERY_TAGS, self.query.tags)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadAnswersText(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.answers
-
     def setUp(self):
-        self.answer = self.answers[ANSWER_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_ANSWERS, len(self.answers))  # pytype: disable=attribute-error
+        self.answer = ANSWERS_TEXT[ANSWER_ID]
 
     def test_answer_body(self):
         self.assertIn(r'your answer written as  is correct too', self.answer.body)
@@ -243,21 +220,9 @@ class TestLoadAnswersText(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadAnswersTextLaTeX(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.answers = load_answers('text+latex', cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.answers
-
     def setUp(self):
-        self.answer = self.answers[ANSWER_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_ANSWERS, len(self.answers))  # pytype: disable=attribute-error
+        self.answer = ANSWERS_TEXT_LATEX[ANSWER_ID]
 
     def test_answer_body(self):
         expected_body = (
@@ -273,21 +238,9 @@ class TestLoadAnswersTextLaTeX(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadAnswersTextPrefix(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.answers = load_answers('text+prefix', cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.answers
-
     def setUp(self):
-        self.answer = self.answers[ANSWER_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_ANSWERS, len(self.answers))  # pytype: disable=attribute-error
+        self.answer = ANSWERS_TEXT_PREFIX[ANSWER_ID]
 
     def test_answer_body(self):
         expected_body = (
@@ -303,21 +256,9 @@ class TestLoadAnswersTextPrefix(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadAnswersTextXHTMLLaTeX(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.answers = load_answers('xhtml+latex', cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.answers
-
     def setUp(self):
-        self.answer = self.answers[ANSWER_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_ANSWERS, len(self.answers))  # pytype: disable=attribute-error
+        self.answer = ANSWERS_XHTML_LATEX[ANSWER_ID]
 
     def test_answer_body(self):
         expected_body = (
@@ -333,21 +274,9 @@ class TestLoadAnswersTextXHTMLLaTeX(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadAnswersTextXHTMLCMML(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.answers = load_answers('xhtml+cmml', cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.answers
-
     def setUp(self):
-        self.answer = self.answers[ANSWER_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_ANSWERS, len(self.answers))  # pytype: disable=attribute-error
+        self.answer = ANSWERS_XHTML_CMML[ANSWER_ID]
 
     def test_answer_body(self):
         expected_body = (
@@ -368,21 +297,9 @@ class TestLoadAnswersTextXHTMLCMML(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadAnswersTextXHTMLPMML(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.answers = load_answers('xhtml+pmml', cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.answers
-
     def setUp(self):
-        self.answer = self.answers[ANSWER_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_ANSWERS, len(self.answers))  # pytype: disable=attribute-error
+        self.answer = ANSWERS_XHTML_PMML[ANSWER_ID]
 
     def test_answer_body(self):
         expected_body = (
@@ -403,22 +320,9 @@ class TestLoadAnswersTextXHTMLPMML(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadQuestionsText(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-        cls.questions = load_questions('text', answers, cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.questions
-
     def setUp(self):
-        self.question = self.questions[QUESTION_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_QUESTIONS, len(self.questions))  # pytype: disable=attribute-error
+        self.question = QUESTIONS_TEXT[QUESTION_ID]
 
     def test_question_title(self):
         self.assertIn(QUESTION_TITLE, self.question.title)
@@ -440,22 +344,9 @@ class TestLoadQuestionsText(unittest.TestCase):
         self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadQuestionsTextLaTeX(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-        cls.questions = load_questions('text+latex', answers, cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.questions
-
     def setUp(self):
-        self.question = self.questions[QUESTION_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_QUESTIONS, len(self.questions))  # pytype: disable=attribute-error
+        self.question = QUESTIONS_TEXT_LATEX[QUESTION_ID]
 
     def test_question_title(self):
         self.assertIn(QUESTION_TITLE, self.question.title)
@@ -477,22 +368,9 @@ class TestLoadQuestionsTextLaTeX(unittest.TestCase):
         self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadQuestionsTextPrefix(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-        cls.questions = load_questions('text+prefix', answers, cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.questions
-
     def setUp(self):
-        self.question = self.questions[QUESTION_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_QUESTIONS, len(self.questions))  # pytype: disable=attribute-error
+        self.question = QUESTIONS_TEXT_PREFIX[QUESTION_ID]
 
     def test_question_title(self):
         self.assertIn(QUESTION_TITLE, self.question.title)
@@ -514,22 +392,9 @@ class TestLoadQuestionsTextPrefix(unittest.TestCase):
         self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadQuestionsXHTMLLaTeX(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-        cls.questions = load_questions('xhtml+latex', answers, cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.questions
-
     def setUp(self):
-        self.question = self.questions[QUESTION_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_QUESTIONS, len(self.questions))  # pytype: disable=attribute-error
+        self.question = QUESTIONS_XHTML_LATEX[QUESTION_ID]
 
     def test_question_title(self):
         self.assertIn(QUESTION_TITLE, self.question.title)
@@ -552,22 +417,9 @@ class TestLoadQuestionsXHTMLLaTeX(unittest.TestCase):
         self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadQuestionsXHTMLCMML(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-        cls.questions = load_questions('xhtml+cmml', answers, cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.questions
-
     def setUp(self):
-        self.question = self.questions[QUESTION_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_QUESTIONS, len(self.questions))  # pytype: disable=attribute-error
+        self.question = QUESTIONS_XHTML_CMML[QUESTION_ID]
 
     def test_question_title(self):
         self.assertIn(QUESTION_TITLE, self.question.title)
@@ -593,22 +445,9 @@ class TestLoadQuestionsXHTMLCMML(unittest.TestCase):
         self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadQuestionsXHTMLPMML(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
-        cls.questions = load_questions('xhtml+pmml', answers, cache_download=CACHE_DOWNLOAD)
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.questions
-
     def setUp(self):
-        self.question = self.questions[QUESTION_ID]  # pytype: disable=attribute-error
-
-    def test_number_of_answers(self):
-        self.assertEqual(NUM_QUESTIONS, len(self.questions))  # pytype: disable=attribute-error
+        self.question = QUESTIONS_XHTML_PMML[QUESTION_ID]
 
     def test_question_title(self):
         self.assertIn(QUESTION_TITLE, self.question.title)
@@ -634,30 +473,28 @@ class TestLoadQuestionsXHTMLPMML(unittest.TestCase):
         self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
 
 
-@unittest.skip('Can easily run out of memory')
 class TestLoadRelevanceJudgements(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        answers = load_answers('text', cache_download=CACHE_DOWNLOAD)
+    def setUp(self):
         queries = load_queries('text')
-        cls.high_relevance = (queries[HIGH_RELEVANCE[0]], answers[HIGH_RELEVANCE[1]])
-        cls.medium_relevance = (queries[MEDIUM_RELEVANCE[0]], answers[MEDIUM_RELEVANCE[1]])
-        cls.low_relevance = (queries[LOW_RELEVANCE[0]], answers[LOW_RELEVANCE[1]])
-        cls.no_relevance = (queries[NO_RELEVANCE[0]], answers[NO_RELEVANCE[1]])
-        cls.no_relevance_judgement = (queries[NO_RELEVANCE_JUDGEMENT[0]], answers[NO_RELEVANCE_JUDGEMENT[1]])
-        cls.judgements = load_judgements(queries, answers)
+        answers = ANSWERS_TEXT
+        self.high_relevance = (queries[HIGH_RELEVANCE[0]], answers[HIGH_RELEVANCE[1]])
+        self.medium_relevance = (queries[MEDIUM_RELEVANCE[0]], answers[MEDIUM_RELEVANCE[1]])
+        self.low_relevance = (queries[LOW_RELEVANCE[0]], answers[LOW_RELEVANCE[1]])
+        self.no_relevance = (queries[NO_RELEVANCE[0]], answers[NO_RELEVANCE[1]])
+        self.no_relevance_judgement = (queries[NO_RELEVANCE_JUDGEMENT[0]], answers[NO_RELEVANCE_JUDGEMENT[1]])
+        self.judgements = load_judgements(queries, answers, filter_document_ids=QUESTION_IDS | ANSWER_IDS)
 
     def test_judgements_high_relevance(self):
-        self.assertIn(self.high_relevance, self.judgements)  # pytype: disable=attribute-error
+        self.assertIn(self.high_relevance, self.judgements)
 
     def test_judgements_medium_relevance(self):
-        self.assertIn(self.medium_relevance, self.judgements)  # pytype: disable=attribute-error
+        self.assertIn(self.medium_relevance, self.judgements)
 
     def test_judgements_low_relevance(self):
-        self.assertNotIn(self.low_relevance, self.judgements)  # pytype: disable=attribute-error
+        self.assertNotIn(self.low_relevance, self.judgements)
 
     def test_judgements_no_relevance(self):
-        self.assertNotIn(self.no_relevance, self.judgements)  # pytype: disable=attribute-error
+        self.assertNotIn(self.no_relevance, self.judgements)
 
     def test_judgements_no_relevance_judgement(self):
-        self.assertNotIn(self.no_relevance_judgement, self.judgements)  # pytype: disable=attribute-error
+        self.assertNotIn(self.no_relevance_judgement, self.judgements)
