@@ -29,4 +29,4 @@ class ArqmathEvaluation(EvaluationBase):
         super().__init__(system, judgements, leaderboard, author_name)
 
     def _get_minimum_mean_average_precision(self) -> float:
-        return 1.0  # FIXME
+        return 0.007
