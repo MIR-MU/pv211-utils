@@ -482,7 +482,7 @@ class TestLoadRelevanceJudgements(unittest.TestCase):
         self.low_relevance = (queries[LOW_RELEVANCE[0]], answers[LOW_RELEVANCE[1]])
         self.no_relevance = (queries[NO_RELEVANCE[0]], answers[NO_RELEVANCE[1]])
         self.no_relevance_judgement = (queries[NO_RELEVANCE_JUDGEMENT[0]], answers[NO_RELEVANCE_JUDGEMENT[1]])
-        self.judgements = load_judgements(queries, answers, filter_document_ids=QUESTION_IDS | ANSWER_IDS)
+        self.judgements = load_judgements(queries, answers, filter_document_ids=ANSWER_IDS)
 
     def test_judgements_high_relevance(self):
         self.assertIn(self.high_relevance, self.judgements)
