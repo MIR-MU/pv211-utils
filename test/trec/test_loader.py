@@ -77,9 +77,9 @@ class TestLoadJudgements(unittest.TestCase):
         queries_validation = load_queries(subset='validation')
         queries_test = load_queries(subset='test')
 
-        self.judgements_train = load_judgements(queries_train, DOCUMENTS, 'train')
-        self.judgements_validation = load_judgements(queries_validation, DOCUMENTS, 'validation')
-        self.judgements_test = load_judgements(queries_test, DOCUMENTS, 'test')
+        self.judgements_train = load_judgements(queries_train, DOCUMENTS, 'train', DOCUMENT_IDS)
+        self.judgements_validation = load_judgements(queries_validation, DOCUMENTS, 'validation', DOCUMENT_IDS)
+        self.judgements_test = load_judgements(queries_test, DOCUMENTS, 'test', DOCUMENT_IDS)
 
         self.query_train = queries_train[301]
         self.query_validation = queries_validation[400]

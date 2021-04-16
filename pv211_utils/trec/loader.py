@@ -48,12 +48,15 @@ def load_documents(document_class=TrecDocumentBase, filter_document_ids: Optiona
     return documents
 
 
-def load_judgements(queries: OrderedDict, documents: OrderedDict, subset: str = 'validation') -> TrecJudgements:
+def load_judgements(queries: OrderedDict, documents: OrderedDict, subset: str = 'validation',
+                    filter_document_ids: Optional[Set] = None) -> TrecJudgements:
     relevant = set()
 
     filename = 'data/trec_judgements_{}.json'.format(subset)
     with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt') as f:
         for query_id, document_id in json.load(f):
+            if filter_document_ids is not None and document_id not in filter_document_ids:
+                continue
             query: TrecQueryBase = queries[query_id]
             document: TrecDocumentBase = documents[document_id]
             relevance = (query, document)
