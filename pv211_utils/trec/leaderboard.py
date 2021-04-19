@@ -7,7 +7,7 @@ from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 class TrecLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def get_competition_start(self) -> datetime.date:
-        return datetime.date(2021, 4, 19)
+        return datetime.date(2021, 3, 1)
 
     def get_competition_end(self) -> datetime.date:
         return datetime.date(2021, 5, 16)
