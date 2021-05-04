@@ -4,7 +4,7 @@ from ..entities import DocumentBase, QueryBase
 
 
 class ArqmathAnswerBase(DocumentBase):
-    """An answer from the ARQMath 2020 collection.
+    """An answer from the ARQMath collection.
 
     Parameters
     ----------
@@ -32,7 +32,7 @@ class ArqmathAnswerBase(DocumentBase):
 
 
 class ArqmathQuestionBase(DocumentBase):
-    """A question from the ARQMath 2020 collection.
+    """A question from the ARQMath collection.
 
     Parameters
     ----------
@@ -76,7 +76,7 @@ class ArqmathQuestionBase(DocumentBase):
 
 
 class ArqmathQueryBase(QueryBase):
-    """A query from the answer retrieval task of ARQMath 2020.
+    """A query from the answer retrieval task of ARQMath.
 
     Parameters
     ----------

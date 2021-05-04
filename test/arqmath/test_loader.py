@@ -5,10 +5,14 @@ from pv211_utils.arqmath.loader import load_queries, load_questions, load_answer
 
 CACHE_DOWNLOAD = False
 
-NUM_QUERIES = 77
+NUM_QUERIES_2020 = 77
+NUM_QUERIES_2021 = 100
 
-QUERY_ID = 1
-QUERY_TAGS = ['functions']
+QUERY_2020_ID = 1
+QUERY_2020_TAGS = ['functions']
+
+QUERY_2021_ID = 201
+QUERY_2021_TAGS = ['abstract-algebra', 'matrices', 'ring-theory']
 
 QUESTION_ID = '614561'
 QUESTION_TITLE = r'random thought: are some infinite sets larger than other'
@@ -64,103 +68,142 @@ QUESTIONS_XHTML_PMML = load_questions('xhtml+pmml', ANSWERS_XHTML_PMML, cache_do
 
 class TestLoadQueriesText(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('text', subset=None)
-        self.query = self.queries[QUERY_ID]
+        self.queries_2020 = load_queries('text', subset=None, year=2020)
+        self.queries_2021 = load_queries('text', subset=None, year=2021)
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
 
     def test_query_title(self):
-        self.assertIn(r'Finding value of  such that', self.query.title)
+        self.assertIn(r'Finding value of  such that', self.query_2020.title)
+        self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
+                         self.query_2021.title)
 
     def test_query_body(self):
-        self.assertIn(r'If  then find the value of  ', self.query.body)
+        self.assertIn(r'If  then find the value of  ', self.query_2020.body)
+        self.assertIn(r'If an  matrix over a division ring', self.query_2021.body)
 
     def test_query_tags(self):
-        self.assertEqual(QUERY_TAGS, self.query.tags)
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
 
 
 class TestLoadQueriesLaTeX(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('text+latex', subset=None)
-        self.query = self.queries[QUERY_ID]
+        self.queries_2020 = load_queries('text+latex', subset=None, year=2020)
+        self.queries_2021 = load_queries('text+latex', subset=None, year=2021)
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
 
     def test_query_title(self):
-        self.assertIn(r'Finding value of $c$ such that', self.query.title)
+        self.assertIn(r'Finding value of $c$ such that', self.query_2020.title)
+        self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
+                         self.query_2021.title)
 
     def test_query_body(self):
         self.assertIn(r'If $f(x)= \frac{x^2 + x + c}{x^2 + 2x + c}$ then find the value of $c$',
-                      self.query.body)
+                      self.query_2020.body)
+        self.assertIn(r'If an $n\times n$ matrix over a division ring', self.query_2021.body)
 
     def test_query_tags(self):
-        self.assertEqual(QUERY_TAGS, self.query.tags)
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
 
 
 class TestLoadQueriesPrefix(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('text+prefix', subset=None)
-        self.query = self.queries[QUERY_ID]
+        self.queries_2020 = load_queries('text+prefix', subset=None, year=2020)
+        self.queries_2021 = load_queries('text+prefix', subset=None, year=2021)
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
 
     def test_query_title(self):
-        self.assertIn(r'Finding value of V!𝑐 such that', self.query.title)
+        self.assertIn(r'Finding value of V!𝑐 such that', self.query_2020.title)
+        self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
+                         self.query_2021.title)
 
     def test_query_body(self):
-        expected_body = (
+        expected_body_2020 = (
             r'If U!eq U!times V!𝑓 V!𝑥 O!divide U!plus O!SUP V!𝑥 N!2 V!𝑥 V!𝑐 U!plus O!SUP V!𝑥 N!2 U!times N!2 V!𝑥 '
             r'V!𝑐 then find the value of V!𝑐'
         )
-        self.assertIn(expected_body, self.query.body)
+        self.assertIn(expected_body_2020, self.query_2020.body)
+        self.assertIn(r'If an U!times V!𝑛 V!𝑛 matrix over a division ring', self.query_2021.body)
 
     def test_query_tags(self):
-        self.assertEqual(QUERY_TAGS, self.query.tags)
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
 
 
 class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('xhtml+latex', subset=None)
-        self.query = self.queries[QUERY_ID]
+        self.queries_2020 = load_queries('xhtml+latex', subset=None, year=2020)
+        self.queries_2021 = load_queries('xhtml+latex', subset=None, year=2021)
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of <span class="math-container" id="q_1">$c$</span> such that',
-                      self.query.title)
+                      self.query_2020.title)
+        self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
+                         self.query_2021.title)
 
     def test_query_body(self):
-        expected_body = (
+        expected_body_2020 = (
             r'<p>If <span class="math-container" id="q_4">$$f(x)= \frac{x^2 + x + c}{x^2 + 2x + c}$$</span> then '
             r'find the value of <span class="math-container" id="q_5">$c$</span>'
         )
-        self.assertIn(expected_body, self.query.body)
+        self.assertIn(expected_body_2020, self.query_2020.body)
+
+        expected_body_2021 = (
+            r'<p><em>If an <span class="math-container" id="q_1">$n\times n$</span> matrix over '
+            r'a division ring'
+        )
+        self.assertIn(expected_body_2021, self.query_2021.body)
 
     def test_query_tags(self):
-        self.assertEqual(QUERY_TAGS, self.query.tags)
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
 
 
 class TestLoadQueriesXHTMLCMML(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('xhtml+cmml', subset=None)
-        self.query = self.queries[QUERY_ID]
+        self.queries_2020 = load_queries('xhtml+cmml', subset=None, year=2020)
+        self.queries_2021 = load_queries('xhtml+cmml', subset=None, year=2021)
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
 
     def test_query_title(self):
-        expected_title = (
+        expected_title_2020 = (
             r'<p>Finding value of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c" display="block"> '
             r'<ci>𝑐</ci> </math> such that'
         )
-        self.assertIn(expected_title, self.query.title)
+        self.assertIn(expected_title_2020, self.query_2020.title)
+
+        self.assertEqual(r'<p>Matrix over division ring having one sided inverse is invertible</p>',
+                         self.query_2021.title)
 
     def test_query_body(self):
-        expected_body = (
+        expected_body_2020 = (
             r'If <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)=\frac{x^{2}+x+c}{x^{2}+2x+c}" '
             r'display="block"> <apply> <eq/> <apply> <times/> <ci>𝑓</ci> <ci>𝑥</ci> </apply> <apply> <divide/> <apply> '
             r'<plus/> <apply> <csymbol cd="ambiguous">superscript</csymbol> <ci>𝑥</ci> <cn type="integer">2</cn> '
@@ -169,29 +212,42 @@ class TestLoadQueriesXHTMLCMML(unittest.TestCase):
             r'<ci>𝑥</ci> </apply> <ci>𝑐</ci> </apply> </apply> </apply> </math> then find the value of '
             r'<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c" display="block"> <ci>𝑐</ci> </math>'
         )
-        self.assertIn(expected_body, self.query.body)
+        self.assertIn(expected_body_2020, self.query_2020.body)
+
+        expected_body_2021 = (
+            r'<p><em>If an <math xmlns="http://www.w3.org/1998/Math/MathML" encoding="MathML-Content">'
+            r'<apply><times/><ci>𝑛</ci><ci>𝑛</ci></apply></math> matrix over a division ring'
+        )
+        self.assertIn(expected_body_2021, self.query_2021.body)
 
     def test_query_tags(self):
-        self.assertEqual(QUERY_TAGS, self.query.tags)
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
 
 
 class TestLoadQueriesXHTMLPMML(unittest.TestCase):
     def setUp(self):
-        self.queries = load_queries('xhtml+pmml', subset=None)
-        self.query = self.queries[QUERY_ID]
+        self.queries_2020 = load_queries('xhtml+pmml', subset=None, year=2020)
+        self.queries_2021 = load_queries('xhtml+pmml', subset=None, year=2021)
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
 
     def test_number_of_queries(self):
-        self.assertEqual(NUM_QUERIES, len(self.queries))
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
 
     def test_query_title(self):
-        expected_title = (
+        expected_title_2020 = (
             r'<p>Finding value of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c" display="block"> '
             r'<mi>c</mi> </math> such that'
         )
-        self.assertIn(expected_title, self.query.title)
+        self.assertIn(expected_title_2020, self.query_2020.title)
+
+        self.assertEqual(r'<p>Matrix over division ring having one sided inverse is invertible</p>',
+                         self.query_2021.title)
 
     def test_query_body(self):
-        expected_body = (
+        expected_body_2020 = (
             r'<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="f(x)=\frac{x^{2}+x+c}{x^{2}+2x+c}" '
             r'display="block"> <mrow> <mrow> <mi>f</mi> <mo>⁢</mo> <mrow> <mo stretchy="false">(</mo> <mi>x</mi> '
             r'<mo stretchy="false">)</mo> </mrow> </mrow> <mo>=</mo> <mfrac> <mrow> <msup> <mi>x</mi> <mn>2</mn> '
@@ -200,10 +256,18 @@ class TestLoadQueriesXHTMLPMML(unittest.TestCase):
             r'</mrow> </math> then find the value of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c" '
             r'display="block"> <mi>c</mi> </math>'
         )
-        self.assertIn(expected_body, self.query.body)
+        self.assertIn(expected_body_2020, self.query_2020.body)
+
+        expected_body_2021 = (
+            r'<p><em>If an <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="n\times n" '
+            r'class="ltx_Math" display="inline"><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow></math> '
+            r'matrix over a division ring'
+        )
+        self.assertIn(expected_body_2021, self.query_2021.body)
 
     def test_query_tags(self):
-        self.assertEqual(QUERY_TAGS, self.query.tags)
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
 
 
 class TestLoadAnswersText(unittest.TestCase):

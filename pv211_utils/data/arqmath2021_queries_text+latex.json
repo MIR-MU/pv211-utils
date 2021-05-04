@@ -1,0 +1,956 @@
+[
+    {
+        "query_id": "A.201",
+        "title": "Matrix over division ring having one sided inverse is invertible",
+        "body": "I want to see if there is any elementary way to prove the following assertion about matrices over division rings (such as not using Wedderburn's theory or tensoring techniques).  If an $n\\times n$ matrix over a division ring has left inverse, then it also has right inverse.  The assertion has elementary proof for matrices over fields, but I am considering over division rings.   One can give some hints also.",
+        "tags": [
+            "abstract-algebra",
+            "matrices",
+            "ring-theory"
+        ]
+    },
+    {
+        "query_id": "A.202",
+        "title": "Rings Trapped Between Fields",
+        "body": "Some Background and Motivation: In this question, it is shown that an integral domain $D$ such that $F \\subset D \\subset E$, $E$ and $F$ fields with $[E:F]$ finite, is itself a field.  However, a significantly more general result holds and seems worthy, of independent address; hence, Let $F \\subset E \\tag 1$ be fields with $[E:F] < \\infty; \\tag 2$ if $R$ is a ring such that $F \\subset R \\subset E, \\tag 3$ show that $R$ is in fact a field.",
+        "tags": [
+            "abstract-algebra",
+            "ring-theory",
+            "field-theory",
+            "extension-field"
+        ]
+    },
+    {
+        "query_id": "A.203",
+        "title": "Why does the subtraction symbol go away? $-(-x)= x$",
+        "body": "$+(+x) = +x$ but why is $-(-x) = +x$??? What's the reason behind the rule, it's really basic and \"obvious\" because a no turns a no to a yes But I don't want to reason like that, lol. So how would you explain it? Do I just say on a real number line $-x$ makes a turnaround and $-(-x)$ would turn it positive again? Also if I say for example: $-x = 5$ then I do have $-(-x) = -5$ Is it correct? It wouldn't matter, right? (Btw: I don't know if the tag \"elementary-number-theory\" is correct) **The question is different to $(-x)*(-x)=x$",
+        "tags": [
+            "abstract-algebra"
+        ]
+    },
+    {
+        "query_id": "A.204",
+        "title": "subscheme where two morphisms agree is points where they agree on residue fields",
+        "body": "Let $X, Y, Z$ be schemes, where $X, Y$ are $Z$ schemes.  I know the definition of \"the locally closed subscheme of $X$ where two $Z$-  morphisms $\\pi, \\pi': X\\rightarrow Y$ agree\" from its universal property.  Also I can define it as the fiber product of the diagonal $\\delta :  Y\\rightarrow Y\\times_Z Y$ with $(\\pi, \\pi'): X\\rightarrow Y\\times_Z Y.$ My question:  how to prove that the underlying set of \"the locally closed subscheme where the two morphisms agree\" is the same as the set of points where the two morphism agree on the residue field. It is probably clear thatthe former is contained in the latter, but why is it all of them?  That is, why is a point where $\\pi, \\pi'$ agree on the residue field necessarily contained in \"the subscheme where $\\pi, \\pi'$ agree\"?",
+        "tags": [
+            "algebraic-geometry",
+            "schemes"
+        ]
+    },
+    {
+        "query_id": "A.205",
+        "title": "How can we find x for x^n = n^x",
+        "body": "Find values of x such that $$x^n=n^x$$ Here, n $$\\in$$ I.   One solution will remain x=n But i want to find if any more solutions can exist  $x^n=n^x$",
+        "tags": [
+            "algebra-precalculus",
+            "logarithms"
+        ]
+    },
+    {
+        "query_id": "A.206",
+        "title": "I'm confused on the limit of $\\left(1+\\frac{1}{n}\\right)^n$",
+        "body": "Okay so I read Richard Rusczyk's AoPS Volume 2 Book, and I stumbled upon the part where he informs very briefly that $\\lim_{n \\rightarrow \\infty} \\left(1+\\frac{1}{n}\\right)^n=e$. But he doesn't really provide a rigorous proof as to why that's true (not criticizing him or anything).. It would really help if someone could provide me with the simplest proof possible as to why $\\lim_{n \\rightarrow \\infty} \\left(1+\\frac{1}{n}\\right)^n=e$. Thank you in advance!",
+        "tags": [
+            "algebra-precalculus",
+            "limits",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.207",
+        "title": "What function is asymptotically eqyivalent to $\\sum_{k \\geq 0}k!/N^k$?",
+        "body": "I am working on this problem to find a function $f(N)$ s.t.  $ f(N) \\sim \\sum_{k \\geq 0}\\frac{k!}{N^k} $  where $\\sim$ means that given functions $f$ and $g$, we have $f \\sim g \\implies f = O(g) \\text{ and } f=\\Omega(g)$.  For instance, given the right hand side of the equation above, on input $N$ we have the following (it's a divergent series)  $ f(N) \\sim 1 + \\frac{1}{N} + \\frac{1}{2N^2} + \\frac{1}{6N^3} + O\\bigg(\\frac{1}{N^4}\\bigg) $  The closest function I can think of are the binomials where:  $ (N \\text{ choose } r) \\sim \\frac{N^r}{r!} $  But it doesnt really equal the first equation above. Any help?",
+        "tags": [
+            "algorithms",
+            "asymptotics",
+            "approximation",
+            "factorial"
+        ]
+    },
+    {
+        "query_id": "A.208",
+        "title": "Where does this asymptote for $H_n^{(k)}$ come from?",
+        "body": "@Claude Leibovici's answer to this Math Stack Exchange question (it's the second answer) gives an asymptote for the generalised harmonic number $H_n^{(k)}=\\sum_{i=1}^n \\frac{1}{i^k}$:  $H_n^{(k)}=n^{-k}    \\left(-\\frac{n}{k-1}+\\frac{1}{2}-\\frac{k}{12    n}+O\\left(\\frac{1}{n^3}\\right)\\right)    +\\zeta (k)$  Heuristically, this is an excellent fit. But can someone please tell me if this is a published result, and more importantly how it is derived?",
+        "tags": [
+            "asymptotics",
+            "harmonic-functions",
+            "upper-lower-bounds",
+            "harmonic-numbers"
+        ]
+    },
+    {
+        "query_id": "A.209",
+        "title": "Evaluate the definite integral: $\\int_0^\\infty e^{-hx^2}\\;\\mathrm{d}x$",
+        "body": "where $h>0$. Could someone explain to me how to solve it? I searched the internet and I found the result is $\\frac{\\sqrt{\\pi}}{2\\sqrt{h}}$ but I couldn't undersand Gauss error function - that is involved in solving.",
+        "tags": [
+            "calculus",
+            "integration",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.210",
+        "title": "what's an elegant way to show that $x(1-x) \\leq \\frac14$?",
+        "body": "for $x \\in \\mathbb{R}$, consider $f(x) = x(1-x)$, using traditional methods of finding global extremas, we can show that the derivative has a unique zero at $x= \\frac12$ and $f''(\\frac12) < 0$, thus $x(1-x) \\leq \\frac14 = f(\\frac12)$  is there a more elegant way ?",
+        "tags": [
+            "calculus",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.211",
+        "title": "$\\int\\sqrt{x^2\\sqrt{x^3\\sqrt{x^4\\sqrt{x^5\\sqrt{x^6\\sqrt{x^7\\sqrt{x^8\\ldots}}}}}}}\\,dx$",
+        "body": "I was attempting to solve an MIT integration bee problem (1) when I misread the integral and wrote (2) instead.   $\\int\\sqrt{x\\cdot \\sqrt[3]{x\\cdot \\sqrt[4]{x\\cdot\\sqrt[5]{x\\ldots } }}}\\,dx\\tag{1}$  $\\int\\sqrt{x^2\\sqrt{x^3\\sqrt{x^4\\sqrt{x^5\\sqrt{x^6\\sqrt{x^7\\sqrt{x^8\\ldots}}}}}}}\\,dx\\tag{2}$  I was able to solve (1), as the integrand simplifies to $x^{e-2}$, however, I'm struggling with solving (2).   If we rewrite the roots as powers, we get:  $\\int x^\\frac{2}{2}\\cdot x^\\frac{3}{4}\\cdot x^\\frac{4}{8}\\cdot x^\\frac{5}{16}\\ldots\\,dx$  combining the powers we get: $\\int x^{\\frac{2}{2}+\\frac{3}{4}+\\frac{4}{8}+\\frac{5}{16}+\\ldots}$  the exponent is the infinite sum  $\\sum^{\\infty}_{n=1}\\frac{n+1}{2^n}\\tag{3} $ we can split this into:  $\\sum^{\\infty}_{n=1}\\frac{n}{2^n}+\\sum^{\\infty}_{n=1}\\frac{1}{2^n} $ The right sum is well known except here the sum begins at $n=1$, meaning that the right sum evaluates to 1. Messing around with desmos, the integrand appears to be $x^3,x>0$ implying that (3) converges to 3 and the $$\\sum^{\\infty}_{n=1}\\frac{n}{2^n}$$ converges to 2.  Which is part I'm struggling with. Any ideas?   $\\sum^{\\infty}_{n=1}\\frac{n}{2^n}$",
+        "tags": [
+            "calculus",
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.212",
+        "title": "Evaluating an infinite series",
+        "body": "I've been given the function $f(x)=\\sum_{n=0}^{\\infty}(2n+1)(2x)^{2n}$ And I have to evaluate $f(1/4)$ so find the value of $f(1/4)=\\sum_{n=0}^{\\infty}\\frac{2n+1}{2^{2n}}$ I would appreciate any help with this as I am pretty lost.",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "power-series",
+            "taylor-expansion"
+        ]
+    },
+    {
+        "query_id": "A.213",
+        "title": "Calculate $\\sum_{x=1}^{\\infty} \\frac{(x-1)}{2^{x}}$",
+        "body": "I can prove it converges but I don't know at what value it converges. $\\sum_{x=1}^{\\infty} \\frac{(x-1)}{2^{x}}$",
+        "tags": [
+            "calculus",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.214",
+        "title": "Show that $\\int\\limits_{-\\infty}^\\infty e^{-\\pi x^2}dx = 1$",
+        "body": "I want to show that $\\int\\limits_{-\\infty}^\\infty e^{-\\pi x^2}dx = 1$.  By definition $\\int\\limits_{-\\infty}^\\infty e^{-\\pi x^2}dx = \\lim\\limits_{t\\to\\infty}\\int\\limits_{-t}^t e^{-\\pi x^2}dx$ and since the integrand $e^{-\\pi x^2}$ is an even function $\\int\\limits_{-\\infty}^\\infty e^{-\\pi x^2}dx = \\lim\\limits_{t\\to\\infty}\\int\\limits_{-t}^t e^{-\\pi x^2}dx = 2\\lim\\limits_{t\\to\\infty}\\int\\limits_0^t e^{-\\pi x^2}dx$ i.e. we can equivalently show that $\\lim\\limits_{t\\to\\infty}\\int\\limits_0^t e^{-\\pi x^2}dx=\\frac{1}{2}$.  Since the antiderivative of $e^{-x^2}$ is given by the error function we can't straightforwardly evaluate the integral, so I tried to use the power series expansion, hoping to be able to see that the resulting series will converge to $\\frac{1}{2}$:  $|\\int\\limits_0^t e^{-\\pi x^2}dx-\\frac{1}{2}| = |\\int\\limits_0^t\\sum\\limits_{n=0}^\\infty\\frac{\\pi^n\\cdot x^{2n}}{n!}dx - \\frac{1}{2}| = |\\sum\\limits_{n=0}^\\infty\\frac{\\pi^n\\cdot t^{2n+1}}{n!\\cdot(n+1)}-\\frac{1}{2}|$  However, I'm in a doubt that it converges and a quick check in Wolfram Mathematica shows indeed that with $t\\to\\infty$ the resulting series will diverge.  What am I doing wrong? Can anybody help me with a proof for this problem? Any help will be really appreciated.",
+        "tags": [
+            "calculus",
+            "integration",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.215",
+        "title": "Set Of Discontinuities Of A Derivative",
+        "body": "Prove that the set of discontinuities of a derivative of an everywhere differentiable function $f(x)$ is of 1st category. Let $f'(x)$ be a derivative of an everywhere differentiable function $f(x)$. Now as the set of discontinuities of any arbitrary functions can be written as a countable union of closed sets. So let $A$ be the set of discontinuities of $f'(x)$, then we can write $A=\\bigcup_{n=1}^{\\infty}A_n$ where all the $A_n$ are closed set. Now suppose that for $n=n_0$ the set $A_{n_0}$ is not nowhere dense then there exists an open interval $(p, q)$ such that for any interval $I$ in that open interval $(p, q)$ we have $I \\cap A_{n_0} \\neq \\phi$ and hence $A_{n_0}$ is dense in the open interval $(p, q)$ and as $A_{n_0}$ is closed so it contains the interval $(p, q)$ and hence $f'(x)$ is entirely discontinuous on the open interval $(p, q)$, but as the derivative of an everywhere differentiable function cannot be entirely discontinuous on an interval, so a contradiction. Is My Proof Correct??",
+        "tags": [
+            "calculus"
+        ]
+    },
+    {
+        "query_id": "A.216",
+        "title": "Compute the limit $\\lim\\limits_{t \\to + \\infty} \\int_0^{+ \\infty} \\frac{ \\mathrm d x}{e^x+ \\sin tx} $",
+        "body": "I have been working on this limit for days, but I am not getting it. The question is  Compute the limit $\\lim_{t \\to + \\infty} \\int_0^{+ \\infty} \\frac{ \\mathrm d x}{e^x+ \\sin (tx)}$  Note that the integral is well defined and convergent for every $t >0$. Indeed the integrand function is a positive function for every $t >0$ since $e^x + \\sin tx > e^x-1 > x>0$ And as $x \\to + \\infty$ the integrand function behaves like $e^{-x}$. WHAT I TRIED: I consider $t=2n \\pi$ a multiple of $2 \\pi$, and see what happens: $\\int_0^{+ \\infty} \\frac{ \\mathrm d x}{e^x+ \\sin (2n \\pi x)} = \\sum_{k=0}^\\infty \\int_{k /n}^{(k+1) /n} \\frac{ \\mathrm d x}{e^x+ \\sin (2n \\pi x)}$ Making the change of variables $u = 2n \\pi x$ I get $\\begin{align}\\sum_{k=0}^\\infty \\frac{1}{2n \\pi} \\int_{2k \\pi}^{(2k+2) \\pi} \\frac{ \\mathrm d u}{e^{u/2n \\pi}+ \\sin (u)} &\\ge \\sum_{k=0}^\\infty \\frac{1}{2n \\pi} \\int_{2k \\pi}^{(2k+2) \\pi} \\frac{ \\mathrm d u}{e^{(2k+2) \\pi/2n \\pi}+ \\sin (u)} \\\\&= \\sum_{k=0}^\\infty \\frac{1}{2n \\pi} \\int_{2k \\pi}^{(2k+2) \\pi} \\frac{ \\mathrm d u}{e^{(k+1)/n}+ \\sin (u)}\\end{align}$ where I write the lower bound with the minimum of the function at $u=(2k+2) \\pi$. Now I use the fact that the integrand function does is integrated over a period of $2 \\pi$, and using the result for $C>1$ $\\int_0^{2 \\pi} \\frac{ \\mathrm d u}{C+ \\sin (u)} = \\frac{2 \\pi}{\\sqrt{C^2-1}}$ I get the estimate $\\begin{align}\\sum_{k=0}^\\infty \\frac{1}{2n \\pi} \\int_{2k \\pi}^{(2k+2) \\pi} \\frac{ \\mathrm d u}{e^{(k+1)/n}+ \\sin (u)} &= \\sum_{k=0}^\\infty \\frac{1}{2n \\pi} \\frac{2 \\pi}{\\sqrt{e^{2(k+1)/n} -1 }} \\\\&= \\frac{1}{n} \\sum_{k=0}^\\infty \\frac{1}{\\sqrt{e^{2(k+1)/n} -1 }}\\end{align}$ Summing all up, I got that $\\int_0^{+ \\infty} \\frac{ \\mathrm d x}{e^x+ \\sin (2n \\pi x)} \\ge \\frac{1}{n} \\sum_{k=0}^\\infty \\frac{1}{\\sqrt{e^{2(k+1)/n} -1 }}$ As $n \\to \\infty$ the series converges to the Riemann integral $\\int_0^{+ \\infty} \\frac{\\mathrm d y}{\\sqrt{e^{2y}-1}} = \\frac{\\pi}{2}$ Hence the limit should be a number larger than $\\pi/2$, or $+ \\infty$. Using WA I got for large values of $t$ that the integral is between $1$ and $2$, thus $\\pi/2$ could be the actual limit.",
+        "tags": [
+            "calculus",
+            "integration",
+            "limits",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.217",
+        "title": "An easy Calculus Problem",
+        "body": "Here's the question- Find the maximum area of an isosceles triangle inscribed in the ellipse $x^2/a^2 + y^2/b^2 = 1$. My teacher solved it by considering two arbitrary points on the ellipse to be vertices of the triangle, being $(a\\cos\\theta, b\\sin \\theta)$ and $(a\\cos\\theta, -b\\sin \\theta)$. (Let's just say $\\theta$ is theta) and then proceeded with the derivative tests(which i understood) But, he didn't indicate what our $\\theta$ was,and declared that these points always lie on an ellipse. Why so? And even if they do, what's the guarantee that points of such a form will be our required vertices? One more thing, I'd appreciate it if you could suggest another way of solving this problem. Thank you!",
+        "tags": [
+            "calculus",
+            "derivatives"
+        ]
+    },
+    {
+        "query_id": "A.218",
+        "title": "Problem involving recursion of binomial coefficients",
+        "body": "Wrt Ramsey numbers I have the following identity given to me:  $ R(m, n) \\leq R(m-1, n)+R(m, n-1) $  And i have the following bases cases: $R(m,2)=m$ and $R(2,n)=n$. One has to prove that:  $R(m, n) \\leq\\left(\\begin{array}{c}{m+n-2} \\\\ {m-1}\\end{array}\\right)$  It is obvious that we have to go on splitting the two terms on the RHS into pairs of terms decrementing the indices by 1 each time. But the appearance of the combination is non-obvious.",
+        "tags": [
+            "combinatorics",
+            "combinations",
+            "binomial-coefficients",
+            "ramsey-theory"
+        ]
+    },
+    {
+        "query_id": "A.219",
+        "title": "How to prove a combinatorial identity with a combinatorial argument",
+        "body": "I am trying to prove the following identity using a a combinatorial argument: $\\dbinom{n+r+1}{r}=\\sum_{k=0}^{r}\\dbinom{n+k}{k}$",
+        "tags": [
+            "combinatorics",
+            "discrete-mathematics",
+            "combinations",
+            "combinatorial-proofs"
+        ]
+    },
+    {
+        "query_id": "A.220",
+        "title": "How can i prove the identity $\\sum_{k=0}^{n} \\binom{x+k}{k}=\\binom{x+n+1}{n}$",
+        "body": "I'm having a difficult time understanding how to give a combinatorics proof of the identity $\\sum_{k=0}^{n} \\binom{x+k}{k}=\\binom{x+n+1}{n}$",
+        "tags": [
+            "combinatorics",
+            "summation",
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.221",
+        "title": "What's the minimum number of $2$s needed to write a positive integer?",
+        "body": "This is just for fun and inspired by Estimating pi, using only 2s. For a positive integer $n$, let $f(n)$ denote the minimum number of $2$s needed to express $n$ using addition, subtraction, multiplication, division, and exponentiation, together with the ability to concatenate $2$s, so for example $2 \\times 22^2 + \\frac{222}{2}$ is a valid expression. Other variants involving different sets of allowed operations are possible, of course. This function is very far from monotonic, so to smooth it out let's also consider $g(n) = \\text{max}_{1 \\le m \\le n} f(m).$ For example,  $f(1) = 2$ ($1 = \\frac 22$) $f(11) = 3$ ($11 = \\frac{22}{2}$)   Question: What can you say about $f(n)$ and $g(n)$? Can you give exact values for small values of $n$? Can you give (asymptotic or exact) upper bounds? Lower bounds?  As a simple example we can write any positive integer $n$ in the form $2^k + n'$ where $n' < 2^k$ ($2^k$ is just the leading digit in the binary expansion of $n$), which gives $f(n) \\le f(k) + 1 + f(n')$. If we write $\\ell(n) = \\lfloor \\log_2 n \\rfloor$ then iterating this gives something like $g(n) \\le \\sum_{k=1}^{\\ell(n)} \\left( g(k) + 1 \\right).$ This gives an upper bound growing something like $\\ell(n) \\ell^2(n) \\ell^3(n) \\dots$ which I think is pessimistic. For example, in my answer to the linked question I show that $f(14885392687) \\le 36$ and $\\ell(14885392687) = 33$ so maybe we can expect something as good as $g(n) = O(\\log n)$ for an upper bound. I have no idea about a lower bound, other than to write down an upper bound on the number of possible expressions that can be made with a given number of $2$s. Edit: A related question involving $4$s and more allowed operations: How many fours are needed to represent numbers up to $N$?",
+        "tags": [
+            "combinatorics",
+            "optimization",
+            "recreational-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.222",
+        "title": "A company hires $11$ new employees, and they will be assigned to four different departments, A, B, C, D",
+        "body": "A company hires $11$ new employees, and they will be assigned to four different departments, A, B, C, D. Each department has at least one new employee. In how many ways can these assignments be done?  I know that for each section (A,B,C,D) I should add a () and as long as every section must get a new employee we should start like this: $(x+x^2/2!+x^3/3!+...)^4$ then if we look  it's $(e^x-1)^4$. After this step I don't know what to do.",
+        "tags": [
+            "combinatorics",
+            "generating-functions"
+        ]
+    },
+    {
+        "query_id": "A.223",
+        "title": "combinatorial proof that $\\sum_{i=0}^n {n+i\\choose i}\\frac{1}{2^i} = 2^n$",
+        "body": "Give a combinatorial proof that $\\displaystyle\\sum_{i=0}^n {n+i\\choose i}\\frac{1}{2^i} = 2^n$.  I'm not sure if Pascal's identity is useful here. Or perhaps there is a way involving binary strings? $2^n$ is the number of binary strings of length $n$, so if there was some way to decompose these strings into disjoint sets $B_i$ with cardinality ${n+i\\choose i}\\frac{1}{2^i}$, a proof using that method might work. ${n+i\\choose i}$ is the number of binary strings of length $n+i$ with exactly $i$ ones, since one can choose $i$ of the $n+i$ positions to be ones in ${n+i\\choose i}$ ways and make the rest zeroes in one way. Then we divide by the number of binary strings of length $i$, though I'm not sure how to deduce the combinatorial significance of this. I'm most likely thinking of this the wrong way.",
+        "tags": [
+            "combinatorics",
+            "elementary-set-theory",
+            "summation",
+            "combinatorial-proofs"
+        ]
+    },
+    {
+        "query_id": "A.224",
+        "title": "I think I found a flaw in the $\\varepsilon$-$\\delta$ definition of continuity.",
+        "body": "If I have a function $f(x)$ defined as follows.  $f(x) = 1$ for all $x<1$ and $x>2$; $f(x) = 100$ for $x = 1.5$; $f(x)$ is undefined anywhere else.  According to the $\\varepsilon$-$\\delta$ definition of continuity, if I take $\\delta$ as any positive number smaller than $0.5$, then $f(x)$ by definition is continuous at $x = 1.5$ because within the $\\delta$-neighborhood there is only one point defined, but $f(x)$ is obviously not continuous at $x = 1.5$. Below is the $\\varepsilon$-$\\delta$ definition of continuity: The function $f(x)$ is continuous at a point $x_0$ of its domain if for every positive $\\varepsilon$ we can find a positive number $\\delta$ such that $|f(x) - f(x_0)|<\\varepsilon$$x$ in the domain of $f$ for which $|x-x_0|<\\delta$",
+        "tags": [
+            "continuity"
+        ]
+    },
+    {
+        "query_id": "A.225",
+        "title": "Finding the sum of non-unique roots of cubic equations",
+        "body": "The real numbers $\\alpha,\\beta$ satisfy $\\alpha^3-3\\alpha^2+5\\alpha-17=0\\tag{1}$ $\\beta^3-3\\beta^2+5\\beta+11=0\\tag{2}$ Find $\\alpha+\\beta$  Are the three roots of both cubic equations unique, or is there only one root? How can you prove it? What's the best approach to this problem?  I tried using Vieta's formulas, where the sum of three roots of (1) and (2) are: $\\alpha_1+\\alpha_2+\\alpha_3=3$ $\\beta_1+\\beta_2+\\beta_3=3$ Summing both, $\\alpha_1+\\alpha_2+\\alpha_3+\\beta_1+\\beta_2+\\beta_3=6$ Assuming there is only one root for each of (1) and (2), we are done, but what if there isn't?",
+        "tags": [
+            "cubic-equations"
+        ]
+    },
+    {
+        "query_id": "A.226",
+        "title": "Parametrization of the curve $x^{x^y}=y$",
+        "body": "I was looking at the graph of the equation $x^{x^y}=y$ (Desmos link). This graph has two components that cross at the point $(1/e^e,1/e)=(e^{-e},e^{-1})$. Component 1 (as I'll call it) is the component $x^y=y$ which has the simple parametrization $(x,y)=\\left(t^{1/t},t\\right),\\qquad0<t<\\infty.$ Component 2 is a path between the points $(0,0)$ and $(0,1)$.  Does component 2 also admit a parameterization?  To clarify: Component 2 is a path so of course it abstractly admits a parameterization, but I'm asking if there is a parametrization that we can actually write down algebraically in terms of elementary functions.  My motivation for this question is from the limiting behavior of the sequence $0,1,x,x^x,x^{x^x},x^{x^{x^x}},\\ldots$, whose behavior is closely related to the solutions to $x^{x^y}=y$. In particular, if $x$ is less than $e^{-e}$ then this sequence alternates between the upper and lower parts of component 2.",
+        "tags": [
+            "curves",
+            "parametric",
+            "plane-curves",
+            "parametrization"
+        ]
+    },
+    {
+        "query_id": "A.227",
+        "title": "$1+2+3... =-\\frac{1}{12}$ - Question regarding this",
+        "body": "So, I'm not a big expert in this subject but I know $1+2+3...=-\\dfrac{1}{12}$ isn't to do with 'real' maths but it's all to do with the zeta function; however I was watching a maths video and the equation:  $ \\frac{x(x+1)}{2} $  ... is actually a perfect equation for the series $1+2+3...$ etc. where $x$ represents $n$ in a series and $y$ is the sum of the series up to $n$. So, you can conclude that:  $ \\sum^{n}_{i=1}1+2+3...=\\frac{x(x+1)}{2} $  However, this is where it gets weird; as you have probably guessed, the roots of the equation is $x=0,-1$  but if I want to find the integral of the roots from $-1$ to $0$ which is under the $x$ axis, I get the following:  $ \\int_{-1}^{0} \\frac{x(x+1)}{2}\\:dx=-\\frac{1}{12} $  So, my question is why is this the case; what connection is there between the value of the integral under the $x$ axis that this graph has compared to the summation of the series?  Link to Desmos graph for more clarity",
+        "tags": [
+            "definite-integrals",
+            "summation",
+            "quadratics",
+            "zeta-functions"
+        ]
+    },
+    {
+        "query_id": "A.228",
+        "title": "Terrible integral with parameter",
+        "body": "Let be   $\\quad f(x)=\\int_{0 }^{+\\infty}cos\\left(\\frac{t^3}{3}+xt\\right) d t$   Find the integral  $F(x, y)=\\int_{-\\infty}^{+\\infty} f(t+x) f(t+y) d t$  I tried exploring f(x), took it in parts, got that it converges. F(x,y) is difficult to investigate, since the product of integrals is there, I don't know what to do with it.",
+        "tags": [
+            "definite-integrals",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.229",
+        "title": "Finding integral of function involving fractional part of x",
+        "body": "The integral given is: $\\int_{0}^{1}\\big\\lbrace\\frac{1}{x}\\big\\rbrace \\big\\lbrace\\frac{1}{1-x}\\big\\rbrace \\big\\lbrace1-\\frac{1}{x}\\big\\rbrace dx$ where  $\\big\\lbrace x\\big\\rbrace$ represents the fractional part of $x$  I first tried breaking it using a piecewise definition but I couldn't figure out how to do it as there wasn't any consistent pattern that I could spot.   I tried graphing it to get an idea but that also didn't get me anywhere.  Finally, I tried using the property of definite integral that $\\int_{0}^{a}f(x)dx=\\int_{0}^{a}f(a-x)dx$ but the first and seccond terms remained the same and the last term changed but not it did not lead to any noticeable changes.  I am stuck now. Any help would be appreciated.",
+        "tags": [
+            "definite-integrals",
+            "fractional-part"
+        ]
+    },
+    {
+        "query_id": "A.230",
+        "title": "Question about definition of Ramsey number",
+        "body": "So I went through the definition of Ramsey number and I have a basic question. Definition: For any given number of colours, $c$, and any given integers $n_1, …, n_c$, there is a number, $R(n_1, …, n_c)$, such that if the edges of a complete graph of order $R(n_1, ..., n_c)$ are coloured with c different colours, then for some i between 1 and c, it must contain a complete subgraph of order ni whose edges are all colour i. Question: Is the multicolour Ramsey number $R(n_1,n_2,..n_c) $same as $R(n_2,n_1,..n_c) $or any other permutation of$ {n_1,n_2,..n_c}$? The definition seems to imply so, I just want to verify if I'm thinking right. I have read that $R(m,n)=R(n,m)$ but nothing about symmetricity of multicolour Ramsey numbers.",
+        "tags": [
+            "definition",
+            "ramsey-theory"
+        ]
+    },
+    {
+        "query_id": "A.231",
+        "title": "Why is 1 divided by aleph null undefined?",
+        "body": "So recently I have been thinking about infinity, and one of the things that I thought of was if you were able to get a defined value for the reciprocal of a transfinite (cardinal) number. So, I plugged $\\frac{1}{א_0}$ into WolframAlpha and it said the following: img1  Why is this the case? Shouldn't this be similar to this case? $\\lim_{x\\to\\infty} \\frac{1}{x} =0$ Aren't $\\infty$ and $א_0$ equal to the same value in this context? What am I missing here?",
+        "tags": [
+            "definition"
+        ]
+    },
+    {
+        "query_id": "A.232",
+        "title": "Definition of Induced Matrix Norm",
+        "body": "I'm getting confused between 2 variants of definition of induced matrix norm. Given a norm $||\\cdot||$ on $\\mathbb{R}^n$, the induced matrix norm is defined by $ \\left\\lVert A \\right\\rVert = \\max_{\\mathbf v\\not =0}\\frac{\\left\\lVert A\\mathbf v \\right\\rVert}{\\left\\lVert \\mathbf v \\right\\rVert} \\qquad for \\quad A \\in \\mathbb{R}^{n\\times n}.$   I'm trying to deduce the second variant from this definition i.e. $\\left\\lVert A \\right\\rVert =\\max_{\\Vert \\mathbf w\\Vert = 1}\\Vert A \\mathbf w\\Vert.$  Consider $\\mathbf v= \\frac{\\left\\Vert\\mathbf v\\right\\rVert\\mathbf v}{\\left\\Vert\\mathbf v\\right\\rVert}=\\mathbf w\\left\\Vert\\mathbf v\\right\\rVert $ where $\\mathbf w= \\frac{\\mathbf v}{||\\mathbf v||}$ and $||\\mathbf w||=1$.  Therefore, $ \\left\\lVert A \\right\\rVert = \\max_{v\\not =0}\\frac{\\left\\lVert A\\mathbf v \\right\\rVert}{\\left\\lVert \\mathbf v \\right\\rVert}= \\max_{v\\not =0}\\frac{\\left\\lVert A(\\mathbf w\\left\\Vert\\mathbf v\\right\\rVert )\\right\\rVert}{\\left\\lVert \\mathbf v \\right\\rVert}=\\max_{\\mathbf v\\not=0}\\frac{||\\mathbf v||}{||\\mathbf v||}\\Vert A \\mathbf w\\Vert.$ I don't know how to continue from here on.   Also, I 'm reading textbooks where they say : $\\left\\lVert A \\right\\rVert =\\max_{\\Vert \\mathbf w\\Vert = 1}\\Vert A \\mathbf w\\Vert \\quad for \\quad \\mathbf w \\in \\mathbb{R}^n .$  My question is shouldn't it be  $\\left\\lVert A \\right\\rVert =\\max_{\\Vert \\mathbf w\\Vert = 1}\\Vert A \\mathbf w\\Vert \\quad for \\quad \\mathbf w \\in \\mathbb{R}^n \\setminus \\{\\mathbf 0\\} .$  Because $\\mathbf w=\\mathbf 0$ means $||\\mathbf w||=0$ which is ruled out because $||\\mathbf w||=1.$",
+        "tags": [
+            "definition",
+            "norm"
+        ]
+    },
+    {
+        "query_id": "A.233",
+        "title": "Motivation for defining tangent vectors with derivations and why they should act on $f\\in C^\\infty(M)$",
+        "body": "I'm revisiting the definition for tangent spaces in Lee's Introduction to Smooth Manifolds and I'm trying to convince myself why we might define tangent vectors as derivations at a point $p\\in M$:  Let $M$ be a smooth manifold, and let $p\\in M$. A linear map $v:C^\\infty(M)\\to \\mathbb{R}$ is called a derivation at $p$ if $\\begin{align*} v(fg) = f(p)vg + g(p)vf \\end{align*}$ for all $f,g\\in C^\\infty(M)$.  So far, I know that if $M=\\mathbb{R}^n$, then each derivation can be given as a directional derivative in some direction in $\\mathbb{R}^n$. After reading the parts on the differential and its computation in coordinates, I'm still wondering why we would be interested in defining a tangent vector as a map that acts on functions on the manifold and the benefits from acting on smooth functions. The main reason that I can think of is that the collection of derivations at a point forms a vector space, which is we what want for a tangent space. I have also looked at the approach of defining tangent vectors with equivalence classes of curves, but it seems that there's also an action on $f\\in C^\\infty(M)$ going on; we call curves $\\gamma:J\\to M$ the tangent vectors, and they have a directional-derivative-like operators that act on $f\\in C^\\infty(M)$ by $\\begin{align*} \\left.\\frac{d}{dt}(f\\circ \\gamma)(t)\\right|_{t=0}. \\end{align*}$ This seems really similar to how a vector in $\\mathbb{R}^n$ defines its own directional derivative, but again, I'm not sure why the action on $f\\in C^\\infty(M)$ would be useful/significant.",
+        "tags": [
+            "differential-geometry",
+            "differential-topology",
+            "smooth-manifolds",
+            "tangent-spaces"
+        ]
+    },
+    {
+        "query_id": "A.234",
+        "title": "Sards theorem for polynomial",
+        "body": "I'm having some struggles with an aspect about something apparently trivial about Sard's theorem, but couldn't find anything online.  Let $f$ be a polynomial.  According to Sard's theorem, the image $f(Z)$ of the set of critical values  $Z = \\{a \\in X : f'(a) = 0\\}$ has measure zero.  What if I want to show that the set $Z$ itself has measure zero in the domain of $f$?  I feel like it's so simple but i just can't get behind it.",
+        "tags": [
+            "differential-topology"
+        ]
+    },
+    {
+        "query_id": "A.235",
+        "title": "Method for solving Diophantine equation $ax^2 + bx + c = y^2$",
+        "body": "How do I solve the Diophantine equation $ax^2 + bx + c = y^2$? The approach I have so far is to use the transformation $X = 2ax + b$ and $Y = 2y$. Applying this, we get, $X^2 - dY^2 = n$, where $n = b^2 - 4ac$ and $d = a$. $X^2 - dY^2 = n$ is a Pell equation. Questions:  Is there any other method? What is the complexity of the algorithm for finding the solution to the Pell equation?",
+        "tags": [
+            "diophantine-equations",
+            "computational-complexity",
+            "pell-type-equations"
+        ]
+    },
+    {
+        "query_id": "A.236",
+        "title": "Normalizing constant in Dirichlet distribution",
+        "body": "According to references (e.g. Wikipedia and elsewhere), the Dirichlet distribution, parametrized by $\\boldsymbol{\\alpha}=(\\alpha_1,\\ldots,\\alpha_K)$, is $ D(x_1, \\ldots, x_K) = \\frac{1}{\\mathrm{B}(\\boldsymbol\\alpha)} \\prod_{i=1}^K x_i^{\\alpha_i - 1} $ where $ \\mathrm{B}(\\boldsymbol\\alpha) = \\frac{\\prod_{i=1}^K \\Gamma(\\alpha_i)}{\\Gamma\\left(\\sum_{i=1}^K \\alpha_i\\right)}. $ So, if $K = 2$ and $\\alpha_1 = \\alpha_2 = 1$ then this gives $ D(x_1, x_2) = 1/\\mathrm{B(\\boldsymbol\\alpha)} $ where $ \\mathrm{B}(\\boldsymbol\\alpha) = \\Gamma(1)^2 / \\Gamma(2) = 1 $ so, $D(x_1, x_2) = 1$ for all $x_1, x_2$.  However, $D(x_1, x_2)$ is defined on the standard $1$-simplex defined in $R^2$ by $x_i \\ge 0$ and $x_1 + x_2 = 1$.  This is the span (or affine hull) of the two points $(0, 1)$ and $(1, 0)$.  Since this is a line segment of length $\\sqrt{2}$, the integral of the Dirichlet distribution over this simplex is $\\sqrt{2}$, not $1$ as expected.  What am I missing here? The same problem comes in higher dimensions.  For instance, for $K=3$, the simplex is a triangle with side $\\sqrt{2}$, but the normalization constant becomes $B(\\boldsymbol\\alpha) = 1/\\Gamma(3) = 1/2$, which is not the area of this triangle. What is wrong here?",
+        "tags": [
+            "dirichlet-series"
+        ]
+    },
+    {
+        "query_id": "A.237",
+        "title": "Rewrite the propositions without implication",
+        "body": "I want to rewrite the following types of propositions without the simple or double implication:   $p \\land \\lnot q \\to r$ $p \\land \\lnot q \\to r \\land q$ $(p \\to r) \\leftrightarrow (q \\to r)$   So we have to write these propositions without any implication, for example the first proposition like $p \\land \\lnot q \\land r$ or is something else meant?",
+        "tags": [
+            "discrete-mathematics",
+            "logic"
+        ]
+    },
+    {
+        "query_id": "A.238",
+        "title": "Definition of Equivalence Relation",
+        "body": "I was going through the text \"Discrete Mathematics and its Application\" by Kenneth Rosen (5th Edition) where I am across the definition of equivalence relation and felt that it is one sided.     Definition: A relation on a set A is called an equivalence relation if it is reflexive, symmetric, and transitive.   Now let us analyze the situation of what equivalence is meant to us intuitively.  Let there be a binary relation $R$ defined on a set $A$. Now we suppose that $R$ be reflexive, symmetric and transitive.  So we have for $a,b,c \\in A$    $a R a$ (by the reflexive property of R) if $a R b$ then $b R a$  (by the symmetric property of R) if $a R b$ and $b R c$ then $aRc$ (by the transitive property of R)   Intuitively we can satisfy ourselves with the fact that the above are the necessary conditions for $R$ to be equivalent. So \"if $R$ is reflexive, symmetric and transitive, then $R$ is an equivalence relation\"  Now working our intuition for equivalence relation $\\sim$ we note the following.  Let $\\sim$ be an equivalence relation on a set A, then for $a,b,c \\in A$ we have,   $a \\sim a$ (by the intuitive knowledge of what $\\sim$ means) if $a\\sim b$ then $b \\sim a$ (by the intuitive knowledge of what $\\sim$ means) if $a\\sim b$ and $b \\sim c$ then $a\\sim c$ (by the intuitive knowledge of what $\\sim$ means)   Now we see that (1) implies $\\sim$ is reflexive, (2) implies that $\\sim$ is symmetric and (3) implies that $\\sim$ is transitive.  So we have \"if $\\sim$ is an equivalent relation then $\\sim$ is reflexive, symmetric and transitive\"  From the two intuitive implications we can conclude that A relation on a set A is called an equivalence relation if and only if it is reflexive, symmetric, and transitive. and not what the book says. This definition makes quite sense unlike the book definition which says that if $R$ fails to be either reflexive or symmetric or transitive then $R$ may or may not be an equivalence relation, which after all gives a weird feeling.  Correct me if my logic is wrong.",
+        "tags": [
+            "discrete-mathematics",
+            "elementary-set-theory",
+            "proof-writing",
+            "definition",
+            "relations"
+        ]
+    },
+    {
+        "query_id": "A.239",
+        "title": "Fake proof, symmetric and transitive relation is already reflexive",
+        "body": "Let $R$ be a symmetric, transitive relation. If $(x, y) \\in R$ then the symmetric property implies that $(y, x) \\in R$. Using the the transitive property upon $(x, y)$ and $(y, x)$ we can conclude $(x, x) \\in R$. Is this fair logic or is it flawed?",
+        "tags": [
+            "discrete-mathematics",
+            "relations",
+            "fake-proofs"
+        ]
+    },
+    {
+        "query_id": "A.240",
+        "title": "What do the constants \"4\" and \"2\" in Bhaskara mean and where did they come from?",
+        "body": "In bhaskar, the way to get the result, is to get the $\\Delta  = b^2 – 4ac$, and then the $X = (–b \\pm \\sqrt\\Delta)/2a)$. But from where come these constants?",
+        "tags": [
+            "education"
+        ]
+    },
+    {
+        "query_id": "A.241",
+        "title": "Divisibility of $n^3 +6n^2-7n$",
+        "body": "Let $n = 2, 3, 4, ...$ be an integer. Show that $n^3 +6n^2-7n$ is divisible by $6$.   How should one approach this? Using modular arithmetic or some other approach?",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.242",
+        "title": "Show that for all prime numbers $p$ greater than $3$, $24$ divides $p^2-1$ evenly.",
+        "body": "Show that for all prime numbers $p$ greater than $3$, $24$ divides $p^2-1$ evenly.  Since $(p+1)(p-1) = p^2-1$ we have that $\\frac{(p+1)(p-1)}{24}=k$, where $k \\in \\Bbb Z.$ Now since $24 = 2^3 \\cdot 3$ and the numerator contains always at least one even factor(?) we have that $24=2^3\\cdot3\\vert(p+1)(p-1).$ Is my reasoning here correct or am I missing something here?",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.243",
+        "title": "If $2^{2k}-x^2\\bigm|2^{2k}-1$ then $x=1$",
+        "body": "This is the $y=2^k$ case of this question. Suppose that $k\\geq1$ and $0<x<2^k$ and $2^{2k}-x^2\\bigm|2^{2k}-1$. Is it necessarily the case that $x=1$? Equivalently: Suppose that there are two positive divisors of $2^{2k}-1$ which average to $2^k$. Is it necessarily the case that these two divisors are $2^k-1$ and $2^k+1$?",
+        "tags": [
+            "elementary-number-theory",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.244",
+        "title": "Compute the Cardinality of a quotient set",
+        "body": "Let $R$ be a an Equivalence relation on $\\Bbb{R}$ defined by: $aRb \\Leftrightarrow (a-b)\\in \\Bbb{Z}$ What is the cardinality of $|\\Bbb{R}/R|$?   where $\\Bbb{R}/R$ is the quotient set of $\\Bbb{R}$ under $R$.",
+        "tags": [
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.245",
+        "title": "Is there a known set of closed form solutions to the functional equation f(f(z)) = sin z?",
+        "body": "That is $ f(f(z)) = \\sin z $ where $ z \\in \\mathbb{Z} $",
+        "tags": [
+            "functional-equations"
+        ]
+    },
+    {
+        "query_id": "A.246",
+        "title": "Finding $n$ such that in a regular $n$-gon $A_1A_2\\ldots A_n$ we have $\\frac1{A_1A_2}=\\frac1{A_1A_3}+\\frac1{A_1A_4}$",
+        "body": "INMO '92 Question 9:  Find $n$ such that in a regular $n$-gon $A_1A_2 ...A_n$ we have $\\frac{1}{A_1A_2}=\\frac{1}{A_1A_3}+\\frac{1}{A_1A_4}$  I tried the following Assume it is inscribed in a circle. Then length of chord is $2\\sin(\\theta)$ where $\\theta$ is half the angle subtended at the center between consecutive points. So, $\\theta=\\frac{180^\\circ}{n}$. Then we get $\\csc(\\theta)=\\csc(2\\theta)+\\csc(3\\theta)$ Not sure quite how to proceed from there- using double and triple angle formulae doesn't seem to work",
+        "tags": [
+            "geometry",
+            "trigonometry",
+            "contest-math",
+            "polygons"
+        ]
+    },
+    {
+        "query_id": "A.247",
+        "title": "Finding the endpoints of the maximal arc of circle $x^2+(y-8)^2=25$ visible from $(0,-5)$.",
+        "body": "The equation of circle $C$ is $x^2 + (y − 8)^2 = 25$. The eye is located at $E = (0, −5)$. The maximal circular arc visible to the eye is $AB$, which is then being projected on to the one-dimensional \"screen\" as $A'B'$. What are the co-ordinates of points $A$ and $B$?  I came this far: point $P$ on circle $C$ has the coordinates $x = 5 \\cos\\theta$, $y = 8 + 5 \\sin \\theta$. Now I should use this to find points $A$ and $B$, but I don't know how to proceed.",
+        "tags": [
+            "geometry",
+            "analytic-geometry"
+        ]
+    },
+    {
+        "query_id": "A.248",
+        "title": "product of elements $\\ne e$ implies only one element with order $2$",
+        "body": "Let $G$ be an abelian group with even order and $M:=\\{g\\in G:g^2=e\\}$.  It is easy to show that $M$ is a sugroup of $G$ and the number of elements of $M$ must be a power of $2$.     I want to prove that the product of the elements of $G$ (which in this case is equal to the product of the elements of $M$) is not the identity element $e$, if and only if #$M=2$ (this means that there is only one element with order $2$). I found this claim when I studied the Wilson criterion for the primality of a number.   The case #$M=4$ is easy. If $a,b\\in M$, we can show that $ab$ is not $a,b,e$, hence must be some other element $c$ and we get $abc=c^2=e$. But what about #$M=8$? If we have the elements $e,a,b,c,d,f,g,h$ and $ab=c$ and $df=g$, the product would be $h$ which is impossible considering my claim.   Who can complete my proof ?",
+        "tags": [
+            "group-theory",
+            "finite-groups"
+        ]
+    },
+    {
+        "query_id": "A.249",
+        "title": "An abelian group proof with $g*g=e$ for all $g$.",
+        "body": "I have to show that the following group $ (G, * , e) $ with its operation $*$, which is defined through $ g*g = e$  for every $g \\in G $ is an abelian group. In order to do that one have only to show that the group is commutative. How can one prove it whereas the operation is defined always between an Element and itself? I reckon it is not so simple as it seems Thanks in advance for your help :)",
+        "tags": [
+            "group-theory",
+            "abelian-groups",
+            "monoid"
+        ]
+    },
+    {
+        "query_id": "A.250",
+        "title": "How to show $(a_1a_2\\ldots a_n)^{\\frac{1}{n}}\\leq \\frac{\\sum_{i=1}^{n}a_i}{n}$",
+        "body": "How to show $(a_1a_2\\ldots a_n)^{\\frac{1}{n}}\\leq \\frac{\\sum_{i=1}^{n}a_i}{n}$ with $a_i$ positive. Well, I tried by induction: with $n=2$ then $\\sqrt{ab}\\leq \\frac{a+b}{2}$ is equivalent to say (elevate square in both side) $4ab\\leq a^2 +2ab + b^2$ and this is equivalent $0\\leq(a-b)^2$ and this is true. I suppose it is true for some $n$. But with $n+1$, I don't know how to do, Please can help me with a hint or other way, thank you so much.",
+        "tags": [
+            "inequality",
+            "a.m.-g.m.-inequality"
+        ]
+    },
+    {
+        "query_id": "A.251",
+        "title": "How to prove that $(k+1)^{\\frac{1}{k+1}} < k^{\\frac{1}{k}} (k >= 3)$ using mathematical induction?",
+        "body": "I've been trying to solve this for hours, but I just can't seem to do it. And yes, I know I have to show that $(k+2)^{\\frac{1}{k+2}} < ... < (k + 1)^{\\frac{1}{k+1}}$ from the starting assumption that $(k+1)^{\\frac{1}{k+1}} < k^{\\frac{1}{k}}$. Any hints would be highly welcome.",
+        "tags": [
+            "inequality",
+            "induction"
+        ]
+    },
+    {
+        "query_id": "A.252",
+        "title": "Unexpected appearances of $\\pi^2 /~6$.",
+        "body": "\"The number $\\frac 16 \\pi^2$ turns up surprisingly often and frequently in unexpected places.\" - Julian Havil, Gamma: Exploring Euler's Constant.     It is well-known, especially in 'pop math,' that $\\zeta(2)=\\frac1{1^2}+\\frac1{2^2}+\\frac1{3^2}+\\cdots = \\frac{\\pi^2}{6}.$ Euler's proof of which is quite nice. I would like to know where else this constant appears non-trivially. This is a bit broad, so here are the specifics of my question:   We can fiddle with the zeta function at arbitrary even integer values to eek out a $\\zeta(2)$. I would consider these 'appearances' of $\\frac 16 \\pi^2$ to be redundant and ask that they not be mentioned unless you have some wickedly compelling reason to include it. By 'non-trivially,' I mean that I do not want converging series, integrals, etc. where it is obvious that $c\\pi$ or $c\\pi^2$ with $c \\in \\mathbb{Q}$ can simply be 'factored out' in some way such that it looks like $c\\pi^2$ was included after-the-fact so that said series, integral, etc. would equal $\\frac 16 \\pi^2$. For instance, $\\sum \\frac{\\pi^2}{6\\cdot2^n} = \\frac 16 \\pi^2$, but clearly the appearance of $\\frac 16\\pi^2$ here is contrived. (But, if you have an answer that seems very interesting but you're unsure if it fits the 'non-trivial' bill, keep in mind that nobody will actually stop you from posting it.)   I hope this is specific enough. This was my attempt at formally saying 'I want to see all the interesting ways we can make $\\frac 16 \\pi^2$.' With all that being said, I will give my favorite example as an answer below! :$)$    There used to be a chunk of text explaining why this question should be reopened here. It was reopened, so I removed it.",
+        "tags": [
+            "integration",
+            "sequences-and-series",
+            "riemann-zeta",
+            "big-list",
+            "pi"
+        ]
+    },
+    {
+        "query_id": "A.253",
+        "title": "How would I show the result below using contour integration?",
+        "body": "How would I show the result below using contour integration? $\\int_{-\\infty}^{\\infty} \\frac{\\cos bx - \\cos ax}{x^2} dx = \\pi (a-b)$ where a>b>0 using contour integration. Any help would be greatly appreciated, thanks!",
+        "tags": [
+            "integration",
+            "complex-analysis",
+            "trigonometry",
+            "fourier-analysis",
+            "contour-integration"
+        ]
+    },
+    {
+        "query_id": "A.254",
+        "title": "Integration question hard",
+        "body": "Can I get some hints on how to solve this integral? $ I=\\int_0^\\pi \\frac{x \\ dx}{1-sinx \\ cosx} $",
+        "tags": [
+            "integration",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.255",
+        "title": "Integral of $e^{-\\frac{u^2}{2}}$",
+        "body": "This is the first time I came across the problem of finding integral of $\\propto$. I have a joint distribution $f_{X,Y}(x,y) \\propto \\exp\\left(13xy - 94x^2 - \\frac{1}{2}y^2\\right)$  where $$$$ -\\infty< x <\\infty, -\\infty< y <\\infty$  I attempted to find $f_X(x)$ as follows:  $\\begin{align*} f_X(x) &\\propto \\int_{-\\infty}^\\infty e^{13xy - 94x^2 - \\frac{1}{2}y^2}{\\rm d}y\\\\ &\\propto \\int_{-\\infty}^\\infty e^{-\\frac{1}{2}(y - 13x)^2 - \\frac{19x^2}{2}}{\\rm d}y\\\\ &\\propto \\frac{1}{e^{\\frac{19x^2}{2}}} \\int_{-\\infty}^\\infty e^{-\\frac{u^2}{2}}{\\rm d}u \\end{align*}$ where $ u = (y - 13x)^2 $  Similarly, I derived $ f_Y(y) \\propto \\frac{1}{e^{\\frac{19x^2}{376}}} \\int_{-\\infty}^\\infty e^{-u^2}{\\rm d}u $ where $ u = \\sqrt{94}x - \\frac{13y}{2\\sqrt{94}} $  Could you please show me how to proceed to the destination solutions? Thanks in advance.",
+        "tags": [
+            "integration",
+            "probability-distributions",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.256",
+        "title": "Why do we have to factorize the function before taking its limit",
+        "body": "I am learning about limits and there is something that I cant quite understand:  If we have the function:     $ f(x) =\\frac{x^2-1}{x-1} $   Let's say that we want to see which value for y (image) the function approaches as x (domain) gets closer to 1. On a nutshell, we have to take this following limit:     $ \\lim_{x\\to1}\\frac{x^2-1}{x-1} $   As soon as we look to this function, we realize that the function is not continuous at x = 1 (By the way, can I say that?).   I know the algorithm to figure out the solution of the limit:  First, there is the need of eliminating the function discontinuity. Usually, it is just a matter of factorizing the function into a new function which the exactly same image as the one before with one crucial difference: The function is continuous for all real numbers   My doubts:Is my way to think about it correct? Can I think like that?  Take the example above:       $ f(x) = \\frac{x^2-1}{x-1} $   After factorizing, we get:  $ f(x) = {x+1} $  If we plot both functions, they are the same, although the second one has its continuity all along the real numbers domain  Thanks in advance",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.257",
+        "title": "Is \"taking a limit\" a function? Is it a procedure? A ternary operation?",
+        "body": "I was sitting in analysis yesterday and, naturally, we took the limit of some expression. It occurred to me that \"taking the limit\" of some expression abides the rules of a linear transformation $\\lim_{x \\rightarrow k}\\ c(f(x)+g(x)) = c \\lim_{x \\rightarrow k} f(x) + c\\ \\lim_{x \\rightarrow k} g(x),$ and (my group theory is virtually non existent) appears also to be a homomorphism: $\\lim_{x \\rightarrow k} (fg)(x) = \\lim_{x \\rightarrow k} f(x)g(x), $ etc.  Anyway, my real question is, what mathematical construct is the limit?",
+        "tags": [
+            "limits",
+            "terminology"
+        ]
+    },
+    {
+        "query_id": "A.258",
+        "title": "How to prove $\\lim_{x \\to \\infty} \\frac{x^k}{e^x}=0$ ? (k is any positive number)",
+        "body": "Originally, i was trying to find the value of $\\lim_{h \\to 0} \\frac{e^{-\\frac{1}{h^2}}}{h}$ to find out differentiabiltiy of     $$f(x) = \\begin{cases} e^{-1/x^2} & \\text{ if } x \\ne 0 \\\\ 0 & \\text{ if } x = 0 \\end{cases}$$   at 0.  In this case,  $\\lim_{h \\to 0} \\frac{e^{-\\frac{1}{h^2}}}{h}=\\lim_{x \\to \\infty} \\frac{x}{e^{x^2}}=\\lim_{x \\to -\\infty} \\frac{x}{e^{x^2}}$  So when I applied L'Hospital's rule, then its value was 0.  And I thought that No matter how big $k$ is,  $\\lim_{x \\to \\infty} \\frac{x^k}{e^x}$ will be equal to zero because exponential's increase speed is much faster than polynomial's.  Definitely, we can also apply L'hospital's rule at here, but I think it is not proper qualitative explanation for the fact that exponential is much bigger than polynomial.  Is there any other approach which explains why  about this problem?  (In fact, I tried to use $\\epsilon-\\delta$ but how can i show that there exist some $M$ s.t. for every $M<x$ then  $x^k<\\epsilon e^x$  (And I also tried to use inequality like $e^x>x+1$  for all $x>0$ but it only worked for $k<1$)",
+        "tags": [
+            "limits",
+            "derivatives",
+            "exponential-function",
+            "epsilon-delta",
+            "differential"
+        ]
+    },
+    {
+        "query_id": "A.259",
+        "title": "Why does $n^c$ grow faster than $2^n$?",
+        "body": "For every finite case, I can find a $c$ where $2^n = n^c$, so why is this true?  $\\lim_{n \\rightarrow \\infty} \\frac{2^n}{n^c} = 0$  From the finite cases it seems like $2^n$ grows faster because we can find a $c$ to match it at any $n$.",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.260",
+        "title": "limit with two variables",
+        "body": "The limit I need to calculate is $\\lim_{(x,y)\\rightarrow (0,0)}\\frac{xy^{2}}{x^{4}+y^{2}}$. Using polar coordinates I get: $lim_{r\\rightarrow 0}\\frac{r\\cos(\\theta)\\sin^{2}(\\theta)}{r^{2}\\cos^{4}(\\theta)+\\sin^{2}(\\theta)}$. Now if $\\sin(\\theta)\\neq 0$ then the limit is $0$. How do I handle the case where $\\theta=0$ or $\\theta = \\pi$? And is there a better way to approach this limit?",
+        "tags": [
+            "limits",
+            "multivariable-calculus"
+        ]
+    },
+    {
+        "query_id": "A.261",
+        "title": "Show that $\\det(T_n)=\\sum_{k=0}^{n}\\alpha^{n-k}\\beta^k$",
+        "body": "Let the matrix $T_n\\in M(n\\times n,\\mathbb{F})$, where $\\mathbb{F}$ denotes a field, be defined by $T_n=(t_{ij})$ with  $$$t_{ij}= \\begin{cases}        \\alpha\\beta &  1\\leq i\\leq n-1,\\;j=i+1 \\\\       \\alpha+\\beta & 1\\leq i\\leq n,\\; j=i \\\\       1 & 2\\leq i\\leq n,\\; j=i-1 \\\\       0 &\\textrm{otherwise}    \\end{cases} $$$  Show that  $\\det(T_n)=\\sum_{k=0}^{n}\\alpha^{n-k}\\beta^k$    My approach: I tried a proof via induction and while the basis step is trivial, I can't seem to solve the induction step since the matrix is never in upper or lower triangular form but always a block matrix, which makes this seemingly difficult as when calculating the determinant of block matrices, one usually calculates the product of all the \"diagonal blocks\".  I would very much appreciate help, thank you very much.",
+        "tags": [
+            "linear-algebra",
+            "matrices",
+            "induction",
+            "determinant"
+        ]
+    },
+    {
+        "query_id": "A.262",
+        "title": "Positve part and negative part of a real number",
+        "body": "Let $a$ be a real number . The positive part of $a$, denoted by $a^+$ is given by expression $$$a^+ = \\text{if } a\\geq 0 \\text{ then $a$ else } 0$$$ The negative part of $a$, denoted by $a^-$ is given by expression $$$a^- = \\text{if } a\\geq 0 \\text{ then $0$ else } -a$$$ Both $a^+$ and $a^-$  are non negative and the following relationship hold $ a = a^+ - a^-$ Above is the text from my compiler optimization book and I cannot understand the relationship explained. How can $a$ be a real number and have positive and negative parts?",
+        "tags": [
+            "linear-programming"
+        ]
+    },
+    {
+        "query_id": "A.263",
+        "title": "Formal relationship between rules of inference and the material conditional",
+        "body": "I am not $100\\%$ clear as to what constitutes the difference between a rule of inference and the material conditional, at least in classical logic. I am using the truth-functional definition of the material conditional, commonly visualised through its truth table, but I'm not entirely sure what the formal definition of a rule of inference is. The wikipedia article defines it to be a particular kind of logical form, which seems to be a term from philosophical logic that I'm not familiar with, but reading that article didn't really answer my question. It pertains more to the mathematical side of things, and I am specifically interested in the interplay between the concepts on the syntactic and semantic level. As far as I can tell, any rule of inference can be 'captured' by a corresponding material conditional: if we take modus ponens as a well-known example, what is the difference between $(a\\land (a\\to b))\\to b$ and ${a\\to b,\\text{ } a \\over b}?$ On a functional level, both statements seem to be expressing the same thing. What determines the need to use two separate terms and notations, and what, if anything, separates them?",
+        "tags": [
+            "logic",
+            "soft-question",
+            "formal-systems"
+        ]
+    },
+    {
+        "query_id": "A.264",
+        "title": "Modulo Power Arithmetic",
+        "body": "While performing some arithmetic operations, i am stuck at one point.I want to know is it possible to write ($a^b)\\%p$ as ($a^{(b\\%p)})\\%p$?",
+        "tags": [
+            "modular-arithmetic"
+        ]
+    },
+    {
+        "query_id": "A.265",
+        "title": "How to show that $(a/b)^2$ in this situation cannot be an integer",
+        "body": "Let $a$,$b$ be relatively prime integers which are both greater than or equal to $2$ . Show that $(a/b)^2$ cannot be an integer.  I have tried to use contradiction to prove this result, but I am not sure that my idea is correct or not. Below is my idea (not a complete proof).  Suppose $(a/b)^2$ be an integer. We have $a/b$ is an integer. Then, we have $a=bk$ where $k$ is an integer since $b$ divides $a$. Since $a,b$ are relatively prime, therefore $b$ must be $1$. Hence, contradiction arises. I am not sure that my idea is correct or not, could anyone help me to check it? If my idea is wrong, could you give me a idea to do this question?",
+        "tags": [
+            "number-theory",
+            "gcd-and-lcm"
+        ]
+    },
+    {
+        "query_id": "A.266",
+        "title": "What happens when we (incorrectly) make improper fractions proper again?",
+        "body": "Many folks avoid the \"mixed number\" notation such as $4\\frac{2}{3}$ due to its ambiguity. The example could mean \"$4$ and two thirds\", i.e. $4+\\frac{2}{3}$, but one may also be tempted to multiply, resulting in $\\frac{8}{3}$. My questions pertain to what happens when we iterate this process -- alternating between changing a fraction to a mixed number, then \"incorrectly\" multiplying the mixed fraction. The iteration terminates when you arrive at a proper fraction (numerator $\\leq$ denominator) or an integer. I'll \"define\" this process via sufficiently-complicated example: $\\frac{14}{3} \\rightarrow 4 \\frac{2}{3} \\rightarrow \\frac{8}{3} \\rightarrow 2 \\frac{2}{3} \\rightarrow \\frac{4}{3} \\rightarrow 1\\frac{1}{3}\\rightarrow \\frac{1}{3}.$  Does this process always terminate?  For which $(p,q)\\in\\mathbb{N}\\times(\\mathbb{N}\\setminus\\{0\\})$ does this process, with initial iterate $\\frac{p}{q}$, terminate at $\\frac{p \\mod q}{q}$?",
+        "tags": [
+            "number-theory",
+            "elementary-number-theory",
+            "recreational-mathematics",
+            "fractions"
+        ]
+    },
+    {
+        "query_id": "A.267",
+        "title": "Dual of Lagrange Dual",
+        "body": "For linear programming, it's well known that the dual of the dual is the primal. I'm wondering if it is the case for Lagrange duality, and I'm having a hard time showing this.  Notationally, let the primal problem be:  $\\text{minimize } \\quad f_0(x)$ $\\text{subject to } \\quad f_i(x) \\leq 0, \\quad i = 1, \\dots, m$  And the dual be:  $\\text{minimize } \\quad -g(\\lambda) = - \\inf_x L(x, \\lambda)$ $\\text{subject to } \\quad -\\lambda \\leq 0$  Where $L(x,\\lambda) = f_0(x) + \\sum_{i=1}^m \\lambda_i f_i(x)$ is the Lagrangian.  I suspect it isn't true in general that the dual of dual is the primal. However, intuitively when I hear the term dual I assume that the dual of the dual should be the primal, so this got me confused.",
+        "tags": [
+            "optimization",
+            "convex-optimization",
+            "linear-programming",
+            "duality-theorems"
+        ]
+    },
+    {
+        "query_id": "A.268",
+        "title": "If $Z\\thicksim\\text{Poisson}(\\lambda)$, find the expected value of $\\frac{1}{1+Z}.$",
+        "body": "The Problem: Suppose that $Z\\thicksim\\text{Poisson}(\\lambda)$. Find the expected value of $\\dfrac{1}{1+Z}.$  We have that $\\begin{align*} E\\left[\\frac{1}{1+Z}\\right]&=\\sum_{k=0}^\\infty\\frac{1}{1+k}\\frac{e^{-\\lambda}\\lambda^k}{k!}=e^{-\\lambda}\\sum_{k=0}^\\infty\\frac{\\lambda^k}{(k+1)!}=\\frac{e^{-\\lambda}}{\\lambda}\\left[\\sum_{k=0}^\\infty\\frac{\\lambda^k}{k!}-1\\right]\\\\ &=\\frac{e^{-\\lambda}}{\\lambda}[e^\\lambda-1]=\\frac{1}{\\lambda}-\\frac{e^{-\\lambda}}{\\lambda}, \\end{align*}$ where we used the Taylor series for the exponential function.    Do you agree with my approach above? Any feedback is most welcomed. Thank you very much for your time.",
+        "tags": [
+            "probability",
+            "solution-verification",
+            "expected-value",
+            "poisson-distribution"
+        ]
+    },
+    {
+        "query_id": "A.269",
+        "title": "conditional probability in a family",
+        "body": "Let a family have two children. It is known that one of the children is a boy. What is the probability that both the children are boys. So for this we build the sample space $S=\\{(b,b)(b,g)(g,g)\\}$ Let our event E be the case where both children are boys $E=\\{ (b,b) \\}$ Let the conditional be F $F=\\{(b,g),(b,b)\\}$ Hence $P(E|F)=\\frac{P(E\\cap F)}{P(F)}=\\frac{1/3}{2/3}=\\frac{1}{2}$ But the answer in my book is given as $\\frac{1}{3}$ and I can't seem to understand why.",
+        "tags": [
+            "probability",
+            "conditional-probability"
+        ]
+    },
+    {
+        "query_id": "A.270",
+        "title": "Expected number of heads before it turns up tails five times",
+        "body": "A fair coin is flipped repeatedly until it turns up tails five times. What is the expected number of heads before that happens? Based on the link given in the comment, I have found it can be solved using the recursion $E(n)=\\frac{1}{2}(E(n)+1)+\\frac{1}{2}(E(n-1))$ which is equivalent to $E(n)=E(n-1)+1$. Is it correct?",
+        "tags": [
+            "probability",
+            "expected-value"
+        ]
+    },
+    {
+        "query_id": "A.271",
+        "title": "Probability of $\\limsup_{n\\to \\infty} \\{X_n X_{n+1}>0\\}$ where $\\{X_n\\}$ are independent Gaussian r.v.'s with mean 0",
+        "body": "Let $\\{X_n\\}$ be a sequence of independent Gaussian random variables with $\\mathbb{E}\\, X_n = 0$ for all $n \\geq 1$. Find the probability of the event $ \\limsup_{n\\to \\infty} \\big\\{ X_n X_{n+1}> 0 \\big\\}$ My first thought is that it should be 1 since Gaussians are always positive for a finite value. I was thinking of applying Borel-Cantelli and was trying something along the lines of $\\begin{align*} \\mathbb{P} \\big( \\limsup_{n\\to \\infty} \\big\\{ X_n X_{n+1}> 0 \\big\\}\\big) &= \\mathbb{P}\\big( X_n X_{n+1} > 0 \\,\\,\\, i.o. \\big) \\\\ &\\leq \\mathbb{P}\\big( \\big\\{ X_n X_{n+1}> 0 \\,\\,\\, i.o \\big\\} \\cap \\big\\{ X_{n+1} > 0 \\,\\,\\, i.o\\big\\} \\big)\\\\ &= \\mathbb{P}\\big( \\big\\{ X_n X_{n+1}> 0 \\,\\,\\, i.o \\big\\}\\big) \\,\\,\\mathbb{P}\\big( \\big\\{ X_{n+1} > 0 \\,\\,\\, i.o\\big\\} \\big) \\,\\,\\,\\, \\text{(by independence)} \\end{align*}$ I'm not sure I'm thinking of this problem right, though.",
+        "tags": [
+            "probability-theory",
+            "random-variables",
+            "borel-cantelli-lemmas"
+        ]
+    },
+    {
+        "query_id": "A.272",
+        "title": "Why is $\\sqrt{ab}$ = $\\sqrt{a}\\sqrt{b}$ not true when a and b are both negative?",
+        "body": "Apparently $\\sqrt{ab}$ = $\\sqrt{a}\\sqrt{b}$ is only true if a and b are both positive or if a is negative and b is positive or if a is positive and b is negative. In other words, a and b can't both be negative.  Is it possible to algebraically prove this? Or is it just a result of the way the square root function is defined?   I know of 1 way to prove this radical property, but I'm still not sure why it won't work for negative numbers.  Let x = $\\sqrt{ab}$.  Let y = $\\sqrt{a}\\sqrt{b}$  Square both sides for both equations.  $x^2 = (\\sqrt{ab})^2 = ab$  $y^2 = (\\sqrt{a}\\sqrt{b})^2 = (\\sqrt{a}\\sqrt{b})(\\sqrt{a}\\sqrt{b}) = (\\sqrt{a})^2(\\sqrt{b})^2 = ab$  $\\therefore x^2 = y^2$  $x^2-y^2=0$  $(x+y)(x-y)=0$  $\\therefore x = y$ or $x = -y$  Or  $\\therefore y = x$ or $y = -x$    A lot of people will go through this line of reasoning (shown below) in order to justify why a and b can't both be negative.   Considering that mathematicians define $i^2=-1$ or $i = \\sqrt{-1}$  $1 = \\sqrt{(-1)(-1)} = \\sqrt{-1}\\sqrt{-1} = (i)(i) = i^2 = -1  $  But this is only a specific instance where this property fails us. This isn't a  rigorous or at least satisfying proof of why $\\sqrt{ab}$ = $\\sqrt{a}\\sqrt{b}$ can only be true if a and b are not both negative.  Note: I just started learning about complex and imaginary numbers and I am no means an expert in  mathematical proofs, so if you do know the answer to this question please try (if possible) your best to answer the question without using too much complex or high-order math that I won't be able to understand.",
+        "tags": [
+            "radicals"
+        ]
+    },
+    {
+        "query_id": "A.273",
+        "title": "Can fractional/decimal radicals/roots exist?",
+        "body": "For questions like \"What is the 1/2th root of x would the answer be $x^2$? My logic is that since $ \\sqrt[\\cfrac{1}{2}]{x}=x^{1/{(\\cfrac{1}{2}})} $ Which simplifies to $x^2$. So as a general rule it could be $ \\sqrt[\\cfrac{1}{a}]{x}=x^{1/{(\\cfrac{1}{a}})} =x^a $ And with a different denominator $\\sqrt[\\cfrac{b}{a}]{x}=x^{1/{(\\cfrac{b}{a}})} =x^{\\cfrac{a}{b}}$ This corresponds to how decimal/fractional exponents denote radicals (their inverse) while fractional radicals are easier shown with exponents. Example : (2/3rd root of 4) $\\sqrt[\\cfrac{2}{3}]{4}=4^{1/{(\\cfrac{2}{3}})} =4^{\\cfrac{3}{2}}= 8$ Example (22/7th root of π) : $\\sqrt[\\cfrac{22}{7}]{π}=π^{1/{(\\cfrac{22}{7}})} =π^{\\cfrac{7}{22}} \\approx 1.439$ Example (1/2th root of 1/4) : $\\sqrt[\\cfrac{1}{2}]{\\cfrac{1}{4}}=\\cfrac{1}{4}^{1/(\\cfrac{2}{1})} =\\cfrac{1}{4}^{(\\cfrac{2}{1})} =\\cfrac{1}{4}^{2} =\\cfrac{1}{16} $",
+        "tags": [
+            "radicals",
+            "decimal-expansion",
+            "radical-equations"
+        ]
+    },
+    {
+        "query_id": "A.274",
+        "title": "Why the Heaviside distribution $H$ doesn't belong to any Sobolev space $H^{s}(\\mathbb{R})$",
+        "body": "I prooved that the Dirac distribution $\\delta_{0}$ is in the Sobolev space $H^{s}\\left(\\mathbf{R}^{n}\\right)=\\left\\{f \\in \\mathcal{S}^{\\prime}\\left(\\mathbf{R}^{n}\\right)\\left|\\left(1+|\\xi|^{2}\\right)^{s / 2} \\mathcal{F} f \\in L^{2}\\left(\\mathbf{R}^{n}\\right)\\right\\}\\right.$ for every  $s<-n / 2$  but I steel  wrestling to proof that the  Heaviside distribution $H$   $$\\forall x \\in \\mathbb{R}, H(x)=\\left\\{\\begin{array}{lll}{0} & {\\text { si }} & {x<0} \\\\ {1} & {\\text { si }} & {x \\geq 0}\\end{array}\\right.$$  Doesn't belong to any Sobolev space $H^{s}(\\mathbb{R})$, could you elaborate on that?  Thanks in advance!",
+        "tags": [
+            "real-analysis",
+            "functional-analysis",
+            "fourier-analysis",
+            "sobolev-spaces",
+            "distribution-theory"
+        ]
+    },
+    {
+        "query_id": "A.275",
+        "title": "Proving an Integral Identity with Increasing Bounds",
+        "body": "How can I show that  $ \\lim_{A\\rightarrow \\infty} \\int_0^A \\frac{\\sin(x)}{x}dx\\;=\\;\\frac{\\pi}{2}?$ I know that can use the fact that, for $x>0$,  $x^{-1}\\;=\\;\\int_0^\\infty e^{-xt}dt$ but I'm not sure how to begin.",
+        "tags": [
+            "real-analysis",
+            "integration",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.276",
+        "title": "Let $k\\in\\mathbb{N}$ and $a>1$. Show that $\\lim_{n\\to\\infty} \\frac{n^k}{a^n}=0$.",
+        "body": "I think what I need to do is find the value of $n$ where $n^k<a^n$. I know that this value occurs whenever $n>k\\log_an$, however I don't understand how to interpret this result into a general $N$ to pick as a maximum for the sequence convergence. What am I missing here?",
+        "tags": [
+            "real-analysis"
+        ]
+    },
+    {
+        "query_id": "A.277",
+        "title": "Is the AM-GM inequality the only obstruction for getting a specific sum and product?",
+        "body": "This might be silly, but here it goes.  Let $P,S>0$ be positive real numbers that satisfy $\\frac{S}{n} \\ge \\sqrt[n]{P}$.     Does there exist a sequence of positive real numbers $a_1,\\dots,a_n$ such that $S=\\sum a_i,P=\\prod a_i$?   Clearly, $\\frac{S}{n} \\ge \\sqrt[n]{P}$ is a necessary condition, due to the AM-GM inequality. But is it sufficient?  For $n=2$, the answer is positive, as can be seen by analysing the discriminant of the associated quadratic equation. (In fact, the solvability criterion for the quadratic, namely- the non-negativity of the discriminant, is equivalent to the AM-GM inequality for the sum and the product).  What about $n>3$?",
+        "tags": [
+            "real-analysis",
+            "polynomials",
+            "systems-of-equations",
+            "a.m.-g.m.-inequality"
+        ]
+    },
+    {
+        "query_id": "A.278",
+        "title": "Is there a differentiable function such that $f(\\mathbb Q) \\subseteq \\mathbb Q$ but $f'(\\mathbb Q) \\not \\subseteq \\mathbb Q$?",
+        "body": "Is there a differentiable function $f:\\mathbb R \\rightarrow \\mathbb R$ such that $f(\\mathbb Q) \\subseteq \\mathbb Q$, but $f'(\\mathbb Q) \\not \\subseteq \\mathbb Q$? A friend of mine asserted this without giving any examples. I seriously doubt it, but I had hard time trying to disprove it since analysis isn't really my thing. I can't even think of any class of differentiable functions with $f(\\mathbb Q) \\subseteq \\mathbb Q$ other than the rational functions.",
+        "tags": [
+            "real-analysis"
+        ]
+    },
+    {
+        "query_id": "A.279",
+        "title": "If $\\lim_{x\\to 0}\\left(f(x)+\\frac{1}{f(x)}\\right)=2,$ show that $\\lim_{x\\to 0}f(x)=1$.",
+        "body": "Question: Suppose $f:(-\\delta,\\delta)\\to (0,\\infty)$ has the property that $\\lim_{x\\to 0}\\left(f(x)+\\frac{1}{f(x)}\\right)=2.$ Show that $\\lim_{x\\to 0}f(x)=1$.  My approach: Let $h:(-\\delta,\\delta)\\to(-1,\\infty)$ be such that $h(x)=f(x)-1, \\forall x\\in(-\\delta,\\delta).$ Note that if we can show that $\\lim_{x\\to 0}h(x)=0$, then we will be done. Now since we have $\\lim_{x\\to 0}\\left(f(x)+\\frac{1}{f(x)}\\right)=2\\implies \\lim_{x\\to 0}\\frac{(f(x)-1)^2}{f(x)}=0\\implies \\lim_{x\\to 0}\\frac{h^2(x)}{h(x)+1}=0.$ Next I tried to come up with some bounds in order to use Sandwich theorem to show that $\\lim_{x\\to 0} h(x)=0,$ but the bounds didn't quite work out. The bounds were the following: $\\begin{cases}h(x)\\ge \\frac{h^2(x)}{h(x)+1},\\text{when }h(x)\\ge 0,\\\\h(x)<\\frac{h^2(x)}{h(x)+1},\\text{when }h(x)<0.\\end{cases}$ How to proceed after this?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.280",
+        "title": "Why do engineers use derivatives in discontinuous functions? Is it correct?",
+        "body": "I am a Software Engineering student and this year I learned about how CPUs work, it turns out that electronic engineers and I also see it a lot in my field, we do use derivatives with discontinuous functions. For instance in order to calculate the optimal amount of ripple adders so as to minimise the execution time of the addition process: $\\text{ExecutionTime}(n, k) = \\Delta(4k+\\frac{2n}{k}-4)$ $\\frac{d\\,\\text{ExecutionTime}(n, k)}{dk}=4\\Delta-\\frac{2n\\Delta}{k^2}=0$ $k= \\sqrt{\\frac{n}{2}}$ where $n$ is the number of bits in the numbers to add, $k$ is the amount of adders in ripple and $\\Delta$ is the \"delta gate\" (the time that takes to a gate to operate). Clearly you can see that the execution time function is not continuous at all because $k$ is a natural number and so is $n$. This is driving me crazy because on the one hand I understand that I can analyse the function as a continuous one and get results in that way, and indeed I think that's what we do (\"I think\", that's why I am asking), but my intuition and knowledge about mathematical analysis tells me that this is completely wrong, because the truth is that the function is not continuous and will never be and because of that, the derivative with respect to $k$ or $n$ does not exist because there is no rate of change. If someone could explain me if my first guess is correct or not and why, I'd appreciate it a lot, thanks for reading and helping!",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "functions",
+            "derivatives",
+            "optimization"
+        ]
+    },
+    {
+        "query_id": "A.281",
+        "title": "Alternate methods to prove that $n^{\\frac{1}{n}} \\rightarrow 1$ where $n \\in \\mathbb{N}$",
+        "body": "So, I was trying to prove that $n^{\\frac{1}{n}} \\rightarrow 1$ where $n \\in \\mathbb{N}$. Here's what I did: Since $n^{1/n}>1$, let us suppose $n=(1+k)^n$ for $n>1$ and some $k>0$. Now, I used the binomial expansion and wrote: $$$\\begin{align} n&=1+nk+\\frac{n(n-1)}{2}k^2+....+k^n \\geq1+\\frac{n(n-1)}{2}k \\\\ &\\Rightarrow n-1 \\geq \\frac{n(n-1)}{2}k^2 \\\\ &\\Rightarrow k^2 \\leq \\frac{2}{n} \\end{align}$$$ So now, we can always find an $n>0$ such that $\\frac{2}{\\epsilon^2}<n\\Rightarrow \\frac{2}{n}<\\epsilon^2$. Now, as $|n^{\\frac{1}{n}}-1|\\geq0$, we have, $n^{\\frac{1}{n}}-1=k\\leq(\\frac{2}{n})^{\\frac{1}{2}}<\\epsilon$ And in this way, I proved that $n^{\\frac{1}{n}}\\rightarrow1$. I wanted to know how can I prove this without using Binomial expansion. I tried to do this using the Bernoulli's Inequality,  but couldn't get too far. Any help/hint would be highly appreciable.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series",
+            "convergence-divergence"
+        ]
+    },
+    {
+        "query_id": "A.282",
+        "title": "How to prove the value o $\\zeta(2)$ by Functional Analysis?",
+        "body": "I have a question about $\\sum_{n=1}^{\\infty} 1/n^2$ = $\\pi^2/6$ I know it can be proven with standard 1 variable analysis (working on Taylor series of $\\arcsin$ or something like that) or basic complex analysis. But someone told me it has also great prove using Functional Analysis. He suggested it is proved on standard first course of FA, but it was not in my case. Can You write here the proof using FA or leave a link in comment? Thanks in advance.",
+        "tags": [
+            "real-analysis",
+            "complex-analysis",
+            "functional-analysis",
+            "sums-of-squares"
+        ]
+    },
+    {
+        "query_id": "A.283",
+        "title": "Determine whether $(x_n)$ converges or diverges",
+        "body": "Given $x_1 := a > 0$ and $x_{n+1} := x_n + \\frac{1}{x_n}$ for $n \\in \\mathbb{N}$, determine whether $(x_n)$ converges or diverges.   Since $x_1 > 0$,  it seems obvious that the sequence is strictly increasing and always positive because we are always adding a positive number to each subsequent element in the sequence.   The trickier part is to show whether $(x_n)$ is bounded or not. If $(x_n)$ is bounded, then $\\exists M \\in \\mathbb{R}$ such that   $\\begin{align}|x_n| \\leq M ~\\forall n \\in \\mathbb{N}\\tag{1} \\end{align}$  Alternatively, I think this means that $M$ could be a supremum of the sequence and another way to rewrite $(1)$ is given any $\\epsilon > 0$  $\\begin{align} x_n + \\epsilon \\leq M \\tag{2}\\end{align}$  Choose $\\epsilon = \\frac{1}{x_n}$. Then   $\\begin{align} x_{n+1} = x_n + \\frac{1}{x_n} \\leq M \\implies x_n + \\epsilon \\leq M \\tag{3}\\end{align}$  Thus I conclude that the inequality holds $\\forall n \\in \\mathbb{N}$ and that $(x_n)$ is convergent. Thus by the Monotone Sequence Convergence Theorem, $(x_n)$ is convergent.    The part I am not sure about is my reasoning to show that $x_n$ being bounded is correct or not.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series",
+            "convergence-divergence"
+        ]
+    },
+    {
+        "query_id": "A.284",
+        "title": "Why decimals of rational numbers behave periodically?",
+        "body": "I am interesting in the proof of that every rational number cannot have in decimal form infinite number of digits that don't repeat (or the other way around). So, then is enough to prove following statement: For any $n \\in \\mathbb{N}$ rational number $\\frac{1}{n}$ can be represented in decimal form such that it's digits, if there are infinitely many, are repeating. If this is true, then it is true for any $\\frac{m}{n} = \\frac{1}{n} + \\frac{1}{n} + ... + \\frac{1}{n}$ ($m$ times).",
+        "tags": [
+            "real-numbers",
+            "rational-numbers",
+            "decimal-expansion"
+        ]
+    },
+    {
+        "query_id": "A.285",
+        "title": "How to determine the sum of a series that is neither geometric nor arithmetic but quadratic or cubic?",
+        "body": "How to determine the formula of the sum of a series given its $n$th-term formula like: $U_n= n^2+n$  or  $U_n= 6n^2 -12n + 5$",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.286",
+        "title": "Knowing$\\sum a_{k}$ converges, how to prove that $\\lim _{n \\rightarrow+\\infty} n a_{n}=0$.",
+        "body": "Let $a_{n}$ be decreasing and positive. Then $\\sum a_{k}$ converges implies $\\lim _{n \\rightarrow+\\infty} n a_{n}=0$.  I think since $na_n$ is positive, the only thing to do is to find an upper bound for the sequence. But I don't know how to split the sequence to form the upper bound.",
+        "tags": [
+            "sequences-and-series",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.287",
+        "title": "What is the closed form of $\\sum_{i=1}^n\\frac{2i}{2^i}$",
+        "body": "I looked at $\\frac{\\sum 2i}{\\sum2^i}$ (division), however both expressions are not equal. I am looking for an expression like $\\sum_{i=1}^n\\frac{2i}{2^i}=5n$ for example.",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.288",
+        "title": "Alternating Harmonic Series Spin-off",
+        "body": "We know that the series $\\sum (-1)^n/n$ converges, and clearly every other alternating harmonic series with the sign changing every two or more terms such as $\\left(1+\\frac{1}{2}+\\frac{1}{3}\\right)-\\left(\\frac{1}{4}+\\frac{1}{5}+\\frac{1}{6}\\right)+\\left(\\frac{1}{7}+\\frac{1}{8}+\\frac{1}{9}\\right)-\\cdots$ must converge. My question here is that does the series below also converge? $\\sum\\frac{\\textrm{sgn}(\\sin(n))}{n}\\quad\\textrm{or}\\quad\\sum\\frac{\\sin(n)}{n|\\sin(n)|}$ Loosely speaking, the sign changes every $\\pi$ terms. I'd be surprised if it doesn't converge. Wolfram Mathematica, after a couple of minutes of computing, concluded the series diverges but I can't really trust it. My first approach (assuming the series converges) was that if we bundle up terms with the same sign like the example above every bundle must have three or four terms, and since the first three terms of all bundles make an alternating series I was going to fiddle with the remaining fourth terms but they don't make an alternating series so I guess there's no point in this approach. edit: I don't think we can use Dirichlet's test with $b_n=\\textrm{sgn}(\\sin(n)).$ The alternating cycle here is $\\pi$ and I don't believe it would bound the series. For example if the cycle was a number very slightly smaller than $3+1/4$, then $B_n$ (sum of $b_n$) would get larger and larger every four bundles for some time. I believe this should happen for $\\pi$ as well since it is irrational. I'm not entirely sure why but $|B_n|\\leq3$ for most small $n$ though I guess it's because $\\pi-3$ is slightly smaller than $1/7$? Anyway $B_{312\\ 692}=4$, $B_{625\\ 381}=5$, $B_{938\\ 070}=6$, $B_{166\\ 645\\ 135}=-7$, and $B_{824\\ 054\\ 044}=8$. $|B_n|$ does not hit $9$ up to $n=1\\ 000\\ 000\\ 000$ with $B_{1\\ 000\\ 000\\ 000}=-2$.",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.289",
+        "title": "Find $x^n+y^n+z^n$ general solution",
+        "body": "If we know $x+y+z=1$$x^2+y^2+z^2=2$$x^3+y^3+z^3=3$ Is it possible to calculate the general solution for $a_n=x^n+y^n+z^n$? I know $a_5=6$ but the way to get it is more an algorithm than an actual solution.",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.290",
+        "title": "Best method for proving that $7\\times11^{2n+1}-3^{4n-1}$ is divisible by $10$",
+        "body": "I am asked to prove by induction that $7\\times11^{2n+1}-3^{4n-1}$ is divisible by $10$. I wonder whether there is a more direct method, for example factorizing by $10$. If an expression is divisible by $10$, does this mean that I can factorize it by $10$? Thanks in advance",
+        "tags": [
+            "sequences-and-series",
+            "elementary-number-theory",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.291",
+        "title": "Summation of $n$th partial products of the square of even numbers diverges, but for odd numbers they converge in this series I'm looking at. Why?",
+        "body": "So I have the two following series: $\\sum_{n=1}^\\infty \\frac{\\prod_{k=1}^n(2k)^2}{(2n+2)!}$ $\\sum_{n=0}^\\infty \\frac{\\prod_{k=0}^n(2k+1)^2}{(2n+3)!}$ I figured out the $n$th partial products: $\\prod_{k=1}^n(2k)^2=4^n(n!)^2$ $\\prod_{k=0}^n (2k+1)^2=\\frac{((2n+1)!)^2}{4^n(n!)^2}$ So putting these back into my series they become the following: $\\sum_{n=1}^\\infty \\frac{\\prod_{k=1}^n(2k)^2}{(2n+2)!}=\\sum_{n=1}^\\infty\\frac{4^n(n!)^2}{(2n+2)!}$ Now this diverges as expected by the limit test test. However when I look at my other series: $\\sum_{n=0}^\\infty \\frac{\\prod_{k=0}^n(2k+1)^2}{(2n+3)!}=\\sum_{n=0}^\\infty\\frac{( (2n+1)!)^2}{4^n(n!)^2(2n+3)!}$ By the limit test maybe diverges or maybe doesn't, and the ratio test is inconclusive. Since I wasn't sure what to use for the a comparison test I threw this into wolfram alpha and it told me it converges which is baffling to me since both series are very similar if we write them out: $\\sum_{n=1}^\\infty \\frac{\\prod_{k=1}^n(2k)^2}{(2n+2)!}=\\frac{2^2}{4!}+\\frac{2^24^2}{6!}+\\frac{2^24^26^2}{8!}\\cdot\\cdot\\cdot\\cdot$ $\\sum_{n=0}^\\infty \\frac{\\prod_{k=0}^n(2k+1)^2}{(2n+3)!}=\\frac{1^2}{3!}+\\frac{1^23^2}{5!}+\\frac{1^23^25^2}{7!}+\\cdot\\cdot\\cdot$ They both have the nth parial product of the even/odd integers squared in the numerator, and are over a factorial that is two greater than $n$, so I'm not sure why one is diverging and the other is converging. Is wolframalpha wrong, as it can be at times? Or is there someething here that I am missing?",
+        "tags": [
+            "sequences-and-series",
+            "factorial",
+            "products"
+        ]
+    },
+    {
+        "query_id": "A.292",
+        "title": "Find the limit of the sequence $ \\frac{x^n}{n^k}$ as $n \\to \\infty$ for all values of$ x > $0 and $k = 1, 2,\\cdots$",
+        "body": "I have tried using the ratio lemma to tackle this question and also the fact $(n+1)^k \\geq 1 + nk$ and I haven't reached an answer. How should I go about solving this problem?",
+        "tags": [
+            "sequences-and-series",
+            "limits",
+            "analysis",
+            "exponentiation",
+            "ratio"
+        ]
+    },
+    {
+        "query_id": "A.293",
+        "title": "Summation $\\sum_{j=2}^{n-1}j^2$ Properties",
+        "body": "I'm dealing with something like $\\sum_{j=2}^{n-1}j^2$. I know I can do this $\\sum_{j=1}^{n-1}j^2 - \\sum_{j=1}^{1}j^2$.  Would that be equal to $\\frac{j(j+1)(2j+1)}{6} - j^2$ or I'm missing some properties with $n-1$?  If so, which ones?",
+        "tags": [
+            "sequences-and-series",
+            "summation"
+        ]
+    },
+    {
+        "query_id": "A.294",
+        "title": "Why is there no hyper-hypercohomology?",
+        "body": "I am looking for a reference to answer the question in the title. Let me try to clarify a little what I mean:  If a single sheaf $\\mathscr F$ has a resolution $\\mathscr G^\\bullet$ by not necessarily injective objects, then the usual cohomology of $\\mathscr F$ is isomorphic to the hypercohomology of $\\mathscr G^\\bullet$:  $ H^i(X, \\mathscr F) \\cong \\mathbb H^i(X,\\mathscr G^\\bullet). $  Now, if one was starting with a complex of sheaves $\\mathscr F^\\bullet$ and a \"resolution\" thereof, i.e. a complex of complexes $(\\mathscr G^\\bullet)^\\bullet$, then one should touch on a concept that could be called hyper-hypercohomology.   Yet, I never heard of its existence and I'm pretty sure it does not give you anything new, as soon as you work in the derived category. I just find myself unable to pin down why exactly this is the case.   Any ideas anyone?",
+        "tags": [
+            "sheaf-cohomology",
+            "derived-categories"
+        ]
+    },
+    {
+        "query_id": "A.295",
+        "title": "Help calculating series",
+        "body": "I need help with understanding how to solve this task, because I'm a bit lost at the moment.  Use the powerseries  $f(x)=\\frac{1}{1-x}$ to decide the sum of the series   $\\sum_{n=1}^{\\infty} n(n+1)x^n$    and $\\sum_{n=1}^{\\infty} \\frac{n(n+1)}{3^n}$  I don't understand how to manipulate the sums to use the power series of the function.",
+        "tags": [
+            "summation",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.296",
+        "title": "A little confused about the Taylor series of $e^x$",
+        "body": "We know that  $ e^x=\\sum_{n=0}^{\\infty}\\frac{x^n}{n!},x\\in \\mathbb R, $  which can be written out $ e^x=\\frac {x^0}{0!}+\\frac {x^1}{1!}+\\frac {x^2}{2!}+\\cdots, $  but $0^0$ isn't well defined.",
+        "tags": [
+            "taylor-expansion",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.297",
+        "title": "difficult question",
+        "body": "I am confused about a homework problem I have, and don't really know where to begin. I need to prove this. Any idea of where I can start. The statement is that  Find all integers n that satisfies $\\phi(n)=320$ where $\\phi$ is the Euler’s Phi function.",
+        "tags": [
+            "totient-function"
+        ]
+    },
+    {
+        "query_id": "A.298",
+        "title": "Variable transformation of a Dirac delta function",
+        "body": "I am struggling to understand the variable transformation of a Dirac delta function. More specifically, a transformation of the following type, $\\delta(a\\chi(z)-b) \\rightarrow \\delta(z-c)$ Here, $a, b$ and $c$ are constants. The specific relationship between $\\chi(z)$ and $z$ is, $\\chi(z)=\\int{\\frac{1}{H(z)}dz}$ where $H(z)$ is a non-zero, positive and smoothly varying function of $z$. In the context of my Physics problem, for the sake of the interested audience, $H(z)$ is the Hubble parameter of the Universe while $\\chi(z)$ is the comoving distance and $z$ is the redshift of any time in the past.  So, let me add what I have done so far:   I start by defining the Dirac delta function in the form a unit step function $\\Theta (a\\chi(z)-b)$as, $\\frac{d}{d(a\\chi(z))}\\Theta(a\\chi(z)-b)=\\delta(a\\chi(z)-b)$ Then converting this in the form of z using the chain rule as, $\\frac{d}{dz}\\Theta(a\\chi(z)-b)\\frac{dz}{d(a\\chi(z))}$ Using the relation with $H(z)$, we can write the equation as, $\\frac{d}{dz}\\Theta(a\\chi(z)-b)\\frac{H(z)}{a}$ Also, $\\chi(z)$ can also be replaced by the integral as well, so that left side containing the unit step function can be written as, $\\frac{H(z)}{a}\\frac{d}{dz}\\Theta(\\ a\\int_0^z{\\frac{1}{H(z')}dz'}-b)$.  After this, I am not sure what else to try. Hopefully, this addition helps. Also, please point out an error if you see one.",
+        "tags": [
+            "transformation",
+            "dirac-delta",
+            "change-of-variable"
+        ]
+    },
+    {
+        "query_id": "A.299",
+        "title": "Prove $\\cos \\frac{\\pi}5-\\cos \\frac{2 \\pi}5=\\frac12$ but without finding $\\cos \\frac{ \\pi}5$",
+        "body": "I can find the value of $\\cos \\left(\\frac{ \\pi}{5}\\right)$, but is there a way to prove the equality without finding it?  I tried looking for both algebraic and geometric methods, but couldn't find anything",
+        "tags": [
+            "trigonometry",
+            "proof-writing",
+            "alternative-proof"
+        ]
+    },
+    {
+        "query_id": "A.300",
+        "title": "Uniformly continuous or not?",
+        "body": "So I supposed to find out if $f(x)=\\frac{1}{1+\\ln^2 x}$ is uniformly continuous on $I=(0,\\infty)$ So I have been thinking a lot. Could I say that $f$ is continuous on $[0,1]$ and therefore uniformly continuous here? Or is this not valid, because $\\ln$ is not defined at $x=0$? And then say that the derivate is bounded at $[1,\\infty]$?",
+        "tags": [
+            "uniform-continuity"
+        ]
+    }
+]

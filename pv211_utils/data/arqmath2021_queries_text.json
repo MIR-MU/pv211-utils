@@ -1,0 +1,956 @@
+[
+    {
+        "query_id": "A.201",
+        "title": "Matrix over division ring having one sided inverse is invertible",
+        "body": "I want to see if there is any elementary way to prove the following assertion about matrices over division rings (such as not using Wedderburn's theory or tensoring techniques).  If an  matrix over a division ring has left inverse, then it also has right inverse.  The assertion has elementary proof for matrices over fields, but I am considering over division rings.   One can give some hints also.",
+        "tags": [
+            "abstract-algebra",
+            "matrices",
+            "ring-theory"
+        ]
+    },
+    {
+        "query_id": "A.202",
+        "title": "Rings Trapped Between Fields",
+        "body": "Some Background and Motivation: In this question, it is shown that an integral domain  such that ,  and  fields with  finite, is itself a field.  However, a significantly more general result holds and seems worthy, of independent address; hence, Let  be fields with  if  is a ring such that  show that  is in fact a field.",
+        "tags": [
+            "abstract-algebra",
+            "ring-theory",
+            "field-theory",
+            "extension-field"
+        ]
+    },
+    {
+        "query_id": "A.203",
+        "title": "Why does the subtraction symbol go away?",
+        "body": "but why is ??? What's the reason behind the rule, it's really basic and \"obvious\" because a no turns a no to a yes But I don't want to reason like that, lol. So how would you explain it? Do I just say on a real number line  makes a turnaround and  would turn it positive again? Also if I say for example:  then I do have  Is it correct? It wouldn't matter, right? (Btw: I don't know if the tag \"elementary-number-theory\" is correct) **The question is different to",
+        "tags": [
+            "abstract-algebra"
+        ]
+    },
+    {
+        "query_id": "A.204",
+        "title": "subscheme where two morphisms agree is points where they agree on residue fields",
+        "body": "Let  be schemes, where  are  schemes.  I know the definition of \"the locally closed subscheme of  where two -  morphisms  agree\" from its universal property.  Also I can define it as the fiber product of the diagonal  with  My question:  how to prove that the underlying set of \"the locally closed subscheme where the two morphisms agree\" is the same as the set of points where the two morphism agree on the residue field. It is probably clear thatthe former is contained in the latter, but why is it all of them?  That is, why is a point where  agree on the residue field necessarily contained in \"the subscheme where  agree\"?",
+        "tags": [
+            "algebraic-geometry",
+            "schemes"
+        ]
+    },
+    {
+        "query_id": "A.205",
+        "title": "How can we find x for x^n = n^x",
+        "body": "Find values of x such that  Here, n  I.   One solution will remain x=n But i want to find if any more solutions can exist",
+        "tags": [
+            "algebra-precalculus",
+            "logarithms"
+        ]
+    },
+    {
+        "query_id": "A.206",
+        "title": "I'm confused on the limit of",
+        "body": "Okay so I read Richard Rusczyk's AoPS Volume 2 Book, and I stumbled upon the part where he informs very briefly that . But he doesn't really provide a rigorous proof as to why that's true (not criticizing him or anything).. It would really help if someone could provide me with the simplest proof possible as to why . Thank you in advance!",
+        "tags": [
+            "algebra-precalculus",
+            "limits",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.207",
+        "title": "What function is asymptotically eqyivalent to ?",
+        "body": "I am working on this problem to find a function  s.t.    where  means that given functions  and , we have .  For instance, given the right hand side of the equation above, on input  we have the following (it's a divergent series)    The closest function I can think of are the binomials where:    But it doesnt really equal the first equation above. Any help?",
+        "tags": [
+            "algorithms",
+            "asymptotics",
+            "approximation",
+            "factorial"
+        ]
+    },
+    {
+        "query_id": "A.208",
+        "title": "Where does this asymptote for  come from?",
+        "body": "@Claude Leibovici's answer to this Math Stack Exchange question (it's the second answer) gives an asymptote for the generalised harmonic number :    Heuristically, this is an excellent fit. But can someone please tell me if this is a published result, and more importantly how it is derived?",
+        "tags": [
+            "asymptotics",
+            "harmonic-functions",
+            "upper-lower-bounds",
+            "harmonic-numbers"
+        ]
+    },
+    {
+        "query_id": "A.209",
+        "title": "Evaluate the definite integral:",
+        "body": "where . Could someone explain to me how to solve it? I searched the internet and I found the result is  but I couldn't undersand Gauss error function - that is involved in solving.",
+        "tags": [
+            "calculus",
+            "integration",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.210",
+        "title": "what's an elegant way to show that ?",
+        "body": "for , consider , using traditional methods of finding global extremas, we can show that the derivative has a unique zero at  and , thus   is there a more elegant way ?",
+        "tags": [
+            "calculus",
+            "inequality"
+        ]
+    },
+    {
+        "query_id": "A.211",
+        "title": "",
+        "body": "I was attempting to solve an MIT integration bee problem (1) when I misread the integral and wrote (2) instead.       I was able to solve (1), as the integrand simplifies to , however, I'm struggling with solving (2).   If we rewrite the roots as powers, we get:    combining the powers we get:   the exponent is the infinite sum   we can split this into:   The right sum is well known except here the sum begins at , meaning that the right sum evaluates to 1. Messing around with desmos, the integrand appears to be  implying that (3) converges to 3 and the  converges to 2.  Which is part I'm struggling with. Any ideas?",
+        "tags": [
+            "calculus",
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.212",
+        "title": "Evaluating an infinite series",
+        "body": "I've been given the function  And I have to evaluate  so find the value of  I would appreciate any help with this as I am pretty lost.",
+        "tags": [
+            "calculus",
+            "sequences-and-series",
+            "power-series",
+            "taylor-expansion"
+        ]
+    },
+    {
+        "query_id": "A.213",
+        "title": "Calculate",
+        "body": "I can prove it converges but I don't know at what value it converges.",
+        "tags": [
+            "calculus",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.214",
+        "title": "Show that",
+        "body": "I want to show that .  By definition  and since the integrand  is an even function  i.e. we can equivalently show that .  Since the antiderivative of  is given by the error function we can't straightforwardly evaluate the integral, so I tried to use the power series expansion, hoping to be able to see that the resulting series will converge to :    However, I'm in a doubt that it converges and a quick check in Wolfram Mathematica shows indeed that with  the resulting series will diverge.  What am I doing wrong? Can anybody help me with a proof for this problem? Any help will be really appreciated.",
+        "tags": [
+            "calculus",
+            "integration",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.215",
+        "title": "Set Of Discontinuities Of A Derivative",
+        "body": "Prove that the set of discontinuities of a derivative of an everywhere differentiable function  is of 1st category. Let  be a derivative of an everywhere differentiable function . Now as the set of discontinuities of any arbitrary functions can be written as a countable union of closed sets. So let  be the set of discontinuities of , then we can write  where all the  are closed set. Now suppose that for  the set  is not nowhere dense then there exists an open interval  such that for any interval  in that open interval  we have  and hence  is dense in the open interval  and as  is closed so it contains the interval  and hence  is entirely discontinuous on the open interval , but as the derivative of an everywhere differentiable function cannot be entirely discontinuous on an interval, so a contradiction. Is My Proof Correct??",
+        "tags": [
+            "calculus"
+        ]
+    },
+    {
+        "query_id": "A.216",
+        "title": "Compute the limit",
+        "body": "I have been working on this limit for days, but I am not getting it. The question is  Compute the limit   Note that the integral is well defined and convergent for every . Indeed the integrand function is a positive function for every  since  And as  the integrand function behaves like . WHAT I TRIED: I consider  a multiple of , and see what happens:  Making the change of variables  I get  where I write the lower bound with the minimum of the function at . Now I use the fact that the integrand function does is integrated over a period of , and using the result for   I get the estimate  Summing all up, I got that  As  the series converges to the Riemann integral  Hence the limit should be a number larger than , or . Using WA I got for large values of  that the integral is between  and , thus  could be the actual limit.",
+        "tags": [
+            "calculus",
+            "integration",
+            "limits",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.217",
+        "title": "An easy Calculus Problem",
+        "body": "Here's the question- Find the maximum area of an isosceles triangle inscribed in the ellipse . My teacher solved it by considering two arbitrary points on the ellipse to be vertices of the triangle, being  and . (Let's just say  is theta) and then proceeded with the derivative tests(which i understood) But, he didn't indicate what our  was,and declared that these points always lie on an ellipse. Why so? And even if they do, what's the guarantee that points of such a form will be our required vertices? One more thing, I'd appreciate it if you could suggest another way of solving this problem. Thank you!",
+        "tags": [
+            "calculus",
+            "derivatives"
+        ]
+    },
+    {
+        "query_id": "A.218",
+        "title": "Problem involving recursion of binomial coefficients",
+        "body": "Wrt Ramsey numbers I have the following identity given to me:    And i have the following bases cases:  and . One has to prove that:    It is obvious that we have to go on splitting the two terms on the RHS into pairs of terms decrementing the indices by 1 each time. But the appearance of the combination is non-obvious.",
+        "tags": [
+            "combinatorics",
+            "combinations",
+            "binomial-coefficients",
+            "ramsey-theory"
+        ]
+    },
+    {
+        "query_id": "A.219",
+        "title": "How to prove a combinatorial identity with a combinatorial argument",
+        "body": "I am trying to prove the following identity using a a combinatorial argument:",
+        "tags": [
+            "combinatorics",
+            "discrete-mathematics",
+            "combinations",
+            "combinatorial-proofs"
+        ]
+    },
+    {
+        "query_id": "A.220",
+        "title": "How can i prove the identity",
+        "body": "I'm having a difficult time understanding how to give a combinatorics proof of the identity",
+        "tags": [
+            "combinatorics",
+            "summation",
+            "binomial-coefficients"
+        ]
+    },
+    {
+        "query_id": "A.221",
+        "title": "What's the minimum number of s needed to write a positive integer?",
+        "body": "This is just for fun and inspired by Estimating pi, using only 2s. For a positive integer , let  denote the minimum number of s needed to express  using addition, subtraction, multiplication, division, and exponentiation, together with the ability to concatenate s, so for example  is a valid expression. Other variants involving different sets of allowed operations are possible, of course. This function is very far from monotonic, so to smooth it out let's also consider  For example,   ()  ()   Question: What can you say about  and ? Can you give exact values for small values of ? Can you give (asymptotic or exact) upper bounds? Lower bounds?  As a simple example we can write any positive integer  in the form  where  ( is just the leading digit in the binary expansion of ), which gives . If we write  then iterating this gives something like  This gives an upper bound growing something like  which I think is pessimistic. For example, in my answer to the linked question I show that  and  so maybe we can expect something as good as  for an upper bound. I have no idea about a lower bound, other than to write down an upper bound on the number of possible expressions that can be made with a given number of s. Edit: A related question involving s and more allowed operations: How many fours are needed to represent numbers up to ?",
+        "tags": [
+            "combinatorics",
+            "optimization",
+            "recreational-mathematics"
+        ]
+    },
+    {
+        "query_id": "A.222",
+        "title": "A company hires  new employees, and they will be assigned to four different departments, A, B, C, D",
+        "body": "A company hires  new employees, and they will be assigned to four different departments, A, B, C, D. Each department has at least one new employee. In how many ways can these assignments be done?  I know that for each section (A,B,C,D) I should add a () and as long as every section must get a new employee we should start like this:  then if we look  it's . After this step I don't know what to do.",
+        "tags": [
+            "combinatorics",
+            "generating-functions"
+        ]
+    },
+    {
+        "query_id": "A.223",
+        "title": "combinatorial proof that",
+        "body": "Give a combinatorial proof that .  I'm not sure if Pascal's identity is useful here. Or perhaps there is a way involving binary strings?  is the number of binary strings of length , so if there was some way to decompose these strings into disjoint sets  with cardinality , a proof using that method might work.  is the number of binary strings of length  with exactly  ones, since one can choose  of the  positions to be ones in  ways and make the rest zeroes in one way. Then we divide by the number of binary strings of length , though I'm not sure how to deduce the combinatorial significance of this. I'm most likely thinking of this the wrong way.",
+        "tags": [
+            "combinatorics",
+            "elementary-set-theory",
+            "summation",
+            "combinatorial-proofs"
+        ]
+    },
+    {
+        "query_id": "A.224",
+        "title": "I think I found a flaw in the - definition of continuity.",
+        "body": "If I have a function  defined as follows.   for all  and ;  for ;  is undefined anywhere else.  According to the - definition of continuity, if I take  as any positive number smaller than , then  by definition is continuous at  because within the -neighborhood there is only one point defined, but  is obviously not continuous at . Below is the - definition of continuity: The function  is continuous at a point  of its domain if for every positive  we can find a positive number  such that",
+        "tags": [
+            "continuity"
+        ]
+    },
+    {
+        "query_id": "A.225",
+        "title": "Finding the sum of non-unique roots of cubic equations",
+        "body": "The real numbers  satisfy   Find   Are the three roots of both cubic equations unique, or is there only one root? How can you prove it? What's the best approach to this problem?  I tried using Vieta's formulas, where the sum of three roots of (1) and (2) are:   Summing both,  Assuming there is only one root for each of (1) and (2), we are done, but what if there isn't?",
+        "tags": [
+            "cubic-equations"
+        ]
+    },
+    {
+        "query_id": "A.226",
+        "title": "Parametrization of the curve",
+        "body": "I was looking at the graph of the equation  (Desmos link). This graph has two components that cross at the point . Component 1 (as I'll call it) is the component  which has the simple parametrization   Does component 2 also admit a parameterization?  To clarify: Component 2 is a path so of course it abstractly admits a parameterization, but I'm asking if there is a parametrization that we can actually write down algebraically in terms of elementary functions.  My motivation for this question is from the limiting behavior of the sequence , whose behavior is closely related to the solutions to . In particular, if  is less than  then this sequence alternates between the upper and lower parts of component 2.",
+        "tags": [
+            "curves",
+            "parametric",
+            "plane-curves",
+            "parametrization"
+        ]
+    },
+    {
+        "query_id": "A.227",
+        "title": "- Question regarding this",
+        "body": "So, I'm not a big expert in this subject but I know  isn't to do with 'real' maths but it's all to do with the zeta function; however I was watching a maths video and the equation:    ... is actually a perfect equation for the series  etc. where  represents  in a series and  is the sum of the series up to . So, you can conclude that:    However, this is where it gets weird; as you have probably guessed, the roots of the equation is   but if I want to find the integral of the roots from  to  which is under the  axis, I get the following:    So, my question is why is this the case; what connection is there between the value of the integral under the  axis that this graph has compared to the summation of the series?  Link to Desmos graph for more clarity",
+        "tags": [
+            "definite-integrals",
+            "summation",
+            "quadratics",
+            "zeta-functions"
+        ]
+    },
+    {
+        "query_id": "A.228",
+        "title": "Terrible integral with parameter",
+        "body": "Let be      Find the integral    I tried exploring f(x), took it in parts, got that it converges. F(x,y) is difficult to investigate, since the product of integrals is there, I don't know what to do with it.",
+        "tags": [
+            "definite-integrals",
+            "improper-integrals"
+        ]
+    },
+    {
+        "query_id": "A.229",
+        "title": "Finding integral of function involving fractional part of x",
+        "body": "The integral given is:  where   represents the fractional part of   I first tried breaking it using a piecewise definition but I couldn't figure out how to do it as there wasn't any consistent pattern that I could spot.   I tried graphing it to get an idea but that also didn't get me anywhere.  Finally, I tried using the property of definite integral that  but the first and seccond terms remained the same and the last term changed but not it did not lead to any noticeable changes.  I am stuck now. Any help would be appreciated.",
+        "tags": [
+            "definite-integrals",
+            "fractional-part"
+        ]
+    },
+    {
+        "query_id": "A.230",
+        "title": "Question about definition of Ramsey number",
+        "body": "So I went through the definition of Ramsey number and I have a basic question. Definition: For any given number of colours, , and any given integers , there is a number, , such that if the edges of a complete graph of order  are coloured with c different colours, then for some i between 1 and c, it must contain a complete subgraph of order ni whose edges are all colour i. Question: Is the multicolour Ramsey number same as or any other permutation of? The definition seems to imply so, I just want to verify if I'm thinking right. I have read that  but nothing about symmetricity of multicolour Ramsey numbers.",
+        "tags": [
+            "definition",
+            "ramsey-theory"
+        ]
+    },
+    {
+        "query_id": "A.231",
+        "title": "Why is 1 divided by aleph null undefined?",
+        "body": "So recently I have been thinking about infinity, and one of the things that I thought of was if you were able to get a defined value for the reciprocal of a transfinite (cardinal) number. So, I plugged  into WolframAlpha and it said the following: img1  Why is this the case? Shouldn't this be similar to this case?  Aren't  and  equal to the same value in this context? What am I missing here?",
+        "tags": [
+            "definition"
+        ]
+    },
+    {
+        "query_id": "A.232",
+        "title": "Definition of Induced Matrix Norm",
+        "body": "I'm getting confused between 2 variants of definition of induced matrix norm. Given a norm  on , the induced matrix norm is defined by    I'm trying to deduce the second variant from this definition i.e.   Consider  where  and .  Therefore,  I don't know how to continue from here on.   Also, I 'm reading textbooks where they say :   My question is shouldn't it be    Because  means  which is ruled out because",
+        "tags": [
+            "definition",
+            "norm"
+        ]
+    },
+    {
+        "query_id": "A.233",
+        "title": "Motivation for defining tangent vectors with derivations and why they should act on",
+        "body": "I'm revisiting the definition for tangent spaces in Lee's Introduction to Smooth Manifolds and I'm trying to convince myself why we might define tangent vectors as derivations at a point :  Let  be a smooth manifold, and let . A linear map  is called a derivation at  if  for all .  So far, I know that if , then each derivation can be given as a directional derivative in some direction in . After reading the parts on the differential and its computation in coordinates, I'm still wondering why we would be interested in defining a tangent vector as a map that acts on functions on the manifold and the benefits from acting on smooth functions. The main reason that I can think of is that the collection of derivations at a point forms a vector space, which is we what want for a tangent space. I have also looked at the approach of defining tangent vectors with equivalence classes of curves, but it seems that there's also an action on  going on; we call curves  the tangent vectors, and they have a directional-derivative-like operators that act on  by  This seems really similar to how a vector in  defines its own directional derivative, but again, I'm not sure why the action on  would be useful/significant.",
+        "tags": [
+            "differential-geometry",
+            "differential-topology",
+            "smooth-manifolds",
+            "tangent-spaces"
+        ]
+    },
+    {
+        "query_id": "A.234",
+        "title": "Sards theorem for polynomial",
+        "body": "I'm having some struggles with an aspect about something apparently trivial about Sard's theorem, but couldn't find anything online.  Let  be a polynomial.  According to Sard's theorem, the image  of the set of critical values   has measure zero.  What if I want to show that the set  itself has measure zero in the domain of ?  I feel like it's so simple but i just can't get behind it.",
+        "tags": [
+            "differential-topology"
+        ]
+    },
+    {
+        "query_id": "A.235",
+        "title": "Method for solving Diophantine equation",
+        "body": "How do I solve the Diophantine equation ? The approach I have so far is to use the transformation  and . Applying this, we get, , where  and .  is a Pell equation. Questions:  Is there any other method? What is the complexity of the algorithm for finding the solution to the Pell equation?",
+        "tags": [
+            "diophantine-equations",
+            "computational-complexity",
+            "pell-type-equations"
+        ]
+    },
+    {
+        "query_id": "A.236",
+        "title": "Normalizing constant in Dirichlet distribution",
+        "body": "According to references (e.g. Wikipedia and elsewhere), the Dirichlet distribution, parametrized by , is  where  So, if  and  then this gives  where  so,  for all .  However,  is defined on the standard -simplex defined in  by  and .  This is the span (or affine hull) of the two points  and .  Since this is a line segment of length , the integral of the Dirichlet distribution over this simplex is , not  as expected.  What am I missing here? The same problem comes in higher dimensions.  For instance, for , the simplex is a triangle with side , but the normalization constant becomes , which is not the area of this triangle. What is wrong here?",
+        "tags": [
+            "dirichlet-series"
+        ]
+    },
+    {
+        "query_id": "A.237",
+        "title": "Rewrite the propositions without implication",
+        "body": "I want to rewrite the following types of propositions without the simple or double implication:        So we have to write these propositions without any implication, for example the first proposition like  or is something else meant?",
+        "tags": [
+            "discrete-mathematics",
+            "logic"
+        ]
+    },
+    {
+        "query_id": "A.238",
+        "title": "Definition of Equivalence Relation",
+        "body": "I was going through the text \"Discrete Mathematics and its Application\" by Kenneth Rosen (5th Edition) where I am across the definition of equivalence relation and felt that it is one sided.     Definition: A relation on a set A is called an equivalence relation if it is reflexive, symmetric, and transitive.   Now let us analyze the situation of what equivalence is meant to us intuitively.  Let there be a binary relation  defined on a set . Now we suppose that  be reflexive, symmetric and transitive.  So we have for      (by the reflexive property of R) if  then   (by the symmetric property of R) if  and  then  (by the transitive property of R)   Intuitively we can satisfy ourselves with the fact that the above are the necessary conditions for  to be equivalent. So \"if  is reflexive, symmetric and transitive, then  is an equivalence relation\"  Now working our intuition for equivalence relation  we note the following.  Let  be an equivalence relation on a set A, then for  we have,    (by the intuitive knowledge of what  means) if  then  (by the intuitive knowledge of what  means) if  and  then  (by the intuitive knowledge of what  means)   Now we see that (1) implies  is reflexive, (2) implies that  is symmetric and (3) implies that  is transitive.  So we have \"if  is an equivalent relation then  is reflexive, symmetric and transitive\"  From the two intuitive implications we can conclude that A relation on a set A is called an equivalence relation if and only if it is reflexive, symmetric, and transitive. and not what the book says. This definition makes quite sense unlike the book definition which says that if  fails to be either reflexive or symmetric or transitive then  may or may not be an equivalence relation, which after all gives a weird feeling.  Correct me if my logic is wrong.",
+        "tags": [
+            "discrete-mathematics",
+            "elementary-set-theory",
+            "proof-writing",
+            "definition",
+            "relations"
+        ]
+    },
+    {
+        "query_id": "A.239",
+        "title": "Fake proof, symmetric and transitive relation is already reflexive",
+        "body": "Let  be a symmetric, transitive relation. If  then the symmetric property implies that . Using the the transitive property upon  and  we can conclude . Is this fair logic or is it flawed?",
+        "tags": [
+            "discrete-mathematics",
+            "relations",
+            "fake-proofs"
+        ]
+    },
+    {
+        "query_id": "A.240",
+        "title": "What do the constants \"4\" and \"2\" in Bhaskara mean and where did they come from?",
+        "body": "In bhaskar, the way to get the result, is to get the , and then the . But from where come these constants?",
+        "tags": [
+            "education"
+        ]
+    },
+    {
+        "query_id": "A.241",
+        "title": "Divisibility of",
+        "body": "Let  be an integer. Show that  is divisible by .   How should one approach this? Using modular arithmetic or some other approach?",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.242",
+        "title": "Show that for all prime numbers  greater than ,  divides  evenly.",
+        "body": "Show that for all prime numbers  greater than ,  divides  evenly.  Since  we have that , where  Now since  and the numerator contains always at least one even factor(?) we have that  Is my reasoning here correct or am I missing something here?",
+        "tags": [
+            "elementary-number-theory"
+        ]
+    },
+    {
+        "query_id": "A.243",
+        "title": "If  then",
+        "body": "This is the  case of this question. Suppose that  and  Equivalently: Suppose that there are two positive divisors of  which average to . Is it necessarily the case that these two divisors are  and ?",
+        "tags": [
+            "elementary-number-theory",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.244",
+        "title": "Compute the Cardinality of a quotient set",
+        "body": "Let  be a an Equivalence relation on  defined by:  What is the cardinality of ?   where  is the quotient set of  under .",
+        "tags": [
+            "elementary-set-theory"
+        ]
+    },
+    {
+        "query_id": "A.245",
+        "title": "Is there a known set of closed form solutions to the functional equation f(f(z)) = sin z?",
+        "body": "That is  where",
+        "tags": [
+            "functional-equations"
+        ]
+    },
+    {
+        "query_id": "A.246",
+        "title": "Finding  such that in a regular -gon  we have",
+        "body": "INMO '92 Question 9:  Find  such that in a regular -gon  we have   I tried the following Assume it is inscribed in a circle. Then length of chord is  where  is half the angle subtended at the center between consecutive points. So, . Then we get  Not sure quite how to proceed from there- using double and triple angle formulae doesn't seem to work",
+        "tags": [
+            "geometry",
+            "trigonometry",
+            "contest-math",
+            "polygons"
+        ]
+    },
+    {
+        "query_id": "A.247",
+        "title": "Finding the endpoints of the maximal arc of circle  visible from .",
+        "body": "The equation of circle  is . The eye is located at . The maximal circular arc visible to the eye is , which is then being projected on to the one-dimensional \"screen\" as . What are the co-ordinates of points  and ?  I came this far: point  on circle  has the coordinates , . Now I should use this to find points  and , but I don't know how to proceed.",
+        "tags": [
+            "geometry",
+            "analytic-geometry"
+        ]
+    },
+    {
+        "query_id": "A.248",
+        "title": "product of elements  implies only one element with order",
+        "body": "Let  be an abelian group with even order and .  It is easy to show that  is a sugroup of  and the number of elements of  must be a power of .     I want to prove that the product of the elements of  (which in this case is equal to the product of the elements of ) is not the identity element , if and only if # (this means that there is only one element with order ). I found this claim when I studied the Wilson criterion for the primality of a number.   The case # is easy. If , we can show that  is not , hence must be some other element  and we get . But what about #? If we have the elements  and  and , the product would be  which is impossible considering my claim.   Who can complete my proof ?",
+        "tags": [
+            "group-theory",
+            "finite-groups"
+        ]
+    },
+    {
+        "query_id": "A.249",
+        "title": "An abelian group proof with  for all .",
+        "body": "I have to show that the following group  with its operation , which is defined through   for every  is an abelian group. In order to do that one have only to show that the group is commutative. How can one prove it whereas the operation is defined always between an Element and itself? I reckon it is not so simple as it seems Thanks in advance for your help :)",
+        "tags": [
+            "group-theory",
+            "abelian-groups",
+            "monoid"
+        ]
+    },
+    {
+        "query_id": "A.250",
+        "title": "How to show",
+        "body": "How to show  with  positive. Well, I tried by induction: with  then  is equivalent to say (elevate square in both side)  and this is equivalent  and this is true. I suppose it is true for some . But with , I don't know how to do, Please can help me with a hint or other way, thank you so much.",
+        "tags": [
+            "inequality",
+            "a.m.-g.m.-inequality"
+        ]
+    },
+    {
+        "query_id": "A.251",
+        "title": "How to prove that  using mathematical induction?",
+        "body": "I've been trying to solve this for hours, but I just can't seem to do it. And yes, I know I have to show that  from the starting assumption that . Any hints would be highly welcome.",
+        "tags": [
+            "inequality",
+            "induction"
+        ]
+    },
+    {
+        "query_id": "A.252",
+        "title": "Unexpected appearances of .",
+        "body": "\"The number  turns up surprisingly often and frequently in unexpected places.\" - Julian Havil, Gamma: Exploring Euler's Constant.     It is well-known, especially in 'pop math,' that  Euler's proof of which is quite nice. I would like to know where else this constant appears non-trivially. This is a bit broad, so here are the specifics of my question:   We can fiddle with the zeta function at arbitrary even integer values to eek out a . I would consider these 'appearances' of  to be redundant and ask that they not be mentioned unless you have some wickedly compelling reason to include it. By 'non-trivially,' I mean that I do not want converging series, integrals, etc. where it is obvious that  or  with  can simply be 'factored out' in some way such that it looks like  was included after-the-fact so that said series, integral, etc. would equal . For instance, , but clearly the appearance of  here is contrived. (But, if you have an answer that seems very interesting but you're unsure if it fits the 'non-trivial' bill, keep in mind that nobody will actually stop you from posting it.)   I hope this is specific enough. This was my attempt at formally saying 'I want to see all the interesting ways we can make .' With all that being said, I will give my favorite example as an answer below! :    There used to be a chunk of text explaining why this question should be reopened here. It was reopened, so I removed it.",
+        "tags": [
+            "integration",
+            "sequences-and-series",
+            "riemann-zeta",
+            "big-list",
+            "pi"
+        ]
+    },
+    {
+        "query_id": "A.253",
+        "title": "How would I show the result below using contour integration?",
+        "body": "How would I show the result below using contour integration?  where a>b>0 using contour integration. Any help would be greatly appreciated, thanks!",
+        "tags": [
+            "integration",
+            "complex-analysis",
+            "trigonometry",
+            "fourier-analysis",
+            "contour-integration"
+        ]
+    },
+    {
+        "query_id": "A.254",
+        "title": "Integration question hard",
+        "body": "Can I get some hints on how to solve this integral?",
+        "tags": [
+            "integration",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.255",
+        "title": "Integral of",
+        "body": "This is the first time I came across the problem of finding integral of . I have a joint distribution   where   I attempted to find  as follows:   where   Similarly, I derived  where   Could you please show me how to proceed to the destination solutions? Thanks in advance.",
+        "tags": [
+            "integration",
+            "probability-distributions",
+            "definite-integrals"
+        ]
+    },
+    {
+        "query_id": "A.256",
+        "title": "Why do we have to factorize the function before taking its limit",
+        "body": "I am learning about limits and there is something that I cant quite understand:  If we have the function:        Let's say that we want to see which value for y (image) the function approaches as x (domain) gets closer to 1. On a nutshell, we have to take this following limit:        As soon as we look to this function, we realize that the function is not continuous at x = 1 (By the way, can I say that?).   I know the algorithm to figure out the solution of the limit:  First, there is the need of eliminating the function discontinuity. Usually, it is just a matter of factorizing the function into a new function which the exactly same image as the one before with one crucial difference: The function is continuous for all real numbers   My doubts:Is my way to think about it correct? Can I think like that?  Take the example above:          After factorizing, we get:    If we plot both functions, they are the same, although the second one has its continuity all along the real numbers domain  Thanks in advance",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.257",
+        "title": "Is \"taking a limit\" a function? Is it a procedure? A ternary operation?",
+        "body": "I was sitting in analysis yesterday and, naturally, we took the limit of some expression. It occurred to me that \"taking the limit\" of some expression abides the rules of a linear transformation  and (my group theory is virtually non existent) appears also to be a homomorphism:  etc.  Anyway, my real question is, what mathematical construct is the limit?",
+        "tags": [
+            "limits",
+            "terminology"
+        ]
+    },
+    {
+        "query_id": "A.258",
+        "title": "How to prove  ? (k is any positive number)",
+        "body": "Originally, i was trying to find the value of  to find out differentiabiltiy of        at 0.  In this case,    So when I applied L'Hospital's rule, then its value was 0.  And I thought that No matter how big  is,   will be equal to zero because exponential's increase speed is much faster than polynomial's.  Definitely, we can also apply L'hospital's rule at here, but I think it is not proper qualitative explanation for the fact that exponential is much bigger than polynomial.  Is there any other approach which explains why  about this problem?  (In fact, I tried to use  but how can i show that there exist some  s.t. for every   (And I also tried to use inequality like   for all  but it only worked for )",
+        "tags": [
+            "limits",
+            "derivatives",
+            "exponential-function",
+            "epsilon-delta",
+            "differential"
+        ]
+    },
+    {
+        "query_id": "A.259",
+        "title": "Why does  grow faster than ?",
+        "body": "For every finite case, I can find a  where , so why is this true?    From the finite cases it seems like  grows faster because we can find a  to match it at any .",
+        "tags": [
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.260",
+        "title": "limit with two variables",
+        "body": "The limit I need to calculate is . Using polar coordinates I get: . Now if  then the limit is . How do I handle the case where  or ? And is there a better way to approach this limit?",
+        "tags": [
+            "limits",
+            "multivariable-calculus"
+        ]
+    },
+    {
+        "query_id": "A.261",
+        "title": "Show that",
+        "body": "Let the matrix , where  denotes a field, be defined by  with    Show that      My approach: I tried a proof via induction and while the basis step is trivial, I can't seem to solve the induction step since the matrix is never in upper or lower triangular form but always a block matrix, which makes this seemingly difficult as when calculating the determinant of block matrices, one usually calculates the product of all the \"diagonal blocks\".  I would very much appreciate help, thank you very much.",
+        "tags": [
+            "linear-algebra",
+            "matrices",
+            "induction",
+            "determinant"
+        ]
+    },
+    {
+        "query_id": "A.262",
+        "title": "Positve part and negative part of a real number",
+        "body": "Let  be a real number . The positive part of , denoted by  is given by expression  The negative part of , denoted by  is given by expression  Both  and   are non negative and the following relationship hold  Above is the text from my compiler optimization book and I cannot understand the relationship explained. How can  be a real number and have positive and negative parts?",
+        "tags": [
+            "linear-programming"
+        ]
+    },
+    {
+        "query_id": "A.263",
+        "title": "Formal relationship between rules of inference and the material conditional",
+        "body": "I am not  clear as to what constitutes the difference between a rule of inference and the material conditional, at least in classical logic. I am using the truth-functional definition of the material conditional, commonly visualised through its truth table, but I'm not entirely sure what the formal definition of a rule of inference is. The wikipedia article defines it to be a particular kind of logical form, which seems to be a term from philosophical logic that I'm not familiar with, but reading that article didn't really answer my question. It pertains more to the mathematical side of things, and I am specifically interested in the interplay between the concepts on the syntactic and semantic level. As far as I can tell, any rule of inference can be 'captured' by a corresponding material conditional: if we take modus ponens as a well-known example, what is the difference between  and  On a functional level, both statements seem to be expressing the same thing. What determines the need to use two separate terms and notations, and what, if anything, separates them?",
+        "tags": [
+            "logic",
+            "soft-question",
+            "formal-systems"
+        ]
+    },
+    {
+        "query_id": "A.264",
+        "title": "Modulo Power Arithmetic",
+        "body": "While performing some arithmetic operations, i am stuck at one point.I want to know is it possible to write ( as (?",
+        "tags": [
+            "modular-arithmetic"
+        ]
+    },
+    {
+        "query_id": "A.265",
+        "title": "How to show that  in this situation cannot be an integer",
+        "body": "Let , be relatively prime integers which are both greater than or equal to  . Show that  cannot be an integer.  I have tried to use contradiction to prove this result, but I am not sure that my idea is correct or not. Below is my idea (not a complete proof).  Suppose  be an integer. We have  is an integer. Then, we have  where  is an integer since  divides . Since  are relatively prime, therefore  must be . Hence, contradiction arises. I am not sure that my idea is correct or not, could anyone help me to check it? If my idea is wrong, could you give me a idea to do this question?",
+        "tags": [
+            "number-theory",
+            "gcd-and-lcm"
+        ]
+    },
+    {
+        "query_id": "A.266",
+        "title": "What happens when we (incorrectly) make improper fractions proper again?",
+        "body": "Many folks avoid the \"mixed number\" notation such as  due to its ambiguity. The example could mean \" and two thirds\", i.e. , but one may also be tempted to multiply, resulting in . My questions pertain to what happens when we iterate this process -- alternating between changing a fraction to a mixed number, then \"incorrectly\" multiplying the mixed fraction. The iteration terminates when you arrive at a proper fraction (numerator  denominator) or an integer. I'll \"define\" this process via sufficiently-complicated example:   Does this process always terminate?  For which  does this process, with initial iterate , terminate at ?",
+        "tags": [
+            "number-theory",
+            "elementary-number-theory",
+            "recreational-mathematics",
+            "fractions"
+        ]
+    },
+    {
+        "query_id": "A.267",
+        "title": "Dual of Lagrange Dual",
+        "body": "For linear programming, it's well known that the dual of the dual is the primal. I'm wondering if it is the case for Lagrange duality, and I'm having a hard time showing this.  Notationally, let the primal problem be:     And the dual be:     Where  is the Lagrangian.  I suspect it isn't true in general that the dual of dual is the primal. However, intuitively when I hear the term dual I assume that the dual of the dual should be the primal, so this got me confused.",
+        "tags": [
+            "optimization",
+            "convex-optimization",
+            "linear-programming",
+            "duality-theorems"
+        ]
+    },
+    {
+        "query_id": "A.268",
+        "title": "If , find the expected value of",
+        "body": "The Problem: Suppose that . Find the expected value of   We have that  where we used the Taylor series for the exponential function.    Do you agree with my approach above? Any feedback is most welcomed. Thank you very much for your time.",
+        "tags": [
+            "probability",
+            "solution-verification",
+            "expected-value",
+            "poisson-distribution"
+        ]
+    },
+    {
+        "query_id": "A.269",
+        "title": "conditional probability in a family",
+        "body": "Let a family have two children. It is known that one of the children is a boy. What is the probability that both the children are boys. So for this we build the sample space  Let our event E be the case where both children are boys  Let the conditional be F  Hence  But the answer in my book is given as  and I can't seem to understand why.",
+        "tags": [
+            "probability",
+            "conditional-probability"
+        ]
+    },
+    {
+        "query_id": "A.270",
+        "title": "Expected number of heads before it turns up tails five times",
+        "body": "A fair coin is flipped repeatedly until it turns up tails five times. What is the expected number of heads before that happens? Based on the link given in the comment, I have found it can be solved using the recursion  which is equivalent to . Is it correct?",
+        "tags": [
+            "probability",
+            "expected-value"
+        ]
+    },
+    {
+        "query_id": "A.271",
+        "title": "Probability of  where  are independent Gaussian r.v.'s with mean 0",
+        "body": "Let  be a sequence of independent Gaussian random variables with  for all . Find the probability of the event  My first thought is that it should be 1 since Gaussians are always positive for a finite value. I was thinking of applying Borel-Cantelli and was trying something along the lines of  I'm not sure I'm thinking of this problem right, though.",
+        "tags": [
+            "probability-theory",
+            "random-variables",
+            "borel-cantelli-lemmas"
+        ]
+    },
+    {
+        "query_id": "A.272",
+        "title": "Why is  =  not true when a and b are both negative?",
+        "body": "Apparently  =  is only true if a and b are both positive or if a is negative and b is positive or if a is positive and b is negative. In other words, a and b can't both be negative.  Is it possible to algebraically prove this? Or is it just a result of the way the square root function is defined?   I know of 1 way to prove this radical property, but I'm still not sure why it won't work for negative numbers.  Let x = .  Let y =   Square both sides for both equations.             or   Or   or     A lot of people will go through this line of reasoning (shown below) in order to justify why a and b can't both be negative.   Considering that mathematicians define  or     But this is only a specific instance where this property fails us. This isn't a  rigorous or at least satisfying proof of why  =  can only be true if a and b are not both negative.  Note: I just started learning about complex and imaginary numbers and I am no means an expert in  mathematical proofs, so if you do know the answer to this question please try (if possible) your best to answer the question without using too much complex or high-order math that I won't be able to understand.",
+        "tags": [
+            "radicals"
+        ]
+    },
+    {
+        "query_id": "A.273",
+        "title": "Can fractional/decimal radicals/roots exist?",
+        "body": "For questions like \"What is the 1/2th root of x would the answer be ? My logic is that since  Which simplifies to . So as a general rule it could be  And with a different denominator  This corresponds to how decimal/fractional exponents denote radicals (their inverse) while fractional radicals are easier shown with exponents. Example : (2/3rd root of 4)  Example (22/7th root of π) :  Example (1/2th root of 1/4) :",
+        "tags": [
+            "radicals",
+            "decimal-expansion",
+            "radical-equations"
+        ]
+    },
+    {
+        "query_id": "A.274",
+        "title": "Why the Heaviside distribution  doesn't belong to any Sobolev space",
+        "body": "I prooved that the Dirac distribution  is in the Sobolev space  for every    but I steel  wrestling to proof that the  Heaviside distribution      Doesn't belong to any Sobolev space , could you elaborate on that?  Thanks in advance!",
+        "tags": [
+            "real-analysis",
+            "functional-analysis",
+            "fourier-analysis",
+            "sobolev-spaces",
+            "distribution-theory"
+        ]
+    },
+    {
+        "query_id": "A.275",
+        "title": "Proving an Integral Identity with Increasing Bounds",
+        "body": "How can I show that   I know that can use the fact that, for ,   but I'm not sure how to begin.",
+        "tags": [
+            "real-analysis",
+            "integration",
+            "analysis"
+        ]
+    },
+    {
+        "query_id": "A.276",
+        "title": "Let  and . Show that .",
+        "body": "I think what I need to do is find the value of  where",
+        "tags": [
+            "real-analysis"
+        ]
+    },
+    {
+        "query_id": "A.277",
+        "title": "Is the AM-GM inequality the only obstruction for getting a specific sum and product?",
+        "body": "This might be silly, but here it goes.  Let  be positive real numbers that satisfy .     Does there exist a sequence of positive real numbers  such that ?   Clearly,  is a necessary condition, due to the AM-GM inequality. But is it sufficient?  For , the answer is positive, as can be seen by analysing the discriminant of the associated quadratic equation. (In fact, the solvability criterion for the quadratic, namely- the non-negativity of the discriminant, is equivalent to the AM-GM inequality for the sum and the product).  What about ?",
+        "tags": [
+            "real-analysis",
+            "polynomials",
+            "systems-of-equations",
+            "a.m.-g.m.-inequality"
+        ]
+    },
+    {
+        "query_id": "A.278",
+        "title": "Is there a differentiable function such that  but ?",
+        "body": "Is there a differentiable function  such that , but ? A friend of mine asserted this without giving any examples. I seriously doubt it, but I had hard time trying to disprove it since analysis isn't really my thing. I can't even think of any class of differentiable functions with  other than the rational functions.",
+        "tags": [
+            "real-analysis"
+        ]
+    },
+    {
+        "query_id": "A.279",
+        "title": "If  show that .",
+        "body": "Question: Suppose  has the property that  Show that .  My approach: Let  be such that  Note that if we can show that , then we will be done. Now since we have  Next I tried to come up with some bounds in order to use Sandwich theorem to show that  but the bounds didn't quite work out. The bounds were the following:  How to proceed after this?",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.280",
+        "title": "Why do engineers use derivatives in discontinuous functions? Is it correct?",
+        "body": "I am a Software Engineering student and this year I learned about how CPUs work, it turns out that electronic engineers and I also see it a lot in my field, we do use derivatives with discontinuous functions. For instance in order to calculate the optimal amount of ripple adders so as to minimise the execution time of the addition process:    where  is the number of bits in the numbers to add,  is the amount of adders in ripple and  is the \"delta gate\" (the time that takes to a gate to operate). Clearly you can see that the execution time function is not continuous at all because  is a natural number and so is . This is driving me crazy because on the one hand I understand that I can analyse the function as a continuous one and get results in that way, and indeed I think that's what we do (\"I think\", that's why I am asking), but my intuition and knowledge about mathematical analysis tells me that this is completely wrong, because the truth is that the function is not continuous and will never be and because of that, the derivative with respect to  or  does not exist because there is no rate of change. If someone could explain me if my first guess is correct or not and why, I'd appreciate it a lot, thanks for reading and helping!",
+        "tags": [
+            "real-analysis",
+            "calculus",
+            "functions",
+            "derivatives",
+            "optimization"
+        ]
+    },
+    {
+        "query_id": "A.281",
+        "title": "Alternate methods to prove that  where",
+        "body": "So, I was trying to prove that  where . Here's what I did: Since , let us suppose  for  and some . Now, I used the binomial expansion and wrote:  So now, we can always find an  such that  Now, as , we have,  And in this way, I proved that . I wanted to know how can I prove this without using Binomial expansion. I tried to do this using the Bernoulli's Inequality,  but couldn't get too far. Any help/hint would be highly appreciable.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series",
+            "convergence-divergence"
+        ]
+    },
+    {
+        "query_id": "A.282",
+        "title": "How to prove the value o  by Functional Analysis?",
+        "body": "I have a question about  =  I know it can be proven with standard 1 variable analysis (working on Taylor series of  or something like that) or basic complex analysis. But someone told me it has also great prove using Functional Analysis. He suggested it is proved on standard first course of FA, but it was not in my case. Can You write here the proof using FA or leave a link in comment? Thanks in advance.",
+        "tags": [
+            "real-analysis",
+            "complex-analysis",
+            "functional-analysis",
+            "sums-of-squares"
+        ]
+    },
+    {
+        "query_id": "A.283",
+        "title": "Determine whether  converges or diverges",
+        "body": "Given  and  for , determine whether  converges or diverges.   Since ,  it seems obvious that the sequence is strictly increasing and always positive because we are always adding a positive number to each subsequent element in the sequence.   The trickier part is to show whether  is bounded or not. If  is bounded, then  such that     Alternatively, I think this means that  could be a supremum of the sequence and another way to rewrite  is given any     Choose . Then     Thus I conclude that the inequality holds  and that  is convergent. Thus by the Monotone Sequence Convergence Theorem,  is convergent.    The part I am not sure about is my reasoning to show that  being bounded is correct or not.",
+        "tags": [
+            "real-analysis",
+            "sequences-and-series",
+            "convergence-divergence"
+        ]
+    },
+    {
+        "query_id": "A.284",
+        "title": "Why decimals of rational numbers behave periodically?",
+        "body": "I am interesting in the proof of that every rational number cannot have in decimal form infinite number of digits that don't repeat (or the other way around). So, then is enough to prove following statement: For any  rational number  can be represented in decimal form such that it's digits, if there are infinitely many, are repeating. If this is true, then it is true for any  ( times).",
+        "tags": [
+            "real-numbers",
+            "rational-numbers",
+            "decimal-expansion"
+        ]
+    },
+    {
+        "query_id": "A.285",
+        "title": "How to determine the sum of a series that is neither geometric nor arithmetic but quadratic or cubic?",
+        "body": "How to determine the formula of the sum of a series given its th-term formula like:   or",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.286",
+        "title": "Knowing converges, how to prove that .",
+        "body": "Let  be decreasing and positive. Then  converges implies .  I think since  is positive, the only thing to do is to find an upper bound for the sequence. But I don't know how to split the sequence to form the upper bound.",
+        "tags": [
+            "sequences-and-series",
+            "limits"
+        ]
+    },
+    {
+        "query_id": "A.287",
+        "title": "What is the closed form of",
+        "body": "I looked at  (division), however both expressions are not equal. I am looking for an expression like  for example.",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.288",
+        "title": "Alternating Harmonic Series Spin-off",
+        "body": "We know that the series  converges, and clearly every other alternating harmonic series with the sign changing every two or more terms such as  must converge. My question here is that does the series below also converge?  Loosely speaking, the sign changes every  terms. I'd be surprised if it doesn't converge. Wolfram Mathematica, after a couple of minutes of computing, concluded the series diverges but I can't really trust it. My first approach (assuming the series converges) was that if we bundle up terms with the same sign like the example above every bundle must have three or four terms, and since the first three terms of all bundles make an alternating series I was going to fiddle with the remaining fourth terms but they don't make an alternating series so I guess there's no point in this approach. edit: I don't think we can use Dirichlet's test with  The alternating cycle here is  and I don't believe it would bound the series. For example if the cycle was a number very slightly smaller than , then  (sum of ) would get larger and larger every four bundles for some time. I believe this should happen for  as well since it is irrational. I'm not entirely sure why but  for most small  though I guess it's because  is slightly smaller than ? Anyway , , , , and .  does not hit  up to  with .",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.289",
+        "title": "Find  general solution",
+        "body": "If we know  Is it possible to calculate the general solution for ? I know  but the way to get it is more an algorithm than an actual solution.",
+        "tags": [
+            "sequences-and-series"
+        ]
+    },
+    {
+        "query_id": "A.290",
+        "title": "Best method for proving that  is divisible by",
+        "body": "I am asked to prove by induction that  is divisible by . I wonder whether there is a more direct method, for example factorizing by . If an expression is divisible by , does this mean that I can factorize it by ? Thanks in advance",
+        "tags": [
+            "sequences-and-series",
+            "elementary-number-theory",
+            "divisibility"
+        ]
+    },
+    {
+        "query_id": "A.291",
+        "title": "Summation of th partial products of the square of even numbers diverges, but for odd numbers they converge in this series I'm looking at. Why?",
+        "body": "So I have the two following series:   I figured out the th partial products:   So putting these back into my series they become the following:  Now this diverges as expected by the limit test test. However when I look at my other series:  By the limit test maybe diverges or maybe doesn't, and the ratio test is inconclusive. Since I wasn't sure what to use for the a comparison test I threw this into wolfram alpha and it told me it converges which is baffling to me since both series are very similar if we write them out:   They both have the nth parial product of the even/odd integers squared in the numerator, and are over a factorial that is two greater than , so I'm not sure why one is diverging and the other is converging. Is wolframalpha wrong, as it can be at times? Or is there someething here that I am missing?",
+        "tags": [
+            "sequences-and-series",
+            "factorial",
+            "products"
+        ]
+    },
+    {
+        "query_id": "A.292",
+        "title": "Find the limit of the sequence  as  for all values of0 and",
+        "body": "I have tried using the ratio lemma to tackle this question and also the fact  and I haven't reached an answer. How should I go about solving this problem?",
+        "tags": [
+            "sequences-and-series",
+            "limits",
+            "analysis",
+            "exponentiation",
+            "ratio"
+        ]
+    },
+    {
+        "query_id": "A.293",
+        "title": "Summation  Properties",
+        "body": "I'm dealing with something like . I know I can do this .  Would that be equal to  or I'm missing some properties with ?  If so, which ones?",
+        "tags": [
+            "sequences-and-series",
+            "summation"
+        ]
+    },
+    {
+        "query_id": "A.294",
+        "title": "Why is there no hyper-hypercohomology?",
+        "body": "I am looking for a reference to answer the question in the title. Let me try to clarify a little what I mean:  If a single sheaf  has a resolution  by not necessarily injective objects, then the usual cohomology of  is isomorphic to the hypercohomology of :    Now, if one was starting with a complex of sheaves  and a \"resolution\" thereof, i.e. a complex of complexes , then one should touch on a concept that could be called hyper-hypercohomology.   Yet, I never heard of its existence and I'm pretty sure it does not give you anything new, as soon as you work in the derived category. I just find myself unable to pin down why exactly this is the case.   Any ideas anyone?",
+        "tags": [
+            "sheaf-cohomology",
+            "derived-categories"
+        ]
+    },
+    {
+        "query_id": "A.295",
+        "title": "Help calculating series",
+        "body": "I need help with understanding how to solve this task, because I'm a bit lost at the moment.  Use the powerseries   to decide the sum of the series       and   I don't understand how to manipulate the sums to use the power series of the function.",
+        "tags": [
+            "summation",
+            "power-series"
+        ]
+    },
+    {
+        "query_id": "A.296",
+        "title": "A little confused about the Taylor series of",
+        "body": "We know that    which can be written out   but  isn't well defined.",
+        "tags": [
+            "taylor-expansion",
+            "exponential-function"
+        ]
+    },
+    {
+        "query_id": "A.297",
+        "title": "difficult question",
+        "body": "I am confused about a homework problem I have, and don't really know where to begin. I need to prove this. Any idea of where I can start. The statement is that  Find all integers n that satisfies  where  is the Euler’s Phi function.",
+        "tags": [
+            "totient-function"
+        ]
+    },
+    {
+        "query_id": "A.298",
+        "title": "Variable transformation of a Dirac delta function",
+        "body": "I am struggling to understand the variable transformation of a Dirac delta function. More specifically, a transformation of the following type,  Here,  and  are constants. The specific relationship between  and  is,  where  is a non-zero, positive and smoothly varying function of . In the context of my Physics problem, for the sake of the interested audience,  is the Hubble parameter of the Universe while  is the comoving distance and  is the redshift of any time in the past.  So, let me add what I have done so far:   I start by defining the Dirac delta function in the form a unit step function as,  Then converting this in the form of z using the chain rule as,  Using the relation with , we can write the equation as,  Also,  can also be replaced by the integral as well, so that left side containing the unit step function can be written as, .  After this, I am not sure what else to try. Hopefully, this addition helps. Also, please point out an error if you see one.",
+        "tags": [
+            "transformation",
+            "dirac-delta",
+            "change-of-variable"
+        ]
+    },
+    {
+        "query_id": "A.299",
+        "title": "Prove  but without finding",
+        "body": "I can find the value of , but is there a way to prove the equality without finding it?  I tried looking for both algebraic and geometric methods, but couldn't find anything",
+        "tags": [
+            "trigonometry",
+            "proof-writing",
+            "alternative-proof"
+        ]
+    },
+    {
+        "query_id": "A.300",
+        "title": "Uniformly continuous or not?",
+        "body": "So I supposed to find out if  is uniformly continuous on  So I have been thinking a lot. Could I say that  is continuous on  and therefore uniformly continuous here? Or is this not valid, because  is not defined at ? And then say that the derivate is bounded at ?",
+        "tags": [
+            "uniform-continuity"
+        ]
+    }
+]
