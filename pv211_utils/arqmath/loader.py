@@ -149,7 +149,7 @@ def load_judgements(queries: OrderedDict, answers: OrderedDict, subset: Optional
             query_id = _resolve_query_id(raw_query_id)
             if filter_document_ids is not None and document_id not in filter_document_ids:
                 continue
-            if subset is not None and query_id not in QUERY_SUBSETS[subset]:
+            if subset is not None and query_id not in QUERY_SUBSETS[2020][subset]:
                 continue
             query: ArqmathQueryBase = queries[query_id]
             answer: ArqmathAnswerBase = answers[document_id]
