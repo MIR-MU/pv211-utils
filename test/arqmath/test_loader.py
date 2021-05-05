@@ -25,9 +25,9 @@ ANSWER_ID = '1199811'
 ANSWER_UPVOTES = 1
 ANSWER_IS_ACCEPTED = True
 
-HIGH_RELEVANCE = (13, '563024')
-MEDIUM_RELEVANCE = (90, '878509')
-LOW_RELEVANCE = (20, '1764058')
+HIGH_RELEVANCE_TRAIN = (13, '563024')
+MEDIUM_RELEVANCE_VALIDATION = (24, '1758902')
+LOW_RELEVANCE_TEST = (16, '1002519')
 NO_RELEVANCE = (40, '2106624')
 NO_RELEVANCE_JUDGEMENT = (53, '377998')
 
@@ -35,9 +35,9 @@ ANSWER_IDS = set(
     QUESTION_ANSWER_DOCUMENT_IDS +
     [
         ANSWER_ID,
-        HIGH_RELEVANCE[1],
-        MEDIUM_RELEVANCE[1],
-        LOW_RELEVANCE[1],
+        HIGH_RELEVANCE_TRAIN[1],
+        MEDIUM_RELEVANCE_VALIDATION[1],
+        LOW_RELEVANCE_TEST[1],
         NO_RELEVANCE[1],
         NO_RELEVANCE_JUDGEMENT[1],
     ]
@@ -541,24 +541,72 @@ class TestLoadRelevanceJudgements(unittest.TestCase):
     def setUp(self):
         queries = load_queries('text', subset=None)
         answers = ANSWERS_TEXT
-        self.high_relevance = (queries[HIGH_RELEVANCE[0]], answers[HIGH_RELEVANCE[1]])
-        self.medium_relevance = (queries[MEDIUM_RELEVANCE[0]], answers[MEDIUM_RELEVANCE[1]])
-        self.low_relevance = (queries[LOW_RELEVANCE[0]], answers[LOW_RELEVANCE[1]])
+        self.high_relevance_train = (
+            queries[HIGH_RELEVANCE_TRAIN[0]],
+            answers[HIGH_RELEVANCE_TRAIN[1]],
+        )
+        self.medium_relevance_validation = (
+            queries[MEDIUM_RELEVANCE_VALIDATION[0]],
+            answers[MEDIUM_RELEVANCE_VALIDATION[1]],
+        )
+        self.low_relevance_test = (
+            queries[LOW_RELEVANCE_TEST[0]],
+            answers[LOW_RELEVANCE_TEST[1]],
+        )
         self.no_relevance = (queries[NO_RELEVANCE[0]], answers[NO_RELEVANCE[1]])
         self.no_relevance_judgement = (queries[NO_RELEVANCE_JUDGEMENT[0]], answers[NO_RELEVANCE_JUDGEMENT[1]])
-        self.judgements = load_judgements(queries, answers, filter_document_ids=ANSWER_IDS, subset=None)
 
-    def test_judgements_high_relevance(self):
-        self.assertIn(self.high_relevance, self.judgements)
+        self.judgements = load_judgements(
+            queries,
+            answers,
+            filter_document_ids=ANSWER_IDS,
+            subset=None,
+        )
+        self.judgements_train = load_judgements(
+            queries,
+            answers,
+            filter_document_ids=ANSWER_IDS,
+            subset='train',
+        )
+        self.judgements_validation = load_judgements(
+            queries,
+            answers,
+            filter_document_ids=ANSWER_IDS,
+            subset='validation',
+        )
+        self.judgements_test = load_judgements(
+            queries,
+            answers,
+            filter_document_ids=ANSWER_IDS,
+            subset='test',
+        )
 
-    def test_judgements_medium_relevance(self):
-        self.assertIn(self.medium_relevance, self.judgements)
+    def test_judgements_high_relevance_train(self):
+        self.assertIn(self.high_relevance_train, self.judgements)
+        self.assertIn(self.high_relevance_train, self.judgements_train)
+        self.assertNotIn(self.high_relevance_train, self.judgements_validation)
+        self.assertNotIn(self.high_relevance_train, self.judgements_test)
 
-    def test_judgements_low_relevance(self):
-        self.assertNotIn(self.low_relevance, self.judgements)
+    def test_judgements_medium_relevance_validation(self):
+        self.assertIn(self.medium_relevance_validation, self.judgements)
+        self.assertNotIn(self.medium_relevance_validation, self.judgements_train)
+        self.assertIn(self.medium_relevance_validation, self.judgements_validation)
+        self.assertNotIn(self.medium_relevance_validation, self.judgements_test)
+
+    def test_judgements_low_relevance_test(self):
+        self.assertNotIn(self.low_relevance_test, self.judgements)
+        self.assertNotIn(self.low_relevance_test, self.judgements_train)
+        self.assertNotIn(self.low_relevance_test, self.judgements_validation)
+        self.assertNotIn(self.low_relevance_test, self.judgements_test)
 
     def test_judgements_no_relevance(self):
         self.assertNotIn(self.no_relevance, self.judgements)
+        self.assertNotIn(self.no_relevance, self.judgements_train)
+        self.assertNotIn(self.no_relevance, self.judgements_validation)
+        self.assertNotIn(self.no_relevance, self.judgements_test)
 
     def test_judgements_no_relevance_judgement(self):
         self.assertNotIn(self.no_relevance_judgement, self.judgements)
+        self.assertNotIn(self.no_relevance_judgement, self.judgements_train)
+        self.assertNotIn(self.no_relevance_judgement, self.judgements_validation)
+        self.assertNotIn(self.no_relevance_judgement, self.judgements_test)
