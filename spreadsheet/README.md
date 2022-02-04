@@ -11,11 +11,16 @@ to reproduce the leaderboard spreadsheets in Google Sheets.
 
 [Live public TREC leaderboard Spring 2022][leaderboard-trec-2022] | [Edit leaderboard][leaderboard-trec-2022-sheets]
 
+[Live public ARQMath leaderboard Spring 2022][leaderboard-arqmath-2022] | [Edit leaderboard][leaderboard-arqmath-2022-sheets]
+
 [leaderboard-cranfield-2022]: https://docs.google.com/spreadsheets/d/e/2PACX-1vT0FoFzCptIYKDsbcv8LebhZDe_20GFeBAPmS-VyImlWbqET0T7I2iWy59p9SHbUe3LX1yJMhALPcCY/pubhtml
 [leaderboard-cranfield-2022-sheets]: https://docs.google.com/spreadsheets/d/1TFE4RAx_kjaAkwhSRudel17kPunzD-C6BuNeZYzuzFk/edit?usp=sharing
 
 [leaderboard-trec-2022]:https://docs.google.com/spreadsheets/d/e/2PACX-1vQPMjEwGPte34q6vT0CfT2NzmC6iDilpgG7s1cunr7eG5BY6T1OiHumbnwKrwrvQcj1e8-Pu96PiYc2/pubhtml
 [leaderboard-trec-2022-sheets]: https://docs.google.com/spreadsheets/d/1QD-qS18fR0Q137dw_j8k73KwewsmeJsiB4SSzaXhbPs/edit?usp=sharing
+
+[leaderboard-arqmath-2022]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSF1I2TKhKqYc7kTxRfza__PTTQjrAtvezuQFm9I_lL3WsPSETE5yuxe8JyiN-7NvFjv4nZ8eCQ9aHg/pubhtml
+[leaderboard-arqmath-2022-sheets]: https://docs.google.com/spreadsheets/d/1akHS9OSdN0_gu5xThJBSVAMKvUqAWg6sjO6vM6KCxfw/edit?usp=sharing
 
 ### Archive
 
