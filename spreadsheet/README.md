@@ -25,14 +25,14 @@ Google Sheets.
 The code is available in [dynamic-sorting.gs](./dynamic-sorting.gs).
 
 Important:
-* the range for sorting is manually set on [line 14](./dynamic-sorting.gs#L14)
+* the range for sorting is manually set on [line 12](./dynamic-sorting.gs#L12)
 * please leave a column right after this range blank, since the script uses it
   for temporary computations and deletes it automatically if it contains
   anything
 
 #### How to import
 
-Open the Google Sheets leaderboard > Tools > Script editor > {Create new
+Open the Google Sheets leaderboard > Extensions > Apps Script > {Create new
 project | new .gs file}
 
 ## Trigger
@@ -42,7 +42,7 @@ run [[1][1]], we use time trigger to call the script every minute.
 
 #### How to set up
 
-Once in Script editor > Edit > Current project's triggers > New trigger > ..
+Once in the Google Apps Script editor > Triggers > Add trigger > select
 time-driven trigger every minute
 
 ## Formulae in cells
@@ -51,10 +51,10 @@ time-driven trigger every minute
 
 Leaderboard sheet, cell C3, Czech / English localisation:
 ```
-=IFERROR(SVYHLEDAT(C$2&$B3;SORT(submissions!$A:$F;4;NEPRAVDA;5;NEPRAVDA;6;NEPRAVDA);6;NEPRAVDA))
+=IFERROR(SVYHLEDAT(C$2&$B3;SORT(submissions!$A:$F;4;NEPRAVDA;5;NEPRAVDA;3;NEPRAVDA);6;NEPRAVDA))
 ```
 ```
-=IFERROR(VLOOKUP(C$2&$B3;SORT(submissions!$A:$F;4;FALSE;5;FALSE;6;FALSE);6;FALSE))
+=IFERROR(VLOOKUP(C$2&$B3;SORT(submissions!$A:$F;4;FALSE;5;FALSE;3;FALSE);6;FALSE))
 ```
 
 Expand the formula for every student and every week.
@@ -70,10 +70,10 @@ Submissions sheet, cell A1, Czech equals English localisation:
 
 Leaderboard sheet, week n.1, Czech / English localisation:
 ```
-=SORTN($B$3:$B$84;3;0;C3:C84;NEPRAVDA())
+=SORTN($B$3:$B$52;3;0;C3:C52;NEPRAVDA())
 ```
 ```
-=SORTN($B$3:$B$84;3;0;C3:C84;FALSE())
+=SORTN($B$3:$B$52;3;0;C3:C52;FALSE())
 ```
 
 Analogously for other weeks. Text colour is initially set to the
