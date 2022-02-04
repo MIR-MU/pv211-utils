@@ -110,9 +110,14 @@ function addLatestColumn(sheet,range){
  */
 function applyConditionalFormattingPodium(sheet, range) {
   range.setBackground("white");
-  sheet.getRange(range.getRow(),1,1,range.getLastColumn()).setBackground("gold");
-  sheet.getRange(range.getRow()+1,1,1,range.getLastColumn()).setBackground("silver");
-  sheet.getRange(range.getRow()+2,1,1,range.getLastColumn()).setBackground("#ffd0a2");
+  var firstRow = range.getRow();
+  var firstCol = 1;
+  var numRows = 1;
+  var numCols = range.getLastColumn();
+  
+  sheet.getRange(firstRow,firstCol,numRows,numCols).setBackground("gold");
+  sheet.getRange(firstRow+1,firstCol,numRows,numCols).setBackground("silver");
+  sheet.getRange(firstRow+2,firstCol,numRows,numCols).setBackground("#ffd0a2");
 }
 
 /**
