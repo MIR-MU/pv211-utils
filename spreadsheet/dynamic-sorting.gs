@@ -114,10 +114,10 @@ function applyConditionalFormattingPodium(sheet, range) {
   var firstCol = 1;
   var numRows = 1;
   var numCols = range.getLastColumn();
-  
-  sheet.getRange(firstRow,firstCol,numRows,numCols).setBackground("gold");
-  sheet.getRange(firstRow+1,firstCol,numRows,numCols).setBackground("silver");
-  sheet.getRange(firstRow+2,firstCol,numRows,numCols).setBackground("#ffd0a2");
+
+  sheet.getRange(firstRow,   firstCol, numRows, numCols).setBackground("gold");
+  sheet.getRange(firstRow+1, firstCol, numRows, numCols).setBackground("silver");
+  sheet.getRange(firstRow+2, firstCol, numRows, numCols).setBackground("#ffd0a2");
 }
 
 /**
