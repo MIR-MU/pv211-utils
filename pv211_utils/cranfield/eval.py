@@ -29,4 +29,4 @@ class CranfieldEvaluation(EvaluationBase):
         super().__init__(system, judgements, leaderboard, author_name)
 
     def _get_minimum_mean_average_precision(self) -> float:
-        return 0.35
+        return 0.22
