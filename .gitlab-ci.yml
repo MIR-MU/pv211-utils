@@ -29,7 +29,8 @@ Type check:
     - pip install .
     - pip install pytype
   script:
-    - pytype .
+    - pytype pv211_utils
+    - pytype test
 
 Unit tests:
   stage: build
