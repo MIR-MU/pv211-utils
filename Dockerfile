@@ -47,5 +47,8 @@ RUN useradd -u 1000 --create-home jovyan
 WORKDIR /home/jovyan
 USER 1000
 
+# Symlink persistent storage
+RUN ln -s /media/persistent-storage /home/jovyan/persistent-storage
+
 # Download datasets
 RUN python3.8 -m scripts.download_datasets
