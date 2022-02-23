@@ -9,7 +9,7 @@ function onEdit(event){
   var sheetLeaderboard = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('leaderboard');
 
   // MANUAL INPUT NEEDED
-  var tableRange = "B3:I52"; // What to sort.
+  var tableRange = "B3:G36"; // What to sort.
   var range = sheetLeaderboard.getRange(tableRange);
 
   // Sort by a helper column with the latest submission score for a given row
@@ -122,21 +122,21 @@ function applyConditionalFormattingPodium(sheet, range) {
 
 /**
 * Apply conditional formatting for the whole rows
-* Condition 1: score is at least L18 (or 35 %)
-* Condition 2: score is more than M18 (or 1.25 %) (kicking Mr Random)
-* Scope: the range, or weeks 1--7 (columns C--I)
+* Condition 1: score is at least M18 (or 20 %)
+* Condition 2: score is more than L18 (or 0.92 %) (kicking Mr Random)
+* Scope: the range
 * Formatting 1: light green background
 * Formatting 2: light yellow background
 */
 function applyConditionalFormatting(sheet,range){
   var ruleThreshold = SpreadsheetApp.newConditionalFormatRule()
-    .whenFormulaSatisfied("=OR($C6>=$L$18; $D6>=$L$18; $E6>=$L$18; $F6>=$L$18; $G6>=$L$18; $H6>=$L$18; $I6>=$L$18)")
+    .whenFormulaSatisfied("=OR($C6>=$M$18; $D6>=$M$18; $E6>=$M$18; $F6>=$M$18; $G6>=$M$18)")
     .setBackground("#CCFFCC")
     .setRanges([range])
     .build();
 
   var ruleMrRandom = SpreadsheetApp.newConditionalFormatRule()
-    .whenFormulaSatisfied("=OR($C6>$M$18; $D6>$M$18; $E6>$M$18; $F6>$M$18; $G6>$M$18; $H6>$M$18; $I6>$M$18)")
+    .whenFormulaSatisfied("=OR($C6>$L$18; $D6>$L$18; $E6>$L$18; $F6>$L$18; $G6>$L$18)")
     .setBackground("#FFFFAF")
     .setRanges([range])
     .build();
