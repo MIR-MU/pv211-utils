@@ -7,7 +7,7 @@ from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 class CranfieldLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def get_competition_start(self) -> datetime.date:
-        return datetime.date(2022, 2, 8)
+        return datetime.date(2022, 2, 14)
 
     def get_competition_end(self) -> datetime.date:
         return datetime.date(2022, 3, 14)
