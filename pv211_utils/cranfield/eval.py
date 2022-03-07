@@ -21,12 +21,15 @@ class CranfieldEvaluation(EvaluationBase):
     author_name : str or None, optional
         The name of the author submitted to the leaderboard.
         If None, then the result will not be submitted. Default is None.
+    num_workers : int or None, optional
+        The number of processes used to compute the mean average precision.
+        If None, all available CPUs will be used. Default is 1.
 
     """
     def __init__(self, system: CranfieldIRSystemBase, judgements: Set[CranfieldJudgementBase],
                  leaderboard: Optional[CranfieldLeaderboard] = None,
-                 author_name: Optional[str] = None):
-        super().__init__(system, judgements, leaderboard, author_name)
+                 author_name: Optional[str] = None, num_workers: Optional[int] = 1):
+        super().__init__(system, judgements, leaderboard, author_name, num_workers)
 
     def _get_minimum_mean_average_precision(self) -> float:
         return 0.22

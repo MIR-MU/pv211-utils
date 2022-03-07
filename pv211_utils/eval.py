@@ -1,12 +1,42 @@
 import abc
+from datetime import datetime
+from multiprocessing import get_context
 from typing import Iterable, Set, Optional
 from statistics import mean
+import os
 
 from .entities import QueryBase, DocumentBase, JudgementBase
 from .leaderboard import LeaderboardBase
 from .irsystem import IRSystemBase
 
 from IPython.display import display, Markdown
+
+
+_EVALUATION: Optional['EvaluationBase'] = None  # global variable used for sharing state between forked processes
+
+
+def _mean_average_precision_single_process(queries: Iterable[QueryBase]) -> float:
+    average_precisions = []
+    for query in queries:
+        precision = _mean_average_precision_worker(query)
+        average_precisions.append(precision)
+    result = mean(average_precisions)
+    return result
+
+
+def _mean_average_precision_multi_process(queries: Iterable[QueryBase]) -> float:
+    average_precisions = []
+    with get_context('fork').Pool(_EVALUATION.num_workers) as pool:
+        for average_precision in pool.imap(_mean_average_precision_worker, queries):
+            average_precisions.append(average_precision)
+    result = mean(average_precisions)
+    return result
+
+
+def _mean_average_precision_worker(query: QueryBase):
+    results = _EVALUATION.system.search(query)
+    precision = _EVALUATION._average_precision(query, results)
+    return precision
 
 
 class EvaluationBase(abc.ABC):
@@ -24,6 +54,9 @@ class EvaluationBase(abc.ABC):
     author_name : str or None, optional
         The name of the author submitted to the leaderboard.
         If None, then the result will not be submitted. Default is None.
+    num_workers : int or None, optional
+        The number of processes used to compute the mean average precision.
+        If None, all available CPUs will be used. Default is 1.
 
     Attributes
     ----------
@@ -39,10 +72,14 @@ class EvaluationBase(abc.ABC):
     author_name : str or None, optional
         The name of the author submitted to the leaderboard.
         If None, then the result will not be submitted. Default is None.
+    num_workers : int or None, optional
+        The number of processes used to compute the mean average precision.
+        If None, all available CPUs will be used. Default is None.
 
     """
     def __init__(self, system: IRSystemBase, judgements: Set[JudgementBase],
-                 leaderboard: Optional[LeaderboardBase] = None, author_name: Optional[str] = None):
+                 leaderboard: Optional[LeaderboardBase] = None, author_name: Optional[str] = None,
+                 num_workers: Optional[int] = 1):
         num_relevant = {}
         for query, _ in judgements:
             if query not in num_relevant:
@@ -54,6 +91,7 @@ class EvaluationBase(abc.ABC):
         self.num_relevant = num_relevant
         self.leaderboard = leaderboard
         self.author_name = author_name
+        self.num_workers = num_workers
 
     def _get_num_relevant(self, query: QueryBase) -> int:
         if query not in self.num_relevant:
@@ -102,12 +140,14 @@ class EvaluationBase(abc.ABC):
             The mean average precision of the information retrieval system.
 
         """
-        average_precisions = []
-        for query in queries:
-            results = self.system.search(query)
-            precision = self._average_precision(query, results)
-            average_precisions.append(precision)
-        return mean(average_precisions)
+        global _EVALUATION
+        _EVALUATION = self
+        if self.num_workers == 1:
+            result = _mean_average_precision_single_process(queries)
+        else:
+            result = _mean_average_precision_multi_process(queries)
+        _EVALUATION = None
+        return result
 
     @abc.abstractmethod
     def _get_minimum_mean_average_precision(self) -> float:
@@ -132,8 +172,11 @@ class EvaluationBase(abc.ABC):
             Default is True.
 
         """
+        time_before = datetime.now()
         result = self.mean_average_precision(queries)
+        time_after = datetime.now()
         map_score = result * 100.0
+
         minimum_map_score = self._get_minimum_mean_average_precision() * 100
         submit_result = submit_result and self.leaderboard is not None and self.author_name is not None
         leaderboard_url = self.leaderboard.get_public_url()
@@ -162,4 +205,16 @@ class EvaluationBase(abc.ABC):
                 '*__seriously big__ awards* after the personal check at the end of the competition '
                 '({}). Please be polite, do not spoil the game for the others, and **have fun!** 😉'
             ).format(leaderboard_text, competition_end)
+            display(Markdown(message))
+
+        duration = time_after - time_before
+
+        cpu_count = os.cpu_count()
+        cpu_count = cpu_count if cpu_count is not None else 1
+
+        if duration.total_seconds() > 900 and self.num_workers == 1 and cpu_count > 1:
+            message = (
+                'The evaluation is taking a while! ⌚  Put your {} CPUs to use and speed up the '
+                'evaluation by passing the `num_workers={}` parameter to `{}`.'
+            ).format(cpu_count, cpu_count, self.__class__.__name__)
             display(Markdown(message))
