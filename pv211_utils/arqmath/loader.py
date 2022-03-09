@@ -63,8 +63,7 @@ def _resolve_query_id(raw_query_id: str) -> int:
 
 
 def load_queries(text_format: str, query_class=ArqmathQueryBase,
-                 subset: Optional[str] = 'validation',
-                 year: int = 2020) -> OrderedDict:
+                 subset: Optional[str] = None, year: int = 2020) -> OrderedDict:
     _check_text_format(text_format)
     queries = OrderedDict()
 
@@ -139,17 +138,17 @@ def load_answers(text_format: str, answer_class=ArqmathAnswerBase,
     return answers
 
 
-def load_judgements(queries: OrderedDict, answers: OrderedDict, subset: Optional[str] = 'validation',
-                    filter_document_ids: Optional[Set] = None) -> ArqmathJudgements:
+def load_judgements(queries: OrderedDict, answers: OrderedDict, subset: Optional[str] = None,
+                    year: int = 2020, filter_document_ids: Optional[Set] = None) -> ArqmathJudgements:
     relevant = set()
 
-    filename = 'data/arqmath2020_judgements.json'
+    filename = 'data/arqmath{}_judgements.json'.format(year)
     with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt') as f:
         for raw_query_id, document_id in json.load(f):
             query_id = _resolve_query_id(raw_query_id)
             if filter_document_ids is not None and document_id not in filter_document_ids:
                 continue
-            if subset is not None and query_id not in QUERY_SUBSETS[2020][subset]:
+            if subset is not None and query_id not in QUERY_SUBSETS[year][subset]:
                 continue
             query: ArqmathQueryBase = queries[query_id]
             answer: ArqmathAnswerBase = answers[document_id]
