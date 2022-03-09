@@ -7,12 +7,16 @@ CACHE_DOWNLOAD = False
 
 NUM_QUERIES_2020 = 77
 NUM_QUERIES_2021 = 100
+NUM_QUERIES_2022 = 100
 
 QUERY_2020_ID = 1
 QUERY_2020_TAGS = ['functions']
 
 QUERY_2021_ID = 201
 QUERY_2021_TAGS = ['abstract-algebra', 'matrices', 'ring-theory']
+
+QUERY_2022_ID = 301
+QUERY_2022_TAGS = ['linear-algebra', 'matrices', 'inequality', 'norm', 'holder-inequality']
 
 QUESTION_ID = '614561'
 QUESTION_TITLE = r'random thought: are some infinite sets larger than other'
@@ -25,21 +29,32 @@ ANSWER_ID = '1199811'
 ANSWER_UPVOTES = 1
 ANSWER_IS_ACCEPTED = True
 
-HIGH_RELEVANCE_TRAIN = (13, '563024')
-MEDIUM_RELEVANCE_VALIDATION = (24, '1758902')
-LOW_RELEVANCE_TEST = (16, '1002519')
-NO_RELEVANCE = (40, '2106624')
-NO_RELEVANCE_JUDGEMENT = (53, '377998')
+HIGH_RELEVANCE_TRAIN_2020 = (13, '563024')
+MEDIUM_RELEVANCE_VALIDATION_2020 = (24, '1758902')
+LOW_RELEVANCE_TEST_2020 = (16, '1002519')
+NO_RELEVANCE_2020 = (40, '2106624')
+NO_RELEVANCE_JUDGEMENT_2020 = (53, '377998')
+
+HIGH_RELEVANCE_2021 = (206, '1898375')
+MEDIUM_RELEVANCE_2021 = (283, '2355423')
+LOW_RELEVANCE_2021 = (300, '626996')
+NO_RELEVANCE_2021 = (285, '692754')
+NO_RELEVANCE_JUDGEMENT_2021 = (249, '2587440')
 
 ANSWER_IDS = set(
     QUESTION_ANSWER_DOCUMENT_IDS +
     [
         ANSWER_ID,
-        HIGH_RELEVANCE_TRAIN[1],
-        MEDIUM_RELEVANCE_VALIDATION[1],
-        LOW_RELEVANCE_TEST[1],
-        NO_RELEVANCE[1],
-        NO_RELEVANCE_JUDGEMENT[1],
+        HIGH_RELEVANCE_TRAIN_2020[1],
+        MEDIUM_RELEVANCE_VALIDATION_2020[1],
+        LOW_RELEVANCE_TEST_2020[1],
+        NO_RELEVANCE_2020[1],
+        NO_RELEVANCE_JUDGEMENT_2020[1],
+        HIGH_RELEVANCE_2021[1],
+        MEDIUM_RELEVANCE_2021[1],
+        LOW_RELEVANCE_2021[1],
+        NO_RELEVANCE_2021[1],
+        NO_RELEVANCE_JUDGEMENT_2021[1],
     ]
 )
 ANSWERS_TEXT = load_answers('text', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
@@ -70,68 +85,90 @@ class TestLoadQueriesText(unittest.TestCase):
     def setUp(self):
         self.queries_2020 = load_queries('text', subset=None, year=2020)
         self.queries_2021 = load_queries('text', subset=None, year=2021)
+        self.queries_2022 = load_queries('text', subset=None, year=2022)
+
         self.query_2020 = self.queries_2020[QUERY_2020_ID]
         self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
         self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of  such that', self.query_2020.title)
         self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
                          self.query_2021.title)
+        self.assertEqual(r'Inequality between norm 1,norm 2 and norm  of Matrices',
+                         self.query_2022.title)
 
     def test_query_body(self):
         self.assertIn(r'If  then find the value of  ', self.query_2020.body)
         self.assertIn(r'If an  matrix over a division ring', self.query_2021.body)
+        self.assertIn(r'Suppose  is a  matrix.', self.query_2022.body)
 
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
         self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
 
 
 class TestLoadQueriesLaTeX(unittest.TestCase):
     def setUp(self):
         self.queries_2020 = load_queries('text+latex', subset=None, year=2020)
         self.queries_2021 = load_queries('text+latex', subset=None, year=2021)
+        self.queries_2022 = load_queries('text+latex', subset=None, year=2022)
+
         self.query_2020 = self.queries_2020[QUERY_2020_ID]
         self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
         self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of $c$ such that', self.query_2020.title)
         self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
                          self.query_2021.title)
+        self.assertEqual(r'Inequality between norm 1,norm 2 and norm $\infty$ of Matrices',
+                         self.query_2022.title)
 
     def test_query_body(self):
         self.assertIn(r'If $f(x)= \frac{x^2 + x + c}{x^2 + 2x + c}$ then find the value of $c$',
                       self.query_2020.body)
         self.assertIn(r'If an $n\times n$ matrix over a division ring', self.query_2021.body)
+        self.assertIn(r'Suppose $A$ is a $m\times n$ matrix.', self.query_2022.body)
 
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
         self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
 
 
 class TestLoadQueriesPrefix(unittest.TestCase):
     def setUp(self):
         self.queries_2020 = load_queries('text+prefix', subset=None, year=2020)
         self.queries_2021 = load_queries('text+prefix', subset=None, year=2021)
+        self.queries_2022 = load_queries('text+prefix', subset=None, year=2022)
+
         self.query_2020 = self.queries_2020[QUERY_2020_ID]
         self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
         self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of V!𝑐 such that', self.query_2020.title)
         self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
                          self.query_2021.title)
+        self.assertEqual(r'Inequality between norm 1,norm 2 and norm C!infinity of Matrices',
+                         self.query_2022.title)
 
     def test_query_body(self):
         expected_body_2020 = (
@@ -139,29 +176,38 @@ class TestLoadQueriesPrefix(unittest.TestCase):
             r'V!𝑐 then find the value of V!𝑐'
         )
         self.assertIn(expected_body_2020, self.query_2020.body)
+
         self.assertIn(r'If an U!times V!𝑛 V!𝑛 matrix over a division ring', self.query_2021.body)
+        self.assertIn(r'Suppose V!𝐴 is a U!times V!𝑚 V!𝑛 matrix.', self.query_2022.body)
 
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
         self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
 
 
 class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
     def setUp(self):
         self.queries_2020 = load_queries('xhtml+latex', subset=None, year=2020)
         self.queries_2021 = load_queries('xhtml+latex', subset=None, year=2021)
+        self.queries_2022 = load_queries('xhtml+latex', subset=None, year=2022)
+
         self.query_2020 = self.queries_2020[QUERY_2020_ID]
         self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
         self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
         self.assertIn(r'Finding value of <span class="math-container" id="q_1">$c$</span> such that',
                       self.query_2020.title)
         self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
                          self.query_2021.title)
+        self.assertEqual(r'Inequality between norm 1,norm 2 and norm <span class="math-container" '
+                         r'id="q_1">$\infty$</span> of Matrices', self.query_2022.title)
 
     def test_query_body(self):
         expected_body_2020 = (
@@ -176,31 +222,42 @@ class TestLoadQueriesXHTMLLaTeX(unittest.TestCase):
         )
         self.assertIn(expected_body_2021, self.query_2021.body)
 
+        expected_body_2022 = (
+            r'<p>Suppose <span class="math-container" id="q_2">$A$</span> is a '
+            r'<span class="math-container" id="q_3">$m\times n$</span> matrix.</p>'
+        )
+        self.assertIn(expected_body_2022, self.query_2022.body)
+
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
         self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
 
 
 class TestLoadQueriesXHTMLCMML(unittest.TestCase):
     def setUp(self):
         self.queries_2020 = load_queries('xhtml+cmml', subset=None, year=2020)
         self.queries_2021 = load_queries('xhtml+cmml', subset=None, year=2021)
+        self.queries_2022 = load_queries('xhtml+cmml', subset=None, year=2022)
+
         self.query_2020 = self.queries_2020[QUERY_2020_ID]
         self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
         self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
-        expected_title_2020 = (
-            r'<p>Finding value of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c" display="block"> '
-            r'<ci>𝑐</ci> </math> such that'
-        )
-        self.assertIn(expected_title_2020, self.query_2020.title)
-
+        self.assertIn(r'<p>Finding value of <math xmlns="http://www.w3.org/1998/Math/MathML" '
+                      r'alttext="c" display="block"> <ci>𝑐</ci> </math> such that',
+                      self.query_2020.title)
         self.assertEqual(r'<p>Matrix over division ring having one sided inverse is invertible</p>',
                          self.query_2021.title)
+        self.assertEqual(r'<p>Inequality between norm 1,norm 2 and norm <math '
+                         r'xmlns="http://www.w3.org/1998/Math/MathML" encoding="MathML-Content">'
+                         r'<infinity/></math> of Matrices</p>', self.query_2022.title)
 
     def test_query_body(self):
         expected_body_2020 = (
@@ -220,31 +277,44 @@ class TestLoadQueriesXHTMLCMML(unittest.TestCase):
         )
         self.assertIn(expected_body_2021, self.query_2021.body)
 
+        expected_body_2022 = (
+            r'<p>Suppose <math xmlns="http://www.w3.org/1998/Math/MathML" encoding="MathML-Content"><ci>𝐴'
+            r'</ci></math> is a <math xmlns="http://www.w3.org/1998/Math/MathML" encoding="MathML-Content">'
+            r'<apply><times/><ci>𝑚</ci><ci>𝑛</ci></apply></math> matrix.</p>'
+        )
+        self.assertIn(expected_body_2022, self.query_2022.body)
+
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
         self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
 
 
 class TestLoadQueriesXHTMLPMML(unittest.TestCase):
     def setUp(self):
         self.queries_2020 = load_queries('xhtml+pmml', subset=None, year=2020)
         self.queries_2021 = load_queries('xhtml+pmml', subset=None, year=2021)
+        self.queries_2022 = load_queries('xhtml+pmml', subset=None, year=2022)
+
         self.query_2020 = self.queries_2020[QUERY_2020_ID]
         self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
         self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
-        expected_title_2020 = (
-            r'<p>Finding value of <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="c" display="block"> '
-            r'<mi>c</mi> </math> such that'
-        )
-        self.assertIn(expected_title_2020, self.query_2020.title)
-
+        self.assertIn(r'<p>Finding value of <math xmlns="http://www.w3.org/1998/Math/MathML" '
+                      r'alttext="c" display="block"> <mi>c</mi> </math> such that',
+                      self.query_2020.title)
         self.assertEqual(r'<p>Matrix over division ring having one sided inverse is invertible</p>',
                          self.query_2021.title)
+        self.assertEqual(r'<p>Inequality between norm 1,norm 2 and norm <math '
+                         r'xmlns="http://www.w3.org/1998/Math/MathML" alttext="\infty" '
+                         r'class="ltx_Math" display="block"><mi mathvariant="normal">∞</mi></math> '
+                         r'of Matrices</p>', self.query_2022.title)
 
     def test_query_body(self):
         expected_body_2020 = (
@@ -265,9 +335,18 @@ class TestLoadQueriesXHTMLPMML(unittest.TestCase):
         )
         self.assertIn(expected_body_2021, self.query_2021.body)
 
+        expected_body_2022 = (
+            r'<p>Suppose <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="A" class="ltx_Math" '
+            r'display="block"><mi>A</mi></math> is a <math xmlns="http://www.w3.org/1998/Math/MathML" '
+            r'alttext="m\times n" class="ltx_Math" display="block"><mrow><mi>m</mi><mo>×</mo><mi>n</mi>'
+            r'</mrow></math> matrix.</p>'
+        )
+        self.assertIn(expected_body_2022, self.query_2022.body)
+
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
         self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
 
 
 class TestLoadAnswersText(unittest.TestCase):
@@ -539,74 +618,119 @@ class TestLoadQuestionsXHTMLPMML(unittest.TestCase):
 
 class TestLoadRelevanceJudgements(unittest.TestCase):
     def setUp(self):
-        queries = load_queries('text', subset=None)
-        answers = ANSWERS_TEXT
-        self.high_relevance_train = (
-            queries[HIGH_RELEVANCE_TRAIN[0]],
-            answers[HIGH_RELEVANCE_TRAIN[1]],
-        )
-        self.medium_relevance_validation = (
-            queries[MEDIUM_RELEVANCE_VALIDATION[0]],
-            answers[MEDIUM_RELEVANCE_VALIDATION[1]],
-        )
-        self.low_relevance_test = (
-            queries[LOW_RELEVANCE_TEST[0]],
-            answers[LOW_RELEVANCE_TEST[1]],
-        )
-        self.no_relevance = (queries[NO_RELEVANCE[0]], answers[NO_RELEVANCE[1]])
-        self.no_relevance_judgement = (queries[NO_RELEVANCE_JUDGEMENT[0]], answers[NO_RELEVANCE_JUDGEMENT[1]])
+        queries_2020 = load_queries('text', subset=None, year=2020)
+        queries_2021 = load_queries('text', subset=None, year=2021)
 
-        self.judgements = load_judgements(
-            queries,
+        answers = ANSWERS_TEXT
+
+        self.high_relevance_train_2020 = (
+            queries_2020[HIGH_RELEVANCE_TRAIN_2020[0]],
+            answers[HIGH_RELEVANCE_TRAIN_2020[1]],
+        )
+        self.medium_relevance_validation_2020 = (
+            queries_2020[MEDIUM_RELEVANCE_VALIDATION_2020[0]],
+            answers[MEDIUM_RELEVANCE_VALIDATION_2020[1]],
+        )
+        self.low_relevance_test_2020 = (
+            queries_2020[LOW_RELEVANCE_TEST_2020[0]],
+            answers[LOW_RELEVANCE_TEST_2020[1]],
+        )
+        self.no_relevance_2020 = (
+            queries_2020[NO_RELEVANCE_2020[0]],
+            answers[NO_RELEVANCE_2020[1]],
+        )
+        self.no_relevance_judgement_2020 = (
+            queries_2020[NO_RELEVANCE_JUDGEMENT_2020[0]],
+            answers[NO_RELEVANCE_JUDGEMENT_2020[1]],
+        )
+
+        self.high_relevance_2021 = (
+            queries_2021[HIGH_RELEVANCE_2021[0]],
+            answers[HIGH_RELEVANCE_2021[1]],
+        )
+        self.medium_relevance_2021 = (
+            queries_2021[MEDIUM_RELEVANCE_2021[0]],
+            answers[MEDIUM_RELEVANCE_2021[1]],
+        )
+        self.low_relevance_2021 = (
+            queries_2021[LOW_RELEVANCE_2021[0]],
+            answers[LOW_RELEVANCE_2021[1]],
+        )
+        self.no_relevance_2021 = (
+            queries_2021[NO_RELEVANCE_2021[0]],
+            answers[NO_RELEVANCE_2021[1]],
+        )
+        self.no_relevance_judgement_2021 = (
+            queries_2021[NO_RELEVANCE_JUDGEMENT_2021[0]],
+            answers[NO_RELEVANCE_JUDGEMENT_2021[1]],
+        )
+
+        self.judgements_2020 = load_judgements(
+            queries_2020,
             answers,
             filter_document_ids=ANSWER_IDS,
             subset=None,
         )
-        self.judgements_train = load_judgements(
-            queries,
+        self.judgements_train_2020 = load_judgements(
+            queries_2020,
             answers,
             filter_document_ids=ANSWER_IDS,
             subset='train',
         )
-        self.judgements_validation = load_judgements(
-            queries,
+        self.judgements_validation_2020 = load_judgements(
+            queries_2020,
             answers,
             filter_document_ids=ANSWER_IDS,
             subset='validation',
         )
-        self.judgements_test = load_judgements(
-            queries,
+        self.judgements_test_2020 = load_judgements(
+            queries_2020,
             answers,
             filter_document_ids=ANSWER_IDS,
             subset='test',
         )
 
-    def test_judgements_high_relevance_train(self):
-        self.assertIn(self.high_relevance_train, self.judgements)
-        self.assertIn(self.high_relevance_train, self.judgements_train)
-        self.assertNotIn(self.high_relevance_train, self.judgements_validation)
-        self.assertNotIn(self.high_relevance_train, self.judgements_test)
+        self.judgements_2021 = load_judgements(
+            queries_2021,
+            answers,
+            filter_document_ids=ANSWER_IDS,
+            subset=None,
+            year=2021,
+        )
 
-    def test_judgements_medium_relevance_validation(self):
-        self.assertIn(self.medium_relevance_validation, self.judgements)
-        self.assertNotIn(self.medium_relevance_validation, self.judgements_train)
-        self.assertIn(self.medium_relevance_validation, self.judgements_validation)
-        self.assertNotIn(self.medium_relevance_validation, self.judgements_test)
+    def test_judgements_high_relevance_train_2020(self):
+        self.assertIn(self.high_relevance_train_2020, self.judgements_2020)
+        self.assertIn(self.high_relevance_train_2020, self.judgements_train_2020)
+        self.assertNotIn(self.high_relevance_train_2020, self.judgements_validation_2020)
+        self.assertNotIn(self.high_relevance_train_2020, self.judgements_test_2020)
 
-    def test_judgements_low_relevance_test(self):
-        self.assertNotIn(self.low_relevance_test, self.judgements)
-        self.assertNotIn(self.low_relevance_test, self.judgements_train)
-        self.assertNotIn(self.low_relevance_test, self.judgements_validation)
-        self.assertNotIn(self.low_relevance_test, self.judgements_test)
+    def test_judgements_medium_relevance_validation_2020(self):
+        self.assertIn(self.medium_relevance_validation_2020, self.judgements_2020)
+        self.assertNotIn(self.medium_relevance_validation_2020, self.judgements_train_2020)
+        self.assertIn(self.medium_relevance_validation_2020, self.judgements_validation_2020)
+        self.assertNotIn(self.medium_relevance_validation_2020, self.judgements_test_2020)
 
-    def test_judgements_no_relevance(self):
-        self.assertNotIn(self.no_relevance, self.judgements)
-        self.assertNotIn(self.no_relevance, self.judgements_train)
-        self.assertNotIn(self.no_relevance, self.judgements_validation)
-        self.assertNotIn(self.no_relevance, self.judgements_test)
+    def test_judgements_low_relevance_test_2020(self):
+        self.assertNotIn(self.low_relevance_test_2020, self.judgements_2020)
+        self.assertNotIn(self.low_relevance_test_2020, self.judgements_train_2020)
+        self.assertNotIn(self.low_relevance_test_2020, self.judgements_validation_2020)
+        self.assertNotIn(self.low_relevance_test_2020, self.judgements_test_2020)
 
-    def test_judgements_no_relevance_judgement(self):
-        self.assertNotIn(self.no_relevance_judgement, self.judgements)
-        self.assertNotIn(self.no_relevance_judgement, self.judgements_train)
-        self.assertNotIn(self.no_relevance_judgement, self.judgements_validation)
-        self.assertNotIn(self.no_relevance_judgement, self.judgements_test)
+    def test_judgements_no_relevance_2020(self):
+        self.assertNotIn(self.no_relevance_2020, self.judgements_2020)
+        self.assertNotIn(self.no_relevance_2020, self.judgements_train_2020)
+        self.assertNotIn(self.no_relevance_2020, self.judgements_validation_2020)
+        self.assertNotIn(self.no_relevance_2020, self.judgements_test_2020)
+
+    def test_judgements_no_relevance_judgement_2020(self):
+        self.assertNotIn(self.no_relevance_judgement_2020, self.judgements_2020)
+        self.assertNotIn(self.no_relevance_judgement_2020, self.judgements_train_2020)
+        self.assertNotIn(self.no_relevance_judgement_2020, self.judgements_validation_2020)
+        self.assertNotIn(self.no_relevance_judgement_2020, self.judgements_test_2020)
+
+    def test_judgements_2021(self):
+        self.assertIn(self.high_relevance_2021, self.judgements_2021)
+        self.assertIn(self.medium_relevance_2021, self.judgements_2021)
+        self.assertNotIn(self.low_relevance_2021, self.judgements_2021)
+        self.assertNotIn(self.no_relevance_2021, self.judgements_2021)
+        self.assertNotIn(self.no_relevance_judgement_2021, self.judgements_2021)
