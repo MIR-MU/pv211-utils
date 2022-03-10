@@ -8,11 +8,13 @@ from pv211_utils.eval import EvaluationBase
 
 AUTHOR_NAME = 'John Doe'
 
-QUERY_ID = 123
+JUDGED_QUERY_ID = 123
 FIRST_RELEVANT_DOCUMENT_ID = '1'
 SECOND_RELEVANT_DOCUMENT_ID = '2'
 FIRST_IRRELEVANT_DOCUMENT_ID = '3'
 SECOND_IRRELEVANT_DOCUMENT_ID = '4'
+
+UNJUDGED_QUERY_ID = 456
 
 
 class GoodIRSystem(IRSystemBase):
@@ -46,8 +48,11 @@ class Evaluation(EvaluationBase):
 
 class TestEvaluation(unittest.TestCase):
     def setUp(self):
-        self.query = QueryBase(QUERY_ID, None)
-        self.queries = [self.query]
+        self.judged_query = QueryBase(JUDGED_QUERY_ID, None)
+        self.unjudged_query = QueryBase(UNJUDGED_QUERY_ID, None)
+
+        self.judged_queries = [self.judged_query]
+        self.unjudged_queries = [self.unjudged_query]
 
         self.first_relevant_document = DocumentBase(FIRST_RELEVANT_DOCUMENT_ID, None)
         self.second_relevant_document = DocumentBase(SECOND_RELEVANT_DOCUMENT_ID, None)
@@ -55,8 +60,8 @@ class TestEvaluation(unittest.TestCase):
         self.second_irrelevant_document = DocumentBase(SECOND_IRRELEVANT_DOCUMENT_ID, None)
 
         judgements = set([
-            (self.query, self.first_relevant_document),
-            (self.query, self.second_relevant_document),
+            (self.judged_query, self.first_relevant_document),
+            (self.judged_query, self.second_relevant_document),
         ])
         good_system = GoodIRSystem()
         mediocre_system = MediocreIRSystem()
@@ -66,12 +71,20 @@ class TestEvaluation(unittest.TestCase):
         self.mediocre_evaluation = Evaluation(mediocre_system, judgements)
         self.bad_evaluation = Evaluation(bad_system, judgements)
 
+    def test_average_precision_unjudged(self):
+        results = [
+            self.first_relevant_document,
+            self.second_irrelevant_document,
+        ]
+        precision = self.mediocre_evaluation._average_precision(self.unjudged_query, results)
+        self.assertEqual(None, precision)
+
     def test_average_precision_zero(self):
         results = [
             self.first_irrelevant_document,
             self.second_irrelevant_document,
         ]
-        precision = self.bad_evaluation._average_precision(self.query, results)
+        precision = self.bad_evaluation._average_precision(self.judged_query, results)
         self.assertEqual(0.0, precision)
 
     def test_average_precision_half(self):
@@ -79,7 +92,7 @@ class TestEvaluation(unittest.TestCase):
             self.first_relevant_document,
             self.second_irrelevant_document,
         ]
-        precision = self.mediocre_evaluation._average_precision(self.query, results)
+        precision = self.mediocre_evaluation._average_precision(self.judged_query, results)
         self.assertEqual(0.5, precision)
 
     def test_average_precision_one(self):
@@ -87,7 +100,7 @@ class TestEvaluation(unittest.TestCase):
             self.first_relevant_document,
             self.second_relevant_document,
         ]
-        precision = self.good_evaluation._average_precision(self.query, results)
+        precision = self.good_evaluation._average_precision(self.judged_query, results)
         self.assertEqual(1.0, precision)
 
     def test_average_precision_repeated_documents(self):
@@ -99,17 +112,21 @@ class TestEvaluation(unittest.TestCase):
             self.first_relevant_document,
             self.second_relevant_document,
         ]
-        precision = self.good_evaluation._average_precision(self.query, results)
+        precision = self.good_evaluation._average_precision(self.judged_query, results)
         self.assertEqual(1.0, precision)
 
+    def test_mean_average_precision_unjudged(self):
+        with self.assertRaises(KeyError):
+            self.mediocre_evaluation.mean_average_precision(self.unjudged_queries)
+
     def test_mean_average_precision_zero(self):
-        mean_average_precision = self.bad_evaluation.mean_average_precision(self.queries)
+        mean_average_precision = self.bad_evaluation.mean_average_precision(self.judged_queries)
         self.assertEqual(0.0, mean_average_precision)
 
     def test_mean_average_precision_half(self):
-        mean_average_precision = self.mediocre_evaluation.mean_average_precision(self.queries)
+        mean_average_precision = self.mediocre_evaluation.mean_average_precision(self.judged_queries)
         self.assertEqual(0.5, mean_average_precision)
 
     def test_mean_average_precision_one(self):
-        mean_average_precision = self.good_evaluation.mean_average_precision(self.queries)
+        mean_average_precision = self.good_evaluation.mean_average_precision(self.judged_queries)
         self.assertEqual(1.0, mean_average_precision)

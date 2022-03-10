@@ -18,8 +18,11 @@ _EVALUATION: Optional['EvaluationBase'] = None  # global variable used for shari
 def _mean_average_precision_single_process(queries: Iterable[QueryBase]) -> float:
     average_precisions = []
     for query in queries:
-        precision = _mean_average_precision_worker(query)
-        average_precisions.append(precision)
+        precision = _average_precision_worker(query)
+        if precision is not None:
+            average_precisions.append(precision)
+    if not average_precisions:
+        raise KeyError('None of the queries has any judgements')
     result = mean(average_precisions)
     return result
 
@@ -27,13 +30,16 @@ def _mean_average_precision_single_process(queries: Iterable[QueryBase]) -> floa
 def _mean_average_precision_multi_process(queries: Iterable[QueryBase]) -> float:
     average_precisions = []
     with get_context('fork').Pool(_EVALUATION.num_workers) as pool:
-        for average_precision in pool.imap(_mean_average_precision_worker, queries):
-            average_precisions.append(average_precision)
+        for precision in pool.imap(_average_precision_worker, queries):
+            if precision is not None:
+                average_precisions.append(precision)
+    if not average_precisions:
+        raise KeyError('None of the queries has any judgements')
     result = mean(average_precisions)
     return result
 
 
-def _mean_average_precision_worker(query: QueryBase):
+def _average_precision_worker(query: QueryBase) -> Optional[float]:
     results = _EVALUATION.system.search(query)
     precision = _EVALUATION._average_precision(query, results)
     return precision
@@ -94,11 +100,9 @@ class EvaluationBase(abc.ABC):
         self.num_workers = num_workers
 
     def _get_num_relevant(self, query: QueryBase) -> int:
-        if query not in self.num_relevant:
-            raise KeyError('No relevant documents for {} in self.judgements'.format(query))
-        return self.num_relevant[query]
+        return self.num_relevant[query] if query in self.num_relevant else 0
 
-    def _average_precision(self, query: QueryBase, results: Iterable[DocumentBase]) -> float:
+    def _average_precision(self, query: QueryBase, results: Iterable[DocumentBase]) -> Optional[float]:
         """Average precision of ranked retrieval results for a query.
 
         Parameters
@@ -110,11 +114,16 @@ class EvaluationBase(abc.ABC):
 
         Returns
         -------
-        float
+        float or None
             Average precision of the ranked retrieval results with respect to the query.
+            If no relevance judgements exist for a query, returns None.
 
         """
-        num_relevant = 0
+        num_relevant = self._get_num_relevant(query)
+        if num_relevant == 0:
+            return None
+
+        num_retrieved_relevant = 0
         precision = 0.0
         seen_documents = set()
         for document_number, document in enumerate(results):
@@ -122,9 +131,9 @@ class EvaluationBase(abc.ABC):
                 continue
             seen_documents.add(document)
             if (query, document) in self.judgements:
-                num_relevant += 1
-                precision += float(num_relevant) / (document_number + 1)
-        return precision / self._get_num_relevant(query)
+                num_retrieved_relevant += 1
+                precision += float(num_retrieved_relevant) / (document_number + 1)
+        return precision / num_relevant
 
     def mean_average_precision(self, queries: Iterable[QueryBase]) -> float:
         """The mean average precision of the information retrieval system.
