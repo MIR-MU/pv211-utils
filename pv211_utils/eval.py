@@ -12,39 +12,6 @@ from .irsystem import IRSystemBase
 from IPython.display import display, Markdown
 
 
-_EVALUATION: Optional['EvaluationBase'] = None  # global variable used for sharing state between forked processes
-
-
-def _mean_average_precision_single_process(queries: Iterable[QueryBase]) -> float:
-    average_precisions = []
-    for query in queries:
-        precision = _average_precision_worker(query)
-        if precision is not None:
-            average_precisions.append(precision)
-    if not average_precisions:
-        raise KeyError('None of the queries has any judgements')
-    result = mean(average_precisions)
-    return result
-
-
-def _mean_average_precision_multi_process(queries: Iterable[QueryBase]) -> float:
-    average_precisions = []
-    with get_context('fork').Pool(_EVALUATION.num_workers) as pool:
-        for precision in pool.imap(_average_precision_worker, queries):
-            if precision is not None:
-                average_precisions.append(precision)
-    if not average_precisions:
-        raise KeyError('None of the queries has any judgements')
-    result = mean(average_precisions)
-    return result
-
-
-def _average_precision_worker(query: QueryBase) -> Optional[float]:
-    results = _EVALUATION.system.search(query)
-    precision = _EVALUATION._average_precision(query, results)
-    return precision
-
-
 class EvaluationBase(abc.ABC):
     """An information retrieval system evaluation.
 
@@ -83,6 +50,8 @@ class EvaluationBase(abc.ABC):
         If None, all available CPUs will be used. Default is None.
 
     """
+    _CURRENT_INSTANCE: Optional['EvaluationBase'] = None  # used for sharing state between processes
+
     def __init__(self, system: IRSystemBase, judgements: Set[JudgementBase],
                  leaderboard: Optional[LeaderboardBase] = None, author_name: Optional[str] = None,
                  num_workers: Optional[int] = 1):
@@ -149,14 +118,43 @@ class EvaluationBase(abc.ABC):
             The mean average precision of the information retrieval system.
 
         """
-        global _EVALUATION
-        _EVALUATION = self
+        self.__class__._CURRENT_INSTANCE = self
         if self.num_workers == 1:
-            result = _mean_average_precision_single_process(queries)
+            result = self.__class__._mean_average_precision_single_process(queries)
         else:
-            result = _mean_average_precision_multi_process(queries)
-        _EVALUATION = None
+            result = self.__class__._mean_average_precision_multi_process(queries)
+        self.__class__._CURRENT_INSTANCE = None
         return result
+
+    @classmethod
+    def _mean_average_precision_single_process(cls, queries: Iterable[QueryBase]) -> float:
+        average_precisions = []
+        for query in queries:
+            precision = cls._CURRENT_INSTANCE._average_precision_worker(query)
+            if precision is not None:
+                average_precisions.append(precision)
+        if not average_precisions:
+            raise KeyError('None of the queries has any judgements')
+        result = mean(average_precisions)
+        return result
+
+    @classmethod
+    def _mean_average_precision_multi_process(cls, queries: Iterable[QueryBase]) -> float:
+        average_precisions = []
+        with get_context('fork').Pool(cls._CURRENT_INSTANCE.num_workers) as pool:
+            for precision in pool.imap(cls._CURRENT_INSTANCE._average_precision_worker, queries):
+                if precision is not None:
+                    average_precisions.append(precision)
+        if not average_precisions:
+            raise KeyError('None of the queries has any judgements')
+        result = mean(average_precisions)
+        return result
+
+    @classmethod
+    def _average_precision_worker(cls, query: QueryBase) -> Optional[float]:
+        results = cls._CURRENT_INSTANCE.system.search(query)
+        precision = cls._CURRENT_INSTANCE._average_precision(query, results)
+        return precision
 
     @abc.abstractmethod
     def _get_minimum_mean_average_precision(self) -> float:
