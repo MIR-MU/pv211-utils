@@ -51,4 +51,4 @@ USER 1000
 RUN ln -s /media/persistent-storage /home/jovyan/persistent-storage
 
 # Download datasets
-RUN python3.8 -m scripts.download_datasets
+RUN python3.8 -m script.download_datasets

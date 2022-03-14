@@ -30,7 +30,7 @@ Type check:
     - pip install pytype
   script:
     - pytype pv211_utils
-    - pytype scripts
+    - pytype script
     - pytype test
 
 Unit tests:
