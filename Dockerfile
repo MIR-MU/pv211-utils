@@ -29,7 +29,7 @@ FROM nvidia/cuda:11.3.1-runtime-ubuntu20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Prague
-¨
+
 # Install system dependencies
 RUN apt-get -qy update \
  && apt-get -qy install --no-install-recommends ${DEPENDENCIES} \
