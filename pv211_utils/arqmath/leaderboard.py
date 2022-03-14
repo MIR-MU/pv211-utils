@@ -17,11 +17,11 @@ class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return key_path
 
     def _get_spreadsheet_key(self) -> str:
-        spreadsheet_key = '1akHS9OSdN0_gu5xThJBSVAMKvUqAWg6sjO6vM6KCxfw'
+        spreadsheet_key = '1WbS-eV12VcGfoBZalIWyFyadc5--U9kq60nyM7pKzis'
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:
         return (
             'https://docs.google.com/spreadsheets/d/e/'
-            '2PACX-1vSF1I2TKhKqYc7kTxRfza__PTTQjrAtvezuQFm9I_lL3WsPSETE5yuxe8JyiN-7NvFjv4nZ8eCQ9aHg/pubhtml'
+            '2PACX-1vSOonHEUy1x-5othNd5ZmlxfqSi2p5pwgr5Rm6RU2U4HTOidiXvIWKwtb_LPfFmal6TvVjISGzIuczk/pubhtml'
         )

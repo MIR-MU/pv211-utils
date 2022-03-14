@@ -17,11 +17,11 @@ class TrecLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return key_path
 
     def _get_spreadsheet_key(self) -> str:
-        spreadsheet_key = '1QD-qS18fR0Q137dw_j8k73KwewsmeJsiB4SSzaXhbPs'
+        spreadsheet_key = '1OCXrOoaR2MPl-5_oSJ6UJK1dXOaU4J4xZo6erg1HOfE'
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:
         return (
             'https://docs.google.com/spreadsheets/d/e/'
-            '2PACX-1vQPMjEwGPte34q6vT0CfT2NzmC6iDilpgG7s1cunr7eG5BY6T1OiHumbnwKrwrvQcj1e8-Pu96PiYc2/pubhtml'
+            '2PACX-1vTchMTviB7TzYsQcnJnnoB2SUBAJBOfGh3w7gv65Dp95JltM7t1rcAIjubcgG7HT_dDmo4UyFoZQ9gH/pubhtml'
         )
