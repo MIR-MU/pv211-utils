@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python: ['3.9']
+        python: ['3.8']
     container:
       image: python:${{ matrix.python }}
     steps:
