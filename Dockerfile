@@ -1,3 +1,5 @@
+FROM nvidia/cuda:11.3.1-runtime-ubuntu20.04
+
 ARG AUXILIARY_FILES="\
     /tmp/* \
     /var/tmp/* \
@@ -24,8 +26,6 @@ ARG DEPENDENCIES="\
     vim \
     wget \
 "
-
-FROM nvidia/cuda:11.3.1-runtime-ubuntu20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Prague
