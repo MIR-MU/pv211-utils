@@ -6,7 +6,7 @@
  [ci-badge]: https://github.com/MIR-MU/pv211-utils/workflows/Test%20and%20publish/badge.svg
  [ci]: https://github.com/MIR-MU/pv211-utils/actions?query=workflow%3ATest%20and%20publish
 
- [dockerhub-badge]: https://img.shields.io/docker/pulls/MIR-MU/pv211-utils
+ [dockerhub-badge]: https://img.shields.io/docker/pulls/miratmu/pv211-utils
  [dockerhub]: https://hub.docker.com/repository/docker/miratmu/pv211-utils
 
 This is a Python library that provides an object-oriented interface for
