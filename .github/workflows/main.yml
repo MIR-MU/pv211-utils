@@ -52,6 +52,7 @@ jobs:
           pytype script
           pytype test
   unit-tests:
+    needs: ['style-check', 'type-check']
     name: Unit tests
     runs-on: ubuntu-latest
     strategy:
@@ -75,7 +76,7 @@ jobs:
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['style-check', 'type-check', 'unit-tests']
+    needs: ['unit-tests']
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout repository
