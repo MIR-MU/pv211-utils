@@ -39,8 +39,11 @@ RUN apt-get -qy update \
  && rm -rf ${AUXILIARY_FILES}
 
 # Install python and python packages
+COPY . /pv211-utils
+WORKDIR /pv211-utils
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8 \
  && pip install jupyterhub jupyterlab .
+ && python3.8 -m script.download_datasets
 
 # Create home directory
 RUN useradd -u 1000 --create-home jovyan
@@ -48,6 +51,3 @@ WORKDIR /home/jovyan
 USER 1000
 ADD notebooks .
 RUN ln -s /media/persistent-storage
-
-# Download datasets
-RUN python3.8 -m script.download_datasets
