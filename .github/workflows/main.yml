@@ -5,78 +5,9 @@ on:
 env:
   DEBIAN_FRONTEND: noninteractive
 jobs:
-  style-check:
-    name: Style check
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        python: ['3.7', '3.8', '3.9']
-    container:
-      image: python:${{ matrix.python }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install requirements
-        run: |
-          set -ex
-          python -V
-          pip install -U pip
-          pip install .
-          pip install flake8
-      - name: Style check
-        run: flake8
-  type-check:
-    name: Type check
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        python: ['3.7', '3.8', '3.9']
-    container:
-      image: python:${{ matrix.python }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install requirements
-        run: |
-          set -ex
-          python -V
-          pip install -U pip
-          pip install .
-          pip install pytype
-      - name: Type check
-        run: |
-          set -ex
-          pytype pv211_utils
-          pytype script
-          pytype test
-  unit-tests:
-    needs: ['style-check', 'type-check']
-    name: Unit tests
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        python: ['3.9']
-    container:
-      image: python:${{ matrix.python }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install requirements
-        run: |
-          set -ex
-          python -V
-          pip install -U pip
-          pip install .
-          pip install pytest
-      - name: Unit tests
-        run: python -m pytest
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['unit-tests']
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout repository
