@@ -1,9 +1,13 @@
 # PV211 Utils
 
-![Continuous integration status][ci-badge]
+[![Continuous integration status][ci-badge]][ci]
+[![Docker Hub badge][dockerhub-badge]][dockerhub]
 
  [ci-badge]: https://github.com/MIR-MU/pv211-utils/workflows/Test%20and%20publish/badge.svg
  [ci]: https://github.com/MIR-MU/pv211-utils/actions?query=workflow%3ATest%20and%20publish
+
+ [dockerhub-badge]: https://img.shields.io/docker/pulls/MIR-MU/pv211-utils
+ [dockerhub]: https://hub.docker.com/repository/docker/miratmu/pv211-utils
 
 This is a Python library that provides an object-oriented interface for
 Cranfield, TREC 6–8, and ARQMath collections. The library also provides an
