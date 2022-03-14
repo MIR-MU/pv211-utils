@@ -46,9 +46,8 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8 \
 RUN useradd -u 1000 --create-home jovyan
 WORKDIR /home/jovyan
 USER 1000
-
-# Symlink persistent storage
-RUN ln -s /media/persistent-storage /home/jovyan/persistent-storage
+ADD notebooks .
+RUN ln -s /media/persistent-storage
 
 # Download datasets
 RUN python3.8 -m script.download_datasets
