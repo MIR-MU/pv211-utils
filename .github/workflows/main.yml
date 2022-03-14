@@ -1,7 +1,6 @@
 name: Test and publish
 on:
   push:
-    branches: ['docker-build']
   workflow_dispatch:
 env:
   DEBIAN_FRONTEND: noninteractive
