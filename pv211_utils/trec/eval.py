@@ -32,4 +32,4 @@ class TrecEvaluation(EvaluationBase):
         super().__init__(system, judgements, leaderboard, author_name, num_workers)
 
     def _get_minimum_mean_average_precision(self) -> float:
-        return 0.1
+        return 0.135
