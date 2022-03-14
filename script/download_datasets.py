@@ -1,7 +1,11 @@
 from pathlib import Path
 
 
-BASE_TEXT_FORMATS = ['text']
+BASE_TEXT_FORMATS = [
+    'text',
+    'text+latex',
+    'text+prefix',
+]
 
 
 def download_trec(root_directory: Path) -> None:
