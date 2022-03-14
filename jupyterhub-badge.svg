@@ -7,7 +7,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="117"
+   width="132"
    height="20"
    version="1.1"
    id="svg3934"
@@ -63,7 +63,7 @@
   <clipPath
      id="a">
     <rect
-       width="117"
+       width="132"
        height="20"
        rx="3"
        fill="#fff"
@@ -73,15 +73,15 @@
      clip-path="url(#a)"
      id="g3912">
     <path
-       d="M0 0h14v20H0z"
+       d="M0 0h16v20H0z"
        id="path3906"
        fill="#555" />
     <path
-       d="M14 0h114v20H14z"
+       d="M16 0h132v20H16z"
        id="path3908"
        fill="#007ec6" />
     <path
-       d="M0 0h117v20H0z"
+       d="M0 0h132v20H0z"
        id="path3910"
        fill="url(#b)" />
   </g>
@@ -97,21 +97,21 @@
      style="font-size:110px;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle;fill:#010101;fill-opacity:0.3"
      lengthAdjust="spacing"
      id="text3928"
-     textLength="1000"
+     textLength="1100"
      transform="matrix(0.1,0,0,0.1,-8,0)"
      y="150"
-     x="725">Open in JupyterHub</text>
+     x="825">Open in JupyterHub</text>
   <text
      style="font-size:110px;font-family:'DejaVu Sans', Verdana, Geneva, sans-serif;text-anchor:middle;fill:#ffffff"
      lengthAdjust="spacing"
      id="text3930"
-     textLength="1000"
+     textLength="1100"
      transform="matrix(0.1,0,0,0.1,-8,0)"
      y="140"
-     x="725">Open in JupyterHub</text>
+     x="825">Open in JupyterHub</text>
   <g
      id="g4370"
-     transform="translate(-7.6628242)">
+     transform="translate(-6.8628242)">
     <path
        inkscape:connector-curvature="0"
        d="m 19.706177,4.1784915 c 0.0098,0.158514 -0.02801,0.316312 -0.108344,0.453332 -0.0803,0.136994 -0.199593,0.246981 -0.342656,0.315968 -0.143036,0.06896 -0.303379,0.09379 -0.460594,0.07132 -0.157216,-0.02253 -0.304174,-0.09122 -0.422192,-0.197526 -0.117991,-0.106303 -0.20166,-0.245311 -0.240381,-0.399319 -0.03869,-0.154035 -0.03069,-0.3161 0.02306,-0.465551 0.05372,-0.149449 0.150696,-0.279526 0.278626,-0.373664 0.127903,-0.09411 0.28093,-0.148045 0.439577,-0.15491 0.10405,-0.0058 0.20818,0.0093 0.306427,0.04384 0.09825,0.03467 0.188674,0.08841 0.266062,0.158143 0.07741,0.06973 0.14028,0.154062 0.184964,0.248174 0.04471,0.09411 0.07034,0.196121 0.07548,0.300198 z"
