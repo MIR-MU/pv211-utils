@@ -8,7 +8,7 @@ from typing import Optional, Set
 import ijson
 
 from .entities import ArqmathQueryBase, ArqmathQuestionBase, ArqmathAnswerBase, ArqmathJudgementBase
-from ..util import google_drive_download
+from ..util import http_download
 
 
 ArqmathJudgements = Set[ArqmathJudgementBase]
@@ -16,6 +16,7 @@ TEXT_FORMATS = (
     'text',
     'text+latex',
     'text+prefix',
+    'text+tangentl',
     'xhtml+latex',
     'xhtml+cmml',
     'xhtml+pmml',
@@ -91,7 +92,7 @@ def load_questions(text_format: str, answers: OrderedDict, question_class=Arqmat
 
     manifest_filename = 'data/arqmath2020_questions_{}_manifest.json'
     manifest_filename = manifest_filename.format(text_format)
-    with google_drive_download(manifest_filename, **kwargs) as filename:
+    with http_download(manifest_filename, **kwargs) as filename:
         with gzip.open(filename, 'rb') as f:
             for raw_question in ijson.items(f, 'item'):
                 document_id = raw_question['document_id']
@@ -119,7 +120,7 @@ def load_answers(text_format: str, answer_class=ArqmathAnswerBase,
 
     manifest_filename = 'data/arqmath2020_answers_{}_manifest.json'
     manifest_filename = manifest_filename.format(text_format)
-    with google_drive_download(manifest_filename, **kwargs) as filename:
+    with http_download(manifest_filename, **kwargs) as filename:
         with gzip.open(filename, 'rb') as f:
             for raw_answer in ijson.items(f, 'item'):
                 document_id = raw_answer['document_id']

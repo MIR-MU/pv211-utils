@@ -43,7 +43,7 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install .
+          pip install .[google_drive]
           pip install pytype
       - name: Type check
         run: |
@@ -81,9 +81,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Build image
         run: |
-          docker build -t miratmu/pv211-utils:latest .
+          docker build -t miratmu/pv211-utils:latest \
+                       -t miratmu/pv211-utils:$(git describe --tags --always --long) .
       - name: Authenticate registry
         uses: azure/docker-login@v1
         with:
@@ -91,4 +94,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Publish image
         run: |
-          docker push miratmu/pv211-utils:latest
+          docker push --all-tags miratmu/pv211-utils

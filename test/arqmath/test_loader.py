@@ -60,6 +60,7 @@ ANSWER_IDS = set(
 ANSWERS_TEXT = load_answers('text', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
 ANSWERS_TEXT_LATEX = load_answers('text+latex', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
 ANSWERS_TEXT_PREFIX = load_answers('text+prefix', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
+ANSWERS_TEXT_TANGENTL = load_answers('text+tangentl', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
 ANSWERS_XHTML_LATEX = load_answers('xhtml+latex', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
 ANSWERS_XHTML_CMML = load_answers('xhtml+cmml', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
 ANSWERS_XHTML_PMML = load_answers('xhtml+pmml', cache_download=CACHE_DOWNLOAD, filter_document_ids=ANSWER_IDS)
@@ -71,6 +72,8 @@ QUESTION_IDS = set([
 QUESTIONS_TEXT = load_questions('text', ANSWERS_TEXT, cache_download=CACHE_DOWNLOAD, filter_document_ids=QUESTION_IDS)
 QUESTIONS_TEXT_LATEX = load_questions('text+latex', ANSWERS_TEXT_LATEX, cache_download=CACHE_DOWNLOAD,
                                       filter_document_ids=QUESTION_IDS)
+QUESTIONS_TEXT_TANGENTL = load_questions('text+tangentl', ANSWERS_TEXT_TANGENTL, cache_download=CACHE_DOWNLOAD,
+                                         filter_document_ids=QUESTION_IDS)
 QUESTIONS_TEXT_PREFIX = load_questions('text+prefix', ANSWERS_TEXT_PREFIX, cache_download=CACHE_DOWNLOAD,
                                        filter_document_ids=QUESTION_IDS)
 QUESTIONS_XHTML_LATEX = load_questions('xhtml+latex', ANSWERS_XHTML_LATEX, cache_download=CACHE_DOWNLOAD,
@@ -141,6 +144,66 @@ class TestLoadQueriesLaTeX(unittest.TestCase):
                       self.query_2020.body)
         self.assertIn(r'If an $n\times n$ matrix over a division ring', self.query_2021.body)
         self.assertIn(r'Suppose $A$ is a $m\times n$ matrix.', self.query_2022.body)
+
+    def test_query_tags(self):
+        self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
+        self.assertEqual(QUERY_2021_TAGS, self.query_2021.tags)
+        self.assertEqual(QUERY_2022_TAGS, self.query_2022.tags)
+
+
+class TestLoadQueriesTangentL(unittest.TestCase):
+    def setUp(self):
+        self.queries_2020 = load_queries('text+tangentl', subset=None, year=2020)
+        self.queries_2021 = load_queries('text+tangentl', subset=None, year=2021)
+        self.queries_2022 = load_queries('text+tangentl', subset=None, year=2022)
+
+        self.query_2020 = self.queries_2020[QUERY_2020_ID]
+        self.query_2021 = self.queries_2021[QUERY_2021_ID]
+        self.query_2022 = self.queries_2022[QUERY_2022_ID]
+
+    def test_number_of_queries(self):
+        self.assertEqual(NUM_QUERIES_2020, len(self.queries_2020))
+        self.assertEqual(NUM_QUERIES_2021, len(self.queries_2021))
+        self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
+
+    def test_query_title(self):
+        self.assertIn(r'Finding value of #(start)# #(v!c,!0,-)# #(v!c,!0)# #(end)# such that',
+                      self.query_2020.title)
+        self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
+                         self.query_2021.title)
+        self.assertEqual(r'Inequality between norm 1,norm 2 and norm #(start)# #(v!∞,!0,-)# '
+                         '#(v!∞,!0)# #(end)# of Matrices', self.query_2022.title)
+
+    def test_query_body(self):
+        self.assertIn(r'If #(start)# #(v!f,m!()1x1,n,-)# #(v!f,m!()1x1,n)# #(m!()1x1,[n,w],n)# '
+                      r'#(m!()1x1,[n,w])# #(m!()1x1,=,n,n)# #(m!()1x1,=,n)# #(=,f!,n,nn)# '
+                      r'#(=,f!,n)# #(f!,[o,u],nnn)# #(f!,[o,u])# #(f!,v!x,o,nnn)# #(f!,v!x,o)# '
+                      r'#(v!x,[n,a],nnno)# #(v!x,[n,a])# #(v!x,+,n,nnno)# #(v!x,+,n)# '
+                      r'#(+,v!x,n,nnnon)# #(+,v!x,n)# #(v!x,+,n,3n1o2n)# #(v!x,+,n)# '
+                      r'#(+,v!c,n,3n1o3n)# #(+,v!c,n)# #(v!c,!0,3n1o4n)# #(v!c,!0)# #{+,nn,nnnon}# '
+                      r'#{+,nn}# #(v!x,n!2,a,nnno)# #(v!x,n!2,a)# #(n!2,!0,nnnoa)# #(n!2,!0)# '
+                      r'#{v!x,nn,nnno}# #{v!x,nn}# #(f!,v!x,u,nnn)# #(f!,v!x,u)# #(v!x,[n,a],nnnu)# '
+                      r'#(v!x,[n,a])# #(v!x,+,n,nnnu)# #(v!x,+,n)# #(+,n!2,n,nnnun)# #(+,n!2,n)# '
+                      r'#(n!2,v!x,n,3n1u2n)# #(n!2,v!x,n)# #(v!x,+,n,3n1u3n)# #(v!x,+,n)# '
+                      r'#(+,v!c,n,3n1u4n)# #(+,v!c,n)# #(v!c,!0,3n1u5n)# #(v!c,!0)# '
+                      r'#{v!c,onnnn,1u5n,nnn}# #{v!c,onnnn,1u5n}# #{+,onnn,unnnn,nnn}# '
+                      r'#{+,onnn,unnnn}# #{+,on,unnnn,nnn}# #{+,on,unnnn}# #{v!x,onn,unnn,nnn}# '
+                      r'#{v!x,onn,unnn}# #{v!x,o,unnn,nnn}# #{v!x,o,unnn}# #{n!2,oa,unn,nnn}# '
+                      r'#{n!2,oa,unn}# #{+,onnn,un,nnn}# #{+,onnn,un}# #{+,on,un,nnn}# #{+,on,un}# '
+                      r'#{+,nnn,nnnun}# #{+,nnn}# #(v!x,n!2,a,nnnu)# #(v!x,n!2,a)# #(n!2,!0,nnnua)# '
+                      r'#(n!2,!0)# #{n!2,oa,ua,nnn}# #{n!2,oa,ua}# #{n!2,nn,a,nnnu}# #{n!2,nn,a}# '
+                      r'#{v!x,onn,u,nnn}# #{v!x,onn,u}# #{v!x,o,u,nnn}# #{v!x,o,u}# '
+                      r'#{v!x,nnn,nnnu}# #{v!x,nnn}# #(m!()1x1,v!x,w,n)# #(m!()1x1,v!x,w)# '
+                      r'#(v!x,!0,nw)# #(v!x,!0)# #{v!x,nnonn,w,n}# #{v!x,nnonn,w}# #{v!x,nno,w,n}# '
+                      r'#{v!x,nno,w}# #{v!x,2n1u3n,w,n}# #{v!x,2n1u3n,w}# #{v!x,nnu,w,n}# '
+                      r'#{v!x,nnu,w}# #(end)# then find the value of #(start)# #(v!c,!0,-)# '
+                      r'#(v!c,!0)# #(end)#', self.query_2020.body)
+        self.assertIn(r'If an #(start)# #(v!n,×,n,-)# #(v!n,×,n)# #(×,v!n,n,n)# #(×,v!n,n)# '
+                      r'#(v!n,!0,nn)# #(v!n,!0)# #{v!n,nn,-}# #{v!n,nn}# #(end)# matrix over a '
+                      r'division ring', self.query_2021.body)
+        self.assertIn(r'Suppose #(start)# #(v!a,!0,-)# #(v!a,!0)# #(end)# is a '
+                      r'#(start)# #(v!m,×,n,-)# #(v!m,×,n)# #(×,v!n,n,n)# #(×,v!n,n)# #(v!n,!0,nn)# '
+                      r'#(v!n,!0)# #(end)# matrix.', self.query_2022.body)
 
     def test_query_tags(self):
         self.assertEqual(QUERY_2020_TAGS, self.query_2020.tags)
@@ -381,6 +444,50 @@ class TestLoadAnswersTextLaTeX(unittest.TestCase):
         self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
 
 
+class TestLoadAnswersTextTangentL(unittest.TestCase):
+    def setUp(self):
+        self.answer = ANSWERS_TEXT_TANGENTL[ANSWER_ID]
+
+    def test_answer_body(self):
+        expected_body = (
+            r'your answer written as #(start)# #(f!,[n,o,u],-)# #(f!,[n,o,u])# #(f!,v!arctan,n,-)# '
+            r'#(f!,v!arctan,n)# #(v!arctan,m!()1x1,n,n)# #(v!arctan,m!()1x1,n)# '
+            r'#(m!()1x1,[n,w],nn)# #(m!()1x1,[n,w])# #(m!()1x1,+,n,nn)# #(m!()1x1,+,n)# '
+            r'#(+,f!,n,nnn)# #(+,f!,n)# #(f!,[n,o,u],nnnn)# #(f!,[n,o,u])# #(f!,v!log,n,nnnn)# '
+            r'#(f!,v!log,n)# #(v!log,m!()1x1,n,nnnnn)# #(v!log,m!()1x1,n)# #(m!()1x1,[n,w],6n)# '
+            r'#(m!()1x1,[n,w])# #(m!()1x1,+,n,6n)# #(m!()1x1,+,n)# #(+,v!c,n,7n)# #(+,v!c,n)# '
+            r'#(v!c,!0,8n)# #(v!c,!0)# #(m!()1x1,n!5,w,6n)# #(m!()1x1,n!5,w)# #(n!5,+,n,6n1w)# '
+            r'#(n!5,+,n)# #(+,n!2,n,6n1w1n)# #(+,n!2,n)# #(n!2,v!x,n,6n1w2n)# #(n!2,v!x,n)# '
+            r'#(v!x,+,n,6n1w3n)# #(v!x,+,n)# #(+,v!x,n,6n1w4n)# #(+,v!x,n)# #(v!x,n!2,a,6n1w5n)# '
+            r'#(v!x,n!2,a)# #(n!2,!0,6n1w5n1a)# #(n!2,!0)# #{+,n,wnnnn,6n}# #{+,n,wnnnn}# '
+            r'#{v!x,nn,6n1w3n}# #{v!x,nn}# #{n!2,nnna,6n1w2n}# #{n!2,nnna}# #{+,n,wn,6n}# '
+            r'#{+,n,wn}# #{+,nnn,6n1w1n}# #{+,nnn}# #(f!,n!1,o,nnnn)# #(f!,n!1,o)# #(n!1,!0,nnnno)# '
+            r'#(n!1,!0)# #(f!,n!2,u,nnnn)# #(f!,n!2,u)# #(n!2,!0,nnnnu)# #(n!2,!0)# '
+            r'#{n!2,2n1w5n1a,u,nnnn}# #{n!2,2n1w5n1a,u}# #{n!2,nnwnn,u,nnnn}# #{n!2,nnwnn,u}# '
+            r'#{+,nnnn,nnn}# #{+,nnnn}# #{+,3n1w4n,nnn}# #{+,3n1w4n}# #{+,nnnwn,nnn}# #{+,nnnwn}# '
+            r'#(m!()1x1,f!,w,nn)# #(m!()1x1,f!,w)# #(f!,[o,u],nnw)# #(f!,[o,u])# #(f!,n!1,o,nnw)# '
+            r'#(f!,n!1,o)# #(n!1,+,n,nnwo)# #(n!1,+,n)# #(+,v!x,n,nnwon)# #(+,v!x,n)# '
+            r'#(v!x,!0,2n1w1o2n)# #(v!x,!0)# #{v!x,4n1w5n,wonn,nn}# #{v!x,4n1w5n,wonn}# '
+            r'#{v!x,4n1w3n,wonn,nn}# #{v!x,4n1w3n,wonn}# #{+,nnnnn,won,nn}# #{+,nnnnn,won}# '
+            r'#{+,4n1w4n,won,nn}# #{+,4n1w4n,won}# #{+,4n1w1n,won,nn}# #{+,4n1w1n,won}# '
+            r'#{+,n,won,nn}# #{+,n,won}# #{n!1,nno,wo,nn}# #{n!1,nno,wo}# #(f!,n!2,u,nnw)# '
+            r'#(f!,n!2,u)# #(n!2,!0,nnwu)# #(n!2,!0)# #{n!2,4n1w5n1a,wu,nn}# #{n!2,4n1w5n1a,wu}# '
+            r'#{n!2,4n1w2n,wu,nn}# #{n!2,4n1w2n,wu}# #{n!2,nnu,wu,nn}# #{n!2,nnu,wu}# '
+            r'#{f!,nn,w,nn}# #{f!,nn,w}# #{m!()1x1,nnnn,nn}# #{m!()1x1,nnnn}# #(f!,n!3,o,-)# '
+            r'#(f!,n!3,o)# #(n!3,!0,o)# #(n!3,!0)# #(f!,n!2,u,-)# #(f!,n!2,u)# #(n!2,!0,u)# '
+            r'#(n!2,!0)# #{n!2,6n1w5n1a,u,-}# #{n!2,6n1w5n1a,u}# #{n!2,6n1w2n,u,-}# '
+            r'#{n!2,6n1w2n,u}# #{n!2,nnnnu,u,-}# #{n!2,nnnnu,u}# #{n!2,nnwu,u,-}# #{n!2,nnwu,u}# '
+            r'#{f!,nnnn,-}# #{f!,nnnn}# #{f!,nnw,-}# #{f!,nnw}# #(end)# is correct too'
+        )
+        self.assertIn(expected_body, self.answer.body)
+
+    def test_answer_upvotes(self):
+        self.assertEqual(ANSWER_UPVOTES, self.answer.upvotes)
+
+    def test_answer_is_accepted(self):
+        self.assertEqual(ANSWER_IS_ACCEPTED, self.answer.is_accepted)
+
+
 class TestLoadAnswersTextPrefix(unittest.TestCase):
     def setUp(self):
         self.answer = ANSWERS_TEXT_PREFIX[ANSWER_ID]
@@ -496,6 +603,31 @@ class TestLoadQuestionsTextLaTeX(unittest.TestCase):
 
     def test_question_body(self):
         self.assertIn(r'we cut off the set at any number $n$.', self.question.body)
+
+    def test_question_tags(self):
+        self.assertEqual(QUESTION_TAGS, self.question.tags)
+
+    def test_question_upvotes(self):
+        self.assertEqual(QUESTION_UPVOTES, self.question.upvotes)
+
+    def test_question_views(self):
+        self.assertEqual(QUESTION_VIEWS, self.question.views)
+
+    def test_question_answers(self):
+        document_ids = [answer.document_id for answer in self.question.answers]
+        self.assertEqual(QUESTION_ANSWER_DOCUMENT_IDS, document_ids)
+
+
+class TestLoadQuestionsTextTangentL(unittest.TestCase):
+    def setUp(self):
+        self.question = QUESTIONS_TEXT_TANGENTL[QUESTION_ID]
+
+    def test_question_title(self):
+        self.assertIn(QUESTION_TITLE, self.question.title)
+
+    def test_question_body(self):
+        self.assertIn(r'we cut off the set at any number #(start)# #(v!n,!0,-)# #(v!n,!0)# #(end)#.',
+                      self.question.body)
 
     def test_question_tags(self):
         self.assertEqual(QUESTION_TAGS, self.question.tags)
