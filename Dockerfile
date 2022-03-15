@@ -15,9 +15,11 @@ ARG DEPENDENCIES="\
     bash \
     build-essential \
     curl \
-    git nodejs \
+    git \
+    htop \
     less \
     netcat \
+    nodejs \
     npm \
     python3.8 \
     python3.8-dev \
