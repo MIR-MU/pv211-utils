@@ -3,8 +3,6 @@ from pathlib import Path
 
 BASE_TEXT_FORMATS = [
     'text',
-    'text+latex',
-    'text+prefix',
 ]
 
 
