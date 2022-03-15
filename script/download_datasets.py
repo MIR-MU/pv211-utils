@@ -1,4 +1,5 @@
 from pathlib import Path
+from os import umask
 
 
 BASE_TEXT_FORMATS = [
@@ -25,8 +26,9 @@ def download_arqmath(root_directory: Path) -> None:
 
 
 def main() -> None:
+    umask(0o000)
     root_directory = Path('/var') / 'tmp' / 'pv211'
-    root_directory.mkdir(parents=True, exist_ok=True)
+    root_directory.mkdir(parents=True, exist_ok=True, mode=0o777)
     download_trec(root_directory)
     download_arqmath(root_directory)
 
