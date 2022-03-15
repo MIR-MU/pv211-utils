@@ -29,7 +29,18 @@ setup(
         "ijson",
         "ipython",
     ],
-    package_data={"pv211_utils": ["data/*"]},
+    extras_require=[
+        "notebooks": [
+            "gensim==3.6.0",
+            "jupyterhub",
+            "jupyterlab",
+        ],
+    ],
+    package_data={
+        "pv211_utils": [
+            "data/*",
+        ],
+    },
 )
 
 # vim: set cin et ts=4 sw=4 ft=python :11

@@ -44,7 +44,7 @@ RUN apt-get -qy update \
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8 \
- && pip install jupyterhub jupyterlab . \
+ && pip install .[notebooks] \
  && python3.8 -m script.download_datasets
 
 # Create home directory
