@@ -22,7 +22,7 @@ def download_arqmath(root_directory: Path) -> None:
         answers_pathname = str(root_directory/f'arqmath2020_answers_{text_format}.json.gz')
         answers = load_answers(text_format, cache_download=answers_pathname)
         questions_pathname = str(root_directory/f'arqmath2020_questions_{text_format}.json.gz')
-        questions = load_questions(text_format, answers, cache_download=questions_pathname)
+        load_questions(text_format, answers, cache_download=questions_pathname)
 
 
 def main() -> None:
