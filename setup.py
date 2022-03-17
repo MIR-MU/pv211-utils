@@ -29,13 +29,13 @@ setup(
         "ijson",
         "ipython",
     ],
-    extras_require=[
+    extras_require={
         "notebooks": [
             "gensim==3.6.0",
             "jupyterhub",
             "jupyterlab",
         ],
-    ],
+    },
     package_data={
         "pv211_utils": [
             "data/*",
