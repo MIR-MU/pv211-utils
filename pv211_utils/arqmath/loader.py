@@ -16,6 +16,7 @@ TEXT_FORMATS = (
     'text',
     'text+latex',
     'text+prefix',
+    'text+tangentl',
     'xhtml+latex',
     'xhtml+cmml',
     'xhtml+pmml',
