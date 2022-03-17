@@ -167,7 +167,8 @@ class TestLoadQueriesTangentL(unittest.TestCase):
         self.assertEqual(NUM_QUERIES_2022, len(self.queries_2022))
 
     def test_query_title(self):
-        self.assertIn(r'Finding value of $c$ such that', self.query_2020.title)
+        self.assertIn(r'Finding value of #(start)# #(v!c,!0,-)# #(v!c,!0)# #(end)# such that',
+                      self.query_2020.title)
         self.assertEqual(r'Matrix over division ring having one sided inverse is invertible',
                          self.query_2021.title)
         self.assertEqual(r'Inequality between norm 1,norm 2 and norm #(start)# #(v!∞,!0,-)# '
