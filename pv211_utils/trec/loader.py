@@ -7,7 +7,7 @@ from typing import Optional, Set
 import ijson
 
 from .entities import TrecQueryBase, TrecDocumentBase, TrecJudgementBase
-from ..util import google_drive_download
+from ..util import http_download
 
 
 TrecJudgements = Set[TrecJudgementBase]
@@ -33,7 +33,7 @@ def load_documents(document_class=TrecDocumentBase, filter_document_ids: Optiona
     documents = OrderedDict()
 
     manifest_filename = 'data/trec_documents_manifest.json'
-    with google_drive_download(manifest_filename, **kwargs) as filename:
+    with http_download(manifest_filename, **kwargs) as filename:
         with gzip.open(filename, 'rb') as f:
             for raw_document in ijson.items(f, 'item'):
                 document_id = str(raw_document['document_id'])

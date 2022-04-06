@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name="pv211_utils",
-    version='1.1.3',
+    version='1.1.4',
     description="Utilities for PV211 project",
     long_description="",
     classifiers=[],
@@ -22,7 +22,6 @@ setup(
     ],
     install_requires=[
         "gspread",
-        "gdown",
         "oauth2client",
         "google",
         "tqdm",
@@ -34,6 +33,9 @@ setup(
             "gensim==3.6.0",
             "jupyterhub",
             "jupyterlab",
+        ],
+        "google_drive": [
+            "gdown",
         ],
     },
     package_data={
