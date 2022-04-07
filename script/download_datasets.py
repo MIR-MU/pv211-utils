@@ -1,10 +1,14 @@
 from pathlib import Path
 from os import umask
+from sys import argv
 
 
-BASE_TEXT_FORMATS = [
-    'text',
-]
+if len(argv) > 1 and argv[1] == 'all':
+    from pv211_utils.arqmath.loader import TEXT_FORMATS
+
+    BASE_TEXT_FORMATS = TEXT_FORMATS
+else:
+    BASE_TEXT_FORMATS = ['text']
 
 
 def download_trec(root_directory: Path) -> None:

@@ -45,7 +45,8 @@ COPY . /pv211-utils
 WORKDIR /pv211-utils
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.8 \
  && pip install .[notebooks] \
- && python3.8 -m script.download_datasets
+ && python3.8 -m script.download_datasets # all
+# Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 # Create home directory
 RUN useradd -u 1000 --create-home jovyan
