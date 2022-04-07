@@ -52,7 +52,8 @@ def http_download(*args, **kwargs):
             download_path = Path.home() / '.cache' / 'pv211-utils' / md5
             download_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            urlretrieve(url, download_path)
+            if not download_path.exists():
+                urlretrieve(url, download_path)
             assert_md5sum(download_path, md5)
         except Exception as e:
             download_path.unlink()
