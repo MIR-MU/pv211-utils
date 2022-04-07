@@ -33,11 +33,15 @@ def google_drive_download(**kwargs):
     def download_function(manifest: Dict, download_path: Optional[Path]) -> Path:
         from gdown import cached_download
 
-        filename = cached_download(
-            url='https://drive.google.com/uc?id={}'.format(manifest['google_drive_id']),
-            md5=manifest['md5'],
-            path=download_path,
-        )
+        url = 'https://drive.google.com/uc?id={}'.format(manifest['google_drive_id'])
+
+        try:
+            filename = cached_download(url=url, md5=manifest['md5'], path=download_path)
+        except AssertionError as e:
+            if 'md5_also_ok' in manifest:
+                filename = cached_download(url=url, md5=manifest['md5_also_ok'], path=download_path)
+            else:
+                raise e
         return Path(filename)
 
     return _cached_download(download_function, **kwargs)
@@ -47,14 +51,19 @@ def google_drive_download(**kwargs):
 def http_download(*args, **kwargs):
     def download_function(manifest: Dict, download_path: Optional[Path]) -> Path:
         url = manifest['http_url']
-        md5 = manifest['md5']
         if download_path is None:
-            download_path = Path.home() / '.cache' / 'pv211-utils' / md5
+            download_path = Path.home() / '.cache' / 'pv211-utils' / manifest['md5']
             download_path.parent.mkdir(parents=True, exist_ok=True)
         try:
             if not download_path.exists():
                 urlretrieve(url, download_path)
-            assert_md5sum(download_path, md5)
+            try:
+                assert_md5sum(download_path, manifest['md5'])
+            except AssertionError as e:
+                if 'md5_also_ok' in manifest:
+                    assert_md5sum(download_path, manifest['md5_also_ok'])
+                else:
+                    raise e
         except Exception as e:
             download_path.unlink()
             raise e
