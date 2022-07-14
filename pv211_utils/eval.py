@@ -157,8 +157,9 @@ class EvaluationBase(abc.ABC):
         return precision
 
     @abc.abstractmethod
-    def _get_minimum_mean_average_precision(self) -> float:
+    def _get_minimum_mean_average_precision(self) -> Optional[float]:
         """Gets the minimum mean average precision required to pass the course project.
+        If minimum MAP == 0, then the evaluation will just display the achieved MAP score.
 
         Returns
         -------
@@ -186,24 +187,34 @@ class EvaluationBase(abc.ABC):
 
         minimum_map_score = self._get_minimum_mean_average_precision() * 100
         submit_result = submit_result and self.leaderboard is not None and self.author_name is not None
-        leaderboard_url = self.leaderboard.get_public_url()
+        if self.leaderboard is None:
+            leaderboard_url = None
+            competition_end = None
+
+        else:
+            leaderboard_url = self.leaderboard.get_public_url()
+            competition_end = self.leaderboard.get_competition_end()
+
         if leaderboard_url is not None:
             leaderboard_text = '[the leaderboard]({})'.format(leaderboard_url)
         else:
             leaderboard_text = 'the leaderboard'
-        competition_end = self.leaderboard.get_competition_end()
 
         display(Markdown('Your system achieved **{:.2f}% MAP score**.'.format(map_score)))
 
-        if map_score < minimum_map_score:
+        if minimum_map_score == 0:
+            pass
+        elif map_score < minimum_map_score:
             display(Markdown('You need at least **{:g}%** to pass. 😢'.format(minimum_map_score)))
             display(Markdown('Try playing with the preprocessing of queries and documents! 💡'))
         else:
             display(Markdown('Congratulations, you passed the **{:g}%** minimum! 🥳'.format(minimum_map_score)))
 
-        if submit_result:
+        if submit_result and self.leaderboard is not None:
             self.leaderboard.log_precision_entry(self.author_name, result)
             display(Markdown('Your result has been submitted to {}! 🏆'.format(leaderboard_text)))
+        elif not submit_result and self.leaderboard is None:
+            pass
         else:
             message = (
                 'Set `submit_result = True` and write your name to the `author_name` variable '
