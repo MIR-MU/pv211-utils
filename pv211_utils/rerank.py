@@ -9,5 +9,6 @@ class ReRankBase(abc.ABC):
 
     """
     @abc.abstractmethod
-    def rerank_top_k(self, query: QueryBase, retrieved_documents: Iterable[DocumentBase], k: int) -> Iterable[DocumentBase]:
+    def rerank_top_k(self, query: QueryBase, retrieved_documents: Iterable[DocumentBase], k: int) \
+            -> Iterable[DocumentBase]:
         pass
