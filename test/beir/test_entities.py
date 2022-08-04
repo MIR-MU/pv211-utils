@@ -3,7 +3,6 @@ import unittest
 from pv211_utils.beir.entities import BeirQueryBase, BeirDocumentBase
 
 
-
 QUERY_ID = 123
 QUERY_BODY_INPUT = 'some body  text'
 QUERY_BODY_OUTPUT = ['some', 'body', 'text']
@@ -38,7 +37,7 @@ class TestBeirQueryBase(unittest.TestCase):
 
 class TestBeirDocumentBase(unittest.TestCase):
     def setUp(self):
-        self.document = beirDocument(DOCUMENT_ID, DOCUMENT_BODY_INPUT)
+        self.document = BeirDocument(DOCUMENT_ID, DOCUMENT_BODY_INPUT)
 
     def test_document_id(self):
         self.assertEqual(DOCUMENT_ID, self.document.document_id)
