@@ -139,7 +139,7 @@ def combine_beir_datasets(raw_data1, raw_data2):
     for item in corpus2.items():
         key = item[0]
         if key in corpus1.keys():
-            hashed = str(abs(hash(item[1])))
+            hashed = str(abs(hash(item[1]["text"])))
             corpus_collisions[key] = hashed
             key = hashed
         combined_corpus[key] = item[1]
@@ -149,7 +149,7 @@ def combine_beir_datasets(raw_data1, raw_data2):
     combined_queries = queries1
     for item in queries2.items():
         key = item[0]
-        if key in queries2.keys():
+        if key in queries1.keys():
             hashed = str(abs(hash(item[1])))
             query_collisions[key] = hashed
             key = hashed
