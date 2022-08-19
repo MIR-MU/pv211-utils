@@ -66,17 +66,3 @@ class TestLoadJudgements(unittest.TestCase):
 
     def test_irrelevant_document(self):
         self.assertNotIn((self.query, self.irrelevant_document), self.judgements)
-
-
-class TestMultipleDatasets(unittest.TestCase):
-    def setUp(self):
-        android = RawBeirDataset("android", test=True)
-        english = RawBeirDataset("english", test=True)
-        download_location = "datasets"
-        desired_datasets = RawBeirDatasets(download_location, [android, english])
-        _, _, raw_test_data = load_beir_datasets(desired_datasets)
-
-        self.documents = load_documents(raw_test_data[0])
-
-    def test_number_of_combined_documents(self):
-        self.assertEqual(NUM_COMBINED_DOCUMENTS, len(self.documents))

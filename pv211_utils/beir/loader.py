@@ -132,10 +132,42 @@ def combine_beir_datasets(raw_data1, raw_data2):
     queries2 = raw_data2[1]
     qrels1 = raw_data1[2]
     qrels2 = raw_data2[2]
-    # Combining dictionaries into one
-    combined_corpus = {**corpus1, **corpus2}
-    combined_queries = {**queries1, **queries2}
-    combined_qrels = {**qrels1, **qrels2}
+    # Combining dictionaries into one and adding the hash of the values to resolve collisions
+    # Corpus
+    corpus_collisions = {}
+    combined_corpus = corpus1
+    for item in corpus2.items():
+        key = item[0]
+        if key in corpus1.keys():
+            hashed = str(abs(hash(item[1])))
+            corpus_collisions[key] = hashed
+            key = hashed
+        combined_corpus[key] = item[1]
+
+    # Queries
+    query_collisions = {}
+    combined_queries = queries1
+    for item in queries2.items():
+        key = item[0]
+        if key in queries2.keys():
+            hashed = str(abs(hash(item[1])))
+            query_collisions[key] = hashed
+            key = hashed
+        combined_queries[key] = item[1]
+
+    # Judgements
+    combined_qrels = qrels1
+    for item in qrels2.items():
+        key = item[0]
+        values_dict = item[1]
+        if key in query_collisions.keys():
+            key = query_collisions[key]
+        for value_key in values_dict.keys():
+            if value_key in corpus_collisions.keys():
+                new_key = corpus_collisions[value_key]
+                values_dict[new_key] = values_dict.pop(value_key)
+        combined_qrels[key] = values_dict
+
     return combined_corpus, combined_queries, combined_qrels
 
 
@@ -152,7 +184,7 @@ def load_beir_datasets(datasets_data: RawBeirDatasets):
     raw_train_data = None
     raw_dev_data = None
     raw_test_data = None
-    for dataset in datasets_data.datasets:
+    for dataset in datasets_data.datasets.sort():
         data_path = download_beir_dataset(dataset.name, datasets_data.download_location)
         if dataset.train:
             temp_train_data = load_beir_train_set(dataset.name, data_path, dataset.train_alternative)
