@@ -27,7 +27,7 @@ class BeirEvaluation(EvaluationBase):
 
     """
     def __init__(self, system: BeirIRSystemBase, judgements: Set[BeirJudgementBase],
-                 leaderboard: Optional[TrecLeaderboard] = None,
+                 leaderboard: Optional[BeirLeaderboard] = None,
                  author_name: Optional[str] = None, num_workers: Optional[int] = 1):
         super().__init__(system, judgements, leaderboard, author_name, num_workers)
 

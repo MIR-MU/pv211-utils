@@ -184,7 +184,8 @@ def load_beir_datasets(datasets_data: RawBeirDatasets):
     raw_train_data = None
     raw_dev_data = None
     raw_test_data = None
-    for dataset in datasets_data.datasets.sort():
+    datasets_data.datasets.sort(key=lambda x: x.name)
+    for dataset in datasets_data.datasets:
         data_path = download_beir_dataset(dataset.name, datasets_data.download_location)
         if dataset.train:
             temp_train_data = load_beir_train_set(dataset.name, data_path, dataset.train_alternative)
