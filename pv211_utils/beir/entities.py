@@ -82,8 +82,8 @@ class RawBeirDatasets:
         In case data is already present and there is no need to download it.
         Access availability is required.
     """
-    def __init__(self, datasets: List[RawBeirDataset], download_location: Optional[str] = None,
-                 data_path: Optional[str] = None):
+    def __init__(self, datasets: List[RawBeirDataset], download_location=None,
+                 data_path=None):
         self.download_location = download_location
         self.datasets = datasets
         self.data_path = data_path

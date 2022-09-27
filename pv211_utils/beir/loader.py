@@ -32,7 +32,7 @@ HAVE_DEV = {"msmarco", "msmarco-v2", "nfcorpus", "hotpotqa", "fiqa", "quora", "d
 """
 
 
-def download_beir_dataset(dataset_name: str, file_location: str) -> str:
+def download_beir_dataset(dataset_name: str, file_location) -> str:
     # cqadupstack is a specific case where the dataset is split into multiple subsets with specific topic
     if dataset_name in CQADUPSTACK:
         url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/cqadupstack.zip"
@@ -199,7 +199,7 @@ def load_beir_datasets(datasets_data: RawBeirDatasets):
     for dataset in datasets_data.datasets:
         # in case a download location is None assume that data is already present in the folder indicated by data_path
         if datasets_data.download_location is None:
-            data_path = datasets_data.data_path + "/" + dataset.name
+            data_path = str(datasets_data.data_path) + "/" + str(dataset.name)
         else:
             data_path = download_beir_dataset(dataset.name, datasets_data.download_location)
         # now load each individual data subset
