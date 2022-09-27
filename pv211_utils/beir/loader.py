@@ -21,6 +21,17 @@ HAVE_TEST = {"msmarco", "trec-covid", "nfcorpus", "nq", "hotpotqa", "fiqa", "arg
 HAVE_DEV = {"msmarco", "msmarco-v2", "nfcorpus", "hotpotqa", "fiqa", "quora", "dbpedia-entity", "fever"}
 
 
+"""A Generic BEIR dataset downloader.
+
+    Parameters
+    ----------
+    dataset_name : str
+        A string with the name of a BEIR dataset - should be one of the names from the lists above.
+    file_location : str
+        Location of the folder where data is to be stored.
+"""
+
+
 def download_beir_dataset(dataset_name: str, file_location: str) -> str:
     # cqadupstack is a specific case where the dataset is split into multiple subsets with specific topic
     if dataset_name in CQADUPSTACK:
@@ -186,7 +197,12 @@ def load_beir_datasets(datasets_data: RawBeirDatasets):
     raw_test_data = None
     datasets_data.datasets.sort(key=lambda x: x.name)
     for dataset in datasets_data.datasets:
-        data_path = download_beir_dataset(dataset.name, datasets_data.download_location)
+        # in case a download location is None assume that data is already present in the folder indicated by data_path
+        if datasets_data.download_location is None:
+            data_path = datasets_data.data_path + "/" + dataset.name
+        else:
+            data_path = download_beir_dataset(dataset.name, datasets_data.download_location)
+        # now load each individual data subset
         if dataset.train:
             temp_train_data = load_beir_train_set(dataset.name, data_path, dataset.train_alternative)
             raw_train_data = combine_beir_datasets(raw_train_data, temp_train_data)

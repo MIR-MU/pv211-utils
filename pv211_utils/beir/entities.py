@@ -72,14 +72,21 @@ class RawBeirDatasets:
 
     Parameters
     ----------
-    download_location : str
-        A address where all the datasets will be downloaded. Access availability is required.
+
     datasets : List[RawBeirDataset]
         A list of RawBeirDataset values.
+    download_location : Optional[str]
+        A address where all the datasets will be downloaded. Access availability is required.
+    data_path : Optional[str]
+        A address where all the datasets are present.
+        In case data is already present and there is no need to download it.
+        Access availability is required.
     """
-    def __init__(self, download_location: str, datasets: List[RawBeirDataset]):
+    def __init__(self, datasets: List[RawBeirDataset], download_location: Optional[str] = None,
+                 data_path: Optional[str] = None):
         self.download_location = download_location
         self.datasets = datasets
+        self.data_path = data_path
 
 
 BeirJudgementBase = Tuple[BeirQueryBase, BeirDocumentBase]

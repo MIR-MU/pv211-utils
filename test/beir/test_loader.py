@@ -14,7 +14,7 @@ class TestLoadQueries(unittest.TestCase):
     def setUp(self):
         android = RawBeirDataset("android", test=True)
         download_location = "datasets"
-        desired_datasets = RawBeirDatasets(download_location, [android])
+        desired_datasets = RawBeirDatasets([android], download_location)
         _, _, raw_test_data = load_beir_datasets(desired_datasets)
         self.queries = load_queries(raw_test_data[1])
         self.query = self.queries["11546"]
@@ -31,7 +31,7 @@ class TestLoadDocuments(unittest.TestCase):
     def setUp(self):
         android = RawBeirDataset("android", test=True)
         download_location = "datasets"
-        desired_datasets = RawBeirDatasets(download_location, [android])
+        desired_datasets = RawBeirDatasets([android], download_location)
         _, _, raw_test_data = load_beir_datasets(desired_datasets)
         self.documents = load_documents(raw_test_data[0])
         self.document = self.documents['51829']
@@ -48,7 +48,7 @@ class TestLoadJudgements(unittest.TestCase):
     def setUp(self):
         android = RawBeirDataset("android", test=True)
         download_location = "datasets"
-        desired_datasets = RawBeirDatasets(download_location, [android])
+        desired_datasets = RawBeirDatasets([android], download_location)
         _, _, raw_test_data = load_beir_datasets(desired_datasets)
         queries = load_queries(raw_test_data[1])
         documents = load_documents(raw_test_data[0])
