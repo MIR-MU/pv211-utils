@@ -1,7 +1,7 @@
 import abc
 from typing import Iterable
 
-from .entities import QueryBase, DocumentBase
+from .entities import DocumentBase
 
 
 class IRSystemBase(abc.ABC):
@@ -9,5 +9,5 @@ class IRSystemBase(abc.ABC):
 
     """
     @abc.abstractmethod
-    def search(self, query: QueryBase) -> Iterable[DocumentBase]:
+    def search(self, query) -> Iterable[DocumentBase]:
         pass
