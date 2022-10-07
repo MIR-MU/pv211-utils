@@ -9,7 +9,7 @@ from pv211_utils.irsystem import IRSystemBase
 
 
 class BiEncoderSystem(IRSystemBase):
-    def __init__(self, encoder_name: str, answers: Iterable[OrderedDict], batch_size: int = 32):
+    def __init__(self, encoder_name: str, answers: OrderedDict, batch_size: int = 32):
         """
         A system that returns documents ordered by decreasing cosine similarity.
 

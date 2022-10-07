@@ -27,6 +27,8 @@ class TfidfSystem(IRSystemBase):
         A mapping from indexed document numbers to documents.
 
     """
+    DICTIONARY: Dictionary
+    TFIDF_MODEL: TfidfModel
 
     def __init__(self, documents: OrderedDict[str, DocumentBase]):
         with get_context('fork').Pool(None) as pool:

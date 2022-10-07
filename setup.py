@@ -27,6 +27,9 @@ setup(
         "tqdm",
         "ijson",
         "ipython",
+        "gensim",
+        "sentence_transformers",
+        "torch"
     ],
     extras_require={
         "notebooks": [
