@@ -1,12 +1,12 @@
 from typing import Iterable, OrderedDict
 
-from sentence_transformers import CrossEncoder
-from sentence_transformers.SentenceTransformer import SentenceTransformer
 import numpy as np
 import torch
+from sentence_transformers import CrossEncoder
+from sentence_transformers.SentenceTransformer import SentenceTransformer
 
-from pv211_utils.entities import QueryBase, DocumentBase
-from pv211_utils.irsystem import IRSystemBase
+from ..entities import DocumentBase, QueryBase
+from ..irsystem import IRSystemBase
 
 
 class RerankerSystem(IRSystemBase):

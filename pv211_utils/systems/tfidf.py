@@ -1,5 +1,5 @@
 from multiprocessing import get_context
-from typing import Iterable, Union, List, Tuple, OrderedDict
+from typing import Iterable, List, OrderedDict, Tuple, Union
 
 from gensim.corpora import Dictionary
 from gensim.models import TfidfModel
@@ -7,8 +7,8 @@ from gensim.similarities import SparseMatrixSimilarity
 from gensim.utils import simple_preprocess
 from tqdm import tqdm
 
-from pv211_utils.entities import QueryBase, DocumentBase
-from pv211_utils.irsystem import IRSystemBase
+from ..entities import DocumentBase, QueryBase
+from ..irsystem import IRSystemBase
 
 
 class TfidfSystem(IRSystemBase):

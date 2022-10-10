@@ -1,10 +1,10 @@
 import math
-from typing import Iterable, Dict, OrderedDict
+from typing import Dict, Iterable, OrderedDict
 
 import numpy as np
 
-from pv211_utils.entities import QueryBase, DocumentBase
-from pv211_utils.irsystem import IRSystemBase
+from ..entities import DocumentBase, QueryBase
+from ..irsystem import IRSystemBase
 
 
 class BM25():
@@ -91,7 +91,7 @@ class BM25():
             if L == 0:
                 continue
 
-            # calculate
+            # calculate scores
             K = self.k1 * (1 - self.b + self.b * L)
             for j, qword in enumerate(query):
                 tf = doc.count(qword)

@@ -5,8 +5,8 @@ from gensim.similarities import SparseMatrixSimilarity
 from gensim.utils import simple_preprocess
 from tqdm import tqdm
 
-from pv211_utils.entities import QueryBase, DocumentBase
-from pv211_utils.irsystem import IRSystemBase
+from ..entities import DocumentBase, QueryBase
+from ..irsystem import IRSystemBase
 
 
 class BoWSystem(IRSystemBase):
