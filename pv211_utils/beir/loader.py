@@ -20,7 +20,7 @@ HAVE_TEST = {"msmarco", "trec-covid", "nfcorpus", "nq", "hotpotqa", "fiqa", "arg
              "mathematica", "physics", "programmers", "stats", "tex", "unix", "webmasters", "wordpress"}
 HAVE_DEV = {"msmarco", "msmarco-v2", "nfcorpus", "hotpotqa", "fiqa", "quora", "dbpedia-entity", "fever"}
 
-DEFAULT_DOWNLOAD_LOCATION = ""
+DEFAULT_DOWNLOAD_LOCATION = "datasets/cqadupstack"
 
 """A Generic BEIR dataset downloader.
 
