@@ -1,7 +1,7 @@
 import abc
 from typing import Iterable
 
-from pv211_utils.irsystem import IRSystemBase
+from ..irsystem import IRSystemBase
 from .entities import BeirQueryBase, BeirDocumentBase
 
 

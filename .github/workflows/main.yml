@@ -16,7 +16,9 @@ jobs:
       image: python:${{ matrix.python }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          node-version: 16
       - name: Install requirements
         run: |
           set -ex
@@ -37,7 +39,9 @@ jobs:
       image: python:${{ matrix.python }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          node-version: 16
       - name: Install requirements
         run: |
           set -ex
@@ -63,7 +67,9 @@ jobs:
       image: python:${{ matrix.python }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          node-version: 16
       - name: Install requirements
         run: |
           set -ex
@@ -80,8 +86,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
+          node-version: 16
           fetch-depth: 0
       - name: Build image
         run: |
