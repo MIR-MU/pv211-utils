@@ -7,21 +7,31 @@ from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
 
 
-class BM25():
+class BM25Plus():
     """
-    Class for ranking function
+    Class for BM25+ ranking functionality.
+
+    Parameters
+    ----------
+    k1: float
+        BM25 k1 parameter. k1 is a variable which helps determine term frequency saturation characteristics.
+    b: float
+        BM25 b parameter. With bigger b, the effects of the length of the document compared to the average
+        length are more amplified.
+    d: float
+        BM25 d parameter. Delta parameter for BM25+.
     """
 
-    def __init__(self, corpus: list):
+    def __init__(self, corpus: list, k1: float = 1.25, b: float = 0.75, d: float = 1):
         """
         Parameters
         ----------
         corpus: list
             list of documents
         """
-        self.k1 = 1.25
-        self.b = 0.75
-        self.d = 0.5
+        self.k1 = k1
+        self.b = b
+        self.d = d
 
         self.corpus = corpus
         self.corpus_len = len(corpus)
@@ -102,26 +112,39 @@ class BM25():
         return scores
 
 
-class BM25System(IRSystemBase):
+class BM25PlusSystem(IRSystemBase):
     """
-    A system that returns documents ordered by decreasing cosine similarity.
+    Class for BM25+ ranking system. BM25+ is extension of BM25 - bag-of-words retrieval function that ranks a set of
+    documents based on the query terms appearing in each document, regardless of their proximity within the document.
+
+    Parameters
+    ----------
+    documents: OrderedDict
+        Input documents
+    k1: float
+        BM25 k1 parameter. k1 is a variable which helps determine term frequency saturation characteristics.
+    b: float
+        BM25 b parameter. With bigger b, the effects of the length of the document compared to the average
+        length are more amplified.
+    d: float
+        BM25 d parameter. Delta parameter for BM25+.
 
     Attributes
     ----------
-    bm25: BM25
+    bm25: BM25Plus
         Ranking model
     index: dict of (int, Document)
         A mapping from indexed document numbers to documents.
 
     """
 
-    def __init__(self, documents: OrderedDict):
+    def __init__(self, documents: OrderedDict, k1: float = 1.25, b: float = 0.75, d: float = 1):
         docs_values = documents.values()
 
         # preprocess the docs
         corpus = [doc.body.split(" ") for doc in docs_values]
 
-        self.bm25 = BM25(corpus)
+        self.bm25 = BM25Plus(corpus, k1, b, d)
         self.index = dict(enumerate(docs_values))
 
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
