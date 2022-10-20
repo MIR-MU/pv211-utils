@@ -5,6 +5,7 @@ import numpy as np
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
+from ..transforms.preprocessing import DocPreprocessing
 
 
 class BM25Plus():
@@ -138,11 +139,13 @@ class BM25PlusSystem(IRSystemBase):
 
     """
 
-    def __init__(self, documents: OrderedDict, k1: float = 1.25, b: float = 0.75, d: float = 1):
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessing,
+                 k1: float = 1.25, b: float = 0.75, d: float = 1):
+        self.preprocessing = preprocessing
+
         docs_values = documents.values()
 
-        # preprocess the docs
-        corpus = [doc.body.split(" ") for doc in docs_values]
+        corpus = [self.preprocessing(document.body) for document in docs_values]
 
         self.bm25 = BM25Plus(corpus, k1, b, d)
         self.index = dict(enumerate(docs_values))
@@ -155,7 +158,7 @@ class BM25PlusSystem(IRSystemBase):
         ----------
         query: QueryBase
         """
-        query = query.body.split(" ")
+        query = self.preprocessing(query.body)
 
         # score and rank docs by their relevance
         docs = self.bm25(query).argsort()[::-1]

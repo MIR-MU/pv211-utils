@@ -4,11 +4,11 @@ from typing import Iterable, List, OrderedDict, Tuple, Union
 from gensim.corpora import Dictionary
 from gensim.models import TfidfModel
 from gensim.similarities import SparseMatrixSimilarity
-from gensim.utils import simple_preprocess
 from tqdm import tqdm
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
+from ..transforms.preprocessing import DocPreprocessing
 
 
 class TfidfSystem(IRSystemBase):
@@ -29,8 +29,11 @@ class TfidfSystem(IRSystemBase):
     """
     DICTIONARY: Dictionary
     TFIDF_MODEL: TfidfModel
+    preprocessing: DocPreprocessing
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase]):
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessing):
+        self.__class__.preprocessing = preprocessing
+
         with get_context('fork').Pool(None) as pool:
             document_bodies = pool.imap(self.__class__._document_to_tokens, documents.values())
             document_bodies = tqdm(document_bodies, desc='Building the dictionary', total=len(documents))
@@ -83,7 +86,7 @@ class TfidfSystem(IRSystemBase):
 
     @classmethod
     def _document_to_tokens(cls, document: Union[QueryBase, DocumentBase]) -> List[str]:
-        return simple_preprocess(document.body)
+        return cls.preprocessing(document.body)
 
     @classmethod
     def _document_to_bag_of_words(cls, document: Union[QueryBase, DocumentBase]) -> List[Tuple[int, int]]:

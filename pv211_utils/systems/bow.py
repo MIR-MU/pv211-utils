@@ -2,11 +2,11 @@ from typing import Iterable, OrderedDict
 
 from gensim.corpora import Dictionary
 from gensim.similarities import SparseMatrixSimilarity
-from gensim.utils import simple_preprocess
 from tqdm import tqdm
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
+from ..transforms.preprocessing import DocPreprocessing
 
 
 class BoWSystem(IRSystemBase):
@@ -29,20 +29,21 @@ class BoWSystem(IRSystemBase):
 
     """
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase]):
-        document_bodies = (simple_preprocess(document.body) for document in documents.values())
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessing):
+        self.preprocessing = preprocessing
+
+        document_bodies = (self.preprocessing(document.body) for document in documents.values())
         document_bodies = tqdm(document_bodies, desc='Building the dictionary', total=len(documents))
 
-        dictionary = Dictionary(document_bodies)
-        document_vectors = (dictionary.doc2bow(simple_preprocess(document.body)) for document in documents.values())
+        self.dictionary = Dictionary(document_bodies)
+        document_vectors = (self._doc2bow(document.body) for document in documents.values())
         document_vectors = tqdm(document_vectors, desc='Building the index', total=len(documents))
 
-        index = SparseMatrixSimilarity(document_vectors, num_docs=len(documents), num_terms=len(dictionary))
-        index_to_document = dict(enumerate(documents.values()))
+        self.index = SparseMatrixSimilarity(document_vectors, num_docs=len(documents), num_terms=len(self.dictionary))
+        self.index_to_document = dict(enumerate(documents.values()))
 
-        self.dictionary = dictionary
-        self.index = index
-        self.index_to_document = index_to_document
+    def _doc2bow(self, doc: str):
+        return self.dictionary.doc2bow(self.preprocessing(doc))
 
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
         """The ranked retrieval results for a query.
@@ -58,8 +59,7 @@ class BoWSystem(IRSystemBase):
             The ranked retrieval results for a query.
 
         """
-        query_vector = self.dictionary.doc2bow(simple_preprocess(query.body))
-        similarities = enumerate(self.index[query_vector])
+        similarities = enumerate(self.index[self._doc2bow(query.body)])
         sorted_similarities = sorted(similarities, key=lambda item: item[1], reverse=True)
 
         for document_number, _ in sorted_similarities:
