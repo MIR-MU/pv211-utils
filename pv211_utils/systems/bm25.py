@@ -5,7 +5,7 @@ import numpy as np
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..transforms.preprocessing import DocPreprocessing
+from ..preprocessing.preprocessing import DocPreprocessing
 
 
 class BM25Plus():
