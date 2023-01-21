@@ -1,6 +1,1 @@
-from .preprocessing import (
-    AbsDocPreprocessing,
-    DocPreprocessing,
-    SimpleDocPreprocessing,
-    NoneDocPreprocessing
-)
+from .preprocessing import AbsDocPreprocessing, DocPreprocessing, SimpleDocPreprocessing, NoneDocPreprocessing # noqa

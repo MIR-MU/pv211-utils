@@ -18,7 +18,7 @@ class BoWSystem(IRSystemBase):
     documents: OrderedDict
         Input documents
     preprocessing: AbsDocPreprocessing
-        Type of preprocessing 
+        Type of preprocessing
 
     Attributes
     ----------
