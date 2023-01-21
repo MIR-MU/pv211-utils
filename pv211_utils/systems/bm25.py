@@ -5,7 +5,7 @@ import numpy as np
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..preprocessing.preprocessing import DocPreprocessing
+from ..preprocessing.preprocessing import AbsDocPreprocessing
 
 
 class BM25Plus():
@@ -139,7 +139,7 @@ class BM25PlusSystem(IRSystemBase):
 
     """
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessing,
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: AbsDocPreprocessing,
                  k1: float = 1.25, b: float = 0.75, d: float = 1):
         self.preprocessing = preprocessing
 
