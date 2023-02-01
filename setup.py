@@ -29,6 +29,7 @@ setup(
         "ipython",
         "gensim",
         "sentence_transformers",
+        "sympy",
         "torch"
     ],
     extras_require={
