@@ -25,19 +25,20 @@ def _weighted_median(elements: list[int], weights: list[float]) -> float:
     total_wights_sum = sum(weights)
     cumulative_weights_sum = 0
     weighted_median = 0
-    
+
     for i in range(len(weights)):
         cumulative_weights_sum += weights[i]
 
         if cumulative_weights_sum == total_wights_sum / 2 and i + 1 < len(elements):
             weighted_median = (elements[i] + elements[i + 1]) / 2
             break
-            
+
         if cumulative_weights_sum > total_wights_sum / 2:
             weighted_median = elements[i]
             break
-    
-    return weighted_median 
+
+    return weighted_median
+
 
 def _get_ranks(query: QueryBase, systems: Iterable[IRSystemBase]) -> Tuple[dict, int]:
     documents_scores = dict()
@@ -54,8 +55,9 @@ def _get_ranks(query: QueryBase, systems: Iterable[IRSystemBase]) -> Tuple[dict,
 
     return (documents_scores, num_documents)
 
+
 def _break_ties(ratings: list, num_documents: int,
-                documents_scores: dict, weights : Optional[list] = None) -> list:
+                documents_scores: dict, weights: Optional[list] = None) -> list:
     final_ranking = []
 
     for start_i in range(len(ratings)):
@@ -63,23 +65,24 @@ def _break_ties(ratings: list, num_documents: int,
         # find sequence of duplicates
         while end_i < len(ratings) and ratings[start_i][1] == ratings[end_i][1]:
             end_i += 1
-        
+
         # if no duplicates found for current element
         if end_i == start_i + 1:
             final_ranking.append(ratings[start_i][0])
             continue
-         
+
         tied_documents = dict()
         # calculate new rating from randomly chosen ranking from document's list of rankings
         for i in range(start_i, end_i):
             tied_documents[ratings[i][0]] = (num_documents - choices(documents_scores[ratings[i][0]],
                                                                      weights=weights)[0]) / num_documents
-        
+
         final_ranking.extend([doc for doc, _ in sorted(tied_documents.items(),
                                                        key=lambda item: item[1],
-                                                       reverse=True)]) 
+                                                       reverse=True)])
 
     return final_ranking
+
 
 def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by their inverse mean rank.
@@ -97,10 +100,11 @@ def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iter
         Documents returned by systems sorted by inverse mean rank.
     """
     documents_scores, _ = _get_ranks(query, systems)
-    
+
     return [doc for doc, _ in sorted(documents_scores.items(),
                                      key=lambda item: 1 / mean(item[1]),
                                      reverse=True)]
+
 
 def inverse_median_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by their inverse median rank.
@@ -118,10 +122,11 @@ def inverse_median_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> It
         Documents returned by systems sorted by inverse median rank.
     """
     documents_scores, _ = _get_ranks(query, systems)
-    
+
     return [doc for doc, _ in sorted(documents_scores.items(),
                                      key=lambda item: 1 / median(item[1]),
                                      reverse=True)]
+
 
 def reciprocal_rank_fusion(query: QueryBase,
                            systems: Iterable[IRSystemBase], k: int) -> Iterable[DocumentBase]:
@@ -148,9 +153,10 @@ def reciprocal_rank_fusion(query: QueryBase,
                                      key=lambda item: sum(map(lambda elem: 1 / (elem + k),
                                                               item[1])),
                                      reverse=True)]
-    
+
+
 def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
-    """Ensemble systems and for given query return documents sorted by 
+    """Ensemble systems and for given query return documents sorted by
     (num_documents - median_rank) / num_documents formula,
     where ties are broken by taking random ranking out of uniformly
     distributed ranks from given document's individual system's ranks.
@@ -167,16 +173,16 @@ def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentB
     Iterable[DocumentBase]
         Sorted documents with ties broken.
     """
-    documents_scores, num_documents = _get_ranks(query, systems) 
-    
+    documents_scores, num_documents = _get_ranks(query, systems)
+
     # sort documents by inverse median rank
     ratings = sorted([(doc, (num_documents - median(ranks)) / num_documents)
                       for doc, ranks in documents_scores.items()],
                      key=lambda item: item[1],
                      reverse=True)
 
-    return _break_ties(ratings, num_documents, documents_scores) 
-        
+    return _break_ties(ratings, num_documents, documents_scores)
+
 
 def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
                  weights: list[float]) -> Iterable[DocumentBase]:
@@ -200,12 +206,12 @@ def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
     Iterable[DocumentBase]
         Sorted documents with ties broken.
     """
-    documents_scores, num_documents = _get_ranks(query, systems) 
-    
+    documents_scores, num_documents = _get_ranks(query, systems)
+
     # sort documents by inverse weighted median rank
-    ratings = sorted([(doc, (num_documents - _weighted_median(ranks, weights)) / num_documents) 
+    ratings = sorted([(doc, (num_documents - _weighted_median(ranks, weights)) / num_documents)
                       for doc, ranks in documents_scores.items()],
                      key=lambda item: item[1],
                      reverse=True)
-        
-    return _break_ties(ratings, num_documents, documents_scores, weights) 
+
+    return _break_ties(ratings, num_documents, documents_scores, weights)

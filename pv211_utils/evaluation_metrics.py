@@ -3,13 +3,13 @@
 Functions:
 ---------
 mean_avarage_precision(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
-    Calculate mean avarage precision of a system. 
+    Calculate mean avarage precision of a system.
 mean_precision(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
-    Calculate mean precision of a system. 
+    Calculate mean precision of a system.
 mean_recall(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
-    Calculate mean recall of a system. 
+    Calculate mean recall of a system.
 normalized_discounted_cumulative_gain(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
-    Calculate normalized discounted cumulative gain of a system. 
+    Calculate normalized discounted cumulative gain of a system.
 """
 from .entities import JudgementBase, QueryBase
 from .irsystem import IRSystemBase
@@ -28,6 +28,7 @@ def _judgements_obj_to_id(old_judgements: Set[JudgementBase]) -> Set:
 
     return new_judgements
 
+
 def _calc_recall(system: IRSystemBase, judgements: Set, k: int,
                  mr_score_lock, mr_score: ValueProxy, query: QueryBase) -> None:
     num_relevant = 0
@@ -42,10 +43,11 @@ def _calc_recall(system: IRSystemBase, judgements: Set, k: int,
         current_rank += 1
 
     recall = num_relevant_topk / num_relevant
- 
+
     mr_score_lock.acquire()
-    mr_score.value += recall 
+    mr_score.value += recall
     mr_score_lock.release()
+
 
 def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
                     mp_score_lock, mp_score: ValueProxy, query: QueryBase) -> None:
@@ -61,10 +63,11 @@ def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
         current_rank += 1
 
     precision = num_relevant / k
-        
+
     mp_score_lock.acquire()
     mp_score.value += precision
     mp_score_lock.release()
+
 
 def _calc_avarage_precision(system: IRSystemBase, judgements: Set, k: int,
                             map_score_lock, map_score: ValueProxy, query: QueryBase) -> None:
@@ -81,10 +84,11 @@ def _calc_avarage_precision(system: IRSystemBase, judgements: Set, k: int,
         current_rank += 1
 
     avarage_precision /= num_relevant if num_relevant > 0 else 1
-    
+
     map_score_lock.acquire()
     map_score.value += avarage_precision
     map_score_lock.release()
+
 
 def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
                ndcg_score_lock, ndcg_score: ValueProxy, query: QueryBase) -> None:
@@ -102,11 +106,12 @@ def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
 
     # max to avoid division by 0
     idcg = max(sum([1 / log2(i + 1) for i in range(1, num_relevant + 1)]), 1)
-     
+
     ndcg_score_lock.acquire()
     ndcg_score.value += dcg / idcg
     ndcg_score_lock.release()
-    
+
+
 def mean_avarage_precision(system: IRSystemBase, queries: OrderedDict,
                            judgements: Set[JudgementBase],
                            k: int, num_processes: int) -> float:
@@ -116,22 +121,22 @@ def mean_avarage_precision(system: IRSystemBase, queries: OrderedDict,
     Args:
     ----
     system : IRSystemBase
-        System to be evaluated. 
+        System to be evaluated.
     queries : OrderedDict
-        Queries to be searched. 
+        Queries to be searched.
     judgements : Set[JudgementBase]
         Judgements.
-    k : int 
+    k : int
         Parameter defining evaluation depth.
-    num_processes : int 
-        Parallelization parameter defining number of processes to be used to run the evaluation. 
+    num_processes : int
+        Parallelization parameter defining number of processes to be used to run the evaluation.
 
     Returns:
     -------
     float
-        Mean avarage precision score from interval [0, 1]. 
+        Mean avarage precision score from interval [0, 1].
     """
-    manager = Manager() 
+    manager = Manager()
     map_score_lock = manager.Lock()
     map_score = manager.Value('f', 0.0)
 
@@ -139,12 +144,13 @@ def mean_avarage_precision(system: IRSystemBase, queries: OrderedDict,
                                    _judgements_obj_to_id(judgements),
                                    k, map_score_lock, map_score)
 
-    process_pool = Pool(processes=num_processes) 
+    process_pool = Pool(processes=num_processes)
     process_pool.map(worker_avg_precision, list(queries.values()))
-    
+
     map_score.value /= len(queries)
-    
-    return map_score.value 
+
+    return map_score.value
+
 
 def mean_precision(system: IRSystemBase, queries: OrderedDict,
                    judgements: Set[JudgementBase], k: int, num_processes: int) -> float:
@@ -154,22 +160,22 @@ def mean_precision(system: IRSystemBase, queries: OrderedDict,
     Args:
     ----
     system : IRSystemBase
-        System to be evaluated. 
+        System to be evaluated.
     queries : OrderedDict
-        Queries to be searched. 
+        Queries to be searched.
     judgements : Set[JudgementBase]
         Judgements.
-    k : int 
+    k : int
         Parameter defining evaluation depth.
-    num_processes : int 
-        Parallelization parameter defining number of processes to be used to run the evaluation. 
+    num_processes : int
+        Parallelization parameter defining number of processes to be used to run the evaluation.
 
     Returns:
     -------
     float
-        Mean precision score from interval [0, 1]. 
+        Mean precision score from interval [0, 1].
     """
-    manager = Manager() 
+    manager = Manager()
     mp_score_lock = manager.Lock()
     mp_score = manager.Value('f', 0.0)
 
@@ -177,14 +183,15 @@ def mean_precision(system: IRSystemBase, queries: OrderedDict,
                                _judgements_obj_to_id(judgements),
                                k, mp_score_lock, mp_score)
 
-    process_pool = Pool(processes=num_processes) 
+    process_pool = Pool(processes=num_processes)
     process_pool.map(worker_precision, list(queries.values()))
-    
-    mp_score.value /= len(queries)
-    
-    return mp_score.value 
 
-def mean_recall(system: IRSystemBase, queries: OrderedDict, 
+    mp_score.value /= len(queries)
+
+    return mp_score.value
+
+
+def mean_recall(system: IRSystemBase, queries: OrderedDict,
                 judgements: Set[JudgementBase], k: int, num_processes: int) -> float:
     """Evaluate system for given queries and judgements with mean recall metric.
     Where first k documents will be used in evaluation.
@@ -192,35 +199,36 @@ def mean_recall(system: IRSystemBase, queries: OrderedDict,
     Args:
     ----
     system : IRSystemBase
-        System to be evaluated. 
+        System to be evaluated.
     queries : OrderedDict
-        Queries to be searched. 
+        Queries to be searched.
     judgements : Set[JudgementBase]
         Judgements.
-    k : int 
+    k : int
         Parameter defining evaluation depth.
-    num_processes : int 
-        Parallelization parameter defining number of processes to be used to run the evaluation. 
+    num_processes : int
+        Parallelization parameter defining number of processes to be used to run the evaluation.
 
     Returns:
     -------
     float
-        Mean recall score from interval [0, 1]. 
+        Mean recall score from interval [0, 1].
     """
-    manager = Manager() 
+    manager = Manager()
     mr_score_lock = manager.Lock()
     mr_score = manager.Value('f', 0.0)
 
     worker_recall = partial(_calc_recall, system,
-                            _judgements_obj_to_id(judgements), 
+                            _judgements_obj_to_id(judgements),
                             k, mr_score_lock, mr_score)
 
-    process_pool = Pool(processes=num_processes) 
+    process_pool = Pool(processes=num_processes)
     process_pool.map(worker_recall, list(queries.values()))
-    
+
     mr_score.value /= len(queries)
-    
-    return mr_score.value 
+
+    return mr_score.value
+
 
 def normalized_discounted_cumulative_gain(system: IRSystemBase,
                                           queries: OrderedDict,
@@ -232,22 +240,22 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
     Args:
     ----
     system : IRSystemBase
-        System to be evaluated. 
+        System to be evaluated.
     queries : OrderedDict
-        Queries to be searched. 
+        Queries to be searched.
     judgements : Set[JudgementBase]
         Judgements.
-    k : int 
+    k : int
         Parameter defining evaluation depth.
-    num_processes : int 
-        Parallelization parameter defining number of processes to be used to run the evaluation. 
+    num_processes : int
+        Parallelization parameter defining number of processes to be used to run the evaluation.
 
     Returns:
     -------
     float
-        Normalized discounted cumulative gain score from interval [0, 1]. 
+        Normalized discounted cumulative gain score from interval [0, 1].
     """
-    manager = Manager() 
+    manager = Manager()
     ndcg_score_lock = manager.Lock()
     ndcg_score = manager.Value('f', 0.0)
 
@@ -255,9 +263,9 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
                           _judgements_obj_to_id(judgements),
                           k, ndcg_score_lock, ndcg_score)
 
-    process_pool = Pool(processes=num_processes) 
+    process_pool = Pool(processes=num_processes)
     process_pool.map(worker_ndcg, list(queries.values()))
-    
+
     ndcg_score.value /= len(queries)
-    
-    return ndcg_score.value 
+
+    return ndcg_score.value
