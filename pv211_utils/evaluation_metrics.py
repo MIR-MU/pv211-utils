@@ -2,8 +2,8 @@
 
 Functions:
 ---------
-mean_avarage_precision(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
-    Calculate mean avarage precision of a system.
+mean_average_precision(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
+    Calculate mean average precision of a system.
 mean_precision(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
     Calculate mean precision of a system.
 mean_recall(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
@@ -69,10 +69,10 @@ def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
     mp_score_lock.release()
 
 
-def _calc_avarage_precision(system: IRSystemBase, judgements: Set, k: int,
+def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
                             map_score_lock, map_score: ValueProxy, query: QueryBase) -> None:
     num_relevant = 0
-    avarage_precision = 0.0
+    average_precision = 0.0
     current_rank = 1
 
     for document in system.search(query):
@@ -80,13 +80,13 @@ def _calc_avarage_precision(system: IRSystemBase, judgements: Set, k: int,
             break
         if (query.query_id, document.document_id) in judgements:
             num_relevant += 1
-            avarage_precision += num_relevant / current_rank
+            average_precision += num_relevant / current_rank
         current_rank += 1
 
-    avarage_precision /= num_relevant if num_relevant > 0 else 1
+    average_precision /= num_relevant if num_relevant > 0 else 1
 
     map_score_lock.acquire()
-    map_score.value += avarage_precision
+    map_score.value += average_precision
     map_score_lock.release()
 
 
@@ -112,10 +112,10 @@ def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
     ndcg_score_lock.release()
 
 
-def mean_avarage_precision(system: IRSystemBase, queries: OrderedDict,
+def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
                            judgements: Set[JudgementBase],
                            k: int, num_processes: int) -> float:
-    """Evaluate system for given queries and judgements with mean avarage precision
+    """Evaluate system for given queries and judgements with mean average precision
     metric. Where first k documents will be used in evaluation.
 
     Args:
@@ -134,13 +134,13 @@ def mean_avarage_precision(system: IRSystemBase, queries: OrderedDict,
     Returns:
     -------
     float
-        Mean avarage precision score from interval [0, 1].
+        Mean average precision score from interval [0, 1].
     """
     manager = Manager()
     map_score_lock = manager.Lock()
     map_score = manager.Value('f', 0.0)
 
-    worker_avg_precision = partial(_calc_avarage_precision, system,
+    worker_avg_precision = partial(_calc_average_precision, system,
                                    _judgements_obj_to_id(judgements),
                                    k, map_score_lock, map_score)
 
