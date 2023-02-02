@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name="pv211_utils",
-    version='1.1.8',
+    version='1.1.6',
     description="Utilities for PV211 project",
     long_description="",
     classifiers=[],
@@ -24,14 +24,15 @@ setup(
     install_requires=[
         "beir",
         "gspread",
-        "gdown",
         "oauth2client",
         "google",
         "tqdm",
         "ijson",
         "ipython",
         "ipywidgets",
-        "gensim==3.8.3",
+        "gensim",
+        "sentence_transformers",
+        "torch"
     ],
     extras_require={
         "notebooks": [
