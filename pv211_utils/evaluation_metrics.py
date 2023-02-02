@@ -10,6 +10,8 @@ mean_recall(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
     Calculate mean recall of a system.
 normalized_discounted_cumulative_gain(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
     Calculate normalized discounted cumulative gain of a system.
+bpref(IRSystemBase, OrderedDict, Set[JudgementBase], int, int) -> float:
+    Calculate mean bpref score of a system.
 """
 from .entities import JudgementBase, QueryBase
 from .irsystem import IRSystemBase
@@ -110,6 +112,29 @@ def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
     ndcg_score_lock.acquire()
     ndcg_score.value += dcg / idcg
     ndcg_score_lock.release()
+
+
+def _calc_bpref(system: IRSystemBase, judgements: Set, k: int,
+                bpref_score_lock, bpref_score: ValueProxy, query: QueryBase) -> None:
+    num_relevant = 0
+    relevant_doc_ranks = []
+    current_rank = 1
+    bpref = 0.0
+
+    for document in system.search(query):
+        if current_rank > k:
+            break
+        if (query.query_id, document.document_id) in judgements:
+            num_relevant += 1
+            relevant_doc_ranks.append(current_rank)
+        current_rank += 1
+
+    for i, rank in enumerate(relevant_doc_ranks, start=1):
+        bpref += 1 - min(rank - i, num_relevant) / num_relevant
+
+    bpref_score_lock.acquire()
+    bpref_score.value += bpref / num_relevant
+    bpref_score_lock.release()
 
 
 def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
@@ -269,3 +294,42 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
     ndcg_score.value /= len(queries)
 
     return ndcg_score.value
+
+
+def mean_bpref(system: IRSystemBase, queries: OrderedDict,
+               judgements: Set[JudgementBase], k: int, num_processes: int) -> float:
+    """Evaluate system for given queries and judgements with bpref metric.
+    Where first k documents will be used in evaluation.
+
+    Args:
+    ----
+    system : IRSystemBase
+        System to be evaluated.
+    queries : OrderedDict
+        Queries to be searched.
+    judgements : Set[JudgementBase]
+        Judgements.
+    k : int
+        Parameter defining evaluation depth.
+    num_processes : int
+        Parallelization parameter defining number of processes to be used to run the evaluation.
+
+    Returns:
+    -------
+    float
+        Bpref score from interval [0, 1].
+    """
+    manager = Manager()
+    bpref_score_lock = manager.Lock()
+    bpref_score = manager.Value('f', 0.0)
+
+    worker_ndcg = partial(_calc_bpref, system,
+                          _judgements_obj_to_id(judgements),
+                          k, bpref_score_lock, bpref_score)
+
+    process_pool = Pool(processes=num_processes)
+    process_pool.map(worker_ndcg, list(queries.values()))
+
+    bpref_score.value /= len(queries)
+
+    return bpref_score.value
