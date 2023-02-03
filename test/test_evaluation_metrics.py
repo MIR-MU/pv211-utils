@@ -1,5 +1,6 @@
 import unittest
 from typing import Any, Iterable
+from collections import OrderedDict
 
 from pv211_utils.evaluation_metrics import (mean_average_precision,
                                             mean_precision,
@@ -20,7 +21,7 @@ class Document(DocumentBase):
         super().__init__(document_id, body)
 
 
-QUERIES = {1: Query(1, "a"), 2: Query(2, "b")}
+QUERIES = OrderedDict({1: Query(1, "a"), 2: Query(2, "b")})
 DOCUMENTS = {1: Document('1', "a"), 2: Document('2', "b"),
              3: Document('3', "c"), 4: Document('4', "d")}
 JUDGEMENTS = {(QUERIES[1], DOCUMENTS[1]), (QUERIES[1], DOCUMENTS[2]),
