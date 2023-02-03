@@ -1,5 +1,5 @@
 import unittest
-from typing import Any, Iterable
+from typing import Any, Iterable, Dict, List
 from collections import OrderedDict
 
 from pv211_utils.evaluation_metrics import (mean_average_precision,
@@ -29,7 +29,7 @@ JUDGEMENTS = {(QUERIES[1], DOCUMENTS[1]), (QUERIES[1], DOCUMENTS[2]),
 
 
 class System(IRSystemBase):
-    def __init__(self, doc_order: dict[int, list[int]]) -> None:
+    def __init__(self, doc_order: Dict[int, List[int]]):
         self.doc_order = doc_order
 
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
