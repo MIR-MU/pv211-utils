@@ -14,21 +14,23 @@ class Query(QueryBase):
     def __init__(self, query_id: int, body: Any):
         super().__init__(query_id, body)
 
+
 class Document(DocumentBase):
     def __init__(self, document_id: str, body: Any):
         super().__init__(document_id, body)
-    
 
-QUERIES = {1 : Query(1, "a"), 2 : Query(2, "b")}
-DOCUMENTS = {1 : Document(1, "a"), 2 : Document(2, "b"),
-             3 : Document(3, "c"), 4 : Document(4, "d")}
+
+QUERIES = {1: Query(1, "a"), 2: Query(2, "b")}
+DOCUMENTS = {1: Document('1', "a"), 2: Document('2', "b"),
+             3: Document('3', "c"), 4: Document('4', "d")}
 JUDGEMENTS = {(QUERIES[1], DOCUMENTS[1]), (QUERIES[1], DOCUMENTS[2]),
               (QUERIES[2], DOCUMENTS[4]), (QUERIES[2], DOCUMENTS[3])}
 
 
 class System(IRSystemBase):
     def __init__(self, doc_order: dict[int, list[int]]) -> None:
-        self.doc_order = doc_order 
+        self.doc_order = doc_order
+
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
         for doc_id in self.doc_order[query.query_id]:
             yield DOCUMENTS[doc_id]
@@ -36,11 +38,11 @@ class System(IRSystemBase):
 
 class TestEvaluationMetrics(unittest.TestCase):
     def setUp(self) -> None:
-        self.system_perfect = System({1 : [1, 2, 3, 4], 2 : [4, 3, 2, 1]})
-        self.system_mediocore_1 = System({1 : [1, 4, 3, 2], 2 : [4, 1, 2, 3]})
-        self.system_mediocore_2 = System({1 : [1, 2, 3, 4], 2 : [1, 2, 3, 4]})
-        self.system_bad= System({1 : [3, 4, 1, 2], 2 : [2, 1, 4, 3]})
-    
+        self.system_perfect = System({1: [1, 2, 3, 4], 2: [4, 3, 2, 1]})
+        self.system_mediocore_1 = System({1: [1, 4, 3, 2], 2: [4, 1, 2, 3]})
+        self.system_mediocore_2 = System({1: [1, 2, 3, 4], 2: [1, 2, 3, 4]})
+        self.system_bad = System({1: [3, 4, 1, 2], 2: [2, 1, 4, 3]})
+
     def test_mean_avarage_precision_perfect(self):
         map = mean_average_precision(self.system_perfect, QUERIES, JUDGEMENTS, 5, 3)
 
@@ -59,7 +61,7 @@ class TestEvaluationMetrics(unittest.TestCase):
 
         self.assertAlmostEqual(0.416666667, map_1)
         self.assertEqual(0, map_2)
-    
+
     def test_mean_precision_perfect(self):
         mp = mean_precision(self.system_perfect, QUERIES, JUDGEMENTS, 2, 1)
 
@@ -78,7 +80,7 @@ class TestEvaluationMetrics(unittest.TestCase):
 
         self.assertAlmostEqual(0.3333333333, mp_1)
         self.assertEqual(0, mp_2)
-    
+
     def test_mean_recall_perfect(self):
         mr = mean_recall(self.system_perfect, QUERIES, JUDGEMENTS, 4, 1)
 
@@ -95,7 +97,7 @@ class TestEvaluationMetrics(unittest.TestCase):
         mr = mean_recall(self.system_bad, QUERIES, JUDGEMENTS, 2, 1)
 
         self.assertEqual(0, mr)
-    
+
     def test_ndcg_perfect(self):
         ndcg = normalized_discounted_cumulative_gain(self.system_perfect, QUERIES, JUDGEMENTS, 4, 1)
 
@@ -114,9 +116,9 @@ class TestEvaluationMetrics(unittest.TestCase):
 
         self.assertAlmostEqual(0.5, ndcg_1)
         self.assertEqual(0, ndcg_2)
-    
+
     def test_mean_bpref_perfect(self):
-        mbpref= mean_bpref(self.system_perfect, QUERIES, JUDGEMENTS, 4, 1)
+        mbpref = mean_bpref(self.system_perfect, QUERIES, JUDGEMENTS, 4, 1)
 
         self.assertAlmostEqual(1, mbpref)
 
