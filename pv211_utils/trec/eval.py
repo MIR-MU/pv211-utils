@@ -24,12 +24,15 @@ class TrecEvaluation(EvaluationBase):
     num_workers : int or None, optional
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is 1.
+    k : int, optional
+        Parameter defining evaluation depth. Default is 10.
 
     """
     def __init__(self, system: TrecIRSystemBase, judgements: Set[TrecJudgementBase],
                  leaderboard: Optional[TrecLeaderboard] = None,
-                 author_name: Optional[str] = None, num_workers: Optional[int] = 1):
-        super().__init__(system, judgements, leaderboard, author_name, num_workers)
+                 author_name: Optional[str] = None, num_workers: Optional[int] = 1,
+                 k: Optional[int] = 10):
+        super().__init__(system, judgements, leaderboard, author_name, num_workers, k)
 
     def _get_minimum_mean_average_precision(self) -> float:
         return 0.135

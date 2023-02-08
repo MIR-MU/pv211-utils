@@ -1,13 +1,12 @@
 import abc
 from datetime import datetime
-from multiprocessing import get_context
-from typing import Iterable, Set, Optional
-from statistics import mean
+from typing import Set, Optional, OrderedDict 
 import os
 
-from .entities import QueryBase, DocumentBase, JudgementBase
+from .entities import QueryBase, JudgementBase
 from .leaderboard import LeaderboardBase
 from .irsystem import IRSystemBase
+from .evaluation_metrics import mean_average_precision
 
 from IPython.display import display, Markdown
 
@@ -30,6 +29,9 @@ class EvaluationBase(abc.ABC):
     num_workers : int or None, optional
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is 1.
+    k : int, optional
+        Parameter defining evaluation depth. Default is 10.
+
 
     Attributes
     ----------
@@ -48,13 +50,15 @@ class EvaluationBase(abc.ABC):
     num_workers : int or None, optional
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is None.
+    k : int, optional
+        Parameter defining evaluation depth. Default is 10.
 
     """
     _CURRENT_INSTANCE: Optional['EvaluationBase'] = None  # used for sharing state between processes
 
     def __init__(self, system: IRSystemBase, judgements: Set[JudgementBase],
                  leaderboard: Optional[LeaderboardBase] = None, author_name: Optional[str] = None,
-                 num_workers: Optional[int] = 1):
+                 num_workers: Optional[int] = 1, k: Optional[int] = 10):
         num_relevant = {}
         for query, _ in judgements:
             if query not in num_relevant:
@@ -67,94 +71,10 @@ class EvaluationBase(abc.ABC):
         self.leaderboard = leaderboard
         self.author_name = author_name
         self.num_workers = num_workers
+        self.k = k
 
     def _get_num_relevant(self, query: QueryBase) -> int:
         return self.num_relevant[query] if query in self.num_relevant else 0
-
-    def _average_precision(self, query: QueryBase, results: Iterable[DocumentBase]) -> Optional[float]:
-        """Average precision of ranked retrieval results for a query.
-
-        Parameters
-        ----------
-        query : Query
-            The query.
-        results : list of DocumentBase
-            Ranked retrieval results.
-
-        Returns
-        -------
-        float or None
-            Average precision of the ranked retrieval results with respect to the query.
-            If no relevance judgements exist for a query, returns None.
-
-        """
-        num_relevant = self._get_num_relevant(query)
-        if num_relevant == 0:
-            return None
-
-        num_retrieved_relevant = 0
-        precision = 0.0
-        seen_documents = set()
-        for document_number, document in enumerate(results):
-            if document in seen_documents:
-                continue
-            seen_documents.add(document)
-            if (query, document) in self.judgements:
-                num_retrieved_relevant += 1
-                precision += float(num_retrieved_relevant) / (document_number + 1)
-        return precision / num_relevant
-
-    def mean_average_precision(self, queries: Iterable[QueryBase]) -> float:
-        """The mean average precision of the information retrieval system.
-
-        Parameters
-        ----------
-        queries : iterable of QueryBase
-            Queries to be submitted to the information retrieval system.
-
-        Returns
-        -------
-        float
-            The mean average precision of the information retrieval system.
-
-        """
-        self.__class__._CURRENT_INSTANCE = self
-        if self.num_workers == 1:
-            result = self.__class__._mean_average_precision_single_process(queries)
-        else:
-            result = self.__class__._mean_average_precision_multi_process(queries)
-        self.__class__._CURRENT_INSTANCE = None
-        return result
-
-    @classmethod
-    def _mean_average_precision_single_process(cls, queries: Iterable[QueryBase]) -> float:
-        average_precisions = []
-        for query in queries:
-            precision = cls._CURRENT_INSTANCE._average_precision_worker(query)
-            if precision is not None:
-                average_precisions.append(precision)
-        if not average_precisions:
-            raise KeyError('None of the queries has any judgements')
-        result = mean(average_precisions)
-        return result
-
-    @classmethod
-    def _mean_average_precision_multi_process(cls, queries: Iterable[QueryBase]) -> float:
-        average_precisions = []
-        with get_context('fork').Pool(cls._CURRENT_INSTANCE.num_workers) as pool:
-            for precision in pool.imap(cls._CURRENT_INSTANCE._average_precision_worker, queries):
-                if precision is not None:
-                    average_precisions.append(precision)
-        if not average_precisions:
-            raise KeyError('None of the queries has any judgements')
-        result = mean(average_precisions)
-        return result
-
-    @classmethod
-    def _average_precision_worker(cls, query: QueryBase) -> Optional[float]:
-        results = cls._CURRENT_INSTANCE.system.search(query)
-        precision = cls._CURRENT_INSTANCE._average_precision(query, results)
-        return precision
 
     @abc.abstractmethod
     def _get_minimum_mean_average_precision(self) -> float:
@@ -167,7 +87,7 @@ class EvaluationBase(abc.ABC):
         """
         pass
 
-    def evaluate(self, queries: Iterable[QueryBase], submit_result: bool = True) -> None:
+    def evaluate(self, queries: OrderedDict, submit_result: bool = True) -> None:
         """Evaluates the information retrieval system and provides feedback.
 
         Parameters
@@ -180,7 +100,7 @@ class EvaluationBase(abc.ABC):
 
         """
         time_before = datetime.now()
-        result = self.mean_average_precision(queries)
+        result = mean_average_precision(self.system, queries, self.judgements, self.k, self.num_workers) 
         time_after = datetime.now()
         map_score = result * 100.0
 
