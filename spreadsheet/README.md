@@ -5,7 +5,16 @@ to reproduce the leaderboard spreadsheets in Google Sheets.
 
 ## Links
 
-### Spring 2022
+### Spring 2023
+
+[Live public Cranfield leaderboard Spring 2023][leaderboard-cranfield-2023] | [Edit leaderboard][leaderboard-cranfield-2023-sheets]
+
+[leaderboard-cranfield-2023]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSXuOTclZfHWYxh2rf7hfMeLvcCuE5UsJu7BzteyunhPw3z4YNZjCovjmMB6SnDdgjGyenOgdochaEq/pubhtml
+[leaderboard-cranfield-2023-sheets]: https://docs.google.com/spreadsheets/d/1kDRTDUCPTOi0crgIO_WqctuvCazTmZ4V_EoVSvb6VQI/edit?usp=sharing
+
+### Archive
+
+#### Spring 2022
 
 [Live public Cranfield leaderboard Spring 2022][leaderboard-cranfield-2022] | [Edit leaderboard][leaderboard-cranfield-2022-sheets]
 
@@ -21,8 +30,6 @@ to reproduce the leaderboard spreadsheets in Google Sheets.
 
 [leaderboard-arqmath-2022]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSF1I2TKhKqYc7kTxRfza__PTTQjrAtvezuQFm9I_lL3WsPSETE5yuxe8JyiN-7NvFjv4nZ8eCQ9aHg/pubhtml
 [leaderboard-arqmath-2022-sheets]: https://docs.google.com/spreadsheets/d/1akHS9OSdN0_gu5xThJBSVAMKvUqAWg6sjO6vM6KCxfw/edit?usp=sharing
-
-### Archive
 
 #### Spring 2021
 
