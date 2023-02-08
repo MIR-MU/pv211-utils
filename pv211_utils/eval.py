@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Set, Optional, OrderedDict
 import os
 
-from .entities import QueryBase, JudgementBase
+from .entities import JudgementBase
 from .leaderboard import LeaderboardBase
 from .irsystem import IRSystemBase
 from .evaluation_metrics import mean_average_precision
@@ -67,14 +67,10 @@ class EvaluationBase(abc.ABC):
 
         self.system = system
         self.judgements = judgements
-        self.num_relevant = num_relevant
         self.leaderboard = leaderboard
         self.author_name = author_name
         self.num_workers = num_workers
         self.k = k
-
-    def _get_num_relevant(self, query: QueryBase) -> int:
-        return self.num_relevant[query] if query in self.num_relevant else 0
 
     @abc.abstractmethod
     def _get_minimum_mean_average_precision(self) -> float:
