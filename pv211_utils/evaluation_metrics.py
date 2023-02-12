@@ -44,7 +44,10 @@ def _calc_recall(system: IRSystemBase, judgements: Set, k: int,
                 num_relevant_topk += 1
         current_rank += 1
 
-    recall = num_relevant_topk / num_relevant
+    if num_relevant > 0:
+        recall = num_relevant_topk / num_relevant
+    else:
+        recall = 1
 
     mr_score_lock.acquire()
     mr_score.value += recall
@@ -133,7 +136,7 @@ def _calc_bpref(system: IRSystemBase, judgements: Set, k: int,
         bpref += 1 - min(rank - i, num_relevant) / num_relevant
 
     bpref_score_lock.acquire()
-    bpref_score.value += bpref / num_relevant
+    bpref_score.value += (bpref / num_relevant) if num_relevant > 0 else 0
     bpref_score_lock.release()
 
 
