@@ -1,7 +1,6 @@
 from typing import Set, Optional
 
 from pv211_utils.eval import EvaluationBase
-from .leaderboard import BeirLeaderboard
 from .entities import BeirJudgementBase
 from .irsystem import BeirIRSystemBase
 
@@ -27,8 +26,7 @@ class BeirEvaluation(EvaluationBase):
 
     """
     def __init__(self, system: BeirIRSystemBase, judgements: Set[BeirJudgementBase],
-                 leaderboard: Optional[BeirLeaderboard] = None,
-                 author_name: Optional[str] = None, num_workers: Optional[int] = 1):
+                 leaderboard=None, author_name: Optional[str] = None, num_workers: Optional[int] = 1):
         super().__init__(system, judgements, leaderboard, author_name, num_workers)
 
     def _get_minimum_mean_average_precision(self) -> float:
