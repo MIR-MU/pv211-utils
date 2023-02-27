@@ -13,7 +13,8 @@ setup(
     author_email="stefanik.m@fi.muni.cz",
     url="https://gitlab.fi.muni.cz",
     license="MIT",
-    packages=["pv211_utils", "pv211_utils.trec", "pv211_utils.cranfield", "pv211_utils.arqmath", "pv211_utils.systems"],
+    packages=["pv211_utils", "pv211_utils.trec", "pv211_utils.cranfield", "pv211_utils.arqmath",
+              "pv211_utils.beir", "pv211_utils.systems"],
     package_dir={"pv211_utils": "pv211_utils"},
     include_package_data=True,
     zip_safe=True,
@@ -21,16 +22,19 @@ setup(
         "setuptools",
     ],
     install_requires=[
+        "beir",
         "gspread",
         "oauth2client",
         "google",
         "tqdm",
         "ijson",
         "ipython",
+        "ipywidgets",
         "gensim",
         "sentence_transformers",
         "sympy",
         "torch"
+        "scikit-learn"
     ],
     extras_require={
         "notebooks": [
