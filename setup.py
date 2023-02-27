@@ -29,7 +29,8 @@ setup(
         "ipython",
         "gensim",
         "sentence_transformers",
-        "torch"
+        "torch",
+        "scikit-learn"
     ],
     extras_require={
         "notebooks": [
