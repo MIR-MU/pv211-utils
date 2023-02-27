@@ -32,7 +32,8 @@ setup(
         "ipywidgets",
         "gensim",
         "sentence_transformers",
-        "torch",
+        "sympy",
+        "torch"
         "scikit-learn"
     ],
     extras_require={
