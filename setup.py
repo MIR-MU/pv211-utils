@@ -33,7 +33,7 @@ setup(
         "gensim",
         "sentence_transformers",
         "sympy",
-        "torch"
+        "torch",
         "scikit-learn"
     ],
     extras_require={

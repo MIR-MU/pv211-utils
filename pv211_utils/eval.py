@@ -39,8 +39,8 @@ class EvaluationBase(abc.ABC):
         The information retrieval system.
     judgements : JudgementsBase
         Pairs of queries and relevant documents.
-    num_relevant : dict of (QueryBase, int)
-        The number of relevant documents for queries.
+    k : int
+        Parameter defining evaluation depth.
     leaderboard : LeaderboardBase or None, optional
         A leaderboard to which we may later submit evaluation results.
         If None, then evaluation results will not be submitted. Default is None.
@@ -50,15 +50,13 @@ class EvaluationBase(abc.ABC):
     num_workers : int or None, optional
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is None.
-    k : int, optional
-        Parameter defining evaluation depth. Default is 10.
 
     """
     _CURRENT_INSTANCE: Optional['EvaluationBase'] = None  # used for sharing state between processes
 
-    def __init__(self, system: IRSystemBase, judgements: Set[JudgementBase],
+    def __init__(self, system: IRSystemBase, judgements: Set[JudgementBase], k: int,
                  leaderboard: Optional[LeaderboardBase] = None, author_name: Optional[str] = None,
-                 num_workers: Optional[int] = 1, k: Optional[int] = 10):
+                 num_workers: Optional[int] = 1):
         num_relevant = {}
         for query, _ in judgements:
             if query not in num_relevant:
