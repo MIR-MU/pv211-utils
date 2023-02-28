@@ -73,7 +73,7 @@ project | new .gs file}
 ## Trigger
 
 Since API calls and their changes in the spreadsheet do not cause triggers to
-run [[1][1]], we use time trigger to call the script every minute.
+run [[1][1]], we use time trigger to call the script every five minutes.
 
 #### How to set up
 
