@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..preprocessing.preprocessing import AbsDocPreprocessing
+from ..preprocessing.preprocessing import DocPreprocessingBase
 
 
 class BoWSystem(IRSystemBase):
@@ -17,7 +17,7 @@ class BoWSystem(IRSystemBase):
     ----------
     documents: OrderedDict
         Input documents
-    preprocessing: AbsDocPreprocessing
+    preprocessing: DocPreprocessingBase
         Type of preprocessing
 
     Attributes
@@ -31,7 +31,7 @@ class BoWSystem(IRSystemBase):
 
     """
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: AbsDocPreprocessing):
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessingBase):
         self.preprocessing = preprocessing
 
         document_bodies = (self.preprocessing(document.body) for document in documents.values())

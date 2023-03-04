@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..preprocessing.preprocessing import AbsDocPreprocessing
+from ..preprocessing.preprocessing import DocPreprocessingBase
 
 
 class TfidfSystem(IRSystemBase):
@@ -29,9 +29,9 @@ class TfidfSystem(IRSystemBase):
     """
     DICTIONARY: Dictionary
     TFIDF_MODEL: TfidfModel
-    preprocessing: AbsDocPreprocessing
+    preprocessing: DocPreprocessingBase
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: AbsDocPreprocessing):
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessingBase):
         self.__class__.preprocessing = preprocessing
 
         with get_context('fork').Pool(None) as pool:

@@ -5,23 +5,23 @@ from typing import List, Optional, Callable
 WordNormFunc = Optional[Callable]
 
 
-class AbsDocPreprocessing(ABC):
+class DocPreprocessingBase(ABC):
     @abstractmethod
     def __call__(self, doc: str) -> List[str]:
         raise NotImplementedError()
 
 
-class NoneDocPreprocessing(AbsDocPreprocessing):
+class NoneDocPreprocessing(DocPreprocessingBase):
     def __call__(self, doc: str) -> List[str]:
         return doc.split(" ")
 
 
-class LowerDocPreprocessing(AbsDocPreprocessing):
+class LowerDocPreprocessing(DocPreprocessingBase):
     def __call__(self, doc: str) -> List[str]:
         return doc.lower().split(" ")
 
 
-class SimpleDocPreprocessing(AbsDocPreprocessing):
+class SimpleDocPreprocessing(DocPreprocessingBase):
     """Simple document preprocessing
 
     Attributes
@@ -56,7 +56,7 @@ class SimpleDocPreprocessing(AbsDocPreprocessing):
         return simple_preprocess(doc, self.deacc, self.min_len, self.max_len)
 
 
-class DocPreprocessing(AbsDocPreprocessing):
+class DocPreprocessing(DocPreprocessingBase):
     """Document preprocessing
 
     Attributes
