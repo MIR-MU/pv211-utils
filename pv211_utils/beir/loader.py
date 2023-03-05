@@ -22,18 +22,17 @@ HAVE_DEV = {"msmarco", "msmarco-v2", "nfcorpus", "hotpotqa", "fiqa", "quora", "d
 
 DEFAULT_DOWNLOAD_LOCATION = "datasets/cqadupstack"
 
-"""A Generic BEIR dataset downloader.
-
-    Parameters
-    ----------
-    dataset_name : str
-        A string with the name of a BEIR dataset - should be one of the names from the lists above.
-    file_location : str
-        Location of the folder where data is to be stored.
-"""
-
 
 def download_beir_dataset(dataset_name: str, file_location: str) -> str:
+    """A Generic BEIR dataset downloader.
+
+        Parameters
+        ----------
+        dataset_name : str
+            A string with the name of a BEIR dataset - should be one of the names from the lists above.
+        file_location : str
+            Location of the folder where data is to be stored.
+    """
     # cqadupstack is a specific case where the dataset is split into multiple subsets with specific topic
     if dataset_name in CQADUPSTACK:
         url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/cqadupstack.zip"
@@ -142,14 +141,9 @@ def combine_beir_datasets(raw_data1, raw_data2):
         return raw_data2
     if raw_data2 is None or list(raw_data2)[0] is None:
         return raw_data1
-    raw_data1 = list(raw_data1)
-    raw_data2 = list(raw_data2)
-    corpus1 = raw_data1[0]
-    corpus2 = raw_data2[0]
-    queries1 = raw_data1[1]
-    queries2 = raw_data2[1]
-    qrels1 = raw_data1[2]
-    qrels2 = raw_data2[2]
+    raw_data1, raw_data2 = list(raw_data1), list(raw_data2)
+    corpus1, queries1, qrels1 = raw_data1
+    corpus2, queries2, qrels2 = raw_data2
     # Combining dictionaries into one and adding the hash of the values to resolve collisions
     # Corpus
     corpus_collisions = {}

@@ -320,6 +320,15 @@ def mean_bpref(system: IRSystemBase, queries: OrderedDict,
     """Evaluate system for given queries and judgements with bpref metric.
     Where first k documents will be used in evaluation.
 
+    Notes
+    -----
+    Since bpref differentiates between unjudged and irrelevant documents,
+    this class only computes bpref for datasets with complete relevant judgements
+    that cover exhaustively all pairs of queries and documents. At the time of writing,
+    this is only true of the Cranfield dataset. This can only be remediated by changing
+    the JudgementBase class to differentiate between unjudged and irrelevant
+    documents.
+
     Args:
     ----
     system : IRSystemBase

@@ -237,7 +237,7 @@ def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
     return _break_ties(ratings, num_documents, documents_ranks, weights)
 
 
-class rbc():
+class Rbc():
     """Class for rbc ensembling algorithm, where (by default) a linear regression model is trained to predict
     relevance of documents for given queries. This model is then used (in search method) to estimate documents'
     relevance for new queries.

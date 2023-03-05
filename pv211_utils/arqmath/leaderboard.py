@@ -7,10 +7,10 @@ from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def get_competition_start(self) -> datetime.date:
-        return datetime.date(2022, 3, 22)
+        return datetime.date(2023, 3, 22)
 
     def get_competition_end(self) -> datetime.date:
-        return datetime.date(2022, 4, 25)
+        return datetime.date(2023, 4, 30)
 
     def _get_key_path(self) -> str:
         key_path = pkg_resources.resource_filename('pv211_utils', 'data/pv211-leaderboard-b8e892e3e8bb.json')

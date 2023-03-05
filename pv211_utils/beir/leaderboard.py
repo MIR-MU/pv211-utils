@@ -7,10 +7,10 @@ from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def get_competition_start(self) -> datetime.date:
-        return datetime.date(2022, 8, 18)
+        return datetime.date(2023, 3, 22)
 
     def get_competition_end(self) -> datetime.date:
-        return datetime.date(2022, 12, 30)
+        return datetime.date(2023, 4, 30)
 
     def _get_key_path(self) -> str:
         key_path = pkg_resources.resource_filename('pv211_utils', 'data/pv211-leaderboard-b8e892e3e8bb.json')

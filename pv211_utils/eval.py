@@ -29,8 +29,8 @@ class EvaluationBase(abc.ABC):
     num_workers : int or None, optional
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is 1.
-    k : int, optional
-        Parameter defining evaluation depth. Default is 10.
+    k : int
+        Parameter defining evaluation depth.
 
 
     Attributes

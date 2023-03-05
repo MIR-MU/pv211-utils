@@ -34,7 +34,12 @@ class BeirQueryBase(QueryBase):
 
 
 class RawBeirDataset:
-    """A generic BIER dataset with options
+    """A generic BEIR dataset with options.
+
+       RawBeirDataset stores the basic setup:
+        - Name of the dataset
+        - Subset(s) to use
+        - Alternative(s) to the subset(s) if they are not available
 
     Parameters
     ----------
@@ -55,7 +60,7 @@ class RawBeirDataset:
 
     """
     def __init__(self, name: str,
-                 train: bool = False, dev: bool = False, test: bool = False,
+                 train: bool = False, dev: bool = False, test: bool = True,
                  train_alternative: Optional[str] = None, dev_alternative: Optional[str] = None,
                  test_alternative: Optional[str] = None):
         self.name = name
