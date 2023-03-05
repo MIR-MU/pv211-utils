@@ -168,12 +168,16 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
     map_score_lock = manager.Lock()
     map_score = manager.Value('f', 0.0)
 
-    worker_avg_precision = partial(_calc_average_precision, system,
-                                   _judgements_obj_to_id(judgements),
-                                   k, map_score_lock, map_score)
+    if num_processes == 1:
+        for query in list(queries.values()):
+            _calc_average_precision(system, _judgements_obj_to_id(judgements), k, map_score_lock, map_score, query)
+    else:
+        worker_avg_precision = partial(_calc_average_precision, system,
+                                       _judgements_obj_to_id(judgements),
+                                       k, map_score_lock, map_score)
 
-    process_pool = Pool(processes=num_processes)
-    process_pool.map(worker_avg_precision, list(queries.values()))
+        process_pool = Pool(processes=num_processes)
+        process_pool.map(worker_avg_precision, list(queries.values()))
 
     map_score.value /= len(queries)
 
@@ -207,12 +211,16 @@ def mean_precision(system: IRSystemBase, queries: OrderedDict,
     mp_score_lock = manager.Lock()
     mp_score = manager.Value('f', 0.0)
 
-    worker_precision = partial(_calc_precision, system,
-                               _judgements_obj_to_id(judgements),
-                               k, mp_score_lock, mp_score)
+    if num_processes == 1:
+        for query in list(queries.values()):
+            _calc_precision(system, _judgements_obj_to_id(judgements), k, mp_score_lock, mp_score, query)
+    else:
+        worker_precision = partial(_calc_precision, system,
+                                   _judgements_obj_to_id(judgements),
+                                   k, mp_score_lock, mp_score)
 
-    process_pool = Pool(processes=num_processes)
-    process_pool.map(worker_precision, list(queries.values()))
+        process_pool = Pool(processes=num_processes)
+        process_pool.map(worker_precision, list(queries.values()))
 
     mp_score.value /= len(queries)
 
@@ -246,12 +254,16 @@ def mean_recall(system: IRSystemBase, queries: OrderedDict,
     mr_score_lock = manager.Lock()
     mr_score = manager.Value('f', 0.0)
 
-    worker_recall = partial(_calc_recall, system,
-                            _judgements_obj_to_id(judgements),
-                            k, mr_score_lock, mr_score)
+    if num_processes == 1:
+        for query in list(queries.values()):
+            _calc_recall(system, _judgements_obj_to_id(judgements), k, mr_score_lock, mr_score, query)
+    else:
+        worker_recall = partial(_calc_recall, system,
+                                _judgements_obj_to_id(judgements),
+                                k, mr_score_lock, mr_score)
 
-    process_pool = Pool(processes=num_processes)
-    process_pool.map(worker_recall, list(queries.values()))
+        process_pool = Pool(processes=num_processes)
+        process_pool.map(worker_recall, list(queries.values()))
 
     mr_score.value /= len(queries)
 
@@ -287,12 +299,16 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
     ndcg_score_lock = manager.Lock()
     ndcg_score = manager.Value('f', 0.0)
 
-    worker_ndcg = partial(_calc_ndcg, system,
-                          _judgements_obj_to_id(judgements),
-                          k, ndcg_score_lock, ndcg_score)
+    if num_processes == 1:
+        for query in list(queries.values()):
+            _calc_ndcg(system, _judgements_obj_to_id(judgements), k, ndcg_score_lock, ndcg_score, query)
+    else:
+        worker_ndcg = partial(_calc_ndcg, system,
+                              _judgements_obj_to_id(judgements),
+                              k, ndcg_score_lock, ndcg_score)
 
-    process_pool = Pool(processes=num_processes)
-    process_pool.map(worker_ndcg, list(queries.values()))
+        process_pool = Pool(processes=num_processes)
+        process_pool.map(worker_ndcg, list(queries.values()))
 
     ndcg_score.value /= len(queries)
 
@@ -326,12 +342,16 @@ def mean_bpref(system: IRSystemBase, queries: OrderedDict,
     bpref_score_lock = manager.Lock()
     bpref_score = manager.Value('f', 0.0)
 
-    worker_ndcg = partial(_calc_bpref, system,
-                          _judgements_obj_to_id(judgements),
-                          k, bpref_score_lock, bpref_score)
+    if num_processes == 1:
+        for query in list(queries.values()):
+            _calc_bpref(system, _judgements_obj_to_id(judgements), k, bpref_score_lock, bpref_score, query)
+    else:
+        worker_ndcg = partial(_calc_bpref, system,
+                              _judgements_obj_to_id(judgements),
+                              k, bpref_score_lock, bpref_score)
 
-    process_pool = Pool(processes=num_processes)
-    process_pool.map(worker_ndcg, list(queries.values()))
+        process_pool = Pool(processes=num_processes)
+        process_pool.map(worker_ndcg, list(queries.values()))
 
     bpref_score.value /= len(queries)
 
