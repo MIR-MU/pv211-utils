@@ -14,7 +14,7 @@ setup(
     url="https://gitlab.fi.muni.cz",
     license="MIT",
     packages=["pv211_utils", "pv211_utils.trec", "pv211_utils.cranfield", "pv211_utils.arqmath",
-              "pv211_utils.beir", "pv211_utils.systems"],
+              "pv211_utils.beir", "pv211_utils.systems", "pv211_utils.preprocessing"],
     package_dir={"pv211_utils": "pv211_utils"},
     include_package_data=True,
     zip_safe=True,
