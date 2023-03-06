@@ -193,16 +193,18 @@ def combine_beir_datasets(raw_data1, raw_data2):
     for item in qrels2.items():
         key = item[0]
         values_dict = item[1]
-        if key in query_collisions.keys():
-            key = query_collisions[key]
+        new_values_dict = {}
+        
+        key = query_collisions[key]
+        colision_resolving = []
+
         for value_key in values_dict.keys():
-            colision_resolving = []
-            if value_key in corpus_collisions.keys():
-                new_key = corpus_collisions[value_key]
-                colision_resolving.append((new_key, value_key))
+            new_key = corpus_collisions[value_key]
+            colision_resolving.append((new_key, value_key))
         for new_key, old_key in colision_resolving:
-            values_dict[new_key] = values_dict.pop(old_key)
-        combined_qrels[key] = values_dict
+            new_values_dict[new_key] = values_dict[old_key]
+
+        combined_qrels[key] = new_values_dict
 
     return combined_corpus, combined_queries, combined_qrels
 

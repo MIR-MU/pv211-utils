@@ -12,7 +12,7 @@ NUM_QUERIES = 699
 NUM_DOCUMENTS = 22998
 NUM_JUDGEMENTS = 1696
 
-NUM_COMBINED_DOCUMENTS = 457159
+NUM_COMBINED_DOCUMENTS = 457188
 NUM_COMBINED_TEST_QUERIES = 11831
 NUM_COMBINED_TRAIN_QUERIES = 657
 NUM_COMBINED_DEV_QUERIES = 657
@@ -28,13 +28,13 @@ class TestLoadQueries(unittest.TestCase):
         desired_datasets = RawBeirDatasets([android], download_location)
         _, _, raw_test_data = load_beir_datasets(desired_datasets)
         self.queries = load_queries(raw_test_data[1])
-        self.query = self.queries["11546"]
+        self.query = self.queries["1"]
 
     def test_number_of_queries(self):
         self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_body(self):
-        self.assertEqual('Android chroot ubuntu - is it possible to get ubuntu to recognise usb devices',
+        self.assertEqual('problem in installing apps in karbonn A5i',
                          self.query.body)
 
 
@@ -45,14 +45,14 @@ class TestLoadDocuments(unittest.TestCase):
         desired_datasets = RawBeirDatasets([android], download_location)
         _, _, raw_test_data = load_beir_datasets(desired_datasets)
         self.documents = load_documents(raw_test_data[0])
-        self.document = self.documents['51829']
+        self.document = self.documents['1']
 
     def test_number_of_documents(self):
         self.assertEqual(NUM_DOCUMENTS, len(self.documents))
 
     def test_document_body(self):
-        self.assertTrue(self.document.body.startswith('I want to send files to android tablet with a application from'))
-        self.assertTrue(self.document.body.endswith(' drive? my application that sent files written via Delphi.'))
+        self.assertTrue(self.document.body.startswith('I am playing around with my brand new Motorola Defy and trying to find a way to manage my contacts.'))
+        self.assertTrue(self.document.body.endswith("Does anyone have a solution for me ?"))
 
 
 class TestLoadJudgements(unittest.TestCase):
@@ -65,9 +65,9 @@ class TestLoadJudgements(unittest.TestCase):
         documents = load_documents(raw_test_data[0])
 
         self.judgements = load_judgements(queries, documents, raw_test_data[2])
-        self.query = queries["66595"]
-        self.relevant_document = documents['81292']
-        self.irrelevant_document = documents['51829']
+        self.query = queries["2"]
+        self.relevant_document = documents['27']
+        self.irrelevant_document = documents['1']
 
     def test_number_of_judgements(self):
         self.assertEqual(NUM_JUDGEMENTS, len(self.judgements))
@@ -128,14 +128,14 @@ class TestCombineAndSplit(unittest.TestCase):
         self.dev_queries = load_queries(raw_queries_dev)
         self.dev_judgements = load_judgements(self.dev_queries, self.documents, raw_qrels_dev)
 
-        self.document = self.documents['51829']
+        self.document = self.documents['1']
 
     def test_number_of_documents(self):
         self.assertEqual(NUM_COMBINED_DOCUMENTS, len(self.documents))
 
     def test_document_body(self):
-        self.assertTrue(self.document.body.startswith('I want to send files to android tablet with a application from'))
-        self.assertTrue(self.document.body.endswith(' drive? my application that sent files written via Delphi.'))
+        self.assertTrue(self.document.body.startswith('I am playing around with my brand new Motorola Defy and trying to find a way to manage my contacts.'))
+        self.assertTrue(self.document.body.endswith("Does anyone have a solution for me ?"))
 
     def test_split_size(self):
         self.assertTrue(NUM_COMBINED_TEST_QUERIES, len(self.test_queries))
