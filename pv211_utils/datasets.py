@@ -19,10 +19,13 @@ from .cranfield.loader import CranfieldJudgements
 from .trec.loader import TrecJudgements
 from .trec import loader as trec_loader
 from .beir import loader as beir_loader
-from .beir.loader import BeirJudgementsBase
-from .query_ordering import ARQMATH_QUERIES, CRANFIELD_QUERIES
+from .query_ordering import ARQMATH_QUERIES, CRANFIELD_QUERIES, CQADUPSTACK_QUERIES
+from .beir.entities import RawBeirDataset, RawBeirDatasets
+from pv211_utils.beir.loader import load_beir_datasets
+from .beir.entities import BeirQueryBase, BeirDocumentBase, BeirJudgementsBase
 
 from beir.datasets.data_loader import GenericDataLoader
+from sklearn.model_selection import train_test_split
 from collections import OrderedDict
 from pathlib import Path
 from functools import reduce
@@ -722,3 +725,155 @@ class BeirDataset():
         return beir_loader.load_documents(
             GenericDataLoader(data_folder=self._download_path).load_corpus()
         )
+
+
+class CQADupStackDataset():
+    """Class to provide interface to load and split CQADupStack datasets.
+
+    """
+
+    def __init__(self, download_location: str = "datasets", validation_split_size: float = 0.2) -> None:
+        """Check if arguments have legal values and construct attributes
+        for BeirDataset object.
+
+        Args:
+        ----
+        download_location : str, optional
+            An address where all the datasets will be downloaded.
+            The default is "datasets".
+        validation_split_size : float, optional
+            Proportion of the train dataset to include in the validation
+            split. Defaults to 0.2.
+        """
+        _check_split_size_interval(validation_split_size)
+        self._valiadtion_split_size = validation_split_size
+
+        # Load the data.
+        android = RawBeirDataset("android")
+        english = RawBeirDataset("english")
+        gaming = RawBeirDataset("gaming")
+        gis = RawBeirDataset("gis")
+        mathematica = RawBeirDataset("mathematica")
+        physics = RawBeirDataset("physics")
+        programmers = RawBeirDataset("programmers")
+        stats = RawBeirDataset("stats")
+        tex = RawBeirDataset("tex")
+        unix = RawBeirDataset("unix")
+        webmasters = RawBeirDataset("webmasters")
+        wordpress = RawBeirDataset("wordpress")
+
+        datasets = RawBeirDatasets(datasets=[android, english, gaming, gis,
+                                             mathematica, physics, programmers,
+                                             stats, tex, unix, webmasters, wordpress],
+                                   download_location=download_location)
+        _, _, self.raw_data = load_beir_datasets(datasets)
+
+        query_ordering = CQADUPSTACK_QUERIES
+
+        train_queries, self.test_queries = train_test_split(query_ordering, test_size=300, shuffle=False)
+        self.train_queries, self.validation_queries = train_test_split(train_queries,
+                                                                       test_size=validation_split_size,
+                                                                       shuffle=False)
+
+    def load_test_queries(self, query_class=BeirQueryBase) -> OrderedDict:
+        """Load the test split of queries.
+
+        Args:
+        ----
+        query_class : BeirQueryBase, optional
+            A class of the loaded queries. The default is BeirQueryBase.
+
+        Returns:
+        -------
+        OrderedDict
+            Dictionary of test queries in (query_id: Query) form.
+        """
+        raw_queries = dict()
+
+        for query_id in self.test_queries:
+            raw_queries[str(query_id)] = self.raw_data[1][str(query_id)]
+
+        return beir_loader.load_queries(raw_queries, query_class=query_class)
+
+    def load_train_queries(self, query_class=BeirQueryBase) -> OrderedDict:
+        """Load the train split of queries.
+
+        Args:
+        ----
+        query_class : BeirQueryBase, optional
+            A class of the loaded queries. The default is BeirQueryBase.
+
+        Returns:
+        -------
+        OrderedDict
+            Dictionary of train queries in (query_id: Query) form.
+        """
+        raw_queries = dict()
+
+        for query_id in self.train_queries:
+            raw_queries[str(query_id)] = self.raw_data[1][str(query_id)]
+
+        return beir_loader.load_queries(raw_queries, query_class=query_class)
+
+    def load_validation_queries(self, query_class=BeirQueryBase) -> OrderedDict:
+        """Load the train split of queries.
+
+        Args:
+        ----
+        query_class : BeirQueryBase, optional
+            A class of the loaded queries. The default is BeirQueryBase.
+
+        Returns:
+        -------
+        OrderedDict
+            Dictionary of train queries in (query_id: Query) form.
+        """
+        raw_queries = dict()
+
+        for query_id in self.validation_queries:
+            raw_queries[str(query_id)] = self.raw_data[1][str(query_id)]
+
+        return beir_loader.load_queries(raw_queries, query_class=query_class)
+
+    def load_test_judgements(self) -> BeirJudgementsBase:
+        """Load judgements for test queries.
+
+        Returns:
+        -------
+        BeirJudgementsBase
+            Set of (Query, Answer) pairs, where Anwser is judged
+            as relevant to the Query.
+        """
+        return beir_loader.load_judgements(self.load_test_queries(), self.load_documents(), self.raw_data[2])
+
+    def load_train_judgements(self) -> BeirJudgementsBase:
+        """Load judgements for train queries.
+
+        Returns:
+        -------
+        BeirJudgementsBase
+            Set of (Query, Answer) pairs, where Anwser is judged
+            as relevant to the Query.
+        """
+        return beir_loader.load_judgements(self.load_train_queries(), self.load_documents(), self.raw_data[2])
+
+    def load_validation_judgements(self) -> BeirJudgementsBase:
+        """Load judgements for validation queries.
+
+        Returns:
+        -------
+        BeirJudgementsBase
+            Set of (Query, Answer) pairs, where Anwser is judged
+            as relevant to the Query.
+        """
+        return beir_loader.load_judgements(self.load_validation_queries(), self.load_documents(), self.raw_data[2])
+
+    def load_documents(self, document_class=BeirDocumentBase) -> OrderedDict:
+        """Load documents.
+
+        Returns:
+        -------
+        OrderedDict
+            Dictionary of (document_id: Document) form.
+        """
+        return beir_loader.load_documents(self.raw_data[0], document_class=document_class)

@@ -137,10 +137,14 @@ def load_beir_dev_set(dataset_name: str, data_path: str, alternative: Optional[s
 
 
 def combine_beir_datasets(raw_data1, raw_data2):
+    """
     if raw_data1 is None or list(raw_data1)[0] is None:
         return raw_data2
     if raw_data2 is None or list(raw_data2)[0] is None:
         return raw_data1
+    """
+    if raw_data1 is None:
+        raw_data1 = [{}, {}, {}]
     raw_data1, raw_data2 = list(raw_data1), list(raw_data2)
     corpus1, queries1, qrels1 = raw_data1
     corpus2, queries2, qrels2 = raw_data2
@@ -148,23 +152,40 @@ def combine_beir_datasets(raw_data1, raw_data2):
     # Corpus
     corpus_collisions = {}
     combined_corpus = corpus1
-    for item in corpus2.items():
-        key = item[0]
+    if combined_corpus:
+        last_key = max(map(lambda x: int(x), list(combined_corpus.keys())))
+    else:
+        last_key = 0
+
+    for i, item in enumerate(corpus2.items()):
+        key = str(i + last_key)
+        """
         if key in corpus1.keys():
             hashed = str(abs(hash(item[1]["text"])))
             corpus_collisions[key] = hashed
             key = hashed
+        """
+        corpus_collisions[item[0]] = key
         combined_corpus[key] = item[1]
 
     # Queries
     query_collisions = {}
     combined_queries = queries1
-    for item in queries2.items():
-        key = item[0]
+
+    if combined_queries:
+        last_key = max(map(lambda x: int(x), list(combined_queries.keys())))
+    else:
+        last_key = 0
+
+    for i, item in enumerate(queries2.items()):
+        key = str(i + last_key)
+        """
         if key in queries1.keys():
             hashed = str(abs(hash(item[1])))
             query_collisions[key] = hashed
             key = hashed
+        """
+        query_collisions[item[0]] = key
         combined_queries[key] = item[1]
 
     # Judgements
