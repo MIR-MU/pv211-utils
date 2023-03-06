@@ -51,7 +51,8 @@ class TestLoadDocuments(unittest.TestCase):
         self.assertEqual(NUM_DOCUMENTS, len(self.documents))
 
     def test_document_body(self):
-        self.assertTrue(self.document.body.startswith('I am playing around with my brand new Motorola Defy and trying to find a way to manage my contacts.'))
+        self.assertTrue(self.document.body.startswith('I am playing around with my brand new Motorola Defy\
+                                                       and trying to find a way to manage my contacts.'))
         self.assertTrue(self.document.body.endswith("Does anyone have a solution for me ?"))
 
 
@@ -134,7 +135,8 @@ class TestCombineAndSplit(unittest.TestCase):
         self.assertEqual(NUM_COMBINED_DOCUMENTS, len(self.documents))
 
     def test_document_body(self):
-        self.assertTrue(self.document.body.startswith('I am playing around with my brand new Motorola Defy and trying to find a way to manage my contacts.'))
+        self.assertTrue(self.document.body.startswith('I am playing around with my brand new Motorola Defy\
+                                                      and trying to find a way to manage my contacts.'))
         self.assertTrue(self.document.body.endswith("Does anyone have a solution for me ?"))
 
     def test_split_size(self):

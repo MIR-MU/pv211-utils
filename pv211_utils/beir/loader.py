@@ -194,7 +194,7 @@ def combine_beir_datasets(raw_data1, raw_data2):
         key = item[0]
         values_dict = item[1]
         new_values_dict = {}
-        
+
         key = query_collisions[key]
         colision_resolving = []
 
