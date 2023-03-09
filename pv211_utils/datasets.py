@@ -468,7 +468,7 @@ class TrecDataset():
         _check_split_size_interval(validation_split_size)
         self.validation_split_size = validation_split_size
 
-    def _get_train_validation_queries(self, query_class: TrecQueryBase) -> list:
+    def _get_train_validation_queries(self, query_class) -> list:
         return (
             list(trec_loader.load_queries(subset="train", query_class=query_class).items())
             + list(trec_loader.load_queries(subset="validation", query_class=query_class).items())
