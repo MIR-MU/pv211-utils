@@ -33,6 +33,7 @@ from collections import OrderedDict
 from pathlib import Path
 from functools import reduce
 from enum import Enum
+from typing import Optional
 
 
 def _check_split_size_interval(split_size: float) -> None:
@@ -264,7 +265,7 @@ class ArqmathDataset():
                     self._load_judgements(year2))
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_answers(self, answer_class=ArqmathAnswerBase) -> OrderedDict:
+    def load_answers(self, answer_class=ArqmathAnswerBase, cache_download: Optional[str] = None) -> OrderedDict:
         """Load answers.
 
         Returns:
@@ -273,9 +274,10 @@ class ArqmathDataset():
             Dictionary of (document_id: Answer) form.
         """
         return arqmath_loader.load_answers(text_format=self.text_format,
-                                           answer_class=answer_class)
+                                           answer_class=answer_class,
+                                           cache_download=cache_download)
 
-    def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
+    def load_questions(self, question_class=ArqmathQuestionBase, **kwargs) -> OrderedDict:
         """Load questions.
 
         Returns:
@@ -286,7 +288,8 @@ class ArqmathDataset():
         return arqmath_loader.load_questions(
             text_format=self.text_format,
             answers=self.load_answers(),
-            question_class=question_class)
+            question_class=question_class,
+            **kwargs)
 
 
 class CranfieldDataset():
