@@ -1,3 +1,5 @@
+""" Constants defining query ordering used by the datasets module in loading/splitting of queries.
+"""
 ARQMATH_QUERIES = {
     2020: [12, 47, 48, 9, 24, 5, 21, 8, 98, 44, 83, 27, 80, 55,
            99, 18, 89, 49, 62, 56, 68, 54, 93, 42, 32, 86, 59,

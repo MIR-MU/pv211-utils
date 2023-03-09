@@ -285,6 +285,24 @@ def load_judgements(queries: OrderedDict, raw_documents: OrderedDict, raw_qrels)
 
 def create_false_judgements(documents: OrderedDict, queries: OrderedDict, judgements: BeirJudgementsBase,
                             num_of_false_judgements: int = 10000) -> BeirJudgementsBase:
+    """Create a set of negative samples.
+
+    Parameters
+    ----------
+    documents : OrderedDict
+        Documents used to create negative samples.
+    queries : OrderedDict
+        Queries used to crate negative samples.
+    judgements : BeirJudgementsBase
+        Set of positive judgements/samples.
+    num_of_false_judgements : int, optional
+        Number of negative samples to be generated, by default 10000.
+
+    Returns
+    -------
+    BeirJudgementsBase
+        Set of generated negative samples.
+    """
 
     false_judgements = set()
     seed = 42

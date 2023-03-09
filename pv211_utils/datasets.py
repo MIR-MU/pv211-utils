@@ -23,6 +23,9 @@ from .query_ordering import ARQMATH_QUERIES, CRANFIELD_QUERIES, CQADUPSTACK_QUER
 from .beir.entities import RawBeirDataset, RawBeirDatasets
 from pv211_utils.beir.loader import load_beir_datasets
 from .beir.entities import BeirQueryBase, BeirDocumentBase, BeirJudgementsBase
+from .arqmath.entities import ArqmathAnswerBase, ArqmathQueryBase, ArqmathQuestionBase
+from .cranfield.entities import CranfieldDocumentBase, CranfieldQueryBase
+from .trec.entities import TrecDocumentBase, TrecQueryBase
 
 from beir.datasets.data_loader import GenericDataLoader
 from sklearn.model_selection import train_test_split
@@ -115,10 +118,11 @@ class ArqmathDataset():
         self.text_format = text_format
         self.validatoin_split_size = validation_split_size
 
-    def _get_split(self, year: int, split: Split) -> OrderedDict:
+    def _get_split(self, year: int, split: Split, query_class) -> OrderedDict:
         queries = arqmath_loader.load_queries(
             text_format=self.text_format,
-            year=year)
+            year=year,
+            query_class=query_class)
         queries_partition = []
         validation_size = int(self.validatoin_split_size * len(queries))
 
@@ -173,7 +177,7 @@ class ArqmathDataset():
         _check_split_size_interval(new_proportion)
         self.validatoin_split_size = new_proportion
 
-    def load_test_queries(self) -> OrderedDict:
+    def load_test_queries(self, query_class=ArqmathQueryBase) -> OrderedDict:
         """Load the test split of queries,
         i.e. queries from the year specified as the attribute.
 
@@ -184,9 +188,10 @@ class ArqmathDataset():
         """
         return arqmath_loader.load_queries(
             text_format=self.text_format,
-            year=self.year)
+            year=self.year,
+            query_class=query_class)
 
-    def load_train_queries(self) -> OrderedDict:
+    def load_train_queries(self, query_class=ArqmathQueryBase) -> OrderedDict:
         """Load the train split of queries, i.e. all the queries from
         all the years beside the one specified as the atribute, excluding
         validation split.
@@ -199,10 +204,10 @@ class ArqmathDataset():
         year1, year2 = {2020, 2021, 2022} - {self.year}
 
         return OrderedDict(
-            self._get_split(year1, Split.train),
-            **self._get_split(year2, Split.train))
+            self._get_split(year1, Split.train, query_class),
+            **self._get_split(year2, Split.train, query_class))
 
-    def load_validation_queries(self) -> OrderedDict:
+    def load_validation_queries(self, query_class=ArqmathQueryBase) -> OrderedDict:
         """Load the validation split of queries, i.e. all the queries from
         all the years beside the one specifiet as the atribute, excluding
         train split.
@@ -215,8 +220,8 @@ class ArqmathDataset():
         year1, year2 = {2020, 2021, 2022} - {self.year}
 
         return OrderedDict(
-            self._get_split(year1, Split.validation),
-            **self._get_split(year2, Split.validation))
+            self._get_split(year1, Split.validation, query_class),
+            **self._get_split(year2, Split.validation, query_class))
 
     def load_test_judgements(self) -> ArqmathJudgements:
         """Load judgements for test queries.
@@ -259,7 +264,7 @@ class ArqmathDataset():
                     self._load_judgements(year2))
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_answers(self) -> OrderedDict:
+    def load_answers(self, answer_class=ArqmathAnswerBase) -> OrderedDict:
         """Load answers.
 
         Returns:
@@ -267,9 +272,10 @@ class ArqmathDataset():
         OrderedDict
             Dictionary of (document_id: Answer) form.
         """
-        return arqmath_loader.load_answers(text_format=self.text_format)
+        return arqmath_loader.load_answers(text_format=self.text_format,
+                                           answer_class=answer_class)
 
-    def load_questions(self) -> OrderedDict:
+    def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
         """Load questions.
 
         Returns:
@@ -279,7 +285,8 @@ class ArqmathDataset():
         """
         return arqmath_loader.load_questions(
             text_format=self.text_format,
-            answers=self.load_answers())
+            answers=self.load_answers(),
+            question_class=question_class)
 
 
 class CranfieldDataset():
@@ -312,8 +319,8 @@ class CranfieldDataset():
         self.test_split_size = test_split_size
         self.validation_split_size = validation_split_size
 
-    def _get_split(self, split: Split) -> OrderedDict:
-        queries = cranfield_loader.load_queries()
+    def _get_split(self, split: Split, queries_class) -> OrderedDict:
+        queries = cranfield_loader.load_queries(query_class=queries_class)
         queries_partition = []
         test_size = int(self.test_split_size * len(queries))
         validation_size = int(self.validation_split_size
@@ -359,7 +366,7 @@ class CranfieldDataset():
         """
         self.validation_split_size = new_size
 
-    def load_test_queries(self) -> OrderedDict:
+    def load_test_queries(self, query_class=CranfieldQueryBase) -> OrderedDict:
         """Load the test split of queries.
 
         Returns:
@@ -367,9 +374,9 @@ class CranfieldDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        return self._get_split(Split.test)
+        return self._get_split(Split.test, query_class)
 
-    def load_train_queries(self) -> OrderedDict:
+    def load_train_queries(self, query_class=CranfieldQueryBase) -> OrderedDict:
         """Load the train split of queries.
 
         Returns:
@@ -377,9 +384,9 @@ class CranfieldDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        return self._get_split(Split.train)
+        return self._get_split(Split.train, query_class)
 
-    def load_validation_queries(self) -> OrderedDict:
+    def load_validation_queries(self, query_class=CranfieldQueryBase) -> OrderedDict:
         """Load the validation split of queries.
 
         Returns:
@@ -387,7 +394,7 @@ class CranfieldDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        return self._get_split(Split.validation)
+        return self._get_split(Split.validation, query_class)
 
     def load_test_judgements(self) -> CranfieldJudgements:
         """Load judgements for test queries.
@@ -428,7 +435,7 @@ class CranfieldDataset():
                 for q, a in self._load_judgements()
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_documents(self) -> OrderedDict:
+    def load_documents(self, document_class=CranfieldDocumentBase) -> OrderedDict:
         """Load documents.
 
         Returns:
@@ -436,7 +443,7 @@ class CranfieldDataset():
         OrderedDict
             Dictionary of (document_id: Document) form.
         """
-        return cranfield_loader.load_documents()
+        return cranfield_loader.load_documents(document_class)
 
 
 class TrecDataset():
@@ -461,10 +468,10 @@ class TrecDataset():
         _check_split_size_interval(validation_split_size)
         self.validation_split_size = validation_split_size
 
-    def _get_train_validation_queries(self) -> list:
+    def _get_train_validation_queries(self, query_class: TrecQueryBase) -> list:
         return (
-            list(trec_loader.load_queries(subset="train").items())
-            + list(trec_loader.load_queries(subset="validation").items())
+            list(trec_loader.load_queries(subset="train", query_class=query_class).items())
+            + list(trec_loader.load_queries(subset="validation", query_class=query_class).items())
         )
 
     def set_validation_split_size(self, new_size: float) -> None:
@@ -478,7 +485,7 @@ class TrecDataset():
         _check_split_size_interval(new_size)
         self.validation_split_size = new_size
 
-    def load_test_queries(self) -> OrderedDict:
+    def load_test_queries(self, query_class=TrecQueryBase) -> OrderedDict:
         """Load the test split of queries.
 
         Returns:
@@ -486,9 +493,9 @@ class TrecDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        return trec_loader.load_queries(subset="test")
+        return trec_loader.load_queries(subset="test", query_class=query_class)
 
-    def load_train_queries(self) -> OrderedDict:
+    def load_train_queries(self, query_class=TrecQueryBase) -> OrderedDict:
         """Load the train split of queries.
 
         Returns:
@@ -496,13 +503,13 @@ class TrecDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        test_validate_queries = self._get_train_validation_queries()
+        test_validate_queries = self._get_train_validation_queries(query_class)
         return OrderedDict(
             test_validate_queries[:int(len(test_validate_queries)
                                        * (1 - self.validation_split_size))]
         )
 
-    def load_validation_queries(self) -> OrderedDict:
+    def load_validation_queries(self, query_class=TrecQueryBase) -> OrderedDict:
         """Load the validation split of queries.
 
         Returns:
@@ -510,7 +517,7 @@ class TrecDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        test_validate_queries = self._get_train_validation_queries()
+        test_validate_queries = self._get_train_validation_queries(query_class)
         return OrderedDict(
             test_validate_queries[int(len(test_validate_queries)
                                       * (1 - self.validation_split_size)):]
@@ -567,7 +574,7 @@ class TrecDataset():
                                                 subset="validation"))
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_documents(self) -> OrderedDict:
+    def load_documents(self, document_class=TrecDocumentBase) -> OrderedDict:
         """Load documents.
 
         Returns:
@@ -575,7 +582,7 @@ class TrecDataset():
         OrderedDict
             Dictionary of (document_id: Document) form.
         """
-        return trec_loader.load_documents()
+        return trec_loader.load_documents(document_class=document_class)
 
 
 class BeirDataset():

@@ -136,3 +136,10 @@ class TestEvaluationMetrics(unittest.TestCase):
 
         self.assertAlmostEqual(0, mbpref_1)
         self.assertEqual(0, mbpref_2)
+
+    def test_large_k(self):
+        map_1 = mean_average_precision(self.system_mediocore_1, QUERIES, JUDGEMENTS, 5, 2)
+        map_2 = mean_average_precision(self.system_mediocore_2, QUERIES, JUDGEMENTS, 8, 2)
+
+        self.assertAlmostEqual(0.75, map_1)
+        self.assertAlmostEqual(0.708333333, map_2)

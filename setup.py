@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name="pv211_utils",
-    version='1.1.6',
+    version='2.0.0',
     description="Utilities for PV211 project",
     long_description="",
     classifiers=[],
