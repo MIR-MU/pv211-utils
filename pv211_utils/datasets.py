@@ -33,7 +33,6 @@ from collections import OrderedDict
 from pathlib import Path
 from functools import reduce
 from enum import Enum
-from typing import Optional
 
 
 def _check_split_size_interval(split_size: float) -> None:
@@ -265,7 +264,7 @@ class ArqmathDataset():
                     self._load_judgements(year2))
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_answers(self, answer_class=ArqmathAnswerBase, cache_download: Optional[str] = None) -> OrderedDict:
+    def load_answers(self, answer_class=ArqmathAnswerBase) -> OrderedDict:
         """Load answers.
 
         Returns:
@@ -273,11 +272,13 @@ class ArqmathDataset():
         OrderedDict
             Dictionary of (document_id: Answer) form.
         """
-        return arqmath_loader.load_answers(text_format=self.text_format,
-                                           answer_class=answer_class,
-                                           cache_download=cache_download)
+        return arqmath_loader.load_answers(
+            text_format=self.text_format,
+            answer_class=answer_class,
+            cache_download=f'/var/tmp/pv211/arqmath2020_answers_{self.text_format}.json.gz'
+            )
 
-    def load_questions(self, question_class=ArqmathQuestionBase, **kwargs) -> OrderedDict:
+    def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
         """Load questions.
 
         Returns:
@@ -289,7 +290,7 @@ class ArqmathDataset():
             text_format=self.text_format,
             answers=self.load_answers(),
             question_class=question_class,
-            **kwargs)
+            cache_download=f'/var/tmp/pv211/arqmath2020_questions_{self.text_format}.json.gz')
 
 
 class CranfieldDataset():
@@ -585,7 +586,8 @@ class TrecDataset():
         OrderedDict
             Dictionary of (document_id: Document) form.
         """
-        return trec_loader.load_documents(document_class=document_class)
+        return trec_loader.load_documents(document_class=document_class,
+                                          cache_download='/var/tmp/pv211/trec_documents.json.gz')
 
 
 class BeirDataset():
