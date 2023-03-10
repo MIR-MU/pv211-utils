@@ -99,8 +99,8 @@ class ArqmathDataset():
         """Check if arguments have legal values and construct attributes
         for ArqmathDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         year : int
             Year from which the queries and judgements for testing
             are loaded.
@@ -148,8 +148,8 @@ class ArqmathDataset():
     def set_year(self, new_year: int) -> None:
         """Change the year attribute ArqmathDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         new_year : int
             A new value of the year attribute.
         """
@@ -158,8 +158,8 @@ class ArqmathDataset():
     def set_text_format(self, new_text_format: str) -> None:
         """Change the text_format attribute ArqmathDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         new_text_format : str
             A new value of the text_format attribute.
         """
@@ -169,8 +169,8 @@ class ArqmathDataset():
     def set_validation_split_size(self, new_proportion: float) -> None:
         """Change the validation_split_size attribute ArqmathDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         validation_split_size : float
             A new value of the validation_split_size attribute.
         """
@@ -181,7 +181,7 @@ class ArqmathDataset():
         """Load the test split of queries,
         i.e. queries from the year specified as the attribute.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -196,7 +196,7 @@ class ArqmathDataset():
         all the years beside the one specified as the atribute, excluding
         validation split.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -212,7 +212,7 @@ class ArqmathDataset():
         all the years beside the one specifiet as the atribute, excluding
         train split.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -226,7 +226,7 @@ class ArqmathDataset():
     def load_test_judgements(self) -> ArqmathJudgements:
         """Load judgements for test queries.
 
-        Returns:
+        Returns
         -------
         ArqmathJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -237,7 +237,7 @@ class ArqmathDataset():
     def load_train_judgements(self) -> ArqmathJudgements:
         """Load judgements for train queries.
 
-        Returns:
+        Returns
         -------
         ArqmathJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -252,7 +252,7 @@ class ArqmathDataset():
     def load_validation_judgements(self) -> ArqmathJudgements:
         """Load judgements for validation queries.
 
-        Returns:
+        Returns
         -------
         ArqmathJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -267,7 +267,7 @@ class ArqmathDataset():
     def load_answers(self, answer_class=ArqmathAnswerBase) -> OrderedDict:
         """Load answers.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of (document_id: Answer) form.
@@ -281,7 +281,7 @@ class ArqmathDataset():
     def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
         """Load questions.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of (document_id: Question) form.
@@ -309,8 +309,8 @@ class CranfieldDataset():
         """Check if arguments have legal values and construct attributes
         for CranfieldDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         test_split_size : float, optional
             Proportion of the dataset to include in the test split.
             Defaults to 1.
@@ -352,8 +352,8 @@ class CranfieldDataset():
     def set_test_split_size(self, new_size: float) -> None:
         """Change the test_split_size attribute CranfieldDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         validation_split_size : float
             A new value of the test_split_size attribute.
         """
@@ -363,8 +363,8 @@ class CranfieldDataset():
         """Change the validation_split_size attribute CranfieldDataset
         object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         validation_split_size : float
             A new value of the validation_split_size attribute.
         """
@@ -373,7 +373,7 @@ class CranfieldDataset():
     def load_test_queries(self, query_class=CranfieldQueryBase) -> OrderedDict:
         """Load the test split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -383,7 +383,7 @@ class CranfieldDataset():
     def load_train_queries(self, query_class=CranfieldQueryBase) -> OrderedDict:
         """Load the train split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -393,7 +393,7 @@ class CranfieldDataset():
     def load_validation_queries(self, query_class=CranfieldQueryBase) -> OrderedDict:
         """Load the validation split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -403,7 +403,7 @@ class CranfieldDataset():
     def load_test_judgements(self) -> CranfieldJudgements:
         """Load judgements for test queries.
 
-        Returns:
+        Returns
         -------
         CranfieldJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -416,7 +416,7 @@ class CranfieldDataset():
     def load_train_judgements(self) -> CranfieldJudgements:
         """Load judgements for train queries.
 
-        Returns:
+        Returns
         -------
         CranfieldJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -429,7 +429,7 @@ class CranfieldDataset():
     def load_validation_judgements(self) -> CranfieldJudgements:
         """Load judgements for validaiton queries.
 
-        Returns:
+        Returns
         -------
         CranfieldJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -442,7 +442,7 @@ class CranfieldDataset():
     def load_documents(self, document_class=CranfieldDocumentBase) -> OrderedDict:
         """Load documents.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of (document_id: Document) form.
@@ -463,8 +463,8 @@ class TrecDataset():
         """Check if arguments have legal values and construct attributes
         for TrecDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         validation_split_size : float, optional
             Proportion of the train dataset to include in the validation
             split. Defaults to 0.2.
@@ -481,8 +481,8 @@ class TrecDataset():
     def set_validation_split_size(self, new_size: float) -> None:
         """Change the validation_split_size attribute TrecDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         validation_split_size : float
             A new value of the validation_split_size attribute.
         """
@@ -492,7 +492,7 @@ class TrecDataset():
     def load_test_queries(self, query_class=TrecQueryBase) -> OrderedDict:
         """Load the test split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -502,7 +502,7 @@ class TrecDataset():
     def load_train_queries(self, query_class=TrecQueryBase) -> OrderedDict:
         """Load the train split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -516,7 +516,7 @@ class TrecDataset():
     def load_validation_queries(self, query_class=TrecQueryBase) -> OrderedDict:
         """Load the validation split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -530,7 +530,7 @@ class TrecDataset():
     def load_test_judgements(self) -> TrecJudgements:
         """Load judgements for test queries.
 
-        Returns:
+        Returns
         -------
         TrecJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -543,7 +543,7 @@ class TrecDataset():
     def load_train_judgements(self) -> TrecJudgements:
         """Load judgements for train queries.
 
-        Returns:
+        Returns
         -------
         TrecJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -562,7 +562,7 @@ class TrecDataset():
     def load_validation_judgements(self) -> TrecJudgements:
         """Load judgements for validation queries.
 
-        Returns:
+        Returns
         -------
         TrecJudgements
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -581,7 +581,7 @@ class TrecDataset():
     def load_documents(self, document_class=TrecDocumentBase) -> OrderedDict:
         """Load documents.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of (document_id: Document) form.
@@ -609,8 +609,8 @@ class BeirDataset():
         """Check if arguments have legal values and construct attributes
         for BeirDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         dataset_name : str
             Name of the dataset to be loaded.
         """
@@ -627,8 +627,8 @@ class BeirDataset():
     def set_dataset_name(self, new_dataset_name: str) -> None:
         """Choose a different dataset to be loaded.
 
-        Args:
-        ----
+        Arguments
+        ---------
         new_dataset_name : str
             Name of the new dataset to be loaded.
         """
@@ -645,7 +645,7 @@ class BeirDataset():
     def load_test_queries(self) -> OrderedDict:
         """Load the test split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -658,7 +658,7 @@ class BeirDataset():
     def load_train_queries(self) -> OrderedDict:
         """Load the train split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -671,7 +671,7 @@ class BeirDataset():
     def load_validation_queries(self) -> OrderedDict:
         """Load the validation split of queries.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -684,7 +684,7 @@ class BeirDataset():
     def load_test_judgements(self) -> BeirJudgementsBase:
         """Load judgements for test queries.
 
-        Returns:
+        Returns
         -------
         BeirJudgementsBase
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -699,7 +699,7 @@ class BeirDataset():
     def load_train_judgements(self) -> BeirJudgementsBase:
         """Load judgements for train queries.
 
-        Returns:
+        Returns
         -------
         BeirJudgementsBase
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -714,7 +714,7 @@ class BeirDataset():
     def load_validation_judgements(self) -> BeirJudgementsBase:
         """Load judgements for validation queries.
 
-        Returns:
+        Returns
         -------
         BeirJudgementsBase
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -729,7 +729,7 @@ class BeirDataset():
     def load_documents(self) -> OrderedDict:
         """Load documents.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of (document_id: Document) form.
@@ -748,8 +748,8 @@ class CQADupStackDataset():
         """Check if arguments have legal values and construct attributes
         for BeirDataset object.
 
-        Args:
-        ----
+        Arguments
+        ---------
         download_location : str, optional
             An address where all the datasets will be downloaded.
             The default is "datasets".
@@ -790,12 +790,12 @@ class CQADupStackDataset():
     def load_test_queries(self, query_class=BeirQueryBase) -> OrderedDict:
         """Load the test split of queries.
 
-        Args:
-        ----
+        Arguments
+        ---------
         query_class : BeirQueryBase, optional
             A class of the loaded queries. The default is BeirQueryBase.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
@@ -810,12 +810,12 @@ class CQADupStackDataset():
     def load_train_queries(self, query_class=BeirQueryBase) -> OrderedDict:
         """Load the train split of queries.
 
-        Args:
-        ----
+        Arguments
+        ---------
         query_class : BeirQueryBase, optional
             A class of the loaded queries. The default is BeirQueryBase.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of train queries in (query_id: Query) form.
@@ -830,12 +830,12 @@ class CQADupStackDataset():
     def load_validation_queries(self, query_class=BeirQueryBase) -> OrderedDict:
         """Load the train split of queries.
 
-        Args:
-        ----
+        Arguments
+        ---------
         query_class : BeirQueryBase, optional
             A class of the loaded queries. The default is BeirQueryBase.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of train queries in (query_id: Query) form.
@@ -850,7 +850,7 @@ class CQADupStackDataset():
     def load_test_judgements(self) -> BeirJudgementsBase:
         """Load judgements for test queries.
 
-        Returns:
+        Returns
         -------
         BeirJudgementsBase
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -861,7 +861,7 @@ class CQADupStackDataset():
     def load_train_judgements(self) -> BeirJudgementsBase:
         """Load judgements for train queries.
 
-        Returns:
+        Returns
         -------
         BeirJudgementsBase
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -872,7 +872,7 @@ class CQADupStackDataset():
     def load_validation_judgements(self) -> BeirJudgementsBase:
         """Load judgements for validation queries.
 
-        Returns:
+        Returns
         -------
         BeirJudgementsBase
             Set of (Query, Answer) pairs, where Anwser is judged
@@ -883,7 +883,7 @@ class CQADupStackDataset():
     def load_documents(self, document_class=BeirDocumentBase) -> OrderedDict:
         """Load documents.
 
-        Returns:
+        Returns
         -------
         OrderedDict
             Dictionary of (document_id: Document) form.

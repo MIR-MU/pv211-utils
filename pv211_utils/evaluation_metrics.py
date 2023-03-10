@@ -146,8 +146,8 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
     """Evaluate system for given queries and judgements with mean average precision
     metric. Where first k documents will be used in evaluation.
 
-    Args:
-    ----
+    Arguments
+    ---------
     system : IRSystemBase
         System to be evaluated.
     queries : OrderedDict
@@ -159,7 +159,7 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
     num_processes : int
         Parallelization parameter defining number of processes to be used to run the evaluation.
 
-    Returns:
+    Returns
     -------
     float
         Mean average precision score from interval [0, 1].
@@ -189,8 +189,8 @@ def mean_precision(system: IRSystemBase, queries: OrderedDict,
     """Evaluate system for given queries and judgements with mean precision metric.
     Where first k documents will be used in evaluation.
 
-    Args:
-    ----
+    Arguments
+    ---------
     system : IRSystemBase
         System to be evaluated.
     queries : OrderedDict
@@ -202,7 +202,7 @@ def mean_precision(system: IRSystemBase, queries: OrderedDict,
     num_processes : int
         Parallelization parameter defining number of processes to be used to run the evaluation.
 
-    Returns:
+    Returns
     -------
     float
         Mean precision score from interval [0, 1].
@@ -232,8 +232,8 @@ def mean_recall(system: IRSystemBase, queries: OrderedDict,
     """Evaluate system for given queries and judgements with mean recall metric.
     Where first k documents will be used in evaluation.
 
-    Args:
-    ----
+    Arguments
+    ---------
     system : IRSystemBase
         System to be evaluated.
     queries : OrderedDict
@@ -245,7 +245,7 @@ def mean_recall(system: IRSystemBase, queries: OrderedDict,
     num_processes : int
         Parallelization parameter defining number of processes to be used to run the evaluation.
 
-    Returns:
+    Returns
     -------
     float
         Mean recall score from interval [0, 1].
@@ -277,8 +277,8 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
     """Evaluate system for given queries and judgements with normalized
     discounted cumulative gain metric. Where first k documents will be used in evaluation.
 
-    Args:
-    ----
+    Arguments
+    ---------
     system : IRSystemBase
         System to be evaluated.
     queries : OrderedDict
@@ -290,7 +290,7 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
     num_processes : int
         Parallelization parameter defining number of processes to be used to run the evaluation.
 
-    Returns:
+    Returns
     -------
     float
         Normalized discounted cumulative gain score from interval [0, 1].
@@ -329,8 +329,8 @@ def mean_bpref(system: IRSystemBase, queries: OrderedDict,
     the JudgementBase class to differentiate between unjudged and irrelevant
     documents.
 
-    Args:
-    ----
+    Arguments
+    ---------
     system : IRSystemBase
         System to be evaluated.
     queries : OrderedDict
@@ -342,7 +342,7 @@ def mean_bpref(system: IRSystemBase, queries: OrderedDict,
     num_processes : int
         Parallelization parameter defining number of processes to be used to run the evaluation.
 
-    Returns:
+    Returns
     -------
     float
         Bpref score from interval [0, 1].

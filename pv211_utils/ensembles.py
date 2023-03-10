@@ -107,14 +107,14 @@ def _break_ties(ratings: list, num_documents: int,
 def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by their inverse mean rank.
 
-    Args:
-    ----
+    Arguments
+    ---------
     query : QueryBase
         Query to be searched.
     systems : Iterable[IRSystemBase]
         List of system to be ensembled.
 
-    Returns:
+    Returns
     -------
     Iterable[DocumentBase]
         Documents returned by systems sorted by inverse mean rank.
@@ -129,14 +129,14 @@ def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iter
 def inverse_median_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by their inverse median rank.
 
-    Args:
-    ----
+    Arguments
+    ---------
     query : QueryBase
         Query to be searched.
     systems : Iterable[IRSystemBase]
         List of system to be ensembled.
 
-    Returns:
+    Returns
     -------
     Iterable[DocumentBase]
         Documents returned by systems sorted by inverse median rank.
@@ -153,8 +153,8 @@ def reciprocal_rank_fusion(query: QueryBase,
     """Ensemble systems and for given query return documents
     sorted by reciprocal rank fusion formula.
 
-    Args:
-    ----
+    Arguments
+    ---------
     query : QueryBase
         Query to be searched.
     systems : Iterable[IRSystemBase]
@@ -162,7 +162,7 @@ def reciprocal_rank_fusion(query: QueryBase,
     k : int
         Hyperparameter used in reciprocal rank fusion formula.
 
-    Returns:
+    Returns
     -------
     Iterable[DocumentBase]
         Documents returned by systems sorted by reciprocal rank fusion formula.
@@ -181,14 +181,14 @@ def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentB
     where ties are broken by taking random ranking out of uniformly
     distributed ranks from given document's individual system's ranks.
 
-    Args:
-    ----
+    Arguments
+    ---------
     query : QueryBase
         Query to be searched.
     systems : Iterable[IRSystemBase]
         List of system to be ensembled.
 
-    Returns:
+    Returns
     -------
     Iterable[DocumentBase]
         Sorted documents with ties broken.
@@ -212,8 +212,8 @@ def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
     given document's individual system's ranks, where the distribution
     is given by weights parameter.
 
-    Args:
-    ----
+    Arguments
+    ---------
     query : QueryBase
         Query to be searched.
     systems : Iterable[IRSystemBase]
@@ -221,7 +221,7 @@ def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
     weights : Iterable[float]
         Weights of systems.
 
-    Returns:
+    Returns
     -------
     Iterable[DocumentBase]
         Sorted documents with ties broken.
@@ -256,8 +256,8 @@ class Rbc():
                  train_judgements: Set[JudgementBase], pipeline: Optional[Pipeline] = None) -> None:
         """Construct the rbc object and fit the model.
 
-        Args:
-        ----
+        Arguments
+        ---------
         systems : Iterable[IRSystemBase]
             List of system to be ensembled.
         train_queries : OrderedDict
@@ -314,12 +314,12 @@ class Rbc():
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
         """Returns documents sorted by predicted relevance for given query.
 
-        Args:
-        ----
+        Arguments
+        ---------
         query : QueryBase
             Query to be searched.
 
-        Returns:
+        Returns
         -------
         Iterable[DocumentBase]:
             Documents sorted by predicted relevance for given query.
