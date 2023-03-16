@@ -8,7 +8,7 @@ from ..irsystem import IRSystemBase
 from ..preprocessing.preprocessing import DocPreprocessingBase
 
 
-class BM25Plus():
+class BM25PlusCore():
     """
     Class for BM25+ ranking functionality.
 
@@ -132,7 +132,7 @@ class BM25PlusSystem(IRSystemBase):
 
     Attributes
     ----------
-    bm25: BM25Plus
+    bm25: BM25PlusCore
         Ranking model
     index: dict of (int, Document)
         A mapping from indexed document numbers to documents.
@@ -147,7 +147,7 @@ class BM25PlusSystem(IRSystemBase):
 
         corpus = [self.preprocessing(document.body) for document in docs_values]
 
-        self.bm25 = BM25Plus(corpus, k1, b, d)
+        self.bm25 = BM25PlusCore(corpus, k1, b, d)
         self.index = dict(enumerate(docs_values))
 
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
