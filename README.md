@@ -33,7 +33,7 @@ Here are some examples of how you can use the PV211 Utils library:
   [![Open in Colab][colab-badge]][arqmath]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
  
-- Old Second Term Project: TREC Collection (10.37% MAP score)
+- Pre-2023 Second Term Project: TREC Collection (10.37% MAP score)
   [![Open in Colab][colab-badge]][trec]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
@@ -45,4 +45,4 @@ Here are some examples of how you can use the PV211 Utils library:
  [cranfield]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/cranfield.ipynb
  [trec]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/trec.ipynb
  [arqmath]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/arqmath.ipynb
- [beir]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/developer/notebooks/beir_cqadupstack.ipynb
+ [beir]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/beir_cqadupstack.ipynb

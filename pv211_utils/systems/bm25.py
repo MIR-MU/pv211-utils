@@ -1,4 +1,3 @@
-import math
 from typing import Iterable, OrderedDict
 
 from rank_bm25 import BM25Plus
@@ -6,6 +5,7 @@ from rank_bm25 import BM25Plus
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
 from ..preprocessing.preprocessing import DocPreprocessingBase
+
 
 class BM25PlusSystem(IRSystemBase):
     """
