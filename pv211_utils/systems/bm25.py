@@ -39,7 +39,7 @@ class BM25PlusSystem(IRSystemBase):
 
         docs_values = documents.values()
 
-        corpus = [self.preprocessing(document.body) for document in docs_values]
+        corpus = [self.preprocessing(str(document)) for document in docs_values]
 
         self.bm25 = BM25Plus(corpus, k1=k1, b=b, delta=d)
         self.index = dict(enumerate(docs_values))
@@ -52,7 +52,7 @@ class BM25PlusSystem(IRSystemBase):
         ----------
         query: QueryBase
         """
-        query = self.preprocessing(query.body)
+        query = self.preprocessing(str(query))
 
         # score and rank docs by their relevance
         docs = self.bm25.get_scores(query).argsort()[::-1]

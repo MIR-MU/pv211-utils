@@ -86,7 +86,7 @@ class TfidfSystem(IRSystemBase):
 
     @classmethod
     def _document_to_tokens(cls, document: Union[QueryBase, DocumentBase]) -> List[str]:
-        return cls.preprocessing(document.body)
+        return cls.preprocessing(str(document))
 
     @classmethod
     def _document_to_bag_of_words(cls, document: Union[QueryBase, DocumentBase]) -> List[Tuple[int, int]]:
