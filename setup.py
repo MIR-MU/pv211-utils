@@ -31,6 +31,7 @@ setup(
         "ipython",
         "ipywidgets",
         "gensim",
+        "rank_bm25",
         "sentence_transformers",
         "sympy",
         "torch",
