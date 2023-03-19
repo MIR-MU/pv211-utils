@@ -17,7 +17,7 @@ from .entities import JudgementBase, QueryBase
 from .irsystem import IRSystemBase
 
 from typing import Set, OrderedDict
-from multiprocessing import Pool, Manager
+from multiprocessing import Pool
 from functools import partial
 from math import log2
 
@@ -154,7 +154,7 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
         Mean average precision score from interval [0, 1].
     """
     map_score = 0.0
-    
+
     if num_processes == 1:
         for query in list(queries.values()):
             map_score += _calc_average_precision(system, _judgements_obj_to_id(judgements), k, query)
@@ -169,7 +169,6 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
     map_score /= len(queries)
 
     return map_score
-
 
 
 def mean_precision(system: IRSystemBase, queries: OrderedDict,
