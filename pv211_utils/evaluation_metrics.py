@@ -70,7 +70,7 @@ def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
 
 
 def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
-                            map_score_lock, map_score, query: QueryBase) -> None:
+                            query: QueryBase) -> None:
     num_relevant = 0
     average_precision = 0.0
     current_rank = 1
@@ -85,9 +85,7 @@ def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
 
     average_precision /= num_relevant if num_relevant > 0 else 1
 
-    map_score_lock.acquire()
-    map_score.value += average_precision
-    map_score_lock.release()
+    return average_precision
 
 
 def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
@@ -156,24 +154,21 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
         Mean average precision score from interval [0, 1].
     """
     map_score = 0.0
-    manager = Manager()
-    map_score_lock = manager.Lock()
-    map_score = manager.Value('f', 0.0)
-
+    
     if num_processes == 1:
         for query in list(queries.values()):
-            _calc_average_precision(system, _judgements_obj_to_id(judgements), k, map_score_lock, map_score, query)
+            map_score += _calc_average_precision(system, _judgements_obj_to_id(judgements), k, query)
     else:
         worker_avg_precision = partial(_calc_average_precision, system,
-                                       _judgements_obj_to_id(judgements), k,
-                                       map_score_lock, map_score)
+                                       _judgements_obj_to_id(judgements), k)
 
-        process_pool = Pool(processes=num_processes)
-        process_pool.map(worker_avg_precision, list(queries.values()))
+        with Pool(processes=num_processes) as process_pool:
+            for precision in process_pool.imap(worker_avg_precision, list(queries.values())):
+                map_score += precision
 
-    map_score.value /= len(queries)
+    map_score /= len(queries)
 
-    return map_score.value
+    return map_score
 
 
 
@@ -210,7 +205,7 @@ def mean_precision(system: IRSystemBase, queries: OrderedDict,
                                    _judgements_obj_to_id(judgements), k)
 
         with Pool(processes=num_processes) as process_pool:
-            for precision in process_pool.map(worker_precision, list(queries.values())):
+            for precision in process_pool.imap(worker_precision, list(queries.values())):
                 mp_score += precision
 
     return mp_score / len(queries)
@@ -248,7 +243,7 @@ def mean_recall(system: IRSystemBase, queries: OrderedDict,
                                 _judgements_obj_to_id(judgements), k)
 
         with Pool(processes=num_processes) as process_pool:
-            for recall in process_pool.map(worker_recall, list(queries.values())):
+            for recall in process_pool.imap(worker_recall, list(queries.values())):
                 mr_score += recall
 
     return mr_score / len(queries)
@@ -289,7 +284,7 @@ def normalized_discounted_cumulative_gain(system: IRSystemBase,
                               _judgements_obj_to_id(judgements), k)
 
         with Pool(processes=num_processes) as process_pool:
-            for dcg in process_pool.map(worker_ndcg, list(queries.values())):
+            for dcg in process_pool.imap(worker_ndcg, list(queries.values())):
                 ndcg_score += dcg
 
     return ndcg_score / len(queries)
@@ -336,7 +331,7 @@ def mean_bpref(system: IRSystemBase, queries: OrderedDict,
                                _judgements_obj_to_id(judgements), k)
 
         with Pool(processes=num_processes) as process_pool:
-            for bpref in process_pool.map(worker_bpref, list(queries.values())):
+            for bpref in process_pool.imap(worker_bpref, list(queries.values())):
                 bpref_score += bpref
 
     return bpref_score / len(queries)
