@@ -70,7 +70,7 @@ def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
 
 
 def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
-                            query: QueryBase) -> None:
+                            query: QueryBase) -> float:
     num_relevant = 0
     average_precision = 0.0
     current_rank = 1
