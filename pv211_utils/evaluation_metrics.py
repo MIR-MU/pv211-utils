@@ -168,11 +168,13 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
                                        _judgements_obj_to_id(judgements), k,
                                        map_score_lock, map_score)
 
-        with Pool(processes=num_processes) as process_pool:
-            process_pool.map(worker_avg_precision, list(queries.values()),
-                                                   chunksize=len(queries) // num_processes)
+        process_pool = Pool(processes=num_processes)
+        process_pool.map(worker_avg_precision, list(queries.values()))
 
-    return map_score.value / len(queries)
+    map_score.value /= len(queries)
+
+    return map_score.value
+
 
 
 def mean_precision(system: IRSystemBase, queries: OrderedDict,
