@@ -17,7 +17,7 @@ from .entities import JudgementBase, QueryBase
 from .irsystem import IRSystemBase
 
 from typing import Set, OrderedDict
-from multiprocessing import Pool
+from multiprocessing import Pool, Manager
 from functools import partial
 from math import log2
 
@@ -69,7 +69,8 @@ def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
     return precision
 
 
-def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int, query: QueryBase) -> float:
+def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
+                            map_score_lock, map_score, query: QueryBase) -> None:
     num_relevant = 0
     average_precision = 0.0
     current_rank = 1
@@ -84,7 +85,9 @@ def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int, query
 
     average_precision /= num_relevant if num_relevant > 0 else 1
 
-    return average_precision
+    map_score_lock.acquire()
+    map_score.value += average_precision
+    map_score_lock.release()
 
 
 def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
@@ -153,20 +156,23 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
         Mean average precision score from interval [0, 1].
     """
     map_score = 0.0
+    manager = Manager()
+    map_score_lock = manager.Lock()
+    map_score = manager.Value('f', 0.0)
 
     if num_processes == 1:
         for query in list(queries.values()):
-            map_score += _calc_average_precision(system, _judgements_obj_to_id(judgements), k, query)
+            _calc_average_precision(system, _judgements_obj_to_id(judgements), k, map_score_lock, map_score, query)
     else:
         worker_avg_precision = partial(_calc_average_precision, system,
-                                       _judgements_obj_to_id(judgements), k)
+                                       _judgements_obj_to_id(judgements), k,
+                                       map_score_lock, map_score)
 
         with Pool(processes=num_processes) as process_pool:
-            for avg_precision in process_pool.map(worker_avg_precision, list(queries.values()),
-                                                   chunksize=len(queries) // num_processes):
-                map_score += avg_precision
+            process_pool.map(worker_avg_precision, list(queries.values()),
+                                                   chunksize=len(queries) // num_processes)
 
-    return map_score / len(queries)
+    return map_score.value / len(queries)
 
 
 def mean_precision(system: IRSystemBase, queries: OrderedDict,
