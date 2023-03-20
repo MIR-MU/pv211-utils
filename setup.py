@@ -5,6 +5,13 @@ from pip._internal.req import parse_requirements
 from setuptools import setup, find_packages
 
 
+requirements = [
+    parsed_requirement.requirement
+    for parsed_requirement
+    in parse_requirements('requirements.txt', session='workaround')
+]
+
+
 setup(
     name="pv211_utils",
     version='2.0.0',
@@ -23,8 +30,7 @@ setup(
         "pip",
         "setuptools",
     ],
-    install_requires=parse_requirements('requirements.txt',
-                                        session='workaround'),
+    install_requires=requirements,
     extras_require={
         "notebooks": [
             "jupyterhub",
