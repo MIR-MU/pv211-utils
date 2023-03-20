@@ -25,7 +25,7 @@ Here are some examples of how you can use the PV211 Utils library:
   [![Open in Colab][colab-badge]][cranfield]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
-- Second Term Project: Beir CQADupStack Collection (21.96% MAP score)
+- Second Term Project: Beir CQADupStack Collection (17.6% MAP score)
   [![Open in Colab][colab-badge]][beir]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
