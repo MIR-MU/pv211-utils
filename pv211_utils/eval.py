@@ -6,7 +6,7 @@ import os
 from .entities import JudgementBase
 from .leaderboard import LeaderboardBase
 from .irsystem import IRSystemBase
-from .evaluation_metrics import calc_map
+from .evaluation_metrics import mean_average_precision
 
 from IPython.display import display, Markdown
 
@@ -94,9 +94,7 @@ class EvaluationBase(abc.ABC):
 
         """
         time_before = datetime.now()
-        # result = mean_average_precision(self.system, queries, self.judgements, self.k, self.num_workers)
-        m = calc_map()
-        result = m.mean_average_precision(self.system, queries, self.judgements, self.k, self.num_workers)
+        result = mean_average_precision(self.system, queries, self.judgements, self.k, self.num_workers)
         time_after = datetime.now()
         map_score = result * 100.0
 

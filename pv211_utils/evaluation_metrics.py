@@ -20,7 +20,9 @@ from typing import Set, OrderedDict
 from multiprocessing import Pool, get_context
 from functools import partial
 from math import log2
-import abc
+
+
+_CURR_SYSTEM = None
 
 
 def _judgements_obj_to_id(old_judgements: Set[JudgementBase]) -> Set:
@@ -70,13 +72,14 @@ def _calc_precision(system: IRSystemBase, judgements: Set, k: int,
     return precision
 
 
-def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
+def _calc_average_precision(judgements: Set, k: int,
                             query: QueryBase) -> float:
     num_relevant = 0
     average_precision = 0.0
     current_rank = 1
+    global _CURR_SYSTEM
 
-    for document in system.search(query):
+    for document in _CURR_SYSTEM.search(query):
         if current_rank > k:
             break
         if (query.query_id, document.document_id) in judgements:
@@ -87,74 +90,6 @@ def _calc_average_precision(system: IRSystemBase, judgements: Set, k: int,
     average_precision /= num_relevant if num_relevant > 0 else 1
 
     return average_precision
-
-
-class calc_map(abc.ABC):
-    system = None
-    judgements = None
-    k = None
-    _CURRENT_INSTANCE = None
-
-    @classmethod
-    def _calc_average_precision(csl, query: QueryBase) -> float:
-        num_relevant = 0
-        average_precision = 0.0
-        current_rank = 1
-
-        for document in csl._CURRENT_INSTANCE.system.search(query):
-            if current_rank > csl._CURRENT_INSTANCE.k:
-                break
-            if (query.query_id, document.document_id) in csl._CURRENT_INSTANCE.judgements:
-                num_relevant += 1
-                average_precision += num_relevant / current_rank
-            current_rank += 1
-
-        average_precision /= num_relevant if num_relevant > 0 else 1
-
-        return average_precision
-
-    def mean_average_precision(self, system: IRSystemBase, queries: OrderedDict,
-                               judgements: Set[JudgementBase],
-                               k: int, num_processes: int) -> float:
-        """Evaluate system for given queries and judgements with mean average precision
-        metric. Where first k documents will be used in evaluation.
-
-        Arguments
-        ---------
-        system : IRSystemBase
-            System to be evaluated.
-        queries : OrderedDict
-            Queries to be searched.
-        judgements : Set[JudgementBase]
-            Judgements.
-        k : int
-            Parameter defining evaluation depth.
-        num_processes : int
-            Parallelization parameter defining number of processes to be used to run the evaluation.
-
-        Returns
-        -------
-        float
-            Mean average precision score from interval [0, 1].
-        """
-        map_score = 0.0
-
-        self.system = system
-        self.judgements = _judgements_obj_to_id(judgements)
-        self.k = k
-        self.__class__._CURRENT_INSTANCE = self
-
-        if num_processes == 1:
-            for query in list(queries.values()):
-                map_score += self.__class__._calc_average_precision(query)
-        else:
-            with get_context("fork").Pool(processes=num_processes) as process_pool:
-                for precision in process_pool.imap(self.__class__._calc_average_precision, list(queries.values())):
-                    map_score += precision
-
-        map_score /= len(queries)
-        self.__class__._CURRENT_INSTANCE = None
-        return map_score
 
 
 def _calc_ndcg(system: IRSystemBase, judgements: Set, k: int,
@@ -224,11 +159,14 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
     """
     map_score = 0.0
 
+    global _CURR_SYSTEM
+    _CURR_SYSTEM = system
+
     if num_processes == 1:
         for query in list(queries.values()):
-            map_score += _calc_average_precision(system, _judgements_obj_to_id(judgements), k, query)
+            map_score += _calc_average_precision(_judgements_obj_to_id(judgements), k, query)
     else:
-        worker_avg_precision = partial(_calc_average_precision, system,
+        worker_avg_precision = partial(_calc_average_precision,
                                        _judgements_obj_to_id(judgements), k)
 
         with get_context("fork").Pool(processes=num_processes) as process_pool:
@@ -236,6 +174,8 @@ def mean_average_precision(system: IRSystemBase, queries: OrderedDict,
                 map_score += precision
 
     map_score /= len(queries)
+
+    _CURR_SYSTEM = None
 
     return map_score
 
