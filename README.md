@@ -25,11 +25,11 @@ Here are some examples of how you can use the PV211 Utils library:
   [![Open in Colab][colab-badge]][cranfield]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
-- Second Term Project: Beir CQADupStack Collection (19.26% MAP score)
+- Second Term Project: Beir CQADupStack Collection (21.96% MAP score)
   [![Open in Colab][colab-badge]][beir]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
-- Alternative Second Term Project: ARQMath Collection (0.92% MAP score)
+- Alternative Second Term Project: ARQMath Collection (6.62% MAP score)
   [![Open in Colab][colab-badge]][arqmath]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
