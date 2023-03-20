@@ -33,7 +33,7 @@ setup(
     install_requires=requirements,
     extras_require={
         "notebooks": [
-            "jupyterhub",
+            "jupyterhub==3.0.0",
             "jupyterlab",
         ],
         "google_drive": [
