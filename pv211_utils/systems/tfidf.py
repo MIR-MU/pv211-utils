@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..preprocessing.preprocessing import DocPreprocessing
+from ..preprocessing import DocPreprocessingBase
 
 
 class TfidfSystem(IRSystemBase):
@@ -29,9 +29,9 @@ class TfidfSystem(IRSystemBase):
     """
     DICTIONARY: Dictionary
     TFIDF_MODEL: TfidfModel
-    preprocessing: DocPreprocessing
+    preprocessing: DocPreprocessingBase
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessing):
+    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessingBase):
         self.__class__.preprocessing = preprocessing
 
         with get_context('fork').Pool(None) as pool:
@@ -86,7 +86,7 @@ class TfidfSystem(IRSystemBase):
 
     @classmethod
     def _document_to_tokens(cls, document: Union[QueryBase, DocumentBase]) -> List[str]:
-        return cls.preprocessing(document.body)
+        return cls.preprocessing(str(document))
 
     @classmethod
     def _document_to_bag_of_words(cls, document: Union[QueryBase, DocumentBase]) -> List[Tuple[int, int]]:

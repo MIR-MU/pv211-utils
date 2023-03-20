@@ -31,7 +31,7 @@ class RerankerSystem(IRSystemBase):
             The reranker batch size for prediction
         """
 
-        answers_bodies = [answer.body for _, answer in answers.items()]
+        answers_bodies = [str(answer) for _, answer in answers.items()]
 
         self.answers = list(answers.values())
 
@@ -65,7 +65,7 @@ class RerankerSystem(IRSystemBase):
             dt = np.dot(query_embedding, self.answers_embeddings[i])
             return dt / (query_embedding_norm * self.answers_embedding_norm[i])
 
-        query_embedding = self.retriever.encode(query.body)
+        query_embedding = self.retriever.encode(str(query))
         query_embedding_norm = np.linalg.norm(query_embedding)
 
         similarities = [_compute_similarity(i) for i in range(len(self.answers_embeddings))]
@@ -74,7 +74,7 @@ class RerankerSystem(IRSystemBase):
         # rerank top documents returned by retriever
         retriever_top = []
         for i in range(self.no_reranks):
-            retriever_top.append([query.body, self.answers[sorted_similarities[i]].body])
+            retriever_top.append([str(query), str(self.answers[sorted_similarities[i]])])
 
         rerank_predictions = self.reranker.predict(retriever_top, batch_size=self.reranker_batch_size)
         rerank_predictions = np.array(rerank_predictions).argsort()[::-1]

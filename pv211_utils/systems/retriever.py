@@ -23,7 +23,7 @@ class RetrieverSystem(IRSystemBase):
             The batch size used for the computation
         """
 
-        answers_bodies = [answer.body for _, answer in answers.items()]
+        answers_bodies = [str(answer) for _, answer in answers.items()]
 
         self.answers = list(answers.values())
 
@@ -52,7 +52,7 @@ class RetrieverSystem(IRSystemBase):
             dt = np.dot(query_embedding, self.answers_embeddings[i])
             return dt / (query_embedding_norm * self.answers_embedding_norm[i])
 
-        query_embedding = self.retriever.encode(query.body)
+        query_embedding = self.retriever.encode(str(query))
         query_embedding_norm = np.linalg.norm(query_embedding)
 
         similarities = [_compute_similarity(i) for i in range(len(self.answers_embeddings))]

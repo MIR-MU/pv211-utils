@@ -5,7 +5,7 @@ from typing import Optional
 from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 
-class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
+class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def get_competition_start(self) -> datetime.date:
         return datetime.date(2023, 3, 22)
 
@@ -17,11 +17,11 @@ class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return key_path
 
     def _get_spreadsheet_key(self) -> str:
-        spreadsheet_key = '1WbS-eV12VcGfoBZalIWyFyadc5--U9kq60nyM7pKzis'
+        spreadsheet_key = '1LVCY6H2iaS05DDwON4YyZ2aWYnFCBYbnZqtpMdn7e6M'
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:
         return (
-            'https://docs.google.com/spreadsheets/d/e/'
-            '2PACX-1vSOonHEUy1x-5othNd5ZmlxfqSi2p5pwgr5Rm6RU2U4HTOidiXvIWKwtb_LPfFmal6TvVjISGzIuczk/pubhtml'
+            'https://docs.google.com/spreadsheets/d/e/2PACX'
+            '-1vSnyvgqXDq3XPzGz3eLz_8JPwceou10HiEShI0wJ2A8vlosRZc1QhKZ10aOmmQFitv2yPAyBERD2wwx/pubhtml '
         )
