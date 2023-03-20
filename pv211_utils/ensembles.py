@@ -22,7 +22,7 @@ rbc:
 from .irsystem import IRSystemBase
 from .entities import QueryBase, DocumentBase, JudgementBase
 
-from typing import Iterable, Tuple, Optional, OrderedDict, Set, Any
+from typing import Iterable, Tuple, Optional, OrderedDict, Set, Any, List
 from statistics import median, mean
 from random import choices
 
@@ -41,7 +41,7 @@ def _judgements_obj_to_id(old_judgements: Set[JudgementBase]) -> Set:
     return new_judgements
 
 
-def _weighted_median(elements: list[int], weights: list[float]) -> float:
+def _weighted_median(elements: List[int], weights: List[float]) -> float:
     total_wights_sum = sum(weights)
     cumulative_weights_sum = 0
     weighted_median = 0
@@ -205,7 +205,7 @@ def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentB
 
 
 def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
-                 weights: list[float]) -> Iterable[DocumentBase]:
+                 weights: List[float]) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by
     (num_documents - weighted_median_rank) / num_documents formula,
     where ties are broken by taking random ranking out of ranks from
@@ -273,9 +273,9 @@ class Rbc():
         self._train_judgements = _judgements_obj_to_id(train_judgements)
         self._pipeline = self._fit_model(pipeline)
 
-    def _create_dataset(self, create_labels, queries: OrderedDict) -> Tuple[list[DocumentBase],
-                                                                            list[list[float]],
-                                                                            list[int]]:
+    def _create_dataset(self, create_labels, queries: OrderedDict) -> Tuple[List[DocumentBase],
+                                                                            List[List[float]],
+                                                                            List[int]]:
         documents, X, Y = [], [], []
         # build the dataset of document scores given by systems, labeled by relevance judgement
         for query_id, query in queries.items():
