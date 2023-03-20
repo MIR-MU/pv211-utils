@@ -6,6 +6,7 @@ ijson
 ipython
 ipywidgets
 oauth2client
+rank-bm25~=0.2.2
 scikit-learn
 sympy
 torch
