@@ -5,8 +5,8 @@ gspread~=5.5.0
 ijson~=3.1.4
 ipython
 ipywidgets
-oauth2client~=4.1.3
-scikit-learn~=1.1.1
+oauth2client
+scikit-learn
 sympy~=1.11.1
 torch~=1.13.1
 tqdm~=4.64.1
