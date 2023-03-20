@@ -17,7 +17,7 @@ class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return key_path
 
     def _get_spreadsheet_key(self) -> str:
-        spreadsheet_key = '1WbS-eV12VcGfoBZalIWyFyadc5--U9kq60nyM7pKzis'
+        spreadsheet_key = '1zGUntkeUmE8oFKgM9WdFbN14IPdGJHDbKWXoiec_lmM'
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:

@@ -17,7 +17,7 @@ class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return key_path
 
     def _get_spreadsheet_key(self) -> str:
-        spreadsheet_key = '1LVCY6H2iaS05DDwON4YyZ2aWYnFCBYbnZqtpMdn7e6M'
+        spreadsheet_key = '1YC0A9-XCd7p18rE37RI8edTOGeSlsAtQWnaPiS8GPOw'
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:

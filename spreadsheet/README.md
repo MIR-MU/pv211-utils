@@ -9,8 +9,18 @@ to reproduce the leaderboard spreadsheets in Google Sheets.
 
 [Live public Cranfield leaderboard Spring 2023][leaderboard-cranfield-2023] | [Edit leaderboard][leaderboard-cranfield-2023-sheets]
 
+[Live public CQADupStack leaderboard Spring 2023][leaderboard-cqadupstack-2023] | [Edit leaderboard][leaderboard-cqadupstack-2023-sheets]
+
+[Live public ARQMath leaderboard Spring 2023][leaderboard-arqmath-2023] | [Edit leaderboard][leaderboard-arqmath-2023-sheets]
+
 [leaderboard-cranfield-2023]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSXuOTclZfHWYxh2rf7hfMeLvcCuE5UsJu7BzteyunhPw3z4YNZjCovjmMB6SnDdgjGyenOgdochaEq/pubhtml
 [leaderboard-cranfield-2023-sheets]: https://docs.google.com/spreadsheets/d/1kDRTDUCPTOi0crgIO_WqctuvCazTmZ4V_EoVSvb6VQI/edit?usp=sharing
+
+[leaderboard-cqadupstack-2023]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSLYKoYcsTgyTp2T-pNgW2heZrwvmBVKAgWAAG_vELv8kgnxHffnJ-IKt5huAacvO7r-zKWOgSiqWFU/pubhtml?gid=0&single=true
+[leaderboard-cqadupstack-2023-sheets]: https://docs.google.com/spreadsheets/d/1YC0A9-XCd7p18rE37RI8edTOGeSlsAtQWnaPiS8GPOw/edit?usp=sharing
+
+[leaderboard-arqmath-2023]: https://docs.google.com/spreadsheets/d/e/2PACX-1vT9GibzjkZJxdFNdgr666TLDIHD46HfTYSEPeKUN-ErxRIN2HGjUtKyfvf6Xg3MZ6cW4p9qcSmR-4Rk/pubhtml?gid=0&single=true
+[leaderboard-arqmath-2023-sheets]: https://docs.google.com/spreadsheets/d/1zGUntkeUmE8oFKgM9WdFbN14IPdGJHDbKWXoiec_lmM/edit?usp=sharing
 
 ### Archive
 
