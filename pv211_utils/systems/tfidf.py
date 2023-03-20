@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..preprocessing.preprocessing import DocPreprocessingBase
+from ..preprocessing import DocPreprocessingBase
 
 
 class TfidfSystem(IRSystemBase):

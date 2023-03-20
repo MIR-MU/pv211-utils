@@ -4,7 +4,7 @@ from rank_bm25 import BM25Plus
 
 from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
-from ..preprocessing.preprocessing import DocPreprocessingBase
+from ..preprocessing import DocPreprocessingBase
 
 
 class BM25PlusSystem(IRSystemBase):
