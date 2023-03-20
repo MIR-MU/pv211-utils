@@ -21,19 +21,19 @@ Masaryk University, Brno, Czech Republic][fimu].
 
 Here are some examples of how you can use the PV211 Utils library:
 
-- First Term Project: Cranfield Collection (20.75% MAP score)
+- First Term Project: Cranfield Collection (38.46% MAP score)
   [![Open in Colab][colab-badge]][cranfield]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
-- Second Term Project: Beir CQADupStack Collection (17.60% MAP score)
+- Second Term Project: Beir CQADupStack Collection (19.26% MAP score)
   [![Open in Colab][colab-badge]][beir]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
-- Alternative Second Term Project: ARQMath Collection (0.71% MAP score)
+- Alternative Second Term Project: ARQMath Collection (0.92% MAP score)
   [![Open in Colab][colab-badge]][arqmath]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
  
-- Pre-2023 Second Term Project: TREC Collection (10.37% MAP score)
+- Pre-2023 Second Term Project: TREC Collection (43.06% MAP score)
   [![Open in Colab][colab-badge]][trec]
   [![Open in Jupyter Hub][jupyter-badge]][jupyter]
 
