@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from setuptools import setup
+from pip._internal.req import parse_requirements
+from setuptools import setup, find_packages
+
 
 setup(
     name="pv211_utils",
@@ -13,33 +15,18 @@ setup(
     author_email="stefanik.m@fi.muni.cz",
     url="https://gitlab.fi.muni.cz",
     license="MIT",
-    packages=["pv211_utils", "pv211_utils.trec", "pv211_utils.cranfield", "pv211_utils.arqmath",
-              "pv211_utils.beir", "pv211_utils.systems", "pv211_utils.preprocessing"],
+    packages=find_packages(exclude=['test.*']),
     package_dir={"pv211_utils": "pv211_utils"},
     include_package_data=True,
     zip_safe=True,
     setup_requires=[
+        "pip",
         "setuptools",
     ],
-    install_requires=[
-        "beir",
-        "gspread",
-        "oauth2client",
-        "google",
-        "tqdm",
-        "ijson",
-        "ipython",
-        "ipywidgets",
-        "gensim",
-        "rank_bm25",
-        "sentence_transformers",
-        "sympy",
-        "torch",
-        "scikit-learn"
-    ],
+    install_requires=parse_requirements('requirements.txt',
+                                        session='workaround'),
     extras_require={
         "notebooks": [
-            "gensim==3.6.0",
             "jupyterhub",
             "jupyterlab",
         ],
