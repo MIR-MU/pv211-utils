@@ -69,7 +69,7 @@ def load_queries(text_format: str, query_class=ArqmathQueryBase,
     queries = OrderedDict()
 
     filename = 'data/arqmath{}_queries_{}.json'.format(year, text_format)
-    with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt') as f:
+    with open(pkg_resources.resource_filename('pv211_utils', filename), 'rt', encoding="utf-8") as f:
         for raw_query in json.load(f):
             query_id = _resolve_query_id(raw_query['query_id'])
             if subset is not None and query_id not in QUERY_SUBSETS[year][subset]:
