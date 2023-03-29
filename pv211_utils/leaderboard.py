@@ -91,10 +91,6 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
     def _get_spreadsheet_key(self) -> str:
         pass
 
-    @abc.abstractmethod
-    def _format_name(self, name) -> str:
-        pass
-
     def log_precision_entry(self, competitor_name: str, precision: float) -> None:
         if precision > 1.0 or precision < 0.0:
             message = 'That precision ({:.2f}%) looks suspicious. Is it real?'
@@ -113,9 +109,6 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         spreadsheet = gc.open_by_key(spreadsheet_key)
         logs_worksheet = spreadsheet.worksheet("submissions")
         scores_worksheet = spreadsheet.worksheet("leaderboard")
-
-        competitor_name = self._format_name(competitor_name)
-
         if competitor_name not in scores_worksheet.col_values(2):
             message = "We do not have anyone named '{}' in the leaderboard. Is the spelling correct?"
             message += "\nWe expect the name in format '<Surname>, <Name>', like 'Novotný, Vít'"

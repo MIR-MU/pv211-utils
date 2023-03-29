@@ -20,10 +20,6 @@ class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
         spreadsheet_key = '1zGUntkeUmE8oFKgM9WdFbN14IPdGJHDbKWXoiec_lmM'
         return spreadsheet_key
 
-    def _format_name(self, name) -> str:
-        name_list = name.split(",")
-        return name_list[1].strip(" ") + " " + name_list[0]
-
     def get_public_url(self) -> Optional[str]:
         return (
             'https://docs.google.com/spreadsheets/d/e/2PACX'
