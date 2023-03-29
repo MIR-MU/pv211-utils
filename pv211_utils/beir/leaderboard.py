@@ -22,6 +22,6 @@ class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
 
     def get_public_url(self) -> Optional[str]:
         return (
-            'https://docs.google.com/spreadsheets/d/e/2PACX'
-            '-1vSnyvgqXDq3XPzGz3eLz_8JPwceou10HiEShI0wJ2A8vlosRZc1QhKZ10aOmmQFitv2yPAyBERD2wwx/pubhtml '
+            'https://docs.google.com/spreadsheets/d/e/2PACX-1vSLYKoYcsTgyTp2T'
+            '-pNgW2heZrwvmBVKAgWAAG_vELv8kgnxHffnJ-IKt5huAacvO7r-zKWOgSiqWFU/pubhtml?gid=0&single=true'
         )
