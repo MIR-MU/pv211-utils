@@ -20,6 +20,9 @@ class CranfieldLeaderboard(GoogleSpreadsheetLeaderboardBase):
         spreadsheet_key = '1kDRTDUCPTOi0crgIO_WqctuvCazTmZ4V_EoVSvb6VQI'
         return spreadsheet_key
 
+    def _format_name(self, name) -> str:
+        return name
+
     def get_public_url(self) -> Optional[str]:
         return (
             'https://docs.google.com/spreadsheets/d/e/'

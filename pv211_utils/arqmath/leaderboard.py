@@ -20,8 +20,13 @@ class ArqmathLeaderboard(GoogleSpreadsheetLeaderboardBase):
         spreadsheet_key = '1zGUntkeUmE8oFKgM9WdFbN14IPdGJHDbKWXoiec_lmM'
         return spreadsheet_key
 
+    def _format_name(self, name) -> str:
+        name_list = name.split(",")
+        return name_list[1].strip(" ") + " " + name_list[0]
+
     def get_public_url(self) -> Optional[str]:
         return (
-            'https://docs.google.com/spreadsheets/d/e/'
-            '2PACX-1vSOonHEUy1x-5othNd5ZmlxfqSi2p5pwgr5Rm6RU2U4HTOidiXvIWKwtb_LPfFmal6TvVjISGzIuczk/pubhtml'
+            'https://docs.google.com/spreadsheets/d/e/2PACX'
+            '-1vT9GibzjkZJxdFNdgr666TLDIHD46HfTYSEPeKUN-ErxRIN2HGjUtKyfvf6Xg3MZ6cW4p9qcSmR'
+            '-4Rk/pubhtml?gid=0&single=true'
         )

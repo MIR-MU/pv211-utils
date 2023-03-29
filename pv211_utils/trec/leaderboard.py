@@ -20,6 +20,10 @@ class TrecLeaderboard(GoogleSpreadsheetLeaderboardBase):
         spreadsheet_key = '1OCXrOoaR2MPl-5_oSJ6UJK1dXOaU4J4xZo6erg1HOfE'
         return spreadsheet_key
 
+    def _format_name(self, name) -> str:
+        name_list = name.split(",")
+        return name_list[1].strip(" ") + " " + name_list[0]
+
     def get_public_url(self) -> Optional[str]:
         return (
             'https://docs.google.com/spreadsheets/d/e/'
