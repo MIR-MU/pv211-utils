@@ -745,7 +745,8 @@ class CQADupStackDataset():
 
     """
 
-    def __init__(self, download_location: str = "/var/tmp/pv211/cqa_datasets", validation_split_size: float = 0.2) -> None:
+    def __init__(self, download_location: str = "/var/tmp/pv211/cqa_datasets",
+                 validation_split_size: float = 0.2) -> None:
         """Check if arguments have legal values and construct attributes
         for BeirDataset object.
 

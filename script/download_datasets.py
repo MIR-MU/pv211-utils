@@ -28,9 +28,10 @@ def download_arqmath(root_directory: Path) -> None:
         questions_pathname = str(root_directory/f'arqmath2020_questions_{text_format}.json.gz')
         load_questions(text_format, answers, cache_download=questions_pathname)
 
+
 def download_cqadupstack(root_directory: Path) -> None:
     from pv211_utils.beir.entities import RawBeirDataset, RawBeirDatasets
-    from pv211_utils.beir.loader import load_beir_datasets 
+    from pv211_utils.beir.loader import load_beir_datasets
 
     android = RawBeirDataset("android")
     english = RawBeirDataset("english")
@@ -46,10 +47,11 @@ def download_cqadupstack(root_directory: Path) -> None:
     wordpress = RawBeirDataset("wordpress")
 
     datasets = RawBeirDatasets(datasets=[android, english, gaming, gis,
-                                            mathematica, physics, programmers,
-                                            stats, tex, unix, webmasters, wordpress],
-                                download_location=str(root_directory/"cqa_datasets"))
+                                         mathematica, physics, programmers,
+                                         stats, tex, unix, webmasters, wordpress],
+                               download_location=str(root_directory/"cqa_datasets"))
     load_beir_datasets(datasets)
+
 
 def main() -> None:
     umask(0o000)
