@@ -264,7 +264,7 @@ class ArqmathDataset():
                     self._load_judgements(year2))
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_answers(self, answer_class=ArqmathAnswerBase) -> OrderedDict:
+    def load_answers(self, answer_class=ArqmathAnswerBase, cache_directory="/var/tmp/pv211/") -> OrderedDict:
         """Load answers.
 
         Returns
@@ -275,10 +275,10 @@ class ArqmathDataset():
         return arqmath_loader.load_answers(
             text_format=self.text_format,
             answer_class=answer_class,
-            cache_download=f'/var/tmp/pv211/arqmath2020_answers_{self.text_format}.json.gz'
+            cache_download=(cache_directory + f'arqmath2020_answers_{self.text_format}.json.gz')
             )
 
-    def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
+    def load_questions(self, question_class=ArqmathQuestionBase, cache_directory="/var/tmp/pv211/") -> OrderedDict:
         """Load questions.
 
         Returns
@@ -290,7 +290,8 @@ class ArqmathDataset():
             text_format=self.text_format,
             answers=self.load_answers(),
             question_class=question_class,
-            cache_download=f'/var/tmp/pv211/arqmath2020_questions_{self.text_format}.json.gz')
+            cache_download=(cache_directory + f'arqmath2020_questions_{self.text_format}.json.gz')
+            )
 
 
 class CranfieldDataset():
@@ -578,7 +579,7 @@ class TrecDataset():
                                                 subset="validation"))
                 if q.query_id in self.load_validation_queries().keys()}
 
-    def load_documents(self, document_class=TrecDocumentBase) -> OrderedDict:
+    def load_documents(self, document_class=TrecDocumentBase, cache_directory="/var/tmp/pv211/") -> OrderedDict:
         """Load documents.
 
         Returns
@@ -587,7 +588,7 @@ class TrecDataset():
             Dictionary of (document_id: Document) form.
         """
         return trec_loader.load_documents(document_class=document_class,
-                                          cache_download='/var/tmp/pv211/trec_documents.json.gz')
+                                          cache_download=(cache_directory + 'trec_documents.json.gz'))
 
 
 class BeirDataset():
@@ -744,7 +745,8 @@ class CQADupStackDataset():
 
     """
 
-    def __init__(self, download_location: str = "datasets", validation_split_size: float = 0.2) -> None:
+    def __init__(self, download_location: str = "/var/tmp/pv211/cqa_datasets",
+                 validation_split_size: float = 0.2) -> None:
         """Check if arguments have legal values and construct attributes
         for BeirDataset object.
 

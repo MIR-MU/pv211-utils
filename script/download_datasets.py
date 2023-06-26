@@ -29,12 +29,37 @@ def download_arqmath(root_directory: Path) -> None:
         load_questions(text_format, answers, cache_download=questions_pathname)
 
 
+def download_cqadupstack(root_directory: Path) -> None:
+    from pv211_utils.beir.entities import RawBeirDataset, RawBeirDatasets
+    from pv211_utils.beir.loader import load_beir_datasets
+
+    android = RawBeirDataset("android")
+    english = RawBeirDataset("english")
+    gaming = RawBeirDataset("gaming")
+    gis = RawBeirDataset("gis")
+    mathematica = RawBeirDataset("mathematica")
+    physics = RawBeirDataset("physics")
+    programmers = RawBeirDataset("programmers")
+    stats = RawBeirDataset("stats")
+    tex = RawBeirDataset("tex")
+    unix = RawBeirDataset("unix")
+    webmasters = RawBeirDataset("webmasters")
+    wordpress = RawBeirDataset("wordpress")
+
+    datasets = RawBeirDatasets(datasets=[android, english, gaming, gis,
+                                         mathematica, physics, programmers,
+                                         stats, tex, unix, webmasters, wordpress],
+                               download_location=str(root_directory/"cqa_datasets"))
+    load_beir_datasets(datasets)
+
+
 def main() -> None:
     umask(0o000)
     root_directory = Path('/var') / 'tmp' / 'pv211'
     root_directory.mkdir(parents=True, exist_ok=True, mode=0o777)
     download_trec(root_directory)
     download_arqmath(root_directory)
+    download_cqadupstack(root_directory)
 
 
 if __name__ == '__main__':
