@@ -1,26 +1,23 @@
-"""The ensembles module provides functions for ensambling of IR systems.
-
-Functions:
----------
-inverse_mean_rank(QueryBase, Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
-    Ensembling function based on inverse mean rank.
-inverse_median_rank(QueryBase, Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
-    Ensembling function based on inverse median rank.
-reciprocal_rank_fusion(QueryBase, Iterable[IRSystemBase], int) -> Iterable[DocumentBase]:
-    Ensembling function based on reciprocal rank fusion.
-ibc(QueryBase, Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
-    Ensembling function based on variant of inverse median rank with tie braking.
-weighted_ibc(QueryBase, Iterable[IRSystemBase], Iterable[float]) -> Iterable[DocumentBase]:
-    Ensembling function based on variant of inverse weighted median rank with tie braking.
+"""The ensembles module provides classes for ensambling of IR systems.
 
 Classes:
 -------
-rbc:
+InverseMeanRank:
+    Ensemble system based on inverse mean rank.
+InverseMedianRank:
+    Ensemble system based on inverse median rank.
+ReciprocalRankFusion:
+    Ensemble system based on reciprocal rank fusion.
+Ibc:
+    Ensemble system based on variant of inverse median rank with tie braking.
+WeightedIbc:
+    Ensemble system based on variant of inverse weighted median rank with tie braking.
+Rbc:
     Interface for traning and using an ensembling technique, where regression model
     is used to estimate relevance of documents to queries.
 """
-from .irsystem import IRSystemBase
-from .entities import QueryBase, DocumentBase, JudgementBase
+from ..irsystem import IRSystemBase
+from ..entities import QueryBase, DocumentBase, JudgementBase
 
 from typing import Iterable, Tuple, Optional, OrderedDict, Set, Any, List
 from statistics import median, mean
@@ -104,152 +101,208 @@ def _break_ties(ratings: list, num_documents: int,
     return final_ranking
 
 
-def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
+class InverseMeanRank(IRSystemBase):
     """Ensemble systems and for given query return documents sorted by their inverse mean rank.
-
-    Arguments
-    ---------
-    query : QueryBase
-        Query to be searched.
-    systems : Iterable[IRSystemBase]
-        List of system to be ensembled.
-
-    Returns
-    -------
-    Iterable[DocumentBase]
-        Documents returned by systems sorted by inverse mean rank.
     """
-    documents_ranks, _ = _get_ranks(query, systems)
 
-    return [doc for doc, _ in sorted(documents_ranks.items(),
-                                     key=lambda item: 1 / mean(item[1]),
-                                     reverse=True)]
+    def __init__(self, systems: Iterable[IRSystemBase]) -> None:
+        """Construct the object
+
+        Arguments
+        ---------
+        systems : Iterable[IRSystemBase]
+            List of system to be ensembled.
+        """
+        self._systems = systems
+
+    def search(self, query: QueryBase) -> Iterable[DocumentBase]:
+        """Ensemble systems and for given query return documents sorted by their inverse mean rank.
+
+        Arguments
+        ---------
+        query : QueryBase
+            Query to be searched.
+        systems : Iterable[IRSystemBase]
+            List of system to be ensembled.
+
+        Returns
+        -------
+        Iterable[DocumentBase]
+            Documents returned by systems sorted by inverse mean rank.
+        """
+        documents_ranks, _ = _get_ranks(query, self._systems)
+
+        return [doc for doc, _ in sorted(documents_ranks.items(),
+                                         key=lambda item: 1 / mean(item[1]),
+                                         reverse=True)]
 
 
-def inverse_median_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
-    """Ensemble systems and for given query return documents sorted by their inverse median rank.
-
-    Arguments
-    ---------
-    query : QueryBase
-        Query to be searched.
-    systems : Iterable[IRSystemBase]
-        List of system to be ensembled.
-
-    Returns
-    -------
-    Iterable[DocumentBase]
-        Documents returned by systems sorted by inverse median rank.
+class InverseMedianRank(IRSystemBase):
+    """Ensemble system where for given query return documents sorted by their inverse median rank.
     """
-    documents_ranks, _ = _get_ranks(query, systems)
 
-    return [doc for doc, _ in sorted(documents_ranks.items(),
-                                     key=lambda item: 1 / median(item[1]),
-                                     reverse=True)]
+    def __init__(self, systems: Iterable[IRSystemBase]) -> None:
+        """Construct the object
+
+        Arguments
+        ---------
+        systems : Iterable[IRSystemBase]
+            List of system to be ensembled.
+        """
+        self._systems = systems
+
+    def search(self, query: QueryBase,) -> Iterable[DocumentBase]:
+        """Returns documents sorted by relevance for given query.
+
+        Arguments
+        ---------
+        query : QueryBase
+            Query to be searched.
+
+        Returns
+        -------
+        Iterable[DocumentBase]
+            Documents returned by systems sorted by inverse median rank.
+        """
+        documents_ranks, _ = _get_ranks(query, self._systems)
+
+        return [doc for doc, _ in sorted(documents_ranks.items(),
+                                         key=lambda item: 1 / median(item[1]),
+                                         reverse=True)]
 
 
-def reciprocal_rank_fusion(query: QueryBase,
-                           systems: Iterable[IRSystemBase], k: int) -> Iterable[DocumentBase]:
-    """Ensemble systems and for given query return documents
+class ReciprocalRankFusion(IRSystemBase):
+    """Ensemble system where for given query return documents
     sorted by reciprocal rank fusion formula.
-
-    Arguments
-    ---------
-    query : QueryBase
-        Query to be searched.
-    systems : Iterable[IRSystemBase]
-        List of system to be ensembled.
-    k : int
-        Hyperparameter used in reciprocal rank fusion formula.
-
-    Returns
-    -------
-    Iterable[DocumentBase]
-        Documents returned by systems sorted by reciprocal rank fusion formula.
     """
-    documents_ranks, _ = _get_ranks(query, systems)
 
-    return [doc for doc, _ in sorted(documents_ranks.items(),
-                                     key=lambda item: sum(map(lambda elem: 1 / (elem + k),
-                                                              item[1])),
-                                     reverse=True)]
+    def __init__(self, systems: Iterable[IRSystemBase], k: int) -> None:
+        """Construct the object
+
+        Arguments
+        ---------
+        systems : Iterable[IRSystemBase]
+            List of system to be ensembled.
+        k : int
+            Hyperparameter used in reciprocal rank fusion formula.
+        """
+        self._systems = systems
+        self._k = k
+
+    def search(self, query: QueryBase) -> Iterable[DocumentBase]:
+        """Returns documents sorted by relevance for given query.
+
+        Arguments
+        ---------
+        query : QueryBase
+            Query to be searched.
+
+        Returns
+        -------
+        Iterable[DocumentBase]
+            Documents returned by systems sorted by reciprocal rank fusion formula.
+        """
+        documents_ranks, _ = _get_ranks(query, self._systems)
+
+        return [doc for doc, _ in sorted(documents_ranks.items(),
+                                         key=lambda item: sum(map(lambda elem: 1 / (elem + self._k),
+                                                                  item[1])),
+                                         reverse=True)]
 
 
-def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
-    """Ensemble systems and for given query return documents sorted by
+class Ibc(IRSystemBase):
+    """Ensemble system where for given query return documents sorted by
     (num_documents - median_rank) / num_documents formula,
     where ties are broken by taking random ranking out of uniformly
     distributed ranks from given document's individual system's ranks.
-
-    Arguments
-    ---------
-    query : QueryBase
-        Query to be searched.
-    systems : Iterable[IRSystemBase]
-        List of system to be ensembled.
-
-    Returns
-    -------
-    Iterable[DocumentBase]
-        Sorted documents with ties broken.
     """
-    documents_ranks, num_documents = _get_ranks(query, systems)
 
-    # sort documents by inverse median rank
-    ratings = sorted([(doc, (num_documents - median(ranks)) / num_documents)
-                      for doc, ranks in documents_ranks.items()],
-                     key=lambda item: item[1],
-                     reverse=True)
+    def __init__(self, systems: Iterable[IRSystemBase]) -> None:
+        """Construct the object
 
-    return _break_ties(ratings, num_documents, documents_ranks)
+        Arguments
+        ---------
+        systems : Iterable[IRSystemBase]
+            List of system to be ensembled.
+        """
+        self._systems = systems
+
+    def search(self, query: QueryBase) -> Iterable[DocumentBase]:
+        """Returns documents sorted by relevance for given query.
+
+        Arguments
+        ---------
+        query : QueryBase
+            Query to be searched.
+
+        Returns
+        -------
+        Iterable[DocumentBase]
+            Sorted documents with ties broken.
+        """
+        documents_ranks, num_documents = _get_ranks(query, self._systems)
+
+        # sort documents by inverse median rank
+        ratings = sorted([(doc, (num_documents - median(ranks)) / num_documents)
+                          for doc, ranks in documents_ranks.items()],
+                         key=lambda item: item[1],
+                         reverse=True)
+
+        return _break_ties(ratings, num_documents, documents_ranks)
 
 
-def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
-                 weights: List[float]) -> Iterable[DocumentBase]:
-    """Ensemble systems and for given query return documents sorted by
+class WeightedIbc(IRSystemBase):
+    """Ensemble system where for given query return documents sorted by
     (num_documents - weighted_median_rank) / num_documents formula,
     where ties are broken by taking random ranking out of ranks from
     given document's individual system's ranks, where the distribution
     is given by weights parameter.
-
-    Arguments
-    ---------
-    query : QueryBase
-        Query to be searched.
-    systems : Iterable[IRSystemBase]
-        List of system to be ensembled.
-    weights : Iterable[float]
-        Weights of systems.
-
-    Returns
-    -------
-    Iterable[DocumentBase]
-        Sorted documents with ties broken.
     """
-    documents_ranks, num_documents = _get_ranks(query, systems)
 
-    # sort documents by inverse weighted median rank
-    ratings = sorted([(doc, (num_documents - _weighted_median(ranks, weights)) / num_documents)
-                      for doc, ranks in documents_ranks.items()],
-                     key=lambda item: item[1],
-                     reverse=True)
+    def __init__(self, systems: Iterable[IRSystemBase], weights: List[float]) -> None:
+        """Construct the object
 
-    return _break_ties(ratings, num_documents, documents_ranks, weights)
+        Arguments
+        ---------
+        systems : Iterable[IRSystemBase]
+            List of system to be ensembled.
+        weights : Iterable[float]
+            Weights of systems.
+        """
+        self._systems = systems
+        self._weights = weights
+
+    def search(self, query: QueryBase) -> Iterable[DocumentBase]:
+        """Returns documents sorted by relevance for given query.
+
+        Arguments
+        ---------
+        query : QueryBase
+            Query to be searched.
+
+        Returns
+        -------
+        Iterable[DocumentBase]
+            Sorted documents with ties broken.
+        """
+        documents_ranks, num_documents = _get_ranks(query, self._systems)
+
+        # sort documents by inverse weighted median rank
+        ratings = sorted([(doc, (num_documents - _weighted_median(ranks, self._weights)) / num_documents)
+                          for doc, ranks in documents_ranks.items()],
+                         key=lambda item: item[1],
+                         reverse=True)
+
+        return _break_ties(ratings, num_documents, documents_ranks, self._weights)
 
 
-class Rbc():
+class Rbc(IRSystemBase):
     """Class for rbc ensembling algorithm, where (by default) a linear regression model is trained to predict
     relevance of documents for given queries. This model is then used (in search method) to estimate documents'
     relevance for new queries.
 
     The training set is constructed from list of document score tuples and document judgement labels.
     The document score tuple consists of scores for each system calculated as (num_documets - rank) / num_documents.
-
-
-    Methods:
-    -------
-    search(QueryBase) -> Iterable[DocumentBase]:
-        Returns documents sorted by predicted relevance for given query.
     """
 
     def __init__(self, systems: Iterable[IRSystemBase], train_queries: OrderedDict,
