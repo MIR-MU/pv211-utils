@@ -201,7 +201,7 @@ class ArqmathDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        year1, year2 = {2020, 2021, 2022} - {self.year}
+        year1, year2 = list({2020, 2021, 2022} - {self.year})
 
         return OrderedDict(
             self._get_split(year1, Split.train, query_class),
@@ -217,7 +217,7 @@ class ArqmathDataset():
         OrderedDict
             Dictionary of test queries in (query_id: Query) form.
         """
-        year1, year2 = {2020, 2021, 2022} - {self.year}
+        year1, year2 = list({2020, 2021, 2022} - {self.year})
 
         return OrderedDict(
             self._get_split(year1, Split.validation, query_class),
@@ -243,7 +243,7 @@ class ArqmathDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        year1, year2 = {2020, 2021, 2022} - {self.year}
+        year1, year2 = list({2020, 2021, 2022} - {self.year})
         return {(q, a)
                 for q, a in self._load_judgements(year1).union(
                     self._load_judgements(year2))
@@ -258,7 +258,7 @@ class ArqmathDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        year1, year2 = {2020, 2021, 2022} - {self.year}
+        year1, year2 = list({2020, 2021, 2022} - {self.year})
         return {(q, a)
                 for q, a in self._load_judgements(year1).union(
                     self._load_judgements(year2))
