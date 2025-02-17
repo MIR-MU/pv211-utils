@@ -44,7 +44,7 @@ jobs:
           python -V
           pip install -U pip
           apt update
-          apt install cargo
+          apt install -y cargo
           pip install .[google_drive]
           pip install pytype
       - name: Type check
