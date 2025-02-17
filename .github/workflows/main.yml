@@ -43,6 +43,7 @@ jobs:
           set -ex
           python -V
           pip install -U pip
+          apt update
           apt install cargo
           pip install .[google_drive]
           pip install pytype
