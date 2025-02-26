@@ -1,8 +1,10 @@
 import abc
-from typing import Optional
 import datetime
+import pickle
+from typing import Optional
 
 import gspread
+import pkg_resources
 from oauth2client.service_account import ServiceAccountCredentials
 
 
@@ -83,9 +85,13 @@ class LeaderboardBase(abc.ABC):
 
 
 class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
-    @abc.abstractmethod
+
     def _get_key_path(self) -> str:
-        pass
+        key_json_fpath = pkg_resources.resource_filename('pv211_utils', 'data/pv211-leaderboard-config.bin')
+        key_json = pickle.load(open(key_json_fpath, "rb"))
+        # key_json = json.loads(bytes.fromhex(key_json_h).decode('utf-8'))
+
+        return key_json
 
     @abc.abstractmethod
     def _get_spreadsheet_key(self) -> str:
@@ -97,9 +103,9 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
             message = message.format(100.0 * precision)
             raise ValueError(message)
 
-        key_path = self._get_key_path()
+        key_json = self._get_key_path()
         scope = ['https://spreadsheets.google.com/feeds']
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(key_path, scope)
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(key_json, scope)
         gc = gspread.authorize(credentials)
 
         now = datetime.datetime.now()
