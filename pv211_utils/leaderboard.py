@@ -1,6 +1,7 @@
 import abc
 from typing import Optional
 import datetime
+import pkg_resources
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
