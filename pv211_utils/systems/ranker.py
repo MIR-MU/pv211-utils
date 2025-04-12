@@ -4,7 +4,7 @@ from sklearn.preprocessing import normalize
 import torch
 from ..entities import DocumentBase
 from ..irsystem import IRSystemBase
-from ..databases.vectorDB import BaseVectorDB
+from ..databases.base_vector_db import BaseVectorDB
 from sentence_transformers import CrossEncoder
 from sentence_transformers.SentenceTransformer import SentenceTransformer
 
