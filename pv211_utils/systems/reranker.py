@@ -13,7 +13,7 @@ class RerankerSystem(IRSystemBase):
     def __init__(self, retriever: SentenceTransformer, reranker: CrossEncoder, answers: OrderedDict,
                  no_reranks: int = 16, retriever_batch_size: int = 32, reranker_batch_size: int = 8):
         """
-        A system that returns documents    ordered by decreasing cosine similarity.
+        A system that returns documents ordered by decreasing cosine similarity.
 
         Parameters
         ----------
