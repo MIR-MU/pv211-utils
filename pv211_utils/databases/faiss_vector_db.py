@@ -1,6 +1,6 @@
 import faiss
 import numpy as np
-from .vector_db import BaseVectorDB
+from .base_vector_db import BaseVectorDB
 
 
 class FaissVectorDB(BaseVectorDB):
