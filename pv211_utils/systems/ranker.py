@@ -1,8 +1,8 @@
-from typing import OrderedDict
+from typing import Iterable, OrderedDict
 import numpy as np
 from sklearn.preprocessing import normalize
 import torch
-from ..entities import DocumentBase
+from ..entities import DocumentBase, QueryBase
 from ..irsystem import IRSystemBase
 from ..databases.base_vector_db import BaseVectorDB
 from sentence_transformers import CrossEncoder
@@ -19,55 +19,83 @@ class RankerSystem(IRSystemBase):
         no_reranks: int = 12,
         retriever_batch_size: int = 32,
         reranker_batch_size: int = 16,
+        no_returns: int = 100
     ):
-        self.retriever = retriever
-        self.retriever.eval()
+        """
+        A hybrid ranking system that uses dense retrieval followed by cross-encoder reranking
+        to return the most relevant documents from a set of answer candidates.
+
+        Args:
+            retriever (SentenceTransformer): Model to encode queries and documents into dense vectors.
+            reranker (CrossEncoder): Cross-encoder model to rerank top documents using deep pairwise scoring.
+            vector_db (BaseVectorDB): Database that supports vector similarity search.
+            answers (OrderedDict[str, DocumentBase]): Ordered mapping of answer IDs to documents to be indexed.
+            no_reranks (int): Number of top retrieved documents to rerank using the cross-encoder.
+            retriever_batch_size (int): Batch size to use during initial embedding of documents.
+            reranker_batch_size (int): Batch size to use when scoring pairs with the cross-encoder.
+            no_returns (int): Maximum number of documents to retrieve from the vector store per query.
+        """
+        self.retriever = retriever.eval()
         self.reranker = reranker
-        self.no_reranks = no_reranks
-        self.answers = list(answers.values())
         self.vector_db = vector_db
+        self.reranker_batch_size = reranker_batch_size
+        self.no_reranks = no_reranks
+        self.no_returns = no_returns
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        answers_bodies = [str(answer) for answer in self.answers]
+        self.answers = list(answers.values())
+        answer_texts = [str(answer) for answer in self.answers]
 
+        # Encode and normalize all answer documents for efficient cosine similarity search
         with torch.no_grad():
-            answers_embeddings = self.retriever.encode(
-                answers_bodies,
+            answer_embeddings = self.retriever.encode(
+                answer_texts,
                 convert_to_tensor=True,
                 batch_size=retriever_batch_size,
-                device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
+                device=self.device
             ).cpu().numpy()
 
-        # Normalize for cosine similarity
-        answers_embeddings = normalize(answers_embeddings, axis=1)
-        self.vector_db.add(answers_embeddings)
+        answer_embeddings = normalize(answer_embeddings, axis=1)
+        self.vector_db.add(answer_embeddings)
 
-    def search(self, query):
+    def search(self, query:QueryBase) -> Iterable[DocumentBase]:
+        """
+        Performs dense retrieval followed by reranking, and yields documents in descending order of relevance.
+
+        Args:
+            query (QueryBase): The user query to search against the stored answers.
+
+        Yields:
+            DocumentBase: Ranked answer documents.
+        """
         with torch.no_grad():
             query_embedding = self.retriever.encode(
-                str(query),
+                query,
                 convert_to_numpy=True,
-                device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
+                device=self.device
             )
 
-        # Normalize query
         query_embedding = normalize(query_embedding.reshape(1, -1), axis=1)
 
-        retrieved_indices = self.vector_db.search(query_embedding[0], top_k=min(len(self.answers), 100))
+        retrieved_indices = self.vector_db.search(
+            query_embedding[0],
+            top_k=min(len(self.answers), self.no_returns)
+        )
 
-        top_doc_indices = retrieved_indices[:self.no_reranks]
-        top_docs = [str(self.answers[i]) for i in top_doc_indices]
-        pairs = [(str(query), doc) for doc in top_docs]
+        rerank_indices = retrieved_indices[:self.no_reranks]
+        rerank_docs = [str(self.answers[i]) for i in rerank_indices]
+        rerank_pairs = [(query, doc) for doc in rerank_docs]
 
-        scores = self.reranker.predict(pairs, batch_size=16)
-        reranked = sorted(zip(top_doc_indices, scores), key=lambda x: x[1], reverse=True)
+        scores = self.reranker.predict(rerank_pairs, batch_size=self.reranker_batch_size)
+        reranked = sorted(zip(rerank_indices, scores), key=lambda x: x[1], reverse=True)
 
-        for i, _ in reranked:
-            yield self.answers[i]
+        for idx, _ in reranked:
+            yield self.answers[idx]
 
-        for i in retrieved_indices[self.no_reranks:]:
-            yield self.answers[i]
+        for idx in retrieved_indices[self.no_reranks:]:
+            yield self.answers[idx]
 
-        used = set(retrieved_indices)
-        for i in range(len(self.answers)):
-            if i not in used:
-                yield self.answers[i]
+        seen = set(retrieved_indices)
+        for idx in range(len(self.answers)):
+            if idx not in seen:
+                yield self.answers[idx]
