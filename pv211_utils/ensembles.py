@@ -12,6 +12,8 @@ ibc(QueryBase, Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
     Ensembling function based on variant of inverse median rank with tie braking.
 weighted_ibc(QueryBase, Iterable[IRSystemBase], Iterable[float]) -> Iterable[DocumentBase]:
     Ensembling function based on variant of inverse weighted median rank with tie braking.
+interleave(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
+    Ensembling function based on interleaving results from systems.
 
 Classes:
 -------
@@ -235,6 +237,46 @@ def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
                      reverse=True)
 
     return _break_ties(ratings, num_documents, documents_ranks, weights)
+
+
+def interleave(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
+    """
+    Ensemble systems and for a given query return documents interleaved in round-robin fashion.
+
+    This method cycles through each system in order and yields one document from each at a time,
+    preserving the system ordering.
+
+    Arguments
+    ---------
+    query : QueryBase
+        Query to be searched.
+    systems : Iterable[IRSystemBase]
+        List of systems to be interleaved.
+ 
+    Returns
+    -------
+    Iterable[DocumentBase]
+        Interleaved documents from all systems.
+    """
+    iterators = [iter(system.search(query)) for system in systems]
+    exhausted = [False] * len(iterators)
+    seen_doc_ids = set()
+
+    while not all(exhausted):
+        for i, it in enumerate(iterators):
+            if exhausted[i]:
+                continue
+
+            try:
+                doc = next(it)
+
+                if doc.document_id not in seen_doc_ids:
+                    seen_doc_ids.add(doc.document_id)
+                    yield doc
+
+            except StopIteration:
+                exhausted[i] = True
+
 
 
 class Rbc():
