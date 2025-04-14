@@ -10,7 +10,7 @@ from ..irsystem import IRSystemBase
 
 class RetrieverSystem(IRSystemBase):
     def __init__(self, retriever: SentenceTransformer, answers: OrderedDict,  
-                 batch_size: int = 32, no_query_expansion: int = 0, top_k_sentences: int = 3):
+                 batch_size: int = 32, max_depth: int = 0, top_k_sentences: int = 3):
         """
         A system that returns documents ordered by decreasing cosine similarity.
 
@@ -22,16 +22,12 @@ class RetrieverSystem(IRSystemBase):
             Possible answers
         batch_size: int
             The batch size used for the computation
-        no_query_expansion : int
-            Number of query expansion iterations.
-        top_k_sentences : int
-            Number of top-relevant sentences to extract for query expansion.
         """
 
         answers_bodies = [str(answer) for _, answer in answers.items()]
 
         self.answers = list(answers.values())
-        self.no_query_expansion = no_query_expansion
+        self.max_depth = max_depth
         self.top_k_sentences = top_k_sentences
         self.retriever = retriever
         self.retriever.eval()
@@ -59,14 +55,16 @@ class RetrieverSystem(IRSystemBase):
             return dt / (query_embedding_norm * self.answers_embedding_norm[i])
         
         def _extract_top_k_sentences(doc_text, query_text, k):
-            sentences = doc_text.split(". ")
+            ## spacy
+            sentences = doc_text.split(". ")  # Split into sentences
+            ## tf idf fit
             vectorizer = TfidfVectorizer().fit_transform([query_text] + sentences)
             query_vec = vectorizer[0]  # First vector is the query
             sentence_vecs = vectorizer[1:]  # Remaining are sentences
 
             # Compute cosine similarity
             similarities = (sentence_vecs * query_vec.T).toarray().flatten()
-            top_indices = similarities.argsort()[-k:][::-1]
+            top_indices = similarities.argsort()[-k:][::-1]  # Get top-k sentences
 
             return " ".join([sentences[i] for i in top_indices])
 
@@ -74,24 +72,27 @@ class RetrieverSystem(IRSystemBase):
         query_embedding = self.retriever.encode(query_text)
         query_embedding_norm = np.linalg.norm(query_embedding)
 
-        used_doc_indices = set()
+        used_doc_indices = set()  # Keep track of documents used for query expansion
 
-        for _ in range(self.no_query_expansion):
+        ## we will loop for max_depth items and improve the query
+        for _ in range(self.max_depth):
             similarities = [_compute_similarity(i) for i in range(len(self.answers_embeddings))]
             sorted_indices = np.argsort(similarities)[::-1]
 
+            # Find the first new document that hasn't been used
             for idx in sorted_indices:
                 if idx not in used_doc_indices:
                     break
                 
-            used_doc_indices.add(idx)
+            used_doc_indices.add(idx)  # Mark it as used
             top_doc_text = self.answers[idx]
             
             if isinstance(top_doc_text, DocumentBase):
                 top_doc_text = top_doc_text.body
 
+            # Extract key info instead of using full text
             top_doc_summary = _extract_top_k_sentences(top_doc_text, query_text, self.top_k_sentences)
-            query_text = query_text + " " + top_doc_summary
+            query_text = query_text + " " + top_doc_summary  # Expand query
 
             query_embedding = self.retriever.encode(query_text)
             query_embedding_norm = np.linalg.norm(query_embedding)
