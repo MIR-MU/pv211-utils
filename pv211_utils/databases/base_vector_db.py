@@ -5,6 +5,9 @@ from ..entities import DocumentBase
 
 
 class BaseVectorDB(ABC):
+    """
+    Vector DB interface for storing and searching embeddings.
+    """
     @abstractmethod
     def add(self, embeddings: np.ndarray):
         """Add documents and their embeddings to the database."""

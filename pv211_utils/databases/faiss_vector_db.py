@@ -4,6 +4,11 @@ from .base_vector_db import BaseVectorDB
 
 
 class FaissVectorDB(BaseVectorDB):
+    """
+    Vector DB implementation using FAISS for efficient similarity search.
+    This class uses the FAISS library to create an index for fast nearest neighbor search.
+    It supports adding embeddings and searching for the most similar ones.
+    """
     def __init__(self):
         self.index = None
 
