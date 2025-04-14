@@ -84,7 +84,7 @@ class RankerSystem(IRSystemBase):
 
         rerank_indices = retrieved_indices[:self.no_reranks]
         rerank_docs = [str(self.answers[i]) for i in rerank_indices]
-        rerank_pairs = [(query, doc) for doc in rerank_docs]
+        rerank_pairs = [(str(query), doc) for doc in rerank_docs]
 
         scores = self.reranker.predict(rerank_pairs, batch_size=self.reranker_batch_size)
         reranked = sorted(zip(rerank_indices, scores), key=lambda x: x[1], reverse=True)
