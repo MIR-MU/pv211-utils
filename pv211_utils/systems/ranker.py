@@ -58,7 +58,7 @@ class RankerSystem(IRSystemBase):
         answer_embeddings = normalize(answer_embeddings, axis=1)
         self.vector_db.add(answer_embeddings)
 
-    def search(self, query:QueryBase) -> Iterable[DocumentBase]:
+    def search(self, query: QueryBase) -> Iterable[DocumentBase]:
         """
         Performs dense retrieval followed by reranking, and yields documents in descending order of relevance.
 
@@ -70,7 +70,7 @@ class RankerSystem(IRSystemBase):
         """
         with torch.no_grad():
             query_embedding = self.retriever.encode(
-                query,
+                str(query),
                 convert_to_numpy=True,
                 device=self.device
             )
