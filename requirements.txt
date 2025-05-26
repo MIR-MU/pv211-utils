@@ -1,5 +1,5 @@
 beir
-gensim==4.3.2
+gensim==4.2.0
 google
 gspread
 ijson
