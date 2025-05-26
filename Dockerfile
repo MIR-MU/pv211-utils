@@ -11,8 +11,8 @@ ARG AUXILIARY_FILES="\
     /var/cache/apt/* \
 "
 
-# Updated DEPENDENCIES to list Python 3.11 packages
-# software-properties-common will be installed separately to enable add-apt-repository
+# Using Python 3.9
+ARG PYTHON_VERSION_MAJOR_MINOR=3.9
 ARG DEPENDENCIES="\
     bash \
     build-essential \
@@ -23,10 +23,13 @@ ARG DEPENDENCIES="\
     netcat \
     nodejs \
     npm \
-    python3.11 \
-    python3.11-dev \
-    python3.11-distutils \
-    python3.11-venv \ # Good practice to include venv
+    # Python 3.9 packages from main Ubuntu 20.04 repos
+    python${PYTHON_VERSION_MAJOR_MINOR} \
+    python${PYTHON_VERSION_MAJOR_MINOR}-dev \
+    python${PYTHON_VERSION_MAJOR_MINOR}-distutils \
+    python${PYTHON_VERSION_MAJOR_MINOR}-venv \
+    # For Rust/Cargo - needed by some Python packages for compilation
+    cargo \
     tzdata \
     vim \
     wget \
@@ -35,20 +38,17 @@ ARG DEPENDENCIES="\
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Prague
 
-# Install system dependencies, including Python 3.11 from PPA
+# Install system dependencies, including Python 3.9
 RUN apt-get -qy update \
- && apt-get -qy install --no-install-recommends software-properties-common \ # Needed for add-apt-repository
- && add-apt-repository -y ppa:deadsnakes/ppa \ # PPA for newer Python versions
- && apt-get -qy update \ # Update package list again after adding PPA
  # Set timezone
  && ln -fs /usr/share/zoneinfo/$TZ /etc/localtime \
  && apt-get -qy install --no-install-recommends tzdata \
  && dpkg-reconfigure --frontend noninteractive tzdata \
- # Install listed dependencies, now including Python 3.11 from the PPA
+ # Install listed dependencies, now including Python 3.9 and Cargo
  && apt-get -qy install --no-install-recommends ${DEPENDENCIES} \
- # Set python3.11 as the default python and python3
- && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
- && update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
+ # Set python3.9 as the default python and python3
+ && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION_MAJOR_MINOR} 1 \
+ && update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION_MAJOR_MINOR} 1 \
  # Clean up
  && apt-get -qy autoclean \
  && apt-get -qy clean \
@@ -56,14 +56,17 @@ RUN apt-get -qy update \
  && rm -rf ${AUXILIARY_FILES} \
  && rm -rf /var/lib/apt/lists/*
 
-# Install python and python packages using Python 3.11
+# Copy application code
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3.11 \
- && python3.11 -m pip install --no-cache-dir --upgrade pip setuptools wheel \
- && python3.11 -m pip install --no-cache-dir .[notebooks] \
- && python3.11 -m script.download_datasets # all
+# Install python and python packages using Python 3.9
+RUN curl https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION_MAJOR_MINOR} \
+ && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir --upgrade pip setuptools wheel \
+ # Optional: If puccinialin is still an issue as a build-dependency for another package:
+ # && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir puccinialin==0.1.4 \
+ && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir .[notebooks] \
+ && python${PYTHON_VERSION_MAJOR_MINOR} -m script.download_datasets # all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 # Create home directory and user
@@ -71,4 +74,4 @@ RUN useradd -u 1000 --create-home jovyan
 WORKDIR /home/jovyan
 USER 1000
 ADD notebooks .
-RUN ln -s /media/persistent-storage persistent-storage-link # Clarified link name for symlink
+RUN ln -s /media/persistent-storage persistent-storage-link
