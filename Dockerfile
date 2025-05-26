@@ -59,8 +59,10 @@ WORKDIR /pv211-utils
 # Install python and python packages using Python 3.9
 RUN curl https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION_MAJOR_MINOR} \
  && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir --upgrade pip setuptools wheel \
+ # ADD THIS LINE: Try to pre-install a known compatible version of puccinialin
+ && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir puccinialin==0.1.4 \
  && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir .[notebooks] \
- && python${PYTHON_VERSION_MAJOR_MINOR} -m script.download_datasets # all
+ && python${PYTHON_VERSION_MAJOR_MINOR} -m script.download_datasets all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 # Create home directory and user
