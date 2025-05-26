@@ -47,11 +47,12 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 # Use python3.9 for pip and package installation
+# Inside your Dockerfile, where Python packages are installed:
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3.9 \
  && python3.9 -m pip install --upgrade pip setuptools wheel \
+ && python3.9 -m pip install --upgrade Cython numpy \ # Install/upgrade Cython and NumPy first
  && python3.9 -m pip install .[notebooks] \
  && python3.9 -m script.download_datasets # all
-# Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 # Create home directory
 RUN useradd -u 1000 --create-home jovyan
