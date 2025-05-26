@@ -28,7 +28,7 @@ ARG DEPENDENCIES="\
     python${PYTHON_VERSION_MAJOR_MINOR}-dev \
     python${PYTHON_VERSION_MAJOR_MINOR}-distutils \
     python${PYTHON_VERSION_MAJOR_MINOR}-venv \
-    # For Rust/Cargo - needed by some Python packages for compilation
+    # For Rust/Cargo
     cargo \
     tzdata \
     vim \
@@ -40,31 +40,25 @@ ENV TZ=Europe/Prague
 
 # Install system dependencies, including Python 3.9
 RUN apt-get -qy update \
- # Set timezone
  && ln -fs /usr/share/zoneinfo/$TZ /etc/localtime \
  && apt-get -qy install --no-install-recommends tzdata \
  && dpkg-reconfigure --frontend noninteractive tzdata \
- # Install listed dependencies, now including Python 3.9 and Cargo
  && apt-get -qy install --no-install-recommends ${DEPENDENCIES} \
- # Set python3.9 as the default python and python3
  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION_MAJOR_MINOR} 1 \
  && update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION_MAJOR_MINOR} 1 \
- # Clean up
  && apt-get -qy autoclean \
  && apt-get -qy clean \
  && apt-get -qy autoremove --purge \
  && rm -rf ${AUXILIARY_FILES} \
  && rm -rf /var/lib/apt/lists/*
 
-# Copy application code
+# Copy your project code (including setup.py and requirements.txt)
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 
 # Install python and python packages using Python 3.9
 RUN curl https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION_MAJOR_MINOR} \
  && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir --upgrade pip setuptools wheel \
- # Optional: If puccinialin is still an issue as a build-dependency for another package:
- # && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir puccinialin==0.1.4 \
  && python${PYTHON_VERSION_MAJOR_MINOR} -m pip install --no-cache-dir .[notebooks] \
  && python${PYTHON_VERSION_MAJOR_MINOR} -m script.download_datasets # all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
@@ -73,5 +67,5 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python${PYTHON_VERSION_MAJOR_MIN
 RUN useradd -u 1000 --create-home jovyan
 WORKDIR /home/jovyan
 USER 1000
-ADD notebooks .
+ADD notebooks . # This adds your 'notebooks' folder to /home/jovyan/notebooks
 RUN ln -s /media/persistent-storage persistent-storage-link
