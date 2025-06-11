@@ -11,7 +11,7 @@ from ..irsystem import IRSystemBase
 class RetrieverSystem(IRSystemBase):
     def __init__(
         self,
-        retriever: SentenceTransformer,
+        retriever: "SentenceTransformer",
         answers: OrderedDict,
         batch_size: int = 32,
         no_query_expansion: int = 0,
