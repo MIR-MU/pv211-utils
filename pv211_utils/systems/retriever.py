@@ -1,7 +1,7 @@
 from typing import Iterable, OrderedDict
 import numpy as np
 import torch
-from sentence_transformers import SentenceTransformer
+from sentence_transformers.SentenceTransformer import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from ..entities import DocumentBase, QueryBase
