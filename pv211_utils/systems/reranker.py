@@ -10,8 +10,15 @@ from ..irsystem import IRSystemBase
 
 
 class RerankerSystem(IRSystemBase):
-    def __init__(self, retriever: SentenceTransformer, reranker: CrossEncoder, answers: OrderedDict,
-                 no_reranks: int = 16, retriever_batch_size: int = 32, reranker_batch_size: int = 8):
+    def __init__(
+        self,
+        retriever: SentenceTransformer,
+        reranker: CrossEncoder,
+        answers: OrderedDict,
+        no_reranks: int = 16,
+        retriever_batch_size: int = 32,
+        reranker_batch_size: int = 8,
+    ):
         """
         A system that returns documents ordered by decreasing cosine similarity.
 
@@ -45,11 +52,14 @@ class RerankerSystem(IRSystemBase):
 
         with torch.no_grad():
             self.answers_embeddings = self.retriever.encode(
-                answers_bodies, convert_to_tensor='pt', batch_size=retriever_batch_size)
+                answers_bodies, convert_to_tensor="pt", batch_size=retriever_batch_size
+            )
 
         self.answers_embeddings = self.answers_embeddings.detach().cpu().numpy()
 
-        self.answers_embedding_norm = [np.linalg.norm(embedding) for embedding in self.answers_embeddings]
+        self.answers_embedding_norm = [
+            np.linalg.norm(embedding) for embedding in self.answers_embeddings
+        ]
 
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
         """The ranked retrieval results for a query.
@@ -68,20 +78,26 @@ class RerankerSystem(IRSystemBase):
         query_embedding = self.retriever.encode(str(query))
         query_embedding_norm = np.linalg.norm(query_embedding)
 
-        similarities = [_compute_similarity(i) for i in range(len(self.answers_embeddings))]
+        similarities = [
+            _compute_similarity(i) for i in range(len(self.answers_embeddings))
+        ]
         sorted_similarities = np.array(similarities).argsort()[::-1]
 
         # rerank top documents returned by retriever
         retriever_top = []
         for i in range(self.no_reranks):
-            retriever_top.append([str(query), str(self.answers[sorted_similarities[i]])])
+            retriever_top.append(
+                [str(query), str(self.answers[sorted_similarities[i]])]
+            )
 
-        rerank_predictions = self.reranker.predict(retriever_top, batch_size=self.reranker_batch_size)
+        rerank_predictions = self.reranker.predict(
+            retriever_top, batch_size=self.reranker_batch_size
+        )
         rerank_predictions = np.array(rerank_predictions).argsort()[::-1]
 
         # return documents in reranked order
         for doc in rerank_predictions:
             yield self.answers[sorted_similarities[doc]]
 
-        for doc in sorted_similarities[self.no_reranks:]:
+        for doc in sorted_similarities[self.no_reranks :]:
             yield self.answers[doc]

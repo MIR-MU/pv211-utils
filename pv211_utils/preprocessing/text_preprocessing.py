@@ -78,9 +78,16 @@ class DocPreprocessing(DocPreprocessingBase):
 
     """
 
-    def __init__(self, lower: bool = True, deacc: bool = True, lemm: WordNormFunc = None, stem: WordNormFunc = None,
-                 stopwords: List[str] = [], min_len: int = 2, max_len: int = 15):
-
+    def __init__(
+        self,
+        lower: bool = True,
+        deacc: bool = True,
+        lemm: WordNormFunc = None,
+        stem: WordNormFunc = None,
+        stopwords: List[str] = [],
+        min_len: int = 2,
+        max_len: int = 15,
+    ):
         self.lower = lower
         self.deacc = deacc
         self.lemm = lemm

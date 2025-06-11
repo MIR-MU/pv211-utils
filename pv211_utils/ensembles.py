@@ -21,6 +21,7 @@ rbc:
     Interface for traning and using an ensembling technique, where regression model
     is used to estimate relevance of documents to queries.
 """
+
 from .irsystem import IRSystemBase
 from .entities import QueryBase, DocumentBase, JudgementBase
 
@@ -78,8 +79,12 @@ def _get_ranks(query: QueryBase, systems: Iterable[IRSystemBase]) -> Tuple[dict,
     return (documents_ranks, num_documents)
 
 
-def _break_ties(ratings: list, num_documents: int,
-                documents_scores: dict, weights: Optional[list] = None) -> list:
+def _break_ties(
+    ratings: list,
+    num_documents: int,
+    documents_scores: dict,
+    weights: Optional[list] = None,
+) -> list:
     final_ranking = []
 
     for start_i in range(len(ratings)):
@@ -96,17 +101,26 @@ def _break_ties(ratings: list, num_documents: int,
         tied_documents = dict()
         # calculate new rating from randomly chosen ranking from document's list of rankings
         for i in range(start_i, end_i):
-            tied_documents[ratings[i][0]] = (num_documents - choices(documents_scores[ratings[i][0]],
-                                                                     weights=weights)[0]) / num_documents
+            tied_documents[ratings[i][0]] = (
+                num_documents
+                - choices(documents_scores[ratings[i][0]], weights=weights)[0]
+            ) / num_documents
 
-        final_ranking.extend([doc for doc, _ in sorted(tied_documents.items(),
-                                                       key=lambda item: item[1],
-                                                       reverse=True)])
+        final_ranking.extend(
+            [
+                doc
+                for doc, _ in sorted(
+                    tied_documents.items(), key=lambda item: item[1], reverse=True
+                )
+            ]
+        )
 
     return final_ranking
 
 
-def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
+def inverse_mean_rank(
+    query: QueryBase, systems: Iterable[IRSystemBase]
+) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by their inverse mean rank.
 
     Arguments
@@ -123,12 +137,17 @@ def inverse_mean_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iter
     """
     documents_ranks, _ = _get_ranks(query, systems)
 
-    return [doc for doc, _ in sorted(documents_ranks.items(),
-                                     key=lambda item: 1 / mean(item[1]),
-                                     reverse=True)]
+    return [
+        doc
+        for doc, _ in sorted(
+            documents_ranks.items(), key=lambda item: 1 / mean(item[1]), reverse=True
+        )
+    ]
 
 
-def inverse_median_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
+def inverse_median_rank(
+    query: QueryBase, systems: Iterable[IRSystemBase]
+) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by their inverse median rank.
 
     Arguments
@@ -145,13 +164,17 @@ def inverse_median_rank(query: QueryBase, systems: Iterable[IRSystemBase]) -> It
     """
     documents_ranks, _ = _get_ranks(query, systems)
 
-    return [doc for doc, _ in sorted(documents_ranks.items(),
-                                     key=lambda item: 1 / median(item[1]),
-                                     reverse=True)]
+    return [
+        doc
+        for doc, _ in sorted(
+            documents_ranks.items(), key=lambda item: 1 / median(item[1]), reverse=True
+        )
+    ]
 
 
-def reciprocal_rank_fusion(query: QueryBase,
-                           systems: Iterable[IRSystemBase], k: int) -> Iterable[DocumentBase]:
+def reciprocal_rank_fusion(
+    query: QueryBase, systems: Iterable[IRSystemBase], k: int
+) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents
     sorted by reciprocal rank fusion formula.
 
@@ -171,10 +194,14 @@ def reciprocal_rank_fusion(query: QueryBase,
     """
     documents_ranks, _ = _get_ranks(query, systems)
 
-    return [doc for doc, _ in sorted(documents_ranks.items(),
-                                     key=lambda item: sum(map(lambda elem: 1 / (elem + k),
-                                                              item[1])),
-                                     reverse=True)]
+    return [
+        doc
+        for doc, _ in sorted(
+            documents_ranks.items(),
+            key=lambda item: sum(map(lambda elem: 1 / (elem + k), item[1])),
+            reverse=True,
+        )
+    ]
 
 
 def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
@@ -198,16 +225,21 @@ def ibc(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentB
     documents_ranks, num_documents = _get_ranks(query, systems)
 
     # sort documents by inverse median rank
-    ratings = sorted([(doc, (num_documents - median(ranks)) / num_documents)
-                      for doc, ranks in documents_ranks.items()],
-                     key=lambda item: item[1],
-                     reverse=True)
+    ratings = sorted(
+        [
+            (doc, (num_documents - median(ranks)) / num_documents)
+            for doc, ranks in documents_ranks.items()
+        ],
+        key=lambda item: item[1],
+        reverse=True,
+    )
 
     return _break_ties(ratings, num_documents, documents_ranks)
 
 
-def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
-                 weights: List[float]) -> Iterable[DocumentBase]:
+def weighted_ibc(
+    query: QueryBase, systems: Iterable[IRSystemBase], weights: List[float]
+) -> Iterable[DocumentBase]:
     """Ensemble systems and for given query return documents sorted by
     (num_documents - weighted_median_rank) / num_documents formula,
     where ties are broken by taking random ranking out of ranks from
@@ -231,15 +263,21 @@ def weighted_ibc(query: QueryBase, systems: Iterable[IRSystemBase],
     documents_ranks, num_documents = _get_ranks(query, systems)
 
     # sort documents by inverse weighted median rank
-    ratings = sorted([(doc, (num_documents - _weighted_median(ranks, weights)) / num_documents)
-                      for doc, ranks in documents_ranks.items()],
-                     key=lambda item: item[1],
-                     reverse=True)
+    ratings = sorted(
+        [
+            (doc, (num_documents - _weighted_median(ranks, weights)) / num_documents)
+            for doc, ranks in documents_ranks.items()
+        ],
+        key=lambda item: item[1],
+        reverse=True,
+    )
 
     return _break_ties(ratings, num_documents, documents_ranks, weights)
 
 
-def interleave(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[DocumentBase]:
+def interleave(
+    query: QueryBase, systems: Iterable[IRSystemBase]
+) -> Iterable[DocumentBase]:
     """
     Ensemble systems and for a given query return documents interleaved in round-robin fashion.
 
@@ -276,7 +314,8 @@ def interleave(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[Do
             except StopIteration:
                 exhausted[i] = True
 
-class Rbc():
+
+class Rbc:
     """Class for rbc ensembling algorithm, where (by default) a linear regression model is trained to predict
     relevance of documents for given queries. This model is then used (in search method) to estimate documents'
     relevance for new queries.
@@ -291,8 +330,13 @@ class Rbc():
         Returns documents sorted by predicted relevance for given query.
     """
 
-    def __init__(self, systems: Iterable[IRSystemBase], train_queries: OrderedDict,
-                 train_judgements: Set[JudgementBase], pipeline: Optional[Pipeline] = None) -> None:
+    def __init__(
+        self,
+        systems: Iterable[IRSystemBase],
+        train_queries: OrderedDict,
+        train_judgements: Set[JudgementBase],
+        pipeline: Optional[Pipeline] = None,
+    ) -> None:
         """Construct the rbc object and fit the model.
 
         Arguments
@@ -312,9 +356,9 @@ class Rbc():
         self._train_judgements = _judgements_obj_to_id(train_judgements)
         self._pipeline = self._fit_model(pipeline)
 
-    def _create_dataset(self, create_labels, queries: OrderedDict) -> Tuple[List[DocumentBase],
-                                                                            List[List[float]],
-                                                                            List[int]]:
+    def _create_dataset(
+        self, create_labels, queries: OrderedDict
+    ) -> Tuple[List[DocumentBase], List[List[float]], List[int]]:
         documents, X, Y = [], [], []
         # build the dataset of document scores given by systems, labeled by relevance judgement
         for query_id, query in queries.items():
@@ -339,13 +383,9 @@ class Rbc():
 
     def _fit_model(self, pipeline):
         if pipeline is None:
-            pipeline = make_pipeline(
-                StandardScaler(copy=False),
-                LinearRegression()
-            )
+            pipeline = make_pipeline(StandardScaler(copy=False), LinearRegression())
 
-        _, X, Y = self._create_dataset(create_labels=True,
-                                       queries=self._train_queries)
+        _, X, Y = self._create_dataset(create_labels=True, queries=self._train_queries)
         pipeline.fit(X, Y)
 
         return pipeline
@@ -363,10 +403,14 @@ class Rbc():
         Iterable[DocumentBase]:
             Documents sorted by predicted relevance for given query.
         """
-        documents, X, _ = self._create_dataset(create_labels=False,
-                                               queries=OrderedDict({query.query_id: query}))
+        documents, X, _ = self._create_dataset(
+            create_labels=False, queries=OrderedDict({query.query_id: query})
+        )
         scores = self._pipeline.predict(X)
 
-        return [doc for doc, _ in sorted(zip(documents, scores),
-                                         key=lambda item: item[1],
-                                         reverse=True)]
+        return [
+            doc
+            for doc, _ in sorted(
+                zip(documents, scores), key=lambda item: item[1], reverse=True
+            )
+        ]

@@ -1,28 +1,32 @@
 import unittest
 from typing import List
 
-from pv211_utils.arqmath.entities import ArqmathQueryBase, ArqmathQuestionBase, ArqmathAnswerBase
+from pv211_utils.arqmath.entities import (
+    ArqmathQueryBase,
+    ArqmathQuestionBase,
+    ArqmathAnswerBase,
+)
 
 
 QUERY_ID = 123
-QUERY_TITLE_INPUT = 'some  title'
-QUERY_TITLE_OUTPUT = ['some', 'title']
-QUERY_BODY_INPUT = 'some body  text'
-QUERY_BODY_OUTPUT = ['some', 'body', 'text']
-QUERY_TAGS = ['some', 'tags']
+QUERY_TITLE_INPUT = "some  title"
+QUERY_TITLE_OUTPUT = ["some", "title"]
+QUERY_BODY_INPUT = "some body  text"
+QUERY_BODY_OUTPUT = ["some", "body", "text"]
+QUERY_TAGS = ["some", "tags"]
 
-ANSWER_DOCUMENT_ID = '456'
-ANSWER_BODY_INPUT = 'some  body text'
-ANSWER_BODY_OUTPUT = ['some', 'body', 'text']
+ANSWER_DOCUMENT_ID = "456"
+ANSWER_BODY_INPUT = "some  body text"
+ANSWER_BODY_OUTPUT = ["some", "body", "text"]
 ANSWER_UPVOTES = 456
 ANSWER_IS_ACCEPTED = True
 
-QUESTION_DOCUMENT_ID = '123'
-QUESTION_TITLE_INPUT = 'some  title'
-QUESTION_TITLE_OUTPUT = ['some', 'title']
-QUESTION_BODY_INPUT = 'some  body text'
-QUESTION_BODY_OUTPUT = ['some', 'body', 'text']
-QUESTION_TAGS = ['some', 'tags']
+QUESTION_DOCUMENT_ID = "123"
+QUESTION_TITLE_INPUT = "some  title"
+QUESTION_TITLE_OUTPUT = ["some", "title"]
+QUESTION_BODY_INPUT = "some  body text"
+QUESTION_BODY_OUTPUT = ["some", "body", "text"]
+QUESTION_TAGS = ["some", "tags"]
 QUESTION_UPVOTES = 456
 QUESTION_VIEWS = 789
 QUESTION_ANSWER_DOCUMENT_IDS = [ANSWER_DOCUMENT_ID]
@@ -42,8 +46,16 @@ class ArqmathAnswer(ArqmathAnswerBase):
 
 
 class ArqmathQuestion(ArqmathQuestionBase):
-    def __init__(self, document_id: str, title: str, body: str, tags: List[str],
-                 upvotes: int, views: int, answers: List[ArqmathAnswerBase]):
+    def __init__(
+        self,
+        document_id: str,
+        title: str,
+        body: str,
+        tags: List[str],
+        upvotes: int,
+        views: int,
+        answers: List[ArqmathAnswerBase],
+    ):
         title = title.split()
         body = body.split()
         super().__init__(document_id, title, body, tags, upvotes, views, answers)
@@ -51,7 +63,9 @@ class ArqmathQuestion(ArqmathQuestionBase):
 
 class TestArqmathQueryBase(unittest.TestCase):
     def setUp(self):
-        self.query = ArqmathQuery(QUERY_ID, QUERY_TITLE_INPUT, QUERY_BODY_INPUT, QUERY_TAGS)
+        self.query = ArqmathQuery(
+            QUERY_ID, QUERY_TITLE_INPUT, QUERY_BODY_INPUT, QUERY_TAGS
+        )
 
     def test_query_id(self):
         self.assertEqual(QUERY_ID, self.query.query_id)
@@ -68,7 +82,9 @@ class TestArqmathQueryBase(unittest.TestCase):
 
 class TestArqmathAnswerBase(unittest.TestCase):
     def setUp(self):
-        self.answer = ArqmathAnswer(ANSWER_DOCUMENT_ID, ANSWER_BODY_INPUT, ANSWER_UPVOTES, ANSWER_IS_ACCEPTED)
+        self.answer = ArqmathAnswer(
+            ANSWER_DOCUMENT_ID, ANSWER_BODY_INPUT, ANSWER_UPVOTES, ANSWER_IS_ACCEPTED
+        )
 
     def test_answer_document_id(self):
         self.assertEqual(ANSWER_DOCUMENT_ID, self.answer.document_id)
@@ -85,9 +101,18 @@ class TestArqmathAnswerBase(unittest.TestCase):
 
 class TestArqmathQuestionBase(unittest.TestCase):
     def setUp(self):
-        self.answer = ArqmathAnswer(ANSWER_DOCUMENT_ID, ANSWER_BODY_INPUT, ANSWER_UPVOTES, ANSWER_IS_ACCEPTED)
-        self.question = ArqmathQuestion(QUESTION_DOCUMENT_ID, QUESTION_TITLE_INPUT, QUESTION_BODY_INPUT, QUESTION_TAGS,
-                                        QUESTION_UPVOTES, QUESTION_VIEWS, [self.answer])
+        self.answer = ArqmathAnswer(
+            ANSWER_DOCUMENT_ID, ANSWER_BODY_INPUT, ANSWER_UPVOTES, ANSWER_IS_ACCEPTED
+        )
+        self.question = ArqmathQuestion(
+            QUESTION_DOCUMENT_ID,
+            QUESTION_TITLE_INPUT,
+            QUESTION_BODY_INPUT,
+            QUESTION_TAGS,
+            QUESTION_UPVOTES,
+            QUESTION_VIEWS,
+            [self.answer],
+        )
 
     def test_question_document_id(self):
         self.assertEqual(QUESTION_DOCUMENT_ID, self.question.document_id)

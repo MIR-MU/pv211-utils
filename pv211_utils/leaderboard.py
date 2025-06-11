@@ -9,11 +9,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 class LeaderboardBase(abc.ABC):
-    """A leaderboard with information retrieval system results.
+    """A leaderboard with information retrieval system results."""
 
-    """
     @abc.abstractmethod
-    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> None:
+    def log_precision_entry(
+        self, author_name: str, mean_average_precision: float
+    ) -> None:
         """Logs mean average precision of an author to the leaderboard.
 
         Parameters
@@ -66,8 +67,8 @@ class LeaderboardBase(abc.ABC):
         competition_start = self.get_competition_start()
         competition_end = self.get_competition_end()
         if current_date > competition_end:
-            message = 'Sorry, the competition has ended in {}. No more submissions.'
-            message = message.format(competition_end.strftime('%d.%m.%Y %H:%M:%S'))
+            message = "Sorry, the competition has ended in {}. No more submissions."
+            message = message.format(competition_end.strftime("%d.%m.%Y %H:%M:%S"))
             raise ValueError(message)
         week = current_date.isocalendar()[1] - competition_start.isocalendar()[1] + 1
         return week
@@ -85,9 +86,10 @@ class LeaderboardBase(abc.ABC):
 
 
 class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
-
     def _get_key_path(self) -> str:
-        key_json_fpath = pkg_resources.resource_filename('pv211_utils', 'data/pv211-leaderboard-config.bin')
+        key_json_fpath = pkg_resources.resource_filename(
+            "pv211_utils", "data/pv211-leaderboard-config.bin"
+        )
         key_json = pickle.load(open(key_json_fpath, "rb"))
         # key_json = json.loads(bytes.fromhex(key_json_h).decode('utf-8'))
 
@@ -99,17 +101,17 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
 
     def log_precision_entry(self, competitor_name: str, precision: float) -> None:
         if precision > 1.0 or precision < 0.0:
-            message = 'That precision ({:.2f}%) looks suspicious. Is it real?'
+            message = "That precision ({:.2f}%) looks suspicious. Is it real?"
             message = message.format(100.0 * precision)
             raise ValueError(message)
 
         key_json = self._get_key_path()
-        scope = ['https://spreadsheets.google.com/feeds']
+        scope = ["https://spreadsheets.google.com/feeds"]
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(key_json, scope)
         gc = gspread.authorize(credentials)
 
         now = datetime.datetime.now()
-        current_time = now.strftime('%d.%m.%Y %H:%M:%S')
+        current_time = now.strftime("%d.%m.%Y %H:%M:%S")
 
         spreadsheet_key = self._get_spreadsheet_key()
         spreadsheet = gc.open_by_key(spreadsheet_key)
@@ -123,8 +125,10 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
 
         logs_list = logs_worksheet.get_all_values()
         current_len = len(logs_list)
-        current_week = 'Week {}'.format(self.get_week(now.date()))
-        header_cell = '=CONCAT(D%s;E%s)' % (current_len+1, current_len+1)
+        current_week = "Week {}".format(self.get_week(now.date()))
+        header_cell = "=CONCAT(D%s;E%s)" % (current_len + 1, current_len + 1)
         # append entry
-        logs_worksheet.append_row(["", current_len, current_time, current_week, competitor_name, precision])
-        logs_worksheet.update_cell(current_len+1, 1, header_cell)
+        logs_worksheet.append_row(
+            ["", current_len, current_time, current_week, competitor_name, precision]
+        )
+        logs_worksheet.update_cell(current_len + 1, 1, header_cell)

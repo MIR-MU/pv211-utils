@@ -2,11 +2,13 @@ import unittest
 from typing import Any, Iterable, Dict, List
 from collections import OrderedDict
 
-from pv211_utils.evaluation_metrics import (mean_average_precision,
-                                            mean_precision,
-                                            mean_recall,
-                                            normalized_discounted_cumulative_gain,
-                                            mean_bpref)
+from pv211_utils.evaluation_metrics import (
+    mean_average_precision,
+    mean_precision,
+    mean_recall,
+    normalized_discounted_cumulative_gain,
+    mean_bpref,
+)
 from pv211_utils.entities import QueryBase, DocumentBase
 from pv211_utils.irsystem import IRSystemBase
 
@@ -22,10 +24,18 @@ class Document(DocumentBase):
 
 
 QUERIES = OrderedDict({1: Query(1, "a"), 2: Query(2, "b")})
-DOCUMENTS = {1: Document('1', "a"), 2: Document('2', "b"),
-             3: Document('3', "c"), 4: Document('4', "d")}
-JUDGEMENTS = {(QUERIES[1], DOCUMENTS[1]), (QUERIES[1], DOCUMENTS[2]),
-              (QUERIES[2], DOCUMENTS[4]), (QUERIES[2], DOCUMENTS[3])}
+DOCUMENTS = {
+    1: Document("1", "a"),
+    2: Document("2", "b"),
+    3: Document("3", "c"),
+    4: Document("4", "d"),
+}
+JUDGEMENTS = {
+    (QUERIES[1], DOCUMENTS[1]),
+    (QUERIES[1], DOCUMENTS[2]),
+    (QUERIES[2], DOCUMENTS[4]),
+    (QUERIES[2], DOCUMENTS[3]),
+}
 
 
 class System(IRSystemBase):
@@ -50,8 +60,12 @@ class TestEvaluationMetrics(unittest.TestCase):
         self.assertEqual(1, map)
 
     def test_mean_avarage_precision_mediocore(self):
-        map_1 = mean_average_precision(self.system_mediocore_1, QUERIES, JUDGEMENTS, 4, 2)
-        map_2 = mean_average_precision(self.system_mediocore_2, QUERIES, JUDGEMENTS, 4, 2)
+        map_1 = mean_average_precision(
+            self.system_mediocore_1, QUERIES, JUDGEMENTS, 4, 2
+        )
+        map_2 = mean_average_precision(
+            self.system_mediocore_2, QUERIES, JUDGEMENTS, 4, 2
+        )
 
         self.assertAlmostEqual(0.75, map_1)
         self.assertAlmostEqual(0.708333333, map_2)
@@ -100,20 +114,30 @@ class TestEvaluationMetrics(unittest.TestCase):
         self.assertEqual(0, mr)
 
     def test_ndcg_perfect(self):
-        ndcg = normalized_discounted_cumulative_gain(self.system_perfect, QUERIES, JUDGEMENTS, 4, 1)
+        ndcg = normalized_discounted_cumulative_gain(
+            self.system_perfect, QUERIES, JUDGEMENTS, 4, 1
+        )
 
         self.assertAlmostEqual(1, ndcg)
 
     def test_ndcg_mediocore(self):
-        ndcg_1 = normalized_discounted_cumulative_gain(self.system_mediocore_1, QUERIES, JUDGEMENTS, 4, 2)
-        ndcg_2 = normalized_discounted_cumulative_gain(self.system_mediocore_2, QUERIES, JUDGEMENTS, 4, 2)
+        ndcg_1 = normalized_discounted_cumulative_gain(
+            self.system_mediocore_1, QUERIES, JUDGEMENTS, 4, 2
+        )
+        ndcg_2 = normalized_discounted_cumulative_gain(
+            self.system_mediocore_2, QUERIES, JUDGEMENTS, 4, 2
+        )
 
         self.assertAlmostEqual(0.877215315338, ndcg_1)
         self.assertAlmostEqual(0.7853208594, ndcg_2)
 
     def test_ndcg_bad(self):
-        ndcg_1 = normalized_discounted_cumulative_gain(self.system_bad, QUERIES, JUDGEMENTS, 3, 1)
-        ndcg_2 = normalized_discounted_cumulative_gain(self.system_bad, QUERIES, JUDGEMENTS, 2, 1)
+        ndcg_1 = normalized_discounted_cumulative_gain(
+            self.system_bad, QUERIES, JUDGEMENTS, 3, 1
+        )
+        ndcg_2 = normalized_discounted_cumulative_gain(
+            self.system_bad, QUERIES, JUDGEMENTS, 2, 1
+        )
 
         self.assertAlmostEqual(0.5, ndcg_1)
         self.assertEqual(0, ndcg_2)
@@ -138,8 +162,12 @@ class TestEvaluationMetrics(unittest.TestCase):
         self.assertEqual(0, mbpref_2)
 
     def test_large_k(self):
-        map_1 = mean_average_precision(self.system_mediocore_1, QUERIES, JUDGEMENTS, 5, 2)
-        map_2 = mean_average_precision(self.system_mediocore_2, QUERIES, JUDGEMENTS, 8, 2)
+        map_1 = mean_average_precision(
+            self.system_mediocore_1, QUERIES, JUDGEMENTS, 5, 2
+        )
+        map_2 = mean_average_precision(
+            self.system_mediocore_2, QUERIES, JUDGEMENTS, 8, 2
+        )
 
         self.assertAlmostEqual(0.75, map_1)
         self.assertAlmostEqual(0.708333333, map_2)

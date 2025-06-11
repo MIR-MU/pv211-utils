@@ -4,16 +4,16 @@ from pv211_utils.trec.entities import TrecQueryBase, TrecDocumentBase
 
 
 QUERY_ID = 123
-QUERY_TITLE_INPUT = 'some  title'
-QUERY_TITLE_OUTPUT = ['some', 'title']
-QUERY_BODY_INPUT = 'some body  text'
-QUERY_BODY_OUTPUT = ['some', 'body', 'text']
-QUERY_NARRATIVE_INPUT = 'some narrative'
-QUERY_NARRATIVE_OUTPUT = ['some', 'narrative']
+QUERY_TITLE_INPUT = "some  title"
+QUERY_TITLE_OUTPUT = ["some", "title"]
+QUERY_BODY_INPUT = "some body  text"
+QUERY_BODY_OUTPUT = ["some", "body", "text"]
+QUERY_NARRATIVE_INPUT = "some narrative"
+QUERY_NARRATIVE_OUTPUT = ["some", "narrative"]
 
-DOCUMENT_ID = '123'
-DOCUMENT_BODY_INPUT = 'some  body text'
-DOCUMENT_BODY_OUTPUT = ['some', 'body', 'text']
+DOCUMENT_ID = "123"
+DOCUMENT_BODY_INPUT = "some  body text"
+DOCUMENT_BODY_OUTPUT = ["some", "body", "text"]
 
 
 class TrecQuery(TrecQueryBase):
@@ -32,7 +32,9 @@ class TrecDocument(TrecDocumentBase):
 
 class TestTrecQueryBase(unittest.TestCase):
     def setUp(self):
-        self.query = TrecQuery(QUERY_ID, QUERY_TITLE_INPUT, QUERY_BODY_INPUT, QUERY_NARRATIVE_INPUT)
+        self.query = TrecQuery(
+            QUERY_ID, QUERY_TITLE_INPUT, QUERY_BODY_INPUT, QUERY_NARRATIVE_INPUT
+        )
 
     def test_query_id(self):
         self.assertEqual(QUERY_ID, self.query.query_id)

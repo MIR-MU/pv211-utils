@@ -9,8 +9,14 @@ from ..irsystem import IRSystemBase
 
 
 class RetrieverSystem(IRSystemBase):
-    def __init__(self, retriever: SentenceTransformer, answers: OrderedDict,  
-                 batch_size: int = 32, no_query_expansion: int = 0, top_k_sentences: int = 3):
+    def __init__(
+        self,
+        retriever: SentenceTransformer,
+        answers: OrderedDict,
+        batch_size: int = 32,
+        no_query_expansion: int = 0,
+        top_k_sentences: int = 3,
+    ):
         """
         A system that returns documents ordered by decreasing cosine similarity.
 
@@ -38,11 +44,14 @@ class RetrieverSystem(IRSystemBase):
 
         with torch.no_grad():
             self.answers_embeddings = self.retriever.encode(
-                answers_bodies, convert_to_tensor='pt', batch_size=batch_size)
+                answers_bodies, convert_to_tensor="pt", batch_size=batch_size
+            )
 
         self.answers_embeddings = self.answers_embeddings.detach().cpu().numpy()
 
-        self.answers_embedding_norm = [np.linalg.norm(embedding) for embedding in self.answers_embeddings]
+        self.answers_embedding_norm = [
+            np.linalg.norm(embedding) for embedding in self.answers_embeddings
+        ]
 
     def search(self, query: QueryBase) -> Iterable[DocumentBase]:
         """Recursively refine the query and retrieve documents.
@@ -57,7 +66,7 @@ class RetrieverSystem(IRSystemBase):
             # compute similarity between query and answer on index i
             dt = np.dot(query_embedding, self.answers_embeddings[i])
             return dt / (query_embedding_norm * self.answers_embedding_norm[i])
-        
+
         def _extract_top_k_sentences(doc_text, query_text, k):
             sentences = doc_text.split(". ")
             vectorizer = TfidfVectorizer().fit_transform([query_text] + sentences)
@@ -77,26 +86,32 @@ class RetrieverSystem(IRSystemBase):
         used_doc_indices = set()
 
         for _ in range(self.no_query_expansion):
-            similarities = [_compute_similarity(i) for i in range(len(self.answers_embeddings))]
+            similarities = [
+                _compute_similarity(i) for i in range(len(self.answers_embeddings))
+            ]
             sorted_indices = np.argsort(similarities)[::-1]
 
             for idx in sorted_indices:
                 if idx not in used_doc_indices:
                     break
-                
+
             used_doc_indices.add(idx)
             top_doc_text = self.answers[idx]
-            
+
             if isinstance(top_doc_text, DocumentBase):
                 top_doc_text = top_doc_text.body
 
-            top_doc_summary = _extract_top_k_sentences(top_doc_text, query_text, self.top_k_sentences)
+            top_doc_summary = _extract_top_k_sentences(
+                top_doc_text, query_text, self.top_k_sentences
+            )
             query_text = query_text + " " + top_doc_summary
 
             query_embedding = self.retriever.encode(query_text)
             query_embedding_norm = np.linalg.norm(query_embedding)
 
-        similarities = [_compute_similarity(i) for i in range(len(self.answers_embeddings))]
+        similarities = [
+            _compute_similarity(i) for i in range(len(self.answers_embeddings))
+        ]
         sorted_similarities = np.array(similarities).argsort()[::-1]
 
         for doc in sorted_similarities:

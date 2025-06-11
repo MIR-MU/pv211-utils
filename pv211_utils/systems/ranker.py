@@ -18,7 +18,7 @@ class RankerSystem(IRSystemBase):
         no_reranks: int = 12,
         retriever_batch_size: int = 32,
         reranker_batch_size: int = 16,
-        no_returns: int = 100
+        no_returns: int = 100,
     ):
         """
         A hybrid ranking system that uses dense retrieval followed by cross-encoder reranking
@@ -47,12 +47,16 @@ class RankerSystem(IRSystemBase):
 
         # Encode and normalize all answer documents for efficient cosine similarity search
         with torch.no_grad():
-            answer_embeddings = self.retriever.encode(
-                answer_texts,
-                convert_to_tensor=True,
-                batch_size=retriever_batch_size,
-                device=self.device
-            ).cpu().numpy()
+            answer_embeddings = (
+                self.retriever.encode(
+                    answer_texts,
+                    convert_to_tensor=True,
+                    batch_size=retriever_batch_size,
+                    device=self.device,
+                )
+                .cpu()
+                .numpy()
+            )
 
         answer_embeddings = normalize(answer_embeddings, axis=1)
         self.vector_db.add(answer_embeddings)
@@ -69,33 +73,31 @@ class RankerSystem(IRSystemBase):
         """
         with torch.no_grad():
             query_embedding = self.retriever.encode(
-                str(query),
-                convert_to_numpy=True,
-                device=self.device
+                str(query), convert_to_numpy=True, device=self.device
             )
 
         query_embedding = normalize(query_embedding.reshape(1, -1), axis=1)
 
         retrieved_indices = self.vector_db.search(
-            query_embedding[0],
-            top_k=min(len(self.answers), self.no_returns)
+            query_embedding[0], top_k=min(len(self.answers), self.no_returns)
         )
 
-        rerank_indices = retrieved_indices[:self.no_reranks]
+        rerank_indices = retrieved_indices[: self.no_reranks]
         rerank_docs = [str(self.answers[i]) for i in rerank_indices]
         rerank_pairs = [(str(query), doc) for doc in rerank_docs]
 
-        scores = self.reranker.predict(rerank_pairs, batch_size=self.reranker_batch_size)
+        scores = self.reranker.predict(
+            rerank_pairs, batch_size=self.reranker_batch_size
+        )
         reranked = sorted(zip(rerank_indices, scores), key=lambda x: x[1], reverse=True)
 
         for idx, _ in reranked:
             yield self.answers[idx]
 
-        for idx in retrieved_indices[self.no_reranks:]:
+        for idx in retrieved_indices[self.no_reranks :]:
             yield self.answers[idx]
 
         seen_ids = set(retrieved_indices)
         for doc_id, doc in self.answers.items():
             if doc_id not in seen_ids:
                 yield doc
-        
