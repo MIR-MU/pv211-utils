@@ -1,5 +1,4 @@
 import datetime
-import pkg_resources
 from typing import Optional
 
 from ..leaderboard import GoogleSpreadsheetLeaderboardBase

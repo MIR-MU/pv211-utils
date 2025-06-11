@@ -1,5 +1,4 @@
 from typing import Iterable, OrderedDict
-import numpy as np
 from sklearn.preprocessing import normalize
 import torch
 from ..entities import DocumentBase, QueryBase
@@ -95,7 +94,8 @@ class RankerSystem(IRSystemBase):
         for idx in retrieved_indices[self.no_reranks:]:
             yield self.answers[idx]
 
-        seen = set(retrieved_indices)
-        for idx in range(len(self.answers)):
-            if idx not in seen:
-                yield self.answers[idx]
+        seen_ids = set(retrieved_indices)
+        for doc_id, doc in self.answers.items():
+            if doc_id not in seen_ids:
+                yield doc
+        

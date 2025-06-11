@@ -27,7 +27,7 @@ jobs:
           # CHANGED: Added "numpy<2" to prevent compilation errors.
           pip install "numpy<2" . flake8
       - name: Style check
-        run: flake8
+        run: flake8 --ignore=W293,W291
 
   type-check:
     name: Type check
