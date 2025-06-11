@@ -55,7 +55,7 @@ jobs:
           pytype pv211_utils script test
 
   unit-tests:
-    needs: ['style-check', 'type-check']
+    needs: []
     name: Unit tests
     runs-on: ubuntu-latest
     strategy:

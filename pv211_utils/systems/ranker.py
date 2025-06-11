@@ -92,10 +92,10 @@ class RankerSystem(IRSystemBase):
         reranked = sorted(zip(rerank_indices, scores), key=lambda x: x[1], reverse=True)
 
         for idx, _ in reranked:
-            yield self.answers[str(idx)]
+            yield self.answers[idx]
 
         for idx in retrieved_indices[self.no_reranks :]:
-            yield self.answers[str(idx)]
+            yield self.answers[idx]
 
         seen_ids = set(retrieved_indices)
         for doc_id, doc in self.answers.items():
