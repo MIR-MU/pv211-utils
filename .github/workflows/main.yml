@@ -13,22 +13,19 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # CHANGED: The test matrix now uses Python versions that satisfy your
-        # project's dependencies (>=3.9).
         python: ['3.9', '3.11']
     container:
       image: python:${{ matrix.python }}
     steps:
       - name: Checkout repository
-        # CHANGED: Updated to the latest version of the checkout action.
         uses: actions/checkout@v4
       - name: Install requirements
         run: |
           set -ex
           python -V
           pip install -U pip
-          pip install .
-          pip install flake8
+          # CHANGED: Added "numpy<2" to prevent compilation errors.
+          pip install "numpy<2" . flake8
       - name: Style check
         run: flake8
 
@@ -38,8 +35,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # CHANGED: The test matrix now uses Python versions that satisfy your
-        # project's dependencies (>=3.9).
         python: ['3.9', '3.11']
     container:
       image: python:${{ matrix.python }}
@@ -52,12 +47,11 @@ jobs:
           python -V
           pip install -U pip
           apt-get update && apt-get install -y --no-install-recommends cargo
-          pip install .[google_drive]
-          pip install pytype
+          # CHANGED: Added "numpy<2" to prevent compilation errors.
+          pip install "numpy<2" .[google_drive] pytype
       - name: Type check
         run: |
           set -ex
-          # SIMPLIFIED: Combined pytype checks into a single line.
           pytype pv211_utils script test
 
   unit-tests:
@@ -67,7 +61,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        # CHANGED: The unit-tests must also run on a compatible Python version.
         python: ['3.9', '3.11']
     container:
       image: python:${{ matrix.python }}
@@ -79,8 +72,8 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install .
-          pip install pytest
+          # CHANGED: Added "numpy<2" to prevent compilation errors.
+          pip install "numpy<2" . pytest
       - name: Unit tests
         run: python -m pytest
 
@@ -96,7 +89,6 @@ jobs:
           fetch-depth: 0
       
       - name: Log in to Docker Hub
-        # CHANGED: Using the official, recommended action for Docker Hub login.
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
@@ -104,7 +96,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          # This step correctly uses the Dockerfile you fixed previously.
           docker build -t miratmu/pv211-utils:latest \
                        -t miratmu/pv211-utils:$(git describe --tags --always --long) .
           docker push --all-tags miratmu/pv211-utils

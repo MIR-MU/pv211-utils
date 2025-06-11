@@ -11,7 +11,6 @@ ARG AUXILIARY_FILES="\
     /var/cache/apt/* \
 "
 
-# Changed: Switched from python3.8 to python3.9 and added python3-pip
 ARG DEPENDENCIES="\
     bash \
     build-essential \
@@ -34,7 +33,6 @@ ARG DEPENDENCIES="\
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Prague
 
-# Changed: Added deadsnakes PPA to install Python 3.9
 # Install system dependencies
 RUN apt-get -qy update \
  && apt-get -qy install --no-install-recommends software-properties-common \
@@ -46,11 +44,11 @@ RUN apt-get -qy update \
  && apt-get -qy autoremove --purge \
  && rm -rf ${AUXILIARY_FILES}
 
-# Changed: Use python3.9 and system pip, removed get-pip.py, added --no-cache-dir
 # Install python and python packages
 COPY . /pv211-utils
 WORKDIR /pv211-utils
-RUN python3.9 -m pip install --no-cache-dir .[notebooks] \
+# CHANGED: Added "numpy<2" to prevent compilation errors with gensim.
+RUN python3.9 -m pip install --no-cache-dir "numpy<2" .[notebooks] \
  && python3.9 -m script.download_datasets # all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
