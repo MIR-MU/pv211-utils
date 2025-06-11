@@ -82,8 +82,8 @@ class RankerSystem(IRSystemBase):
             query_embedding[0], top_k=min(len(self.answers), self.no_returns)
         )
 
-        rerank_indices = retrieved_indices[: self.no_reranks]
-        rerank_docs = [str(self.answers[i]) for i in rerank_indices]
+        rerank_indices = retrieved_indices[:self.no_reranks]
+        rerank_docs = [str(self.answers[str(i)]) for i in rerank_indices]
         rerank_pairs = [(str(query), doc) for doc in rerank_docs]
 
         scores = self.reranker.predict(
@@ -94,7 +94,7 @@ class RankerSystem(IRSystemBase):
         for idx, _ in reranked:
             yield self.answers[idx]
 
-        for idx in retrieved_indices[self.no_reranks :]:
+        for idx in retrieved_indices[self.no_reranks:]:
             yield self.answers[idx]
 
         seen_ids = set(retrieved_indices)

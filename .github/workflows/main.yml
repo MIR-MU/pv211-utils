@@ -27,7 +27,7 @@ jobs:
           # CHANGED: Added "numpy<2" to prevent compilation errors.
           pip install "numpy<2" . flake8
       - name: Style check
-        run: flake8 --ignore=W293,W291
+        run: flake8 --ignore=W293,W291,W503
 
   type-check:
     name: Type check
@@ -55,7 +55,7 @@ jobs:
           pytype pv211_utils script test
 
   unit-tests:
-    needs: []
+    needs: ['style-check', 'type-check']
     name: Unit tests
     runs-on: ubuntu-latest
     strategy:
