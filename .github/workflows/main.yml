@@ -99,6 +99,9 @@ jobs:
               pytest test/beir/test_entities.py
               ;;
             3b)
+              echo "Cleaning possibly broken cached BEIR datasets"
+              rm -rf datasets/*  || true
+              find . -name '*.zip' -delete || true
               pytest test/beir/test_loader.py
               ;;
           esac
