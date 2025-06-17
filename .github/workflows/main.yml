@@ -62,7 +62,7 @@ jobs:
       fail-fast: true
       matrix:
         python: ['3.9', '3.11']
-        batch: [1, 2, 3]
+        batch: [1, 2, 3a, 3b]
     container:
       image: python:${{ matrix.python }}
     steps:
@@ -95,8 +95,11 @@ jobs:
             2)
               pytest test/trec
               ;;
-            3)
-              pytest test/beir
+            3a)
+              pytest test/beir/test_entities.py
+              ;;
+            3b)
+              pytest test/beir/test_loader.py
               ;;
           esac
 
