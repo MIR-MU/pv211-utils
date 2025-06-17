@@ -62,6 +62,7 @@ jobs:
       fail-fast: true
       matrix:
         python: ['3.9', '3.11']
+        batch: [1, 2, 3]
     container:
       image: python:${{ matrix.python }}
     steps:
@@ -82,10 +83,30 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          # CHANGED: Added "numpy<2" to prevent compilation errors.
           pip install "numpy<2" . pytest
-      - name: Unit tests
-        run: python -m pytest
+
+      - name: Run tests in batch ${{ matrix.batch }}
+        run: |
+          set -ex
+          case "${{ matrix.batch }}" in
+            1)
+              pytest test/arqmath test/cranfield test/test_evaluation_metrics.py
+              ;;
+            2)
+              pytest test/trec
+              ;;
+            3)
+              pytest test/beir
+              ;;
+          esac
+
+      - name: Post-batch cleanup
+        if: always()
+        run: |
+          rm -rf datasets ~/.cache || true
+          echo "Disk usage after batch:"
+          df -h
+
 
   publish:
     name: Build and publish
