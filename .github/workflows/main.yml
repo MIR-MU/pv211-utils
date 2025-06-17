@@ -72,11 +72,11 @@ jobs:
         run: |
           echo "Before cleanup:"
           df -h
-          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost ~/.cargo
-          sudo apt-get clean
+          rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost ~/.cargo || true
+          apt-get clean || true
           echo "After cleanup:"
           df -h
-          
+
       - name: Install requirements
         run: |
           set -ex
