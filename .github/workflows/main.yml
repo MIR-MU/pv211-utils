@@ -127,12 +127,6 @@ jobs:
           pip install -U pip
           pip install "numpy<2" . pytest
 
-      - name: Clean broken datasets if any
-        run: |
-          echo "Cleaning possibly broken cached BEIR datasets"
-          rm -rf datasets/* || true
-          find . -name '*.zip' -delete || true
-
       - name: Check available disk space
         run: |
           echo "Available disk space:"
