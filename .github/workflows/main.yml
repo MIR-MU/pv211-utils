@@ -17,8 +17,7 @@ jobs:
     container:
       image: python:${{ matrix.python }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Install requirements
         run: |
           set -ex
@@ -38,8 +37,7 @@ jobs:
     container:
       image: python:${{ matrix.python }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Install requirements
         run: |
           set -ex
@@ -64,8 +62,7 @@ jobs:
     container:
       image: python:${{ matrix.python }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Free up disk space
         run: |
@@ -112,8 +109,7 @@ jobs:
     container:
       image: python:3.11
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Free up disk space
         run: |
@@ -153,8 +149,7 @@ jobs:
     needs: ['unit-tests', 'unit-tests-beir']
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
