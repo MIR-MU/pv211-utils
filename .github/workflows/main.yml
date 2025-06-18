@@ -133,6 +133,11 @@ jobs:
           rm -rf datasets/* || true
           find . -name '*.zip' -delete || true
 
+      - name: Check available disk space
+        run: |
+          echo "Available disk space:"
+          df -h /
+
       - name: Run BEIR loader tests
         run: pytest test/beir/test_loader.py
 
