@@ -4,7 +4,6 @@ from sentence_transformers import CrossEncoder
 from sentence_transformers.SentenceTransformer import SentenceTransformer
 
 
-
 from pv211_utils.systems.bm25 import BM25PlusSystem
 from pv211_utils.systems.bow import BoWSystem
 from pv211_utils.systems.ranker import RankerSystem
@@ -26,10 +25,10 @@ class TestIRSystems(unittest.TestCase):
             BM25PlusSystem(DOCUMENTS, DocPreprocessing()),
             BoWSystem(DOCUMENTS, DocPreprocessing()),
             TfidfSystem(DOCUMENTS, DocPreprocessing()),
-            RankerSystem(retriever_model,reranker_model, faiss, DOCUMENTS),
-            RerankerSystem(retriever_model,reranker_model, DOCUMENTS),
+            RankerSystem(retriever_model, reranker_model, faiss, DOCUMENTS),
+            RerankerSystem(retriever_model, reranker_model, DOCUMENTS),
             RetrieverSystem(retriever_model, DOCUMENTS)
-            
+
         ]
 
     def test_query_ranking_is_reasonable(self):
