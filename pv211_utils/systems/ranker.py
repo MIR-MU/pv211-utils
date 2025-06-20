@@ -1,5 +1,4 @@
 from typing import Iterable, OrderedDict
-import numpy as np
 from sklearn.preprocessing import normalize
 import torch
 from ..entities import DocumentBase, QueryBase

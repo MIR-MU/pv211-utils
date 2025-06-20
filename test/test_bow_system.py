@@ -1,8 +1,9 @@
 import pytest
 from collections import OrderedDict
 from typing import List
+from pv211_utils.systems.bow import BoWSystem
 
-# Minimal mocks for required base classes
+
 class DummyDocument:
     def __init__(self, text):
         self.text = text
@@ -22,9 +23,6 @@ class DummyQuery:
 class DummyPreprocessor:
     def __call__(self, text: str) -> List[str]:
         return text.lower().split()
-
-
-from pv211_utils.systems.bow import BoWSystem 
 
 
 @pytest.fixture

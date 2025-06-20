@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
 import numpy as np
-from ..entities import DocumentBase
 
 
 class BaseVectorDB(ABC):
