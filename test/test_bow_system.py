@@ -3,9 +3,11 @@ from collections import OrderedDict
 from typing import List
 
 from pv211_utils.systems.bow import BoWSystem
+from pv211_utils.entities import DocumentBase, QueryBase
+from pv211_utils.preprocessing import DocPreprocessingBase
 
 
-class DummyDocument:
+class DummyDocument(DocumentBase):
     def __init__(self, text: str):
         self.text = text
 
@@ -13,7 +15,7 @@ class DummyDocument:
         return self.text
 
 
-class DummyQuery:
+class DummyQuery(QueryBase):
     def __init__(self, text: str):
         self.text = text
 
@@ -21,7 +23,7 @@ class DummyQuery:
         return self.text
 
 
-class DummyPreprocessor:
+class DummyPreprocessor(DocPreprocessingBase):
     def __call__(self, text: str) -> List[str]:
         return text.lower().split()
 
@@ -49,3 +51,4 @@ class TestBoWSystem(unittest.TestCase):
         self.assertEqual(len(results), 3)
         self.assertIsInstance(results[0], DummyDocument)
         self.assertEqual(str(results[0]), "the cat sat on the mat")
+
