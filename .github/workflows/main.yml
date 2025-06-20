@@ -93,10 +93,19 @@ jobs:
             3a)
               pytest test/beir/test_entities.py
               ;;
+
             4)
               pytest test/systems/test_ir_systems.py
               ;;
           esac
+
+      - name: Post-batch cleanup
+        if: always()
+        run: |
+          rm -rf datasets ~/.cache || true
+          echo "Disk usage after batch:"
+          df -h
+
 
   unit-tests-beir:
     name: Unit tests (BEIR loader)
@@ -139,12 +148,6 @@ jobs:
           echo "Disk usage after BEIR:"
           df -h
 
-      - name: Post-batch cleanup
-        if: always()
-        run: |
-          rm -rf datasets ~/.cache || true
-          echo "Disk usage after batch:"
-          df -h
 
   publish:
     name: Build and publish
