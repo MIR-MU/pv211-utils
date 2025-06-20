@@ -1,22 +1,23 @@
-import pytest
+import unittest
 from collections import OrderedDict
 from typing import List
+
 from pv211_utils.systems.bow import BoWSystem
 
 
 class DummyDocument:
-    def __init__(self, text):
+    def __init__(self, text: str):
         self.text = text
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text
 
 
 class DummyQuery:
-    def __init__(self, text):
+    def __init__(self, text: str):
         self.text = text
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text
 
 
@@ -25,34 +26,26 @@ class DummyPreprocessor:
         return text.lower().split()
 
 
-@pytest.fixture
-def sample_documents():
-    return OrderedDict({
-        "1": DummyDocument("the cat sat on the mat"),
-        "2": DummyDocument("the dog sat on the mat"),
-        "3": DummyDocument("the cat chased the mouse"),
-    })
+class TestBoWSystem(unittest.TestCase):
+    def setUp(self):
+        self.documents = OrderedDict({
+            "1": DummyDocument("the cat sat on the mat"),
+            "2": DummyDocument("the dog sat on the mat"),
+            "3": DummyDocument("the cat chased the mouse"),
+        })
+        self.preprocessor = DummyPreprocessor()
+        self.system = BoWSystem(self.documents, self.preprocessor)
 
+    def test_dictionary_contains_expected_terms(self):
+        token_ids = self.system.dictionary.token2id
+        self.assertIn("cat", token_ids)
+        self.assertIn("mat", token_ids)
+        self.assertEqual(len(self.system.index_to_document), 3)
 
-def test_bow_initialization(sample_documents):
-    preprocessor = DummyPreprocessor()
-    system = BoWSystem(sample_documents, preprocessor)
+    def test_search_returns_relevant_documents(self):
+        query = DummyQuery("cat mat")
+        results = list(self.system.search(query))
 
-    # Test dictionary
-    assert "cat" in system.dictionary.token2id
-    assert len(system.index_to_document) == 3
-
-
-def test_bow_search_ranking(sample_documents):
-    preprocessor = DummyPreprocessor()
-    system = BoWSystem(sample_documents, preprocessor)
-
-    query = DummyQuery("cat mat")
-    results = list(system.search(query))
-
-    # First document should be most similar to query
-    assert isinstance(results[0], DummyDocument)
-    assert str(results[0]) == "the cat sat on the mat"
-
-    # All docs should be returned in sorted order
-    assert len(results) == 3
+        self.assertEqual(len(results), 3)
+        self.assertIsInstance(results[0], DummyDocument)
+        self.assertEqual(str(results[0]), "the cat sat on the mat")
