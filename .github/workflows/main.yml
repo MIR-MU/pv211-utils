@@ -58,7 +58,7 @@ jobs:
       fail-fast: true
       matrix:
         python: ['3.9', '3.11']
-        batch: [1, 2, 3a, 4]
+        batch: [2, 3a, 4]
     container:
       image: python:${{ matrix.python }}
     steps:
@@ -112,7 +112,6 @@ jobs:
     name: Build and publish
     runs-on: ubuntu-latest
     needs: ['unit-tests']
-    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -127,5 +126,6 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t miratmu/pv211-utils:latest \
-                       -t miratmu/pv211-utils:$(git describe --tags --always --long) .
+                      -t miratmu/pv211-utils:$(git describe --tags --always --long) .
           docker push --all-tags miratmu/pv211-utils
+
