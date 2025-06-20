@@ -36,7 +36,7 @@ class RerankerSystem(IRSystemBase):
         self.answers = list(answers.values())
 
         self.reranker_batch_size = reranker_batch_size
-        self.no_reranks = no_reranks
+        self.no_reranks = no_reranks if len(answers) > no_reranks else len(answers)
 
         self.retriever = retriever
         self.retriever.eval()

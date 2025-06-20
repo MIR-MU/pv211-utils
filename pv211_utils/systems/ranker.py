@@ -38,8 +38,8 @@ class RankerSystem(IRSystemBase):
         self.reranker = reranker
         self.vector_db = vector_db
         self.reranker_batch_size = reranker_batch_size
-        self.no_reranks = no_reranks
-        self.no_returns = no_returns
+        self.no_reranks = no_reranks if len(answers) > no_reranks else len(answers)
+        self.no_returns = no_returns if len(answers) > no_returns else len(answers)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         self.answers = list(answers.values())
