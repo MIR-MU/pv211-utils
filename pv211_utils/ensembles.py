@@ -102,8 +102,7 @@ def _break_ties(
         # calculate new rating from randomly chosen ranking from document's list of rankings
         for i in range(start_i, end_i):
             tied_documents[ratings[i][0]] = (
-                num_documents
-                - choices(documents_scores[ratings[i][0]], weights=weights)[0]
+                num_documents - choices(documents_scores[ratings[i][0]], weights=weights)[0]
             ) / num_documents
 
         final_ranking.extend(

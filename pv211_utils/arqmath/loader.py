@@ -159,10 +159,7 @@ def load_questions(
         with gzip.open(filename, "rb") as f:
             for raw_question in ijson.items(f, "item"):
                 document_id = raw_question["document_id"]
-                if (
-                    filter_document_ids is not None
-                    and document_id not in filter_document_ids
-                ):
+                if (filter_document_ids is not None and document_id not in filter_document_ids):
                     continue
                 question_answers = [
                     answers[document_id] for document_id in raw_question["answers"]
@@ -196,10 +193,7 @@ def load_answers(
         with gzip.open(filename, "rb") as f:
             for raw_answer in ijson.items(f, "item"):
                 document_id = raw_answer["document_id"]
-                if (
-                    filter_document_ids is not None
-                    and document_id not in filter_document_ids
-                ):
+                if (filter_document_ids is not None and document_id not in filter_document_ids):
                     continue
                 assert raw_answer["is_accepted"] in ("True", "False")
                 is_accepted = raw_answer["is_accepted"] == "True"
@@ -227,10 +221,7 @@ def load_judgements(
     with open(pkg_resources.resource_filename("pv211_utils", filename), "rt") as f:
         for raw_query_id, document_id in json.load(f):
             query_id = _resolve_query_id(raw_query_id)
-            if (
-                filter_document_ids is not None
-                and document_id not in filter_document_ids
-            ):
+            if (filter_document_ids is not None and document_id not in filter_document_ids):
                 continue
             if subset is not None and query_id not in QUERY_SUBSETS[year][subset]:
                 continue

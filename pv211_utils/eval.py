@@ -112,11 +112,7 @@ class EvaluationBase(abc.ABC):
         map_score = result * 100.0
 
         minimum_map_score = self._get_minimum_mean_average_precision() * 100
-        submit_result = (
-            submit_result
-            and self.leaderboard is not None
-            and self.author_name is not None
-        )
+        submit_result = submit_result and self.leaderboard is not None and self.author_name is not None
         leaderboard_url = self.leaderboard.get_public_url()
         if leaderboard_url is not None:
             leaderboard_text = "[the leaderboard]({})".format(leaderboard_url)

@@ -39,10 +39,7 @@ def load_documents(
         with gzip.open(filename, "rb") as f:
             for raw_document in ijson.items(f, "item"):
                 document_id = str(raw_document["document_id"])
-                if (
-                    filter_document_ids is not None
-                    and document_id not in filter_document_ids
-                ):
+                if filter_document_ids is not None and document_id not in filter_document_ids:
                     continue
                 document = document_class(
                     document_id=document_id, body=raw_document["text"]
@@ -63,10 +60,7 @@ def load_judgements(
     filename = "data/trec_judgements_{}.json".format(subset)
     with open(pkg_resources.resource_filename("pv211_utils", filename), "rt") as f:
         for query_id, document_id in json.load(f):
-            if (
-                filter_document_ids is not None
-                and document_id not in filter_document_ids
-            ):
+            if filter_document_ids is not None and document_id not in filter_document_ids:
                 continue
             query: TrecQueryBase = queries[query_id]
             document: TrecDocumentBase = documents[document_id]

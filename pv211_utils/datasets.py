@@ -535,7 +535,7 @@ class TrecDataset:
         test_validate_queries = self._get_train_validation_queries(query_class)
         return OrderedDict(
             test_validate_queries[
-                int(len(test_validate_queries) * (1 - self.validation_split_size)) :
+                int(len(test_validate_queries) * (1 - self.validation_split_size)):
             ]
         )
 

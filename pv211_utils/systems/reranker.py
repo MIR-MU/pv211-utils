@@ -99,5 +99,5 @@ class RerankerSystem(IRSystemBase):
         for doc in rerank_predictions:
             yield self.answers[sorted_similarities[doc]]
 
-        for doc in sorted_similarities[self.no_reranks :]:
+        for doc in sorted_similarities[self.no_reranks:]:
             yield self.answers[doc]

@@ -15,6 +15,6 @@ class BaseVectorDB(ABC):
         pass
 
     @abstractmethod
-    def search(self, query_embedding: np.ndarray, top_k: int) -> List[DocumentBase]:
+    def search(self, query_embedding: np.ndarray, top_k: int) -> List[int]:
         """Return top-k most similar documents for the query embedding."""
         pass
