@@ -36,4 +36,4 @@ class TestIRSystems(unittest.TestCase):
             with self.subTest(system=system.__class__.__name__):
                 results = list(system.search(QUERY))
                 self.assertGreaterEqual(str(results[0]).count("polar"), 1)
-                self.assertIn("climate", str(results[0]))  # Strong indicator it's doc 1
+                self.assertIn("climate", str(results[0]))
