@@ -51,4 +51,3 @@ class TestBoWSystem(unittest.TestCase):
         self.assertEqual(len(results), 3)
         self.assertIsInstance(results[0], DummyDocument)
         self.assertEqual(str(results[0]), "the cat sat on the mat")
-
