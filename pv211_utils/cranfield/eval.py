@@ -28,6 +28,7 @@ class CranfieldEvaluation(EvaluationBase):
         If None, all available CPUs will be used. Default is 1.
 
     """
+
     def __init__(self, system: CranfieldIRSystemBase, judgements: Set[CranfieldJudgementBase],
                  leaderboard: Optional[CranfieldLeaderboard] = None, k: int = 1400,
                  author_name: Optional[str] = None, num_workers: int = 1):

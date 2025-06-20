@@ -124,7 +124,7 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         logs_list = logs_worksheet.get_all_values()
         current_len = len(logs_list)
         current_week = 'Week {}'.format(self.get_week(now.date()))
-        header_cell = '=CONCAT(D%s;E%s)' % (current_len+1, current_len+1)
+        header_cell = '=CONCAT(D%s;E%s)' % (current_len + 1, current_len + 1)
         # append entry
         logs_worksheet.append_row(["", current_len, current_time, current_week, competitor_name, precision])
-        logs_worksheet.update_cell(current_len+1, 1, header_cell)
+        logs_worksheet.update_cell(current_len + 1, 1, header_cell)

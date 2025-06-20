@@ -252,7 +252,7 @@ def interleave(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[Do
         Query to be searched.
     systems : Iterable[IRSystemBase]
         List of systems to be interleaved.
- 
+
     Returns
     -------
     Iterable[DocumentBase]
@@ -276,7 +276,6 @@ def interleave(query: QueryBase, systems: Iterable[IRSystemBase]) -> Iterable[Do
 
             except StopIteration:
                 exhausted[i] = True
-
 
 
 class Rbc():

@@ -28,6 +28,7 @@ class TrecEvaluation(EvaluationBase):
         If None, all available CPUs will be used. Default is 1.
 
     """
+
     def __init__(self, system: TrecIRSystemBase, judgements: Set[TrecJudgementBase],
                  k: int = 10, leaderboard: Optional[TrecLeaderboard] = None,
                  author_name: Optional[str] = None, num_workers: int = 1):
