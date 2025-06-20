@@ -58,7 +58,7 @@ jobs:
       fail-fast: true
       matrix:
         python: ['3.9', '3.11']
-        batch: [1, 2, 3a]
+        batch: [1, 2, 3a, 4]
     container:
       image: python:${{ matrix.python }}
     steps:
