@@ -40,6 +40,19 @@ setup(
         "google_drive": [
             "gdown",
         ],
+        # Minimal BEIR dependencies, enough for downloading/loading datasets without heavy libs
+        "minimal-beir": [
+            "datasets",
+            "requests",
+            "tqdm",
+        ],
+        # Full BEIR (heavy dependencies, e.g., GPU libs, beir package from GitHub)
+        "beir": [
+            "datasets",
+            "requests",
+            "tqdm",
+            "beir @ git+https://github.com/beir-cellar/beir.git@main#egg=beir",
+        ],
     },
     package_data={
         "pv211_utils": [
@@ -47,5 +60,3 @@ setup(
         ],
     },
 )
-
-# vim: set cin et ts=4 sw=4 ft=python :11
