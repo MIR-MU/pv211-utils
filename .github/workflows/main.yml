@@ -161,7 +161,7 @@ jobs:
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['beir-tests-final-counts', 'style-check', 'type-check']
+    needs: ['beir-tests-split', 'style-check', 'type-check']
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
