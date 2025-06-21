@@ -50,19 +50,17 @@ jobs:
           set -ex
           pytype pv211_utils script test
 
-  unit-tests-beir:
-    name: Unit tests (BEIR loader)
-    needs: []
+  unit-tests:
+    needs: ['style-check', 'type-check']
+    name: Unit tests
     runs-on: ubuntu-latest
-    container:
-      image: python:3.11
-
     strategy:
-      fail-fast: false # Ensures that all jobs run, even if one in the matrix fails.
+      fail-fast: true
       matrix:
-        # This will create a job for each item in the list: 'part1' and 'part2'
-        test_part: [part1, part2]
-
+        python: ['3.9', '3.11']
+        batch: [1, 2, 3a, 4]
+    container:
+      image: python:${{ matrix.python }}
     steps:
       - uses: actions/checkout@v4
 
@@ -82,8 +80,66 @@ jobs:
           pip install -U pip
           pip install "numpy<2" . pytest
 
+      - name: Run tests in batch ${{ matrix.batch }}
+        run: |
+          set -ex
+          case "${{ matrix.batch }}" in
+            1)
+              pytest test/arqmath test/cranfield test/test_evaluation_metrics.py
+              ;;
+            2)
+              pytest test/trec
+              ;;
+            3a)
+              pytest test/beir/test_entities.py
+              ;;
+
+            4)
+              pytest test/systems/test_ir_systems.py
+              ;;
+          esac
+
+      - name: Post-batch cleanup
+        if: always()
+        run: |
+          rm -rf datasets ~/.cache || true
+          echo "Disk usage after batch:"
+          df -h
+
+
+  unit-tests-beir:
+    name: Unit tests (BEIR loader)
+    needs: []
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.11
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free up disk space
+        run: |
+          echo "Before cleanup:"
+          df -h
+          rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost ~/.cargo || true
+          apt-get clean || true
+          echo "After cleanup:"
+          df -h
+
+      - name: Install requirements
+        run: |
+          set -ex
+          python -V
+          pip install -U pip
+          pip install "numpy<2" . pytest
+
+      - name: Clean broken datasets if any
+        run: |
+          echo "Cleaning possibly broken cached BEIR datasets"
+          rm -rf datasets/* || true
+          find . -name '*.zip' -delete || true
+
       - name: Run BEIR loader tests
-        run: pytest test/beir/test_loader1.py
+        run: pytest test/beir/test_loader.py
 
       - name: Cleanup
         if: always()
@@ -96,7 +152,7 @@ jobs:
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['unit-tests-beir']
+    needs: ['unit-tests', 'unit-tests-beir']
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
