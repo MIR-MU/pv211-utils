@@ -1,3 +1,6 @@
+# ADDED: os and json for handling environment variables from the workflow
+import os
+import json
 import unittest
 
 from pv211_utils.beir.loader import (
@@ -21,6 +24,13 @@ NUM_COMBINED_DEV_QUERIES = 657
 NUM_COMBINED_TEST_JUDGEMENTS = 1254
 NUM_COMBINED_TRAIN_JUDGEMENTS = 111
 NUM_COMBINED_DEV_JUDGEMENTS = 81
+
+
+# This decorator will be used to skip tests that should only run on the full dataset
+run_full_count_tests = unittest.skipUnless(
+    os.getenv('RUN_FULL_COUNT_TESTS') == 'true',
+    "Skipping full dataset count tests; not enabled for this run."
+)
 
 
 class TestLoadQueries(unittest.TestCase):
@@ -88,36 +98,25 @@ class TestLoadJudgements(unittest.TestCase):
 
 class TestCombineAndSplit(unittest.TestCase):
     def setUp(self):
-        android = RawBeirDataset("android", test=True)
-        english = RawBeirDataset("english", test=True)
-        gaming = RawBeirDataset("gaming", test=True)
-        gis = RawBeirDataset("gis", test=True)
-        mathematica = RawBeirDataset("mathematica", test=True)
-        physics = RawBeirDataset("physics", test=True)
-        programmers = RawBeirDataset("programmers", test=True)
-        stats = RawBeirDataset("stats", test=True)
-        tex = RawBeirDataset("tex", test=True)
-        unix = RawBeirDataset("unix", test=True)
-        webmasters = RawBeirDataset("webmasters", test=True)
-        wordpress = RawBeirDataset("wordpress", test=True)
+        # CHANGED: This entire block is new. It dynamically builds the dataset list.
+        datasets_json = os.getenv("DATASETS_TO_TEST")
+        if not datasets_json:
+            # If running locally without the env var, default to the full list.
+            dataset_names = [
+                'android', 'english', 'gaming', 'gis', 'mathematica', 'physics',
+                'programmers', 'stats', 'tex', 'unix', 'webmasters', 'wordpress'
+            ]
+        else:
+            # If running in the GitHub workflow, parse the list for this specific job.
+            dataset_names = json.loads(datasets_json)
+
+        print(f"--- Setting up tests for datasets: {dataset_names} ---")
+        dataset_objects = [RawBeirDataset(name, test=True) for name in dataset_names]
         download_location = "datasets"
 
         # Test loading and combining multiple datasets
         desired_datasets = RawBeirDatasets(
-            datasets=[
-                android,
-                english,
-                gaming,
-                gis,
-                mathematica,
-                physics,
-                programmers,
-                stats,
-                tex,
-                unix,
-                webmasters,
-                wordpress,
-            ],
+            datasets=dataset_objects,
             download_location=download_location,
         )
         _, _, raw_test_data = load_beir_datasets(desired_datasets)
@@ -157,13 +156,23 @@ class TestCombineAndSplit(unittest.TestCase):
         self.dev_judgements = load_judgements(
             self.dev_queries, self.documents, raw_qrels_dev
         )
+        
+        # CHANGED: Check if document "1" exists before assigning
+        if "1" in self.documents:
+            self.document = self.documents["1"]
+        else:
+            self.document = None
 
-        self.document = self.documents["1"]
-
+    @run_full_count_tests
     def test_number_of_documents(self):
+        # CHANGED: This test will now only run if RUN_FULL_COUNT_TESTS is 'true'.
         self.assertEqual(NUM_COMBINED_DOCUMENTS, len(self.documents))
 
     def test_document_body(self):
+        # CHANGED: Added a check to ensure the document was loaded in this shard.
+        if not self.document:
+            self.skipTest("Document with ID '1' is not in this dataset shard.")
+            
         body_begining_str = (
             "I am playing around with my brand new Motorola Defy"
             " and trying to find a way to manage my contacts."
@@ -173,11 +182,18 @@ class TestCombineAndSplit(unittest.TestCase):
             self.document.body.endswith("Does anyone have a solution for me ?")
         )
 
-    def test_split_size(self):
-        self.assertTrue(NUM_COMBINED_TEST_QUERIES, len(self.test_queries))
-        self.assertTrue(NUM_COMBINED_TRAIN_QUERIES, len(self.train_queries))
-        self.assertTrue(NUM_COMBINED_DEV_QUERIES, len(self.dev_queries))
+    # ADDED: This new test runs on every parallel job to ensure data was loaded.
+    def test_data_loaded_for_shard(self):
+        self.assertGreater(len(self.documents), 0, "Documents should have been loaded for this shard.")
+        self.assertGreater(len(self.test_queries), 0, "Test queries should have been loaded for this shard.")
 
-        self.assertTrue(NUM_COMBINED_TEST_JUDGEMENTS, len(self.test_judgements))
-        self.assertTrue(NUM_COMBINED_TRAIN_JUDGEMENTS, len(self.train_judgements))
-        self.assertTrue(NUM_COMBINED_DEV_JUDGEMENTS, len(self.dev_judgements))
+    @run_full_count_tests
+    def test_split_size(self):
+        # CHANGED: Critical bug fixed (assertTrue -> assertEqual) and marked to only run with the full dataset.
+        self.assertEqual(NUM_COMBINED_TEST_QUERIES, len(self.test_queries))
+        self.assertEqual(NUM_COMBINED_TRAIN_QUERIES, len(self.train_queries))
+        self.assertEqual(NUM_COMBINED_DEV_QUERIES, len(self.dev_queries))
+
+        self.assertEqual(NUM_COMBINED_TEST_JUDGEMENTS, len(self.test_judgements))
+        self.assertEqual(NUM_COMBINED_TRAIN_JUDGEMENTS, len(self.train_judgements))
+        self.assertEqual(NUM_COMBINED_DEV_JUDGEMENTS, len(self.dev_judgements))
