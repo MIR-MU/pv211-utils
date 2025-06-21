@@ -73,11 +73,12 @@ jobs:
         run: |
           set -ex
           python -V
-          pip install -U pip
+          python -m pip install --upgrade "pip<25"
           pip install numpy<2 pytest requests tqdm
           pip install datasets --no-deps
           pip install git+https://github.com/beir-cellar/beir.git@main#egg=beir --no-deps
           pip install -e . --no-deps
+
 
 
       - name: Clean broken datasets if any
