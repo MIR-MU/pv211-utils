@@ -105,12 +105,20 @@ jobs:
           echo "Disk usage after BEIR shard:"
           df -h
 
-  beir-tests-final-counts:
-    name: Unit tests (BEIR final counts)
-    needs: beir-tests-in-parallel # This job runs only after all parallel jobs succeed
+  beir-tests-split:
+    # The name of the job in the UI will be dynamic, e.g., "Unit tests (BEIR part1)"
+    name: Unit tests (BEIR ${{ matrix.test_part }})
     runs-on: ubuntu-latest
     container:
       image: python:3.11
+    
+    # This strategy block defines the parallel execution
+    strategy:
+      fail-fast: false # Ensures that all jobs run, even if one in the matrix fails.
+      matrix:
+        # This will create a job for each item in the list: 'part1' and 'part2'
+        test_part: [loader1, loader2]
+
     steps:
       - uses: actions/checkout@v4
 
@@ -136,17 +144,16 @@ jobs:
           rm -rf datasets/* || true
           find . -name '*.zip' -delete || true
 
-      - name: Run BEIR loader tests for final counts
-        run: pytest test/beir/test_loader.py
-        env:
-          # This variable tells the script to run the tests for the grand totals
-          RUN_FULL_COUNT_TESTS: true
+      - name: Run BEIR loader tests for ${{ matrix.test_part }}
+        # This command dynamically selects the correct test file based on the matrix variable.
+        # It assumes you have created test_part1.py and test_part2.py in the 'test/beir/' directory.
+        run: pytest test/beir/test_${{ matrix.test_part }}.py
 
       - name: Cleanup
         if: always()
         run: |
           rm -rf datasets ~/.cache || true
-          echo "Disk usage after BEIR final count:"
+          echo "Disk usage after BEIR test ${{ matrix.test_part }}:"
           df -h
 
 
