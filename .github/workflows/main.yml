@@ -73,14 +73,10 @@ jobs:
           set -ex
           python -V
           pip install -U pip
+          python -m venv venv
+          source venv/bin/activate
           pip install numpy<2 pytest requests tqdm datasets
           pip install -e . --no-deps
-
-      - name: Clean broken datasets if any
-        run: |
-          echo "Cleaning possibly broken cached BEIR datasets"
-          rm -rf datasets/* || true
-          find . -name '*.zip' -delete || true
 
       - name: Run BEIR loader tests
         run: pytest test/beir/test_loader.py
