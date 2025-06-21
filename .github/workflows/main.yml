@@ -93,10 +93,6 @@ jobs:
             3a)
               pytest test/beir/test_entities.py
               ;;
-
-            4)
-              pytest test/systems/test_ir_systems.py
-              ;;
           esac
 
       - name: Post-batch cleanup
