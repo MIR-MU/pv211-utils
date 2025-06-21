@@ -58,7 +58,7 @@ jobs:
       fail-fast: true
       matrix:
         python: ['3.9', '3.11']
-        batch: [2, 3a, 4]
+        batch: [1, 2, 3a, 4]
     container:
       image: python:${{ matrix.python }}
     steps:
@@ -95,7 +95,7 @@ jobs:
               ;;
 
             4)
-              pytest test/test_bow_system.py
+              pytest test/systems/test_ir_systems.py
               ;;
           esac
 
@@ -107,11 +107,54 @@ jobs:
           df -h
 
 
+  unit-tests-beir:
+    name: Unit tests (BEIR loader)
+    needs: ['style-check', 'type-check']
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.11
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free up disk space
+        run: |
+          echo "Before cleanup:"
+          df -h
+          rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost ~/.cargo || true
+          apt-get clean || true
+          echo "After cleanup:"
+          df -h
+
+      - name: Install requirements
+        run: |
+          set -ex
+          python -V
+          pip install -U pip
+          pip install "numpy<2" pytest beir datasets tqdm requests
+          pip install -e . --no-deps
+
+      - name: Clean broken datasets if any
+        run: |
+          echo "Cleaning possibly broken cached BEIR datasets"
+          rm -rf datasets/* || true
+          find . -name '*.zip' -delete || true
+
+      - name: Run BEIR loader tests
+        run: pytest test/beir/test_loader.py
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -rf datasets ~/.cache || true
+          echo "Disk usage after BEIR:"
+          df -h
+
 
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['unit-tests']
+    needs: ['unit-tests', 'unit-tests-beir']
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -126,6 +169,5 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t miratmu/pv211-utils:latest \
-                      -t miratmu/pv211-utils:$(git describe --tags --always --long) .
+                       -t miratmu/pv211-utils:$(git describe --tags --always --long) .
           docker push --all-tags miratmu/pv211-utils
-
