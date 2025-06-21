@@ -73,12 +73,17 @@ jobs:
         run: |
           set -ex
           python -V
-          pip install --upgrade pip
-          pip install numpy<2 pytest requests tqdm
-          pip install datasets --no-deps
-          pip install git+https://github.com/beir-cellar/beir.git@main#egg=beir --no-deps
-          pip install -e . --no-deps
-
+          pip install -U pip
+          apt-get update && apt-get install -y --no-install-recommends \
+            git-lfs \
+            build-essential \
+            libboost-all-dev \
+            libxml2-dev \
+            libxslt1-dev \
+            python3-lxml \
+            python3-pip \
+            python3-setuptools
+          pip install "numpy<2" .[beir] pytest
 
 
       - name: Clean broken datasets if any
