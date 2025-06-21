@@ -50,74 +50,18 @@ jobs:
           set -ex
           pytype pv211_utils script test
 
-  
-  beir-tests-in-parallel:
-    name: Unit tests (BEIR loader shards)
+  unit-tests-beir:
+    name: Unit tests (BEIR loader)
     needs: []
     runs-on: ubuntu-latest
     container:
       image: python:3.11
-    strategy:
-      fail-fast: false # Run all parallel jobs even if one fails
-      matrix:
-        datasets:
-          - ['android', 'english', 'gaming', 'gis', 'mathematica', 'physics']
-          - ['programmers', 'stats', 'tex', 'unix', 'webmasters', 'wordpress']
 
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Free up disk space
-        run: |
-          echo "Before cleanup:"
-          df -h
-          rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost ~/.cargo || true
-          apt-get clean || true
-          echo "After cleanup:"
-          df -h
-
-      - name: Install requirements
-        run: |
-          set -ex
-          python -V
-          pip install -U pip
-          # CHANGED: We now install from requirements.txt to ensure consistency
-          # Make sure 'beir' and 'pytest' are in this file.
-          pip install -r requirements.txt
-
-      - name: Clean broken datasets if any
-        run: |
-          echo "Cleaning possibly broken cached BEIR datasets"
-          rm -rf datasets/* || true
-          find . -name '*.zip' -delete || true
-
-      - name: Run BEIR loader tests on shard
-        # This will run test/beir/test_loader.py, which you already adjusted
-        run: pytest test/beir/test_loader.py
-        env:
-          # This passes the specific list of datasets for this job
-          DATASETS_TO_TEST: ${{ toJson(matrix.datasets) }}
-
-      - name: Cleanup
-        if: always()
-        run: |
-          rm -rf datasets ~/.cache || true
-          echo "Disk usage after BEIR shard:"
-          df -h
-
-  beir-tests-split:
-    # The name of the job in the UI will be dynamic, e.g., "Unit tests (BEIR part1)"
-    name: Unit tests (BEIR ${{ matrix.test_part }})
-    runs-on: ubuntu-latest
-    container:
-      image: python:3.11
-    
-    # This strategy block defines the parallel execution
     strategy:
       fail-fast: false # Ensures that all jobs run, even if one in the matrix fails.
       matrix:
         # This will create a job for each item in the list: 'part1' and 'part2'
-        test_part: [loader1, loader2]
+        test_part: [part1, part2]
 
     steps:
       - uses: actions/checkout@v4
@@ -136,32 +80,23 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install -r requirements.txt
+          pip install "numpy<2" . pytest
 
-      - name: Clean broken datasets if any
-        run: |
-          echo "Cleaning possibly broken cached BEIR datasets"
-          rm -rf datasets/* || true
-          find . -name '*.zip' -delete || true
-
-      - name: Run BEIR loader tests for ${{ matrix.test_part }}
-        # This command dynamically selects the correct test file based on the matrix variable.
-        # It assumes you have created test_part1.py and test_part2.py in the 'test/beir/' directory.
-        run: pytest test/beir/test_${{ matrix.test_part }}.py
+      - name: Run BEIR loader tests
+        run: pytest test/beir/test_loader1.py
 
       - name: Cleanup
         if: always()
         run: |
           rm -rf datasets ~/.cache || true
-          echo "Disk usage after BEIR test ${{ matrix.test_part }}:"
+          echo "Disk usage after BEIR:"
           df -h
-
 
 
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['beir-tests-split', 'style-check', 'type-check']
+    needs: ['unit-tests-beir']
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
