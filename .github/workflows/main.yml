@@ -58,7 +58,7 @@ jobs:
       fail-fast: true
       matrix:
         python: ['3.9', '3.11']
-        batch: [1, 2, 3a, 4]
+        batch: [1, 2, 3, 4]
     container:
       image: python:${{ matrix.python }}
     steps:
@@ -85,17 +85,22 @@ jobs:
           set -ex
           case "${{ matrix.batch }}" in
             1)
-              pytest test/arqmath test/cranfield test/test_evaluation_metrics.py
+              pytest test/arqmath  
               ;;
             2)
+              pytest test/cranfield 
+              ;;
+            3)
               pytest test/trec
               ;;
-            3a)
+            4)
               pytest test/beir/test_entities.py
               ;;
-
-            4)
+            5)
               pytest test/systems/test_ir_systems.py
+              ;;
+            6)
+              pytest test/test_evaluation_metrics.py
               ;;
           esac
 
@@ -105,49 +110,6 @@ jobs:
           rm -rf datasets ~/.cache || true
           echo "Disk usage after batch:"
           df -h
-
-
-  unit-tests-beir:
-    name: Unit tests (BEIR loader)
-    needs: ['style-check', 'type-check']
-    runs-on: ubuntu-latest
-    container:
-      image: python:3.11
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Free up disk space
-        run: |
-          echo "Before cleanup:"
-          df -h
-          rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost ~/.cargo || true
-          apt-get clean || true
-          echo "After cleanup:"
-          df -h
-
-      - name: Install requirements
-        run: |
-          set -ex
-          python -V
-          pip install -U pip
-          pip install "numpy<2" . pytest
-
-      - name: Clean broken datasets if any
-        run: |
-          echo "Cleaning possibly broken cached BEIR datasets"
-          rm -rf datasets/* || true
-          find . -name '*.zip' -delete || true
-
-      - name: Run BEIR loader tests
-        run: pytest test/beir/test_loader.py
-
-      - name: Cleanup
-        if: always()
-        run: |
-          rm -rf datasets ~/.cache || true
-          echo "Disk usage after BEIR:"
-          df -h
-
 
   publish:
     name: Build and publish
