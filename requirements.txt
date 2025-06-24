@@ -1,5 +1,5 @@
 beir
-gensim~=3.8
+gensim
 google
 gspread
 ijson
@@ -11,3 +11,4 @@ scikit-learn
 sympy
 torch
 tqdm
+faiss-cpu

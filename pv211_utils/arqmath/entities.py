@@ -25,6 +25,7 @@ class ArqmathAnswerBase(DocumentBase):
         If the answer has been accepted by the poster of the question.
 
     """
+
     def __init__(self, document_id: str, body: Any, upvotes: int, is_accepted: bool):
         super().__init__(document_id, body)
         self.upvotes = upvotes
@@ -65,6 +66,7 @@ class ArqmathQuestionBase(DocumentBase):
         The answers for the question.
 
     """
+
     def __init__(self, document_id: str, title: Any, body: Any, tags: List[str],
                  upvotes: int, views: int, answers: List[ArqmathAnswerBase]):
         super().__init__(document_id, body)
@@ -97,6 +99,7 @@ class ArqmathQueryBase(QueryBase):
         Tags describing the topics of the query.
 
     """
+
     def __init__(self, query_id: int, title: Any, body: Any, tags: List[str]):
         super().__init__(query_id, body)
         self.title = title

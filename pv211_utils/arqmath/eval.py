@@ -27,6 +27,7 @@ class ArqmathEvaluation(EvaluationBase):
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is 1.
     """
+
     def __init__(self, system: ArqmathIRSystemBase, judgements: Set[ArqmathJudgementBase],
                  k: int = 10, leaderboard: Optional[ArqmathLeaderboard] = None,
                  author_name: Optional[str] = None, num_workers: int = 1):

@@ -276,7 +276,7 @@ class ArqmathDataset():
             text_format=self.text_format,
             answer_class=answer_class,
             cache_download=f'/var/tmp/pv211/arqmath2020_answers_{self.text_format}.json.gz'
-            )
+        )
 
     def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
         """Load questions.
