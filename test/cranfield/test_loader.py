@@ -7,7 +7,7 @@ NUM_QUERIES = 225
 NUM_DOCUMENTS = 1400
 NUM_JUDGEMENTS = 1837
 
-
+ 
 class TestLoadQueries(unittest.TestCase):
     def setUp(self):
         self.queries = load_queries()
