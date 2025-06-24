@@ -9,7 +9,7 @@ class TrecLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return datetime.date(2022, 3, 22)
 
     def get_competition_end(self) -> datetime.date:
-        return datetime.date(2022, 5, 2)
+        return datetime.date(2022, 12, 12)
 
     def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '1OCXrOoaR2MPl-5_oSJ6UJK1dXOaU4J4xZo6erg1HOfE'

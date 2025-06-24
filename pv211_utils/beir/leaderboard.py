@@ -9,7 +9,7 @@ class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return datetime.date(2025, 3, 27)
 
     def get_competition_end(self) -> datetime.date:
-        return datetime.date(2025, 5, 7)
+        return datetime.date(2025, 12, 12)
 
     def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '1WSSqb42JliidyguSAyk0uzXkX1h5S-273yvms83My0Y'
