@@ -29,7 +29,10 @@ class CranfieldDocumentBase(DocumentBase):
         The title of the document.
 
     """
-    def __init__(self, document_id: str, authors: Any, bibliography: Any, title: Any, body: Any):
+
+    def __init__(
+        self, document_id: str, authors: Any, bibliography: Any, title: Any, body: Any
+    ):
         super().__init__(document_id, body)
         self.authors = authors
         self.bibliography = bibliography
@@ -47,6 +50,7 @@ class CranfieldQueryBase(QueryBase):
         The text of the query.
 
     """
+
     def __init__(self, query_id: int, body: Any):
         super().__init__(query_id, body)
 

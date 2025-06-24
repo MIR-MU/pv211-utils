@@ -12,6 +12,7 @@ TrecDataset
 BeirDataset
     Interface for Beir dataset.
 """
+
 from .arqmath import loader as arqmath_loader
 from .arqmath.loader import ArqmathJudgements
 from .cranfield import loader as cranfield_loader
@@ -37,8 +38,7 @@ from enum import Enum
 
 def _check_split_size_interval(split_size: float) -> None:
     if not 0 <= split_size <= 1:
-        raise ValueError(
-            "split proportion has to be between 0 and 1")
+        raise ValueError("split proportion has to be between 0 and 1")
 
 
 def _check_year(year: int) -> None:
@@ -78,7 +78,7 @@ class Split(Enum):
     test = 2
 
 
-class ArqmathDataset():
+class ArqmathDataset:
     """Class to provide interface to load and split Arqmath dataset.
 
     Attributes:
@@ -92,10 +92,8 @@ class ArqmathDataset():
     """
 
     def __init__(
-            self,
-            year: int,
-            text_format: str,
-            validation_split_size: float = 0.2) -> None:
+        self, year: int, text_format: str, validation_split_size: float = 0.2
+    ) -> None:
         """Check if arguments have legal values and construct attributes
         for ArqmathDataset object.
 
@@ -120,9 +118,8 @@ class ArqmathDataset():
 
     def _get_split(self, year: int, split: Split, query_class) -> OrderedDict:
         queries = arqmath_loader.load_queries(
-            text_format=self.text_format,
-            year=year,
-            query_class=query_class)
+            text_format=self.text_format, year=year, query_class=query_class
+        )
         queries_partition = []
         validation_size = int(self.validatoin_split_size * len(queries))
 
@@ -140,10 +137,11 @@ class ArqmathDataset():
     def _load_judgements(self, year: int) -> ArqmathJudgements:
         return arqmath_loader.load_judgements(
             queries=arqmath_loader.load_queries(
-                text_format=self.text_format,
-                year=year),
+                text_format=self.text_format, year=year
+            ),
             answers=self.load_answers(),
-            year=year)
+            year=year,
+        )
 
     def set_year(self, new_year: int) -> None:
         """Change the year attribute ArqmathDataset object.
@@ -187,9 +185,8 @@ class ArqmathDataset():
             Dictionary of test queries in (query_id: Query) form.
         """
         return arqmath_loader.load_queries(
-            text_format=self.text_format,
-            year=self.year,
-            query_class=query_class)
+            text_format=self.text_format, year=self.year, query_class=query_class
+        )
 
     def load_train_queries(self, query_class=ArqmathQueryBase) -> OrderedDict:
         """Load the train split of queries, i.e. all the queries from
@@ -205,7 +202,8 @@ class ArqmathDataset():
 
         return OrderedDict(
             self._get_split(year1, Split.train, query_class),
-            **self._get_split(year2, Split.train, query_class))
+            **self._get_split(year2, Split.train, query_class),
+        )
 
     def load_validation_queries(self, query_class=ArqmathQueryBase) -> OrderedDict:
         """Load the validation split of queries, i.e. all the queries from
@@ -221,7 +219,8 @@ class ArqmathDataset():
 
         return OrderedDict(
             self._get_split(year1, Split.validation, query_class),
-            **self._get_split(year2, Split.validation, query_class))
+            **self._get_split(year2, Split.validation, query_class),
+        )
 
     def load_test_judgements(self) -> ArqmathJudgements:
         """Load judgements for test queries.
@@ -244,10 +243,11 @@ class ArqmathDataset():
             as relevant to the Query.
         """
         year1, year2 = list({2020, 2021, 2022} - {self.year})
-        return {(q, a)
-                for q, a in self._load_judgements(year1).union(
-                    self._load_judgements(year2))
-                if q.query_id in self.load_train_queries().keys()}
+        return {
+            (q, a)
+            for q, a in self._load_judgements(year1).union(self._load_judgements(year2))
+            if q.query_id in self.load_train_queries().keys()
+        }
 
     def load_validation_judgements(self) -> ArqmathJudgements:
         """Load judgements for validation queries.
@@ -259,10 +259,11 @@ class ArqmathDataset():
             as relevant to the Query.
         """
         year1, year2 = list({2020, 2021, 2022} - {self.year})
-        return {(q, a)
-                for q, a in self._load_judgements(year1).union(
-                    self._load_judgements(year2))
-                if q.query_id in self.load_validation_queries().keys()}
+        return {
+            (q, a)
+            for q, a in self._load_judgements(year1).union(self._load_judgements(year2))
+            if q.query_id in self.load_validation_queries().keys()
+        }
 
     def load_answers(self, answer_class=ArqmathAnswerBase) -> OrderedDict:
         """Load answers.
@@ -275,8 +276,8 @@ class ArqmathDataset():
         return arqmath_loader.load_answers(
             text_format=self.text_format,
             answer_class=answer_class,
-            cache_download=f'/var/tmp/pv211/arqmath2020_answers_{self.text_format}.json.gz'
-            )
+            cache_download=f"/var/tmp/pv211/arqmath2020_answers_{self.text_format}.json.gz",
+        )
 
     def load_questions(self, question_class=ArqmathQuestionBase) -> OrderedDict:
         """Load questions.
@@ -290,10 +291,11 @@ class ArqmathDataset():
             text_format=self.text_format,
             answers=self.load_answers(),
             question_class=question_class,
-            cache_download=f'/var/tmp/pv211/arqmath2020_questions_{self.text_format}.json.gz')
+            cache_download=f"/var/tmp/pv211/arqmath2020_questions_{self.text_format}.json.gz",
+        )
 
 
-class CranfieldDataset():
+class CranfieldDataset:
     """Class to provide interface to load and split Arqmath dataset.
 
     Attributes:
@@ -304,8 +306,9 @@ class CranfieldDataset():
         Proportion of the train dataset to include in the validation split.
     """
 
-    def __init__(self, test_split_size: float = 1,
-                 validation_split_size: float = 0) -> None:
+    def __init__(
+        self, test_split_size: float = 1, validation_split_size: float = 0
+    ) -> None:
         """Check if arguments have legal values and construct attributes
         for CranfieldDataset object.
 
@@ -327,8 +330,7 @@ class CranfieldDataset():
         queries = cranfield_loader.load_queries(query_class=queries_class)
         queries_partition = []
         test_size = int(self.test_split_size * len(queries))
-        validation_size = int(self.validation_split_size
-                              * (len(queries) - test_size))
+        validation_size = int(self.validation_split_size * (len(queries) - test_size))
 
         if split == Split.test:
             split_interval = range(test_size)
@@ -345,8 +347,7 @@ class CranfieldDataset():
 
     def _load_judgements(self) -> CranfieldJudgements:
         return cranfield_loader.load_judgements(
-            cranfield_loader.load_queries(),
-            cranfield_loader.load_documents()
+            cranfield_loader.load_queries(), cranfield_loader.load_documents()
         )
 
     def set_test_split_size(self, new_size: float) -> None:
@@ -409,9 +410,11 @@ class CranfieldDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return {(q, a)
-                for q, a in self._load_judgements()
-                if q.query_id in self.load_test_queries().keys()}
+        return {
+            (q, a)
+            for q, a in self._load_judgements()
+            if q.query_id in self.load_test_queries().keys()
+        }
 
     def load_train_judgements(self) -> CranfieldJudgements:
         """Load judgements for train queries.
@@ -422,9 +425,11 @@ class CranfieldDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return {(q, a)
-                for q, a in self._load_judgements()
-                if q.query_id in self.load_train_queries().keys()}
+        return {
+            (q, a)
+            for q, a in self._load_judgements()
+            if q.query_id in self.load_train_queries().keys()
+        }
 
     def load_validation_judgements(self) -> CranfieldJudgements:
         """Load judgements for validaiton queries.
@@ -435,9 +440,11 @@ class CranfieldDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return {(q, a)
-                for q, a in self._load_judgements()
-                if q.query_id in self.load_validation_queries().keys()}
+        return {
+            (q, a)
+            for q, a in self._load_judgements()
+            if q.query_id in self.load_validation_queries().keys()
+        }
 
     def load_documents(self, document_class=CranfieldDocumentBase) -> OrderedDict:
         """Load documents.
@@ -450,7 +457,7 @@ class CranfieldDataset():
         return cranfield_loader.load_documents(document_class)
 
 
-class TrecDataset():
+class TrecDataset:
     """Class to provide interface to load and split Trec dataset.
 
     Attributes:
@@ -473,9 +480,12 @@ class TrecDataset():
         self.validation_split_size = validation_split_size
 
     def _get_train_validation_queries(self, query_class) -> list:
-        return (
-            list(trec_loader.load_queries(subset="train", query_class=query_class).items())
-            + list(trec_loader.load_queries(subset="validation", query_class=query_class).items())
+        return list(
+            trec_loader.load_queries(subset="train", query_class=query_class).items()
+        ) + list(
+            trec_loader.load_queries(
+                subset="validation", query_class=query_class
+            ).items()
         )
 
     def set_validation_split_size(self, new_size: float) -> None:
@@ -509,8 +519,9 @@ class TrecDataset():
         """
         test_validate_queries = self._get_train_validation_queries(query_class)
         return OrderedDict(
-            test_validate_queries[:int(len(test_validate_queries)
-                                       * (1 - self.validation_split_size))]
+            test_validate_queries[
+                : int(len(test_validate_queries) * (1 - self.validation_split_size))
+            ]
         )
 
     def load_validation_queries(self, query_class=TrecQueryBase) -> OrderedDict:
@@ -523,8 +534,9 @@ class TrecDataset():
         """
         test_validate_queries = self._get_train_validation_queries(query_class)
         return OrderedDict(
-            test_validate_queries[int(len(test_validate_queries)
-                                      * (1 - self.validation_split_size)):]
+            test_validate_queries[
+                int(len(test_validate_queries) * (1 - self.validation_split_size)):
+            ]
         )
 
     def load_test_judgements(self) -> TrecJudgements:
@@ -536,9 +548,9 @@ class TrecDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return trec_loader.load_judgements(self.load_test_queries(),
-                                           self.load_documents(),
-                                           subset="test")
+        return trec_loader.load_judgements(
+            self.load_test_queries(), self.load_documents(), subset="test"
+        )
 
     def load_train_judgements(self) -> TrecJudgements:
         """Load judgements for train queries.
@@ -550,14 +562,17 @@ class TrecDataset():
             as relevant to the Query.
         """
         documents = self.load_documents()
-        return {(q, a)
-                for q, a in trec_loader.load_judgements(self.load_train_queries(),
-                                                        documents,
-                                                        subset="train").union(
-                    trec_loader.load_judgements(self.load_validation_queries(),
-                                                documents,
-                                                subset="validation"))
-                if q.query_id in self.load_train_queries().keys()}
+        return {
+            (q, a)
+            for q, a in trec_loader.load_judgements(
+                self.load_train_queries(), documents, subset="train"
+            ).union(
+                trec_loader.load_judgements(
+                    self.load_validation_queries(), documents, subset="validation"
+                )
+            )
+            if q.query_id in self.load_train_queries().keys()
+        }
 
     def load_validation_judgements(self) -> TrecJudgements:
         """Load judgements for validation queries.
@@ -569,14 +584,17 @@ class TrecDataset():
             as relevant to the Query.
         """
         documents = self.load_documents()
-        return {(q, a)
-                for q, a in trec_loader.load_judgements(self.load_train_queries(),
-                                                        documents,
-                                                        subset="train").union(
-                    trec_loader.load_judgements(self.load_validation_queries(),
-                                                documents,
-                                                subset="validation"))
-                if q.query_id in self.load_validation_queries().keys()}
+        return {
+            (q, a)
+            for q, a in trec_loader.load_judgements(
+                self.load_train_queries(), documents, subset="train"
+            ).union(
+                trec_loader.load_judgements(
+                    self.load_validation_queries(), documents, subset="validation"
+                )
+            )
+            if q.query_id in self.load_validation_queries().keys()
+        }
 
     def load_documents(self, document_class=TrecDocumentBase) -> OrderedDict:
         """Load documents.
@@ -586,11 +604,13 @@ class TrecDataset():
         OrderedDict
             Dictionary of (document_id: Document) form.
         """
-        return trec_loader.load_documents(document_class=document_class,
-                                          cache_download='/var/tmp/pv211/trec_documents.json.gz')
+        return trec_loader.load_documents(
+            document_class=document_class,
+            cache_download="/var/tmp/pv211/trec_documents.json.gz",
+        )
 
 
-class BeirDataset():
+class BeirDataset:
     """Class to provide interface to load and split Beir datasets.
     Possible options - "msmarco", "msmarco-v2", "trec-covid",
                        "nfcorpus", "nq", "hotpotqa", "fiqa", "arguana",
@@ -603,7 +623,7 @@ class BeirDataset():
         Name of the dataset to be loaded.
     """
 
-    _download_path = Path.home() / '.cache' / 'pv211-utils'
+    _download_path = Path.home() / ".cache" / "pv211-utils"
 
     def __init__(self, dataset_name: str) -> None:
         """Check if arguments have legal values and construct attributes
@@ -616,11 +636,12 @@ class BeirDataset():
         """
         _check_beir_datatset_name(dataset_name)
         self.dataset_name = dataset_name
-        if not _check_beir_dataset_path(self._download_path,
-                                        self.dataset_name):
+        if not _check_beir_dataset_path(self._download_path, self.dataset_name):
             self._download_path = Path(
-                beir_loader.download_beir_dataset(self.dataset_name,
-                                                  str(self._download_path)))
+                beir_loader.download_beir_dataset(
+                    self.dataset_name, str(self._download_path)
+                )
+            )
         else:
             self._download_path = self._download_path / self.dataset_name
 
@@ -634,13 +655,16 @@ class BeirDataset():
         """
         _check_beir_datatset_name(new_dataset_name)
         self.dataset_name = new_dataset_name
-        if not _check_beir_dataset_path(self._download_path,
-                                        self.dataset_name):
+        if not _check_beir_dataset_path(self._download_path, self.dataset_name):
             self._download_path = Path(
-                beir_loader.download_beir_dataset(self.dataset_name,
-                                                  str(self._download_path)))
+                beir_loader.download_beir_dataset(
+                    self.dataset_name, str(self._download_path)
+                )
+            )
         else:
-            self._download_path = Path.home() / '.cache' / 'pv211-utils' / self.dataset_name
+            self._download_path = (
+                Path.home() / ".cache" / "pv211-utils" / self.dataset_name
+            )
 
     def load_test_queries(self) -> OrderedDict:
         """Load the test split of queries.
@@ -651,8 +675,9 @@ class BeirDataset():
             Dictionary of test queries in (query_id: Query) form.
         """
         return beir_loader.load_queries(
-            beir_loader.load_beir_test_set(self.dataset_name,
-                                           str(self._download_path))[1]
+            beir_loader.load_beir_test_set(self.dataset_name, str(self._download_path))[
+                1
+            ]
         )
 
     def load_train_queries(self) -> OrderedDict:
@@ -664,8 +689,9 @@ class BeirDataset():
             Dictionary of test queries in (query_id: Query) form.
         """
         return beir_loader.load_queries(
-            beir_loader.load_beir_train_set(self.dataset_name,
-                                            str(self._download_path))[1]
+            beir_loader.load_beir_train_set(
+                self.dataset_name, str(self._download_path)
+            )[1]
         )
 
     def load_validation_queries(self) -> OrderedDict:
@@ -677,8 +703,9 @@ class BeirDataset():
             Dictionary of test queries in (query_id: Query) form.
         """
         return beir_loader.load_queries(
-            beir_loader.load_beir_dev_set(self.dataset_name,
-                                          str(self._download_path))[1]
+            beir_loader.load_beir_dev_set(self.dataset_name, str(self._download_path))[
+                1
+            ]
         )
 
     def load_test_judgements(self) -> BeirJudgementsBase:
@@ -691,10 +718,13 @@ class BeirDataset():
             as relevant to the Query.
         """
         documents, queries, judgements = beir_loader.load_beir_test_set(
-            self.dataset_name, str(self._download_path))
-        return beir_loader.load_judgements(beir_loader.load_queries(queries),
-                                           beir_loader.load_documents(documents),
-                                           judgements)
+            self.dataset_name, str(self._download_path)
+        )
+        return beir_loader.load_judgements(
+            beir_loader.load_queries(queries),
+            beir_loader.load_documents(documents),
+            judgements,
+        )
 
     def load_train_judgements(self) -> BeirJudgementsBase:
         """Load judgements for train queries.
@@ -706,10 +736,13 @@ class BeirDataset():
             as relevant to the Query.
         """
         documents, queries, judgements = beir_loader.load_beir_train_set(
-            self.dataset_name, str(self._download_path))
-        return beir_loader.load_judgements(beir_loader.load_queries(queries),
-                                           beir_loader.load_documents(documents),
-                                           judgements)
+            self.dataset_name, str(self._download_path)
+        )
+        return beir_loader.load_judgements(
+            beir_loader.load_queries(queries),
+            beir_loader.load_documents(documents),
+            judgements,
+        )
 
     def load_validation_judgements(self) -> BeirJudgementsBase:
         """Load judgements for validation queries.
@@ -721,10 +754,13 @@ class BeirDataset():
             as relevant to the Query.
         """
         documents, queries, judgements = beir_loader.load_beir_dev_set(
-            self.dataset_name, str(self._download_path))
-        return beir_loader.load_judgements(beir_loader.load_queries(queries),
-                                           beir_loader.load_documents(documents),
-                                           judgements)
+            self.dataset_name, str(self._download_path)
+        )
+        return beir_loader.load_judgements(
+            beir_loader.load_queries(queries),
+            beir_loader.load_documents(documents),
+            judgements,
+        )
 
     def load_documents(self) -> OrderedDict:
         """Load documents.
@@ -739,12 +775,12 @@ class BeirDataset():
         )
 
 
-class CQADupStackDataset():
-    """Class to provide interface to load and split CQADupStack datasets.
+class CQADupStackDataset:
+    """Class to provide interface to load and split CQADupStack datasets."""
 
-    """
-
-    def __init__(self, download_location: str = "datasets", validation_split_size: float = 0.2) -> None:
+    def __init__(
+        self, download_location: str = "datasets", validation_split_size: float = 0.2
+    ) -> None:
         """Check if arguments have legal values and construct attributes
         for BeirDataset object.
 
@@ -774,18 +810,33 @@ class CQADupStackDataset():
         webmasters = RawBeirDataset("webmasters")
         wordpress = RawBeirDataset("wordpress")
 
-        datasets = RawBeirDatasets(datasets=[android, english, gaming, gis,
-                                             mathematica, physics, programmers,
-                                             stats, tex, unix, webmasters, wordpress],
-                                   download_location=download_location)
+        datasets = RawBeirDatasets(
+            datasets=[
+                android,
+                english,
+                gaming,
+                gis,
+                mathematica,
+                physics,
+                programmers,
+                stats,
+                tex,
+                unix,
+                webmasters,
+                wordpress,
+            ],
+            download_location=download_location,
+        )
         _, _, self.raw_data = load_beir_datasets(datasets)
 
         query_ordering = CQADUPSTACK_QUERIES
 
-        train_queries, self.test_queries = train_test_split(query_ordering, test_size=300, shuffle=False)
-        self.train_queries, self.validation_queries = train_test_split(train_queries,
-                                                                       test_size=validation_split_size,
-                                                                       shuffle=False)
+        train_queries, self.test_queries = train_test_split(
+            query_ordering, test_size=300, shuffle=False
+        )
+        self.train_queries, self.validation_queries = train_test_split(
+            train_queries, test_size=validation_split_size, shuffle=False
+        )
 
     def load_test_queries(self, query_class=BeirQueryBase) -> OrderedDict:
         """Load the test split of queries.
@@ -856,7 +907,9 @@ class CQADupStackDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return beir_loader.load_judgements(self.load_test_queries(), self.load_documents(), self.raw_data[2])
+        return beir_loader.load_judgements(
+            self.load_test_queries(), self.load_documents(), self.raw_data[2]
+        )
 
     def load_train_judgements(self) -> BeirJudgementsBase:
         """Load judgements for train queries.
@@ -867,7 +920,9 @@ class CQADupStackDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return beir_loader.load_judgements(self.load_train_queries(), self.load_documents(), self.raw_data[2])
+        return beir_loader.load_judgements(
+            self.load_train_queries(), self.load_documents(), self.raw_data[2]
+        )
 
     def load_validation_judgements(self) -> BeirJudgementsBase:
         """Load judgements for validation queries.
@@ -878,7 +933,9 @@ class CQADupStackDataset():
             Set of (Query, Answer) pairs, where Anwser is judged
             as relevant to the Query.
         """
-        return beir_loader.load_judgements(self.load_validation_queries(), self.load_documents(), self.raw_data[2])
+        return beir_loader.load_judgements(
+            self.load_validation_queries(), self.load_documents(), self.raw_data[2]
+        )
 
     def load_documents(self, document_class=BeirDocumentBase) -> OrderedDict:
         """Load documents.
@@ -888,4 +945,6 @@ class CQADupStackDataset():
         OrderedDict
             Dictionary of (document_id: Document) form.
         """
-        return beir_loader.load_documents(self.raw_data[0], document_class=document_class)
+        return beir_loader.load_documents(
+            self.raw_data[0], document_class=document_class
+        )

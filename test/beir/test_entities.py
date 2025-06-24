@@ -4,12 +4,12 @@ from pv211_utils.beir.entities import BeirQueryBase, BeirDocumentBase
 
 
 QUERY_ID = 123
-QUERY_BODY_INPUT = 'some body  text'
-QUERY_BODY_OUTPUT = ['some', 'body', 'text']
+QUERY_BODY_INPUT = "some body  text"
+QUERY_BODY_OUTPUT = ["some", "body", "text"]
 
-DOCUMENT_ID = '123'
-DOCUMENT_BODY_INPUT = 'some  body text'
-DOCUMENT_BODY_OUTPUT = ['some', 'body', 'text']
+DOCUMENT_ID = "123"
+DOCUMENT_BODY_INPUT = "some  body text"
+DOCUMENT_BODY_OUTPUT = ["some", "body", "text"]
 
 
 class BeirQuery(BeirQueryBase):

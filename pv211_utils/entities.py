@@ -21,6 +21,7 @@ class DocumentBase:
         The abstract of the document.
 
     """
+
     SUMMARY_LENGTH = 50
 
     def __init__(self, document_id: str, body: Any):
@@ -41,10 +42,10 @@ class DocumentBase:
         return NotImplemented
 
     def __repr__(self):
-        summary = ' '.join(str(self.body).split())
+        summary = " ".join(str(self.body).split())
         if len(summary) > self.SUMMARY_LENGTH:
-            summary = '{} ...'.format(summary[:self.SUMMARY_LENGTH])
-        return f'<Document {self.document_id} “{summary}”>'
+            summary = "{} ...".format(summary[: self.SUMMARY_LENGTH])
+        return f"<Document {self.document_id} “{summary}”>"
 
 
 @total_ordering
@@ -66,6 +67,7 @@ class QueryBase:
         The text of the query.
 
     """
+
     SUMMARY_LENGTH = 50
 
     def __init__(self, query_id: int, body: Any):
@@ -86,10 +88,10 @@ class QueryBase:
         return NotImplemented
 
     def __repr__(self):
-        summary = ' '.join(str(self.body).split())
+        summary = " ".join(str(self.body).split())
         if len(summary) > self.SUMMARY_LENGTH:
-            summary = '{} ...'.format(summary[:self.SUMMARY_LENGTH])
-        return f'<Query {self.query_id} “{summary}”>'
+            summary = "{} ...".format(summary[: self.SUMMARY_LENGTH])
+        return f"<Query {self.query_id} “{summary}”>"
 
 
 JudgementBase = Tuple[QueryBase, DocumentBase]

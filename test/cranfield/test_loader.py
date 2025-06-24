@@ -17,29 +17,40 @@ class TestLoadQueries(unittest.TestCase):
         self.assertEqual(NUM_QUERIES, len(self.queries))
 
     def test_query_body(self):
-        self.assertEqual('papers on shock-sound wave interaction .', self.query.body)
+        self.assertEqual("papers on shock-sound wave interaction .", self.query.body)
 
 
 class TestLoadDocuments(unittest.TestCase):
     def setUp(self):
         self.documents = load_documents()
-        self.document = self.documents['14']
+        self.document = self.documents["14"]
 
     def test_number_of_documents(self):
         self.assertEqual(NUM_DOCUMENTS, len(self.documents))
 
     def test_document_authors(self):
-        self.assertEqual('ashley,h. and zartarian,g.', self.document.authors)
+        self.assertEqual("ashley,h. and zartarian,g.", self.document.authors)
 
     def test_document_bibliography(self):
-        self.assertEqual('j. ae. scs. 23, 1956, 1109.', self.document.bibliography)
+        self.assertEqual("j. ae. scs. 23, 1956, 1109.", self.document.bibliography)
 
     def test_document_title(self):
-        self.assertEqual('piston theory - a new aerodynamic tool for the aeroelastician .', self.document.title)
+        self.assertEqual(
+            "piston theory - a new aerodynamic tool for the aeroelastician .",
+            self.document.title,
+        )
 
     def test_document_body(self):
-        self.assertTrue(self.document.body.startswith('piston theory - a new aerodynamic tool for the aeroelastician '))
-        self.assertTrue(self.document.body.endswith('when analyzing aerodynamic- thermoelastic interaction problems .'))
+        self.assertTrue(
+            self.document.body.startswith(
+                "piston theory - a new aerodynamic tool for the aeroelastician "
+            )
+        )
+        self.assertTrue(
+            self.document.body.endswith(
+                "when analyzing aerodynamic- thermoelastic interaction problems ."
+            )
+        )
 
 
 class TestLoadJudgements(unittest.TestCase):
@@ -48,8 +59,8 @@ class TestLoadJudgements(unittest.TestCase):
         documents = load_documents()
         self.judgements = load_judgements(queries, documents)
         self.query = queries[1]
-        self.relevant_document = documents['486']
-        self.irrelevant_document = documents['487']
+        self.relevant_document = documents["486"]
+        self.irrelevant_document = documents["487"]
 
     def test_number_of_judgements(self):
         self.assertEqual(NUM_JUDGEMENTS, len(self.judgements))

@@ -31,17 +31,31 @@ class BoWSystem(IRSystemBase):
 
     """
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessingBase):
+    def __init__(
+        self,
+        documents: OrderedDict[str, DocumentBase],
+        preprocessing: DocPreprocessingBase,
+    ):
         self.preprocessing = preprocessing
 
-        document_bodies = (self.preprocessing(str(document)) for document in documents.values())
-        document_bodies = tqdm(document_bodies, desc='Building the dictionary', total=len(documents))
+        document_bodies = (
+            self.preprocessing(str(document)) for document in documents.values()
+        )
+        document_bodies = tqdm(
+            document_bodies, desc="Building the dictionary", total=len(documents)
+        )
 
         self.dictionary = Dictionary(document_bodies)
-        document_vectors = (self._doc2bow(str(document)) for document in documents.values())
-        document_vectors = tqdm(document_vectors, desc='Building the index', total=len(documents))
+        document_vectors = (
+            self._doc2bow(str(document)) for document in documents.values()
+        )
+        document_vectors = tqdm(
+            document_vectors, desc="Building the index", total=len(documents)
+        )
 
-        self.index = SparseMatrixSimilarity(document_vectors, num_docs=len(documents), num_terms=len(self.dictionary))
+        self.index = SparseMatrixSimilarity(
+            document_vectors, num_docs=len(documents), num_terms=len(self.dictionary)
+        )
         self.index_to_document = dict(enumerate(documents.values()))
 
     def _doc2bow(self, doc: str):
@@ -62,7 +76,9 @@ class BoWSystem(IRSystemBase):
 
         """
         similarities = enumerate(self.index[self._doc2bow(str(query))])
-        sorted_similarities = sorted(similarities, key=lambda item: item[1], reverse=True)
+        sorted_similarities = sorted(
+            similarities, key=lambda item: item[1], reverse=True
+        )
 
         for document_number, _ in sorted_similarities:
             document = self.index_to_document[document_number]

@@ -1,4 +1,3 @@
-
 import random
 
 from collections import OrderedDict
@@ -7,18 +6,93 @@ from beir import util
 from beir.datasets.data_loader import GenericDataLoader
 from sklearn.model_selection import train_test_split
 
-from .entities import BeirQueryBase, BeirDocumentBase, BeirJudgementsBase, RawBeirDatasets
+from .entities import (
+    BeirQueryBase,
+    BeirDocumentBase,
+    BeirJudgementsBase,
+    RawBeirDatasets,
+)
 
-AVAILABLE_DATASETS = {"msmarco", "msmarco-v2", "trec-covid", "nfcorpus", "nq", "hotpotqa", "fiqa", "arguana",
-                      "webis-touche2020", "quora", "dbpedia-entity", "scidocs", "fever", "climate-fever", "scifact"}
+AVAILABLE_DATASETS = {
+    "msmarco",
+    "msmarco-v2",
+    "trec-covid",
+    "nfcorpus",
+    "nq",
+    "hotpotqa",
+    "fiqa",
+    "arguana",
+    "webis-touche2020",
+    "quora",
+    "dbpedia-entity",
+    "scidocs",
+    "fever",
+    "climate-fever",
+    "scifact",
+}
 
-CQADUPSTACK = {"android", "english", "gaming", "gis", "mathematica", "physics", "programmers", "stats", "tex", "unix",
-               "webmasters", "wordpress"}
-HAVE_TRAIN = {"msmarco", "msmarco-v2", "nfcorpus", "nq", "hotpotqa", "fiqa", "fever", "scifact"}
-HAVE_TEST = {"msmarco", "trec-covid", "nfcorpus", "nq", "hotpotqa", "fiqa", "arguana", "webis-touche2020", "quora",
-             "dbpedia-entity", "scidocs", "fever", "climate-fever", "scifact", "android", "english", "gaming", "gis",
-             "mathematica", "physics", "programmers", "stats", "tex", "unix", "webmasters", "wordpress"}
-HAVE_DEV = {"msmarco", "msmarco-v2", "nfcorpus", "hotpotqa", "fiqa", "quora", "dbpedia-entity", "fever"}
+CQADUPSTACK = {
+    "android",
+    "english",
+    "gaming",
+    "gis",
+    "mathematica",
+    "physics",
+    "programmers",
+    "stats",
+    "tex",
+    "unix",
+    "webmasters",
+    "wordpress",
+}
+HAVE_TRAIN = {
+    "msmarco",
+    "msmarco-v2",
+    "nfcorpus",
+    "nq",
+    "hotpotqa",
+    "fiqa",
+    "fever",
+    "scifact",
+}
+HAVE_TEST = {
+    "msmarco",
+    "trec-covid",
+    "nfcorpus",
+    "nq",
+    "hotpotqa",
+    "fiqa",
+    "arguana",
+    "webis-touche2020",
+    "quora",
+    "dbpedia-entity",
+    "scidocs",
+    "fever",
+    "climate-fever",
+    "scifact",
+    "android",
+    "english",
+    "gaming",
+    "gis",
+    "mathematica",
+    "physics",
+    "programmers",
+    "stats",
+    "tex",
+    "unix",
+    "webmasters",
+    "wordpress",
+}
+HAVE_DEV = {
+    "msmarco",
+    "msmarco-v2",
+    "nfcorpus",
+    "hotpotqa",
+    "fiqa",
+    "quora",
+    "dbpedia-entity",
+    "fever",
+}
 
 DEFAULT_DOWNLOAD_LOCATION = "datasets/cqadupstack"
 
@@ -26,12 +100,12 @@ DEFAULT_DOWNLOAD_LOCATION = "datasets/cqadupstack"
 def download_beir_dataset(dataset_name: str, file_location: str) -> str:
     """A Generic BEIR dataset downloader.
 
-        Parameters
-        ----------
-        dataset_name : str
-            A string with the name of a BEIR dataset - should be one of the names from the lists above.
-        file_location : str
-            Location of the folder where data is to be stored.
+    Parameters
+    ----------
+    dataset_name : str
+        A string with the name of a BEIR dataset - should be one of the names from the lists above.
+    file_location : str
+        Location of the folder where data is to be stored.
     """
     # cqadupstack is a specific case where the dataset is split into multiple subsets with specific topic
     if dataset_name in CQADUPSTACK:
@@ -39,7 +113,9 @@ def download_beir_dataset(dataset_name: str, file_location: str) -> str:
         data_path = util.download_and_unzip(url, file_location)
         data_path = data_path + "/" + dataset_name
     else:
-        url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{}.zip".format(dataset_name)
+        url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{}.zip".format(
+            dataset_name
+        )
         data_path = util.download_and_unzip(url, file_location)
     # nq train set is in a separate file
     if dataset_name == "nq":
@@ -48,49 +124,79 @@ def download_beir_dataset(dataset_name: str, file_location: str) -> str:
     return data_path
 
 
-def load_beir_test_set(dataset_name: str, data_path: str, alternative: Optional[str] = None):
-    if dataset_name not in HAVE_TEST:  # currently only dataset that does not include test is msmarco-v2
+def load_beir_test_set(
+    dataset_name: str, data_path: str, alternative: Optional[str] = None
+):
+    if (
+        dataset_name not in HAVE_TEST
+    ):  # currently only dataset that does not include test is msmarco-v2
         print("Your chosen dataset ", dataset_name, " does not have a test subset.")
         if alternative is None:
             print(
                 "You may select a alternative subset, such as the dev2 for msmarco-v2, or split some other subset "
-                "into your desired parts using the split_BEIR_dataset.")
+                "into your desired parts using the split_BEIR_dataset."
+            )
             return None, None, None
         if alternative in ["train"]:
-            print("You have chosen the training set for testing, please reconsider or at least split it with "
-                  "split_BEIR_dataset.")
+            print(
+                "You have chosen the training set for testing, please reconsider or at least split it with "
+                "split_BEIR_dataset."
+            )
             return load_beir_train_set(dataset_name, data_path)
         elif alternative in ["dev", "dev1", "dev2"]:
-            print("You have chosen ", alternative, "as your alternative, split it with split_BEIR_dataset if you want "
-                                                   "to have both ",
-                  alternative, " and test set.")
+            print(
+                "You have chosen ",
+                alternative,
+                "as your alternative, split it with split_BEIR_dataset if you want "
+                "to have both ",
+                alternative,
+                " and test set.",
+            )
             return load_beir_dev_set(dataset_name, data_path)
         else:
-            print("The selected alternative ", alternative, " is not viable, please use train, dev, dev1, dev2")
+            print(
+                "The selected alternative ",
+                alternative,
+                " is not viable, please use train, dev, dev1, dev2",
+            )
             return None, None, None
     else:
         return GenericDataLoader(data_folder=data_path).load(split="test")
 
 
-def load_beir_train_set(dataset_name: str, data_path: str, alternative: Optional[str] = None):
+def load_beir_train_set(
+    dataset_name: str, data_path: str, alternative: Optional[str] = None
+):
     if dataset_name not in HAVE_TRAIN:
         print("Your chosen dataset ", dataset_name, " does not have a train subset.")
         if alternative is None:
             print(
                 "You may select a alternative subset, such as the dev for dbpedia-entity, or split some other subset "
-                "into your desired parts using the split_BEIR_dataset.")
+                "into your desired parts using the split_BEIR_dataset."
+            )
             return None, None, None
         if alternative in ["test"]:
-            print("You have chosen the testing set for training, please reconsider or at least split it with "
-                  "split_BEIR_dataset.")
+            print(
+                "You have chosen the testing set for training, please reconsider or at least split it with "
+                "split_BEIR_dataset."
+            )
             return load_beir_test_set(dataset_name, data_path)
         elif alternative in ["dev", "dev1", "dev2"]:
-            print("You have chosen ", alternative, "as your alternative, split it with split_BEIR_dataset if you want "
-                                                   "to have both ",
-                  alternative, " and train set.")
+            print(
+                "You have chosen ",
+                alternative,
+                "as your alternative, split it with split_BEIR_dataset if you want "
+                "to have both ",
+                alternative,
+                " and train set.",
+            )
             return load_beir_dev_set(dataset_name, data_path)
         else:
-            print("The selected alternative ", alternative, " is not viable, please use test, dev, dev1, dev2")
+            print(
+                "The selected alternative ",
+                alternative,
+                " is not viable, please use test, dev, dev1, dev2",
+            )
             return None, None, None
     elif dataset_name == "nq":
         return GenericDataLoader(data_folder=data_path + "-train").load(split="train")
@@ -98,39 +204,58 @@ def load_beir_train_set(dataset_name: str, data_path: str, alternative: Optional
         return GenericDataLoader(data_folder=data_path).load(split="train")
 
 
-def load_beir_dev_set(dataset_name: str, data_path: str, alternative: Optional[str] = None):
+def load_beir_dev_set(
+    dataset_name: str, data_path: str, alternative: Optional[str] = None
+):
     if dataset_name not in HAVE_DEV:
         print("Your chosen dataset ", dataset_name, " does not have a dev subset.")
         if alternative is None:
             print(
                 "You may select a alternative subset, or split some other subset into your desired parts using the "
-                "split_BEIR_dataset.")
+                "split_BEIR_dataset."
+            )
             return None, None, None
         if alternative in ["test"]:
-            print("You have chosen the dev set for training, please reconsider or at least split it with "
-                  "split_BEIR_dataset.")
+            print(
+                "You have chosen the dev set for training, please reconsider or at least split it with "
+                "split_BEIR_dataset."
+            )
             return load_beir_test_set(dataset_name, data_path)
         elif alternative in ["train"]:
-            print("You have chosen ", alternative, "as your alternative, split it with split_BEIR_dataset if you want "
-                                                   "to have both ",
-                  alternative, " and train set.")
+            print(
+                "You have chosen ",
+                alternative,
+                "as your alternative, split it with split_BEIR_dataset if you want "
+                "to have both ",
+                alternative,
+                " and train set.",
+            )
             return load_beir_dev_set(dataset_name, data_path)
         else:
-            print("The selected alternative ", alternative, " is not viable, please use test, dev, dev1, dev2")
+            print(
+                "The selected alternative ",
+                alternative,
+                " is not viable, please use test, dev, dev1, dev2",
+            )
             return None, None, None
     if dataset_name == "msmarco-v2":
         if alternative is None:
             print(
                 "The selected dataset, msmarco-v2, has two dev subsets. By default the dev1 subset is used, "
-                "you can choose the dev2 by setting the alternative parameter.")
+                "you can choose the dev2 by setting the alternative parameter."
+            )
             return GenericDataLoader(data_folder=data_path).load(split="dev1")
         elif alternative == "dev1":
             return GenericDataLoader(data_folder=data_path).load(split="dev1")
         elif alternative == "dev2":
-            print("The selected dataset, msmarco-v2, has two dev subsets. You have selected the dev2 subset.")
+            print(
+                "The selected dataset, msmarco-v2, has two dev subsets. You have selected the dev2 subset."
+            )
             return GenericDataLoader(data_folder=data_path).load(split="dev2")
         else:
-            print("With this msmarco-v2 dataset please use either None, dev1 or de2 alternative")
+            print(
+                "With this msmarco-v2 dataset please use either None, dev1 or de2 alternative"
+            )
             return None, None, None
     else:
         return GenericDataLoader(data_folder=data_path).load(split="dev")
@@ -211,7 +336,9 @@ def combine_beir_datasets(raw_data1, raw_data2):
 
 def split_beir_dataset(raw_data, split_factor=0.2):
     raw_data = list(raw_data)
-    queries1, queries2 = train_test_split(list(raw_data[1].items()), test_size=split_factor, random_state=42)
+    queries1, queries2 = train_test_split(
+        list(raw_data[1].items()), test_size=split_factor, random_state=42
+    )
     queries1, queries2 = OrderedDict(queries1), OrderedDict(queries2)
     raw_data1 = (raw_data[0], queries1, raw_data[2])
     raw_data2 = (raw_data[0], queries2, raw_data[2])
@@ -233,21 +360,31 @@ def load_beir_datasets(datasets_data: RawBeirDatasets):
 
         # now load each individual data subset
         if dataset.train:
-            temp_train_data = load_beir_train_set(dataset.name, data_path, dataset.train_alternative)
+            temp_train_data = load_beir_train_set(
+                dataset.name, data_path, dataset.train_alternative
+            )
             raw_train_data = combine_beir_datasets(raw_train_data, temp_train_data)
         if dataset.dev:
-            temp_dev_data = load_beir_dev_set(dataset.name, data_path, dataset.dev_alternative)
+            temp_dev_data = load_beir_dev_set(
+                dataset.name, data_path, dataset.dev_alternative
+            )
             raw_dev_data = combine_beir_datasets(raw_dev_data, temp_dev_data)
         if dataset.test:
-            temp_test_data = load_beir_test_set(dataset.name, data_path, dataset.test_alternative)
+            temp_test_data = load_beir_test_set(
+                dataset.name, data_path, dataset.test_alternative
+            )
             raw_test_data = combine_beir_datasets(raw_test_data, temp_test_data)
     return raw_train_data, raw_dev_data, raw_test_data
 
 
-def load_queries(raw_queries, max_test_queries: Optional[int] = None, query_class=BeirQueryBase) -> OrderedDict:
+def load_queries(
+    raw_queries, max_test_queries: Optional[int] = None, query_class=BeirQueryBase
+) -> OrderedDict:
     queries = OrderedDict()
     if max_test_queries is None:
-        max_test_queries = 99967454511  # the entire Big Smoke's order is close enough to infinity
+        max_test_queries = (
+            99967454511  # the entire Big Smoke's order is close enough to infinity
+        )
     for que in list(raw_queries.items())[:max_test_queries]:
         que_id = que[0]
         query = query_class(
@@ -260,22 +397,21 @@ def load_queries(raw_queries, max_test_queries: Optional[int] = None, query_clas
 
 def load_documents(raw_corpus, document_class=BeirDocumentBase) -> OrderedDict:
     from collections import OrderedDict
+
     documents = OrderedDict()
     for doc in raw_corpus.items():
         doc_id = doc[0]
-        document = document_class(
-            document_id=doc_id,
-            body=doc[1]["text"]
-        )
+        document = document_class(document_id=doc_id, body=doc[1]["text"])
         documents[doc_id] = document
     return documents
 
 
-def load_judgements(queries: OrderedDict, raw_documents: OrderedDict, raw_qrels) -> BeirJudgementsBase:
+def load_judgements(
+    queries: OrderedDict, raw_documents: OrderedDict, raw_qrels
+) -> BeirJudgementsBase:
     judgements = set()
     for que_id in queries.keys():
-
-        for doc_id in (list(raw_qrels[que_id].keys())):
+        for doc_id in list(raw_qrels[que_id].keys()):
             query: BeirQueryBase = queries[que_id]
             document: BeirDocumentBase = raw_documents[doc_id]
             relevance = (query, document)
@@ -283,8 +419,12 @@ def load_judgements(queries: OrderedDict, raw_documents: OrderedDict, raw_qrels)
     return judgements
 
 
-def create_false_judgements(documents: OrderedDict, queries: OrderedDict, judgements: BeirJudgementsBase,
-                            num_of_false_judgements: int = 10000) -> BeirJudgementsBase:
+def create_false_judgements(
+    documents: OrderedDict,
+    queries: OrderedDict,
+    judgements: BeirJudgementsBase,
+    num_of_false_judgements: int = 10000,
+) -> BeirJudgementsBase:
     """Create a set of negative samples.
 
     Parameters

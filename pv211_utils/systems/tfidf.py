@@ -27,30 +27,50 @@ class TfidfSystem(IRSystemBase):
         A mapping from indexed document numbers to documents.
 
     """
+
     DICTIONARY: Dictionary
     TFIDF_MODEL: TfidfModel
     preprocessing: DocPreprocessingBase
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessingBase):
+    def __init__(
+        self,
+        documents: OrderedDict[str, DocumentBase],
+        preprocessing: DocPreprocessingBase,
+    ):
         self.__class__.preprocessing = preprocessing
 
-        with get_context('fork').Pool(None) as pool:
-            document_bodies = pool.imap(self.__class__._document_to_tokens, documents.values())
-            document_bodies = tqdm(document_bodies, desc='Building the dictionary', total=len(documents))
+        with get_context("fork").Pool(None) as pool:
+            document_bodies = pool.imap(
+                self.__class__._document_to_tokens, documents.values()
+            )
+            document_bodies = tqdm(
+                document_bodies, desc="Building the dictionary", total=len(documents)
+            )
             self.dictionary = Dictionary(document_bodies)
             self.__class__.DICTIONARY = self.dictionary
 
-        with get_context('fork').Pool(None) as pool:
-            document_vectors = pool.imap(self.__class__._document_to_bag_of_words, documents.values())
-            document_vectors = tqdm(document_vectors, desc='Building the TF-IDF model', total=len(documents))
+        with get_context("fork").Pool(None) as pool:
+            document_vectors = pool.imap(
+                self.__class__._document_to_bag_of_words, documents.values()
+            )
+            document_vectors = tqdm(
+                document_vectors, desc="Building the TF-IDF model", total=len(documents)
+            )
             self.tfidf_model = TfidfModel(document_vectors)
             self.__class__.TFIDF_MODEL = self.tfidf_model
 
-        with get_context('fork').Pool(None) as pool:
-            document_vectors = pool.imap(self.__class__._document_to_tfidf_vector, documents.values())
-            document_vectors = tqdm(document_vectors, desc='Building the TF-IDF index', total=len(documents))
-            self.index = SparseMatrixSimilarity(document_vectors, num_docs=len(
-                documents), num_terms=len(self.dictionary))
+        with get_context("fork").Pool(None) as pool:
+            document_vectors = pool.imap(
+                self.__class__._document_to_tfidf_vector, documents.values()
+            )
+            document_vectors = tqdm(
+                document_vectors, desc="Building the TF-IDF index", total=len(documents)
+            )
+            self.index = SparseMatrixSimilarity(
+                document_vectors,
+                num_docs=len(documents),
+                num_terms=len(self.dictionary),
+            )
 
         del self.__class__.DICTIONARY
         del self.__class__.TFIDF_MODEL
@@ -89,9 +109,13 @@ class TfidfSystem(IRSystemBase):
         return cls.preprocessing(str(document))
 
     @classmethod
-    def _document_to_bag_of_words(cls, document: Union[QueryBase, DocumentBase]) -> List[Tuple[int, int]]:
+    def _document_to_bag_of_words(
+        cls, document: Union[QueryBase, DocumentBase]
+    ) -> List[Tuple[int, int]]:
         return cls.DICTIONARY.doc2bow(cls._document_to_tokens(document))
 
     @classmethod
-    def _document_to_tfidf_vector(cls, document: Union[QueryBase, DocumentBase]) -> List[Tuple[int, float]]:
+    def _document_to_tfidf_vector(
+        cls, document: Union[QueryBase, DocumentBase]
+    ) -> List[Tuple[int, float]]:
         return cls.TFIDF_MODEL[cls._document_to_bag_of_words(document)]

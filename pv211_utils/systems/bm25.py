@@ -33,8 +33,14 @@ class BM25PlusSystem(IRSystemBase):
 
     """
 
-    def __init__(self, documents: OrderedDict[str, DocumentBase], preprocessing: DocPreprocessingBase,
-                 k1: float = 1.25, b: float = 0.75, d: float = 1):
+    def __init__(
+        self,
+        documents: OrderedDict[str, DocumentBase],
+        preprocessing: DocPreprocessingBase,
+        k1: float = 1.25,
+        b: float = 0.75,
+        d: float = 1,
+    ):
         self.preprocessing = preprocessing
 
         docs_values = documents.values()

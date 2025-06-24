@@ -26,8 +26,16 @@ class BeirEvaluation(EvaluationBase):
         The number of processes used to compute the mean average precision.
         If None, all available CPUs will be used. Default is 1.
     """
-    def __init__(self, system: BeirIRSystemBase, judgements: Set[BeirJudgementBase], k: int,
-                 leaderboard=None, author_name: Optional[str] = None, num_workers: int = 1):
+
+    def __init__(
+        self,
+        system: BeirIRSystemBase,
+        judgements: Set[BeirJudgementBase],
+        k: int,
+        leaderboard=None,
+        author_name: Optional[str] = None,
+        num_workers: int = 1,
+    ):
         super().__init__(system, judgements, k, leaderboard, author_name, num_workers)
 
     def _get_minimum_mean_average_precision(self) -> float:

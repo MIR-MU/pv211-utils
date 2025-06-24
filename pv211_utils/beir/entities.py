@@ -14,6 +14,7 @@ class BeirDocumentBase(DocumentBase):
         The text of the document.
 
     """
+
     def __init__(self, document_id: str, body: Any):
         super().__init__(document_id, body)
 
@@ -29,6 +30,7 @@ class BeirQueryBase(QueryBase):
         The text of the query.
 
     """
+
     def __init__(self, query_id: int, body: Any):
         super().__init__(query_id, body)
 
@@ -59,10 +61,17 @@ class RawBeirDataset:
         An alternative in case the given dataset does not come with an available test subset.
 
     """
-    def __init__(self, name: str,
-                 train: bool = False, dev: bool = False, test: bool = True,
-                 train_alternative: Optional[str] = None, dev_alternative: Optional[str] = None,
-                 test_alternative: Optional[str] = None):
+
+    def __init__(
+        self,
+        name: str,
+        train: bool = False,
+        dev: bool = False,
+        test: bool = True,
+        train_alternative: Optional[str] = None,
+        dev_alternative: Optional[str] = None,
+        test_alternative: Optional[str] = None,
+    ):
         self.name = name
         self.train = train
         self.dev = dev
@@ -82,6 +91,7 @@ class RawBeirDatasets:
     datasets : List[RawBeirDataset]
         A list of RawBeirDataset values.
     """
+
     def __init__(self, datasets: List[RawBeirDataset], download_location: str):
         self.download_location = download_location
         self.datasets = datasets
