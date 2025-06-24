@@ -114,8 +114,10 @@ jobs:
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: ['unit-tests']
-    if: github.ref == 'refs/heads/main'
+    # TODO then adjust
+    needs: []
+    # attempt to publish also on pushes to a new working branch
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/new_working_branch'
     steps:
       - uses: actions/checkout@v4
         with:

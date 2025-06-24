@@ -48,7 +48,8 @@ RUN apt-get -qy update \
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 # CHANGED: Added "numpy<2" to prevent compilation errors with gensim.
-RUN python3.9 -m pip install --no-cache-dir "numpy<2" .[notebooks] \
+RUN python3.9 -m pip install --upgrade pip setuptools wheel \
+ && python3.9 -m pip install --no-cache-dir "numpy<2" .[notebooks] \
  && python3.9 -m script.download_datasets # all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
