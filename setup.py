@@ -14,7 +14,7 @@ requirements = [
 
 setup(
     name="pv211_utils",
-    version='2.0.8',
+    version='2.1.0',
     description="Utilities for PV211 project",
     long_description="",
     classifiers=[],
