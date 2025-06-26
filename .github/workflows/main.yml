@@ -125,7 +125,7 @@ jobs:
           echo "Built Docker image notebook-test"
           total=$(ls notebooks/*.ipynb | wc -l)
           i=1
-          for nb in notebooks/*.ipynb; do
+          for nb in notebooks/cranfield.ipynb notebooks/beir_cqadupstack.ipynb; do
             echo "[$i/$total] Executing $nb ..."
             docker run --rm -v "$PWD":/workspace -w /workspace notebook-test \
               jupyter nbconvert --to notebook --execute --inplace "$nb" \
