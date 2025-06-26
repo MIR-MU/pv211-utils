@@ -129,9 +129,9 @@ jobs:
             echo "[$i/$total] Executing $nb ..."
             docker run --rm -v "$PWD":/workspace -w /workspace notebook-test \
               jupyter nbconvert --to notebook --execute --inplace "$nb" \
-              --log-level=DEBUG 2>&1 | tee /dev/stderr | grep -i 'executing cell'
+              --log-level=DEBUG 2>&1
             echo "Finished executing $nb"
-            rm -r notebooks/datasets
+            [ -d notebooks/datasets ] && rm -r notebooks/datasets
             echo "Finished cleanup for $nb"
             i=$((i + 1))
           done
