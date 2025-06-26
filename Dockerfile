@@ -18,12 +18,12 @@ ARG DEPENDENCIES="\
     git \
     htop \
     less \
+    libpython3.11-dev \
     netcat \
     nodejs \
     npm \
     python3.11 \
     python3.11-dev \
-    libpython3.11-dev \
     python3.11-distutils \
     tzdata \
     vim \
