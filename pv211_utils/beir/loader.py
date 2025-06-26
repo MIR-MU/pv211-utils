@@ -49,6 +49,7 @@ def download_beir_dataset(dataset_name: str, file_location: str) -> str:
         download_and_unzip_beir_dataset(url, file_location)
     return data_path
 
+
 def download_and_unzip_beir_dataset(url: str, file_location: str) -> str:
     """A Generic BEIR dataset downloader and extractor. Returns the path to the unzipped dataset.
 
@@ -77,7 +78,7 @@ def download_and_unzip_beir_dataset(url: str, file_location: str) -> str:
 
     return unzipped_path
 
-        
+
 def load_beir_test_set(dataset_name: str, data_path: str, alternative: Optional[str] = None):
     if dataset_name not in HAVE_TEST:  # currently only dataset that does not include test is msmarco-v2
         print("Your chosen dataset ", dataset_name, " does not have a test subset.")
