@@ -5,6 +5,7 @@ gspread
 ijson
 ipython
 ipywidgets
+nltk
 oauth2client
 rank-bm25~=0.2.2
 scikit-learn
