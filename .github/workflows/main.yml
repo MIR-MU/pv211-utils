@@ -1,4 +1,4 @@
-name: Test and publish
+name: Optional Tests / Manual Trigger
 on:
   push:
   workflow_dispatch:
@@ -110,10 +110,21 @@ jobs:
           rm -rf datasets ~/.cache || true
           echo "Disk usage after batch:"
           df -h
+      
+  build-only:
+    name: Optional build test
+    runs-on: ubuntu-latest
+    needs: ['unit-tests']
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t miratmu/pv211-utils:latest .
+      
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
-    needs: [unit-tests]
+    needs: ['unit-tests']
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
