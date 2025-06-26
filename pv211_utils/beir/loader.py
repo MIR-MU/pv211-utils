@@ -3,6 +3,8 @@ import random
 
 from collections import OrderedDict
 from typing import Optional
+import os
+import zipfile
 from beir import util
 from beir.datasets.data_loader import GenericDataLoader
 from sklearn.model_selection import train_test_split
@@ -36,18 +38,46 @@ def download_beir_dataset(dataset_name: str, file_location: str) -> str:
     # cqadupstack is a specific case where the dataset is split into multiple subsets with specific topic
     if dataset_name in CQADUPSTACK:
         url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/cqadupstack.zip"
-        data_path = util.download_and_unzip(url, file_location)
+        data_path = download_and_unzip_beir_dataset(url, file_location)
         data_path = data_path + "/" + dataset_name
     else:
         url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{}.zip".format(dataset_name)
-        data_path = util.download_and_unzip(url, file_location)
+        data_path = download_and_unzip_beir_dataset(url, file_location)
     # nq train set is in a separate file
     if dataset_name == "nq":
         url = "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nq-train.zip"
-        util.download_and_unzip(url, file_location)
+        download_and_unzip_beir_dataset(url, file_location)
     return data_path
 
+def download_and_unzip_beir_dataset(url: str, file_location: str) -> str:
+    """A Generic BEIR dataset downloader and extractor. Returns the path to the unzipped dataset.
 
+        Parameters
+        ----------
+        url : str
+            A string with the URL of the BEIR dataset.
+        file_location : str
+            Location of the folder where data is to be stored.
+    """
+    zip_name = os.path.basename(url)
+    zip_path = os.path.join(file_location, zip_name)
+    unzipped_path = zip_path.replace(".zip", "")
+
+    if os.path.exists(zip_path) and not zipfile.is_zipfile(zip_path):
+        print(f"Corrupted ZIP found at {zip_path}, deleting...")
+        os.remove(zip_path)
+
+    if not os.path.exists(zip_path):
+        unzipped_path = util.download_and_unzip(url, file_location)
+
+    elif not os.path.exists(unzipped_path):
+        print(f"Using existing ZIP at {zip_path}")
+        with zipfile.ZipFile(zip_path, "r") as zip_ref:
+            zip_ref.extractall(file_location)
+
+    return unzipped_path
+
+        
 def load_beir_test_set(dataset_name: str, data_path: str, alternative: Optional[str] = None):
     if dataset_name not in HAVE_TEST:  # currently only dataset that does not include test is msmarco-v2
         print("Your chosen dataset ", dataset_name, " does not have a test subset.")
