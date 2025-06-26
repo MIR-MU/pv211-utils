@@ -5,6 +5,8 @@ gspread
 ijson
 ipython
 ipywidgets
+jupyter
+nbconvert
 nltk
 oauth2client
 rank-bm25~=0.2.2

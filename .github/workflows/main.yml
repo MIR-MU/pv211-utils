@@ -114,13 +114,27 @@ jobs:
           echo "Disk usage after batch:"
           df -h
       
-  build-only:
-    name: Optional build test
+  run-notebooks:
+    name: (Optional) Build image and run notebooks
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t miratmu/pv211-utils:latest .
+      - run: |
+          docker build -t notebook-test .
+          echo "Built Docker image notebook-test"
+          total=$(ls notebooks/*.ipynb | wc -l)
+          i=1
+          for nb in notebooks/*.ipynb; do
+            echo "[$i/$total] Executing $nb ..."
+            docker run --rm -v "$PWD":/workspace -w /workspace notebook-test \
+              jupyter nbconvert --to notebook --execute --inplace "$nb" \
+              --log-level=DEBUG 2>&1 | tee /dev/stderr | grep -i 'executing cell'
+            echo "Finished executing $nb"
+            rm -r notebooks/datasets
+            echo "Finished cleanup for $nb"
+            i=$((i + 1))
+          done
       
   publish:
     name: Build and publish
