@@ -42,7 +42,7 @@ Here are some examples of how you can use the PV211 Utils library:
  [jupyter-badge]: https://github.com/MIR-MU/pv211-utils/raw/main/jupyterhub-badge.svg
 
  [jupyter]: https://iirhub.cloud.e-infra.cz/
- [cranfield]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/cranfield.ipynb
+ [cranfield]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/spring2025/notebooks/cranfield.ipynb
  [trec]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/trec.ipynb
  [arqmath]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/arqmath.ipynb
  [beir]: https://colab.research.google.com/github/MIR-MU/pv211-utils/blob/main/notebooks/beir_cqadupstack.ipynb
