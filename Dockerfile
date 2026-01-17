@@ -54,10 +54,10 @@ ENV PATH="/opt/venv/bin:$PATH"
 ENV PIP_CACHE_DIR=/tmp/pip-cache
 
 RUN python3.9 -m venv /opt/venv \
- && python -m ensurepip \
- && python -m pip install --upgrade "pip<24" "setuptools<66" wheel \
- && python -m pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
- && python -m script.download_datasets # all
+ && /opt/venv/bin/python -m ensurepip \
+ && /opt/venv/bin/python -m pip install --upgrade "pip<24" "setuptools<66" wheel \
+ && /opt/venv/bin/python -m pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
+ && /opt/venv/bin/python -m script.download_datasets # all
 
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
