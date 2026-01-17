@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.3.1-runtime-ubuntu20.04
+FROM docker.io/nvidia/cuda:11.3.1-runtime-ubuntu20.04
 
 ARG AUXILIARY_FILES="\
     /tmp/* \
@@ -18,14 +18,13 @@ ARG DEPENDENCIES="\
     git \
     htop \
     less \
+    libpython3.11-dev \
     netcat \
     nodejs \
     npm \
-    python3.9 \
-    python3.9-dev \
-    python3.9-distutils \
-    python3-pip \
-    python3.9-venv \
+    python3.11 \
+    python3.11-dev \
+    python3.11-distutils \
     tzdata \
     vim \
     wget \
@@ -34,38 +33,35 @@ ARG DEPENDENCIES="\
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Prague
 
-# Install system dependencies
 RUN apt-get -qy update \
- && apt-get install -qy --no-install-recommends software-properties-common \
- && add-apt-repository ppa:deadsnakes/ppa \
- && apt-get -qy update \
- && apt-get -qy install --no-install-recommends ${DEPENDENCIES} \
- && curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9 \
+ && apt-get -qy install --no-install-recommends \
+    software-properties-common
+
+RUN add-apt-repository ppa:deadsnakes/ppa -y \
+ && apt-get -qy update
+ 
+# Install system dependencies
+RUN apt-get -qy install --no-install-recommends ${DEPENDENCIES}
+
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 \
  && apt-get -qy autoclean \
  && apt-get -qy clean \
  && apt-get -qy autoremove --purge \
  && rm -rf ${AUXILIARY_FILES}
 
+# Install python and python packages
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 
-# Install python and python packages
-ENV VENV_DIR=/opt/venv
-RUN python3.0 -m venv $VENV_DIR \
- && $VENV_DIR/bin/python -m ensurepip --upgrade \
- && $VENV_DIR/bin/pip install --upgrade "pip<24" "setuptools<66" wheel
+RUN python3.11 -m pip install --upgrade pip setuptools wheel \
+ && python3.11 -m pip install cython \
+ && python3.11 -m pip install .[notebooks] \
+ && python3.11 -m script.download_datasets # all
+ # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
-ENV PATH="/opt/venv/bin:$PATH"
-ENV PIP_CACHE_DIR=/tmp/pip-cache
-
-RUN pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
- && python -m script.download_datasets # all
-
-# Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
-
+# Create home directory
 RUN useradd -u 1000 --create-home jovyan
 WORKDIR /home/jovyan
 USER 1000
 ADD notebooks .
-RUN ln -s /media/persistent-storage /home/jovyan/persistent-storage
-
+RUN ln -s /media/persistent-storage
