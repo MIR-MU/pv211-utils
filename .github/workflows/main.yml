@@ -154,7 +154,7 @@ jobs:
               rm -r /tmp/$USER/github-run || true
 
               mkdir -p /tmp/$USER
-              git clone --single-branch --branch \"\$BRANCH\" \"https://x-access-token:$TOKEN@github.com/$REPO.git\" \"$LOCAL_REPO\"
+              git clone --single-branch --branch \"$BRANCH\" \"https://x-access-token:$TOKEN@github.com/$REPO.git\" \"$LOCAL_REPO\"
               chmod -R a+rw \"$LOCAL_REPO\"
               cd \"$LOCAL_REPO\"
 
