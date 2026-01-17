@@ -170,7 +170,7 @@ jobs:
                 fi
                 i=\$((i + 1))
               done
-              docker rmi notebook-test
+              docker rmi notebook-test -f
               cd \"/tmp/$USER\"
               rm -r \"$LOCAL_REPO\"
             "

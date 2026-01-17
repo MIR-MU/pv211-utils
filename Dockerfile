@@ -24,8 +24,8 @@ ARG DEPENDENCIES="\
     python3.9 \
     python3.9-dev \
     python3.9-distutils \
-    python3.9-venv \
     python3-pip \
+    python3.9-venv \
     tzdata \
     vim \
     wget \
@@ -41,7 +41,6 @@ RUN apt-get -qy update \
  && apt-get -qy update \
  && apt-get -qy install --no-install-recommends ${DEPENDENCIES} \
  && curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9 \
- && python3.9 -m pip install --upgrade pip setuptools wheel \
  && apt-get -qy autoclean \
  && apt-get -qy clean \
  && apt-get -qy autoremove --purge \
@@ -51,9 +50,11 @@ COPY . /pv211-utils
 WORKDIR /pv211-utils
 
 # Install python and python packages
-RUN python3.9 -m pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
- && python3.9 -m pip install --no-cache-dir --upgrade setuptools wheel \
- && python3.9 -m script.download_datasets # all
+RUN python3.9 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+RUN pip install --upgrade "pip<24" "setuptools<66" wheel \
+ && pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
+ && python -m script.download_datasets # all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 RUN useradd -u 1000 --create-home jovyan
