@@ -10,6 +10,7 @@ jobs:
   style-check:
     name: Style check
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     strategy:
       fail-fast: true
       matrix:
@@ -30,6 +31,7 @@ jobs:
   type-check:
     name: Type check
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     strategy:
       fail-fast: true
       matrix:
@@ -54,6 +56,7 @@ jobs:
     needs: ['style-check', 'type-check']
     name: Unit tests
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     strategy:
       fail-fast: true
       matrix:
@@ -148,7 +151,7 @@ jobs:
               cd \"$LOCAL_REPO\"
 
               echo '>>> Building Docker image notebook-test...'
-              docker build --no-cache -t notebook-test .
+              docker build --no-cache --pull -t notebook-test .
               echo '>>> Built Docker image notebook-test'
 
               notebooks=(cranfield.ipynb)
