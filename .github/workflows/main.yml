@@ -23,7 +23,7 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install "numpy<2" . flake8
+          pip install --no-build-isolation "numpy<2" . flake8
       - name: Style check
         run: flake8
 
@@ -44,7 +44,7 @@ jobs:
           python -V
           pip install -U pip
           apt-get update && apt-get install -y --no-install-recommends cargo
-          pip install "numpy<2" .[google_drive] pytype
+          pip install --no-build-isolation "numpy<2" .[google_drive] pytype
       - name: Type check
         run: |
           set -ex
@@ -78,7 +78,7 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install "numpy<2" . pytest
+          pip install --no-build-isolatio "numpy<2" . pytest
 
       - name: Run tests in batch ${{ matrix.batch }}
         run: |
@@ -148,7 +148,7 @@ jobs:
               cd \"$LOCAL_REPO\"
 
               echo '>>> Building Docker image notebook-test...'
-              docker build -t notebook-test .
+              docker build --no-cache -t notebook-test .
               echo '>>> Built Docker image notebook-test'
 
               notebooks=(cranfield.ipynb)
@@ -170,15 +170,26 @@ jobs:
                 fi
                 i=\$((i + 1))
               done
-              docker rmi notebook-test -f
-              cd \"/tmp/$USER\"
-              rm -r \"$LOCAL_REPO\"
             "
+
+      - name: Clean up
+        if: always()
+        run: |
+          echo "Removing dangling images..."
+          docker image prune -f
+          echo "Removing specific tagged images if exist..."
+          docker rmi my-image:latest || true
+          docker rmi my-image:${{ github.sha }} || true
+          
+          USER=${{ secrets.SERVER_USER }}
+          LOCAL_REPO=/tmp/$USER/github-run
+          rm -r $LOCAL_REPO || true
 
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
     needs: [unit-tests]
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -192,6 +203,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t miratmu/pv211-utils:latest \
+          docker build 
+                       -t miratmu/pv211-utils:latest \
                        -t miratmu/pv211-utils:$(git describe --tags --always --long) .
           docker push --all-tags miratmu/pv211-utils
