@@ -123,6 +123,8 @@ jobs:
 
       - name: Show Dockerfile
         run: |
+          pwd
+          ls -la
           cat Dockerfile
       
       - name: Setup SSH
