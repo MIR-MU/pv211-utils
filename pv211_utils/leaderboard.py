@@ -115,6 +115,11 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         spreadsheet = gc.open_by_key(spreadsheet_key)
         logs_worksheet = spreadsheet.worksheet("submissions")
         scores_worksheet = spreadsheet.worksheet("leaderboard")
+        if competitor_name.strip() == 'Surname, Name':
+            message = "To submit your score to the leaderboard, you need to write your name in the 'author_name' variable."
+            message += "\nWe expect the name in format '<Surname>, <Name>', like 'Novotný, Vít'"
+            print(message)
+            return
         if competitor_name not in scores_worksheet.col_values(2):
             message = "We do not have anyone named '{}' in the leaderboard. Is the spelling correct?"
             message += "\nWe expect the name in format '<Surname>, <Name>', like 'Novotný, Vít'"

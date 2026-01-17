@@ -10,6 +10,7 @@ jobs:
   style-check:
     name: Style check
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     strategy:
       fail-fast: true
       matrix:
@@ -23,13 +24,14 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install "numpy<2" . flake8
+          pip install --no-build-isolation "numpy<2" . flake8
       - name: Style check
         run: flake8
 
   type-check:
     name: Type check
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     strategy:
       fail-fast: true
       matrix:
@@ -44,7 +46,7 @@ jobs:
           python -V
           pip install -U pip
           apt-get update && apt-get install -y --no-install-recommends cargo
-          pip install "numpy<2" .[google_drive] pytype
+          pip install --no-build-isolation "numpy<2" .[google_drive] pytype
       - name: Type check
         run: |
           set -ex
@@ -54,6 +56,7 @@ jobs:
     needs: ['style-check', 'type-check']
     name: Unit tests
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     strategy:
       fail-fast: true
       matrix:
@@ -78,7 +81,7 @@ jobs:
           set -ex
           python -V
           pip install -U pip
-          pip install "numpy<2" . pytest
+          pip install --no-build-isolation "numpy<2" . pytest
 
       - name: Run tests in batch ${{ matrix.batch }}
         run: |
@@ -110,10 +113,77 @@ jobs:
           rm -rf datasets ~/.cache || true
           echo "Disk usage after batch:"
           df -h
+
+  run-notebooks:
+    name: (Optional) Test notebooks
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.SERVER_JUMP_DOMAIN }}" >> ~/.ssh/known_hosts
+
+      - name: Run tests
+        run: |
+          USER=${{ secrets.SERVER_USER }}
+          JUMP_DOMAIN=${{ secrets.SERVER_JUMP_DOMAIN }}
+          TARGET_DOMAIN=${{ secrets.SERVER_TARGET_DOMAIN }}
+          REPO=${{ github.repository }}
+          LOCAL_REPO=/tmp/$USER/github-run
+          TOKEN=${{ secrets.GITHUB_TOKEN }}
+          BRANCH=$(echo "${{ github.head_ref || github.ref_name }}")
+          ssh -T \
+            -o StrictHostKeyChecking=no \
+            -i ~/.ssh/id_ed25519 \
+            -o IdentitiesOnly=yes \
+            -J "$USER@$JUMP_DOMAIN" \
+            "$USER@$TARGET_DOMAIN" "
+              set -e
+              docker image prune -f
+              docker rmi notebook-test:latest || true
+              docker rmi notebook-test:${{ github.sha }} || true
+              rm -r /tmp/$USER/github-run || true
+              mkdir -p /tmp/$USER
+              git clone --single-branch --branch \"$BRANCH\" \"https://x-access-token:$TOKEN@github.com/$REPO.git\" \"$LOCAL_REPO\"
+              chmod -R a+rw \"$LOCAL_REPO\"
+              cd \"$LOCAL_REPO\"
+              echo '>>> Building Docker image notebook-test...'
+              docker build --no-cache --pull -t notebook-test -f ./Dockerfile .
+              echo '>>> Built Docker image notebook-test'
+              notebooks=(tutorial.ipynb cranfield.ipynb trec.ipynb arqmath.ipynb beir_cqadupstack.ipynb)
+              total=\${#notebooks[@]}
+              i=1
+              for nb in \"\${notebooks[@]}\"; do
+                echo \"[\$i/\$total] Executing \$nb ...\"
+                docker run --rm -w /home/jovyan notebook-test \
+                  bash -c 'mkdir -p /tmp/nbconvert; \
+                           jupyter nbconvert --to notebook --execute \"\$1\" \
+                           --log-level=DEBUG --output-dir /tmp/nbconvert --output temp.ipynb \
+                           --ExecutePreprocessor.allow_errors=False' _ "\$nb"
+                status=\$?
+                if [ \$status -ne 0 ]; then
+                  echo -e \"\\033[31mNotebook \$nb failed (exit code \$status)\\033[0m\"
+                  exit \$status
+                else
+                  echo -e \"\\033[32mNotebook \$nb succeeded\\033[0m\"
+                fi
+                i=\$((i + 1))
+              done
+            "
+
   publish:
     name: Build and publish
     runs-on: ubuntu-latest
     needs: [unit-tests]
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
         with:
