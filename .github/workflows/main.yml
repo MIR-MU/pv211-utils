@@ -139,7 +139,6 @@ jobs:
           LOCAL_REPO=/tmp/$USER/github-run
           TOKEN=${{ secrets.GITHUB_TOKEN }}
           BRANCH=$(echo "${{ github.head_ref || github.ref_name }}")
-          echo $BRANCH
           ssh -T \
             -o StrictHostKeyChecking=no \
             -i ~/.ssh/id_ed25519 \
@@ -169,7 +168,7 @@ jobs:
                 echo \"[\$i/\$total] Executing \$nb ...\"
                 docker run --rm -w /home/jovyan notebook-test \
                   bash -c 'mkdir -p /tmp/nbconvert; \
-                           jupyter nbconvert --to notebook --execute "$1" \
+                           jupyter nbconvert --to notebook --execute \"\$1\" \
                            --log-level=DEBUG --output-dir /tmp/nbconvert --output temp.ipynb \
                            --ExecutePreprocessor.allow_errors=False' _ "\$nb"
                 status=\$?
