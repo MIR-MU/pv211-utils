@@ -50,11 +50,15 @@ COPY . /pv211-utils
 WORKDIR /pv211-utils
 
 # Install python and python packages
-RUN python3.9 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN pip install --upgrade "pip<24" "setuptools<66" wheel \
- && pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
- && python -m script.download_datasets # all
+ENV PIP_CACHE_DIR=/tmp/pip-cache
+
+RUN python3.9 -m venv /opt/venv \
+ && /opt/venv/bin/python -m ensurepip \
+ && /opt/venv/bin/pip install --upgrade "pip<24" "setuptools<66" wheel \
+ && /opt/venv/bin/pip install --no-cache-dir --no-build-isolation "numpy<2" .[notebooks] \
+ && /opt/venv/bin/python -m script.download_datasets # all
+
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 RUN useradd -u 1000 --create-home jovyan
