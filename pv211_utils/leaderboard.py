@@ -116,7 +116,8 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         logs_worksheet = spreadsheet.worksheet("submissions")
         scores_worksheet = spreadsheet.worksheet("leaderboard")
         if competitor_name.strip() == 'Surname, Name':
-            message = "To submit your score to the leaderboard, you need to write your name in the 'author_name' variable."
+            message = "To submit your score to the leaderboard,"
+            message += " you need to write your name in the 'author_name' variable."
             message += "\nWe expect the name in format '<Surname>, <Name>', like 'Novotný, Vít'"
             print(message)
             return
