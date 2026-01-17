@@ -161,7 +161,7 @@ jobs:
               cd \"$LOCAL_REPO\"
 
               echo '>>> Building Docker image notebook-test...'
-              docker build --no-cache --pull -t notebook-test .
+              docker build --no-cache --pull -t notebook-test -f ./Dockerfile .
               echo '>>> Built Docker image notebook-test'
 
               notebooks=(cranfield.ipynb)
