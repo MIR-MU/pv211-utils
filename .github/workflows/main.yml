@@ -120,6 +120,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Show Dockerfile
+        run: |
+          cat Dockerfile
       
       - name: Setup SSH
         run: |
@@ -145,6 +149,12 @@ jobs:
             -J "$USER@$JUMP_DOMAIN" \
             "$USER@$TARGET_DOMAIN" "
               set -e
+
+              docker image prune -f
+              docker rmi notebook-test:latest || true
+              docker rmi notebook-test:${{ github.sha }} || true
+              rm -r /tmp/$USER/github-run || true
+
               mkdir -p /tmp/$USER
               git clone \"https://x-access-token:$TOKEN@github.com/$REPO.git\" \"$LOCAL_REPO\"
               chmod -R a+rw \"$LOCAL_REPO\"
@@ -174,19 +184,6 @@ jobs:
                 i=\$((i + 1))
               done
             "
-
-      - name: Clean up
-        if: always()
-        run: |
-          echo "Removing dangling images..."
-          docker image prune -f
-          echo "Removing specific tagged images if exist..."
-          docker rmi my-image:latest || true
-          docker rmi my-image:${{ github.sha }} || true
-          
-          USER=${{ secrets.SERVER_USER }}
-          LOCAL_REPO=/tmp/$USER/github-run
-          rm -r $LOCAL_REPO || true
 
   publish:
     name: Build and publish
