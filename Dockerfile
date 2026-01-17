@@ -1,4 +1,4 @@
-FROM docker.io/nvidia/cuda:11.3.1-runtime-ubuntu20.04
+FROM docker.io/nvidia/cuda:12.0.1-runtime-ubuntu22.04
 
 ARG AUXILIARY_FILES="\
     /tmp/* \
@@ -18,7 +18,6 @@ ARG DEPENDENCIES="\
     git \
     htop \
     less \
-    libpython3.11-dev \
     netcat \
     nodejs \
     npm \
@@ -33,17 +32,12 @@ ARG DEPENDENCIES="\
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Prague
 
-RUN apt-get -qy update \
- && apt-get -qy install --no-install-recommends \
-    software-properties-common
-
-RUN add-apt-repository ppa:deadsnakes/ppa -y \
- && apt-get -qy update
- 
 # Install system dependencies
-RUN apt-get -qy install --no-install-recommends ${DEPENDENCIES}
-
-RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 \
+RUN apt-get -qy update \
+ && apt-get -qy install --no-install-recommends software-properties-common \
+ && add-apt-repository ppa:deadsnakes/ppa \
+ && apt-get -qy update \
+ && apt-get -qy install --no-install-recommends ${DEPENDENCIES} \
  && apt-get -qy autoclean \
  && apt-get -qy clean \
  && apt-get -qy autoremove --purge \
@@ -52,12 +46,11 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 \
 # Install python and python packages
 COPY . /pv211-utils
 WORKDIR /pv211-utils
-
-RUN python3.11 -m pip install --upgrade pip setuptools wheel \
- && python3.11 -m pip install cython \
- && python3.11 -m pip install .[notebooks] \
+# CHANGED: Added "numpy<2" to prevent compilation errors with gensim.
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 \
+ && python3.11 -m pip install --upgrade pip "setuptools<81" wheel \
+ && python3.11 -m pip install --no-build-isolation --no-cache-dir "numpy<2" .[notebooks] \
  && python3.11 -m script.download_datasets # all
- # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 # Create home directory
 RUN useradd -u 1000 --create-home jovyan
@@ -65,3 +58,4 @@ WORKDIR /home/jovyan
 USER 1000
 ADD notebooks .
 RUN ln -s /media/persistent-storage
+
