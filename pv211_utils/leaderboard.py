@@ -13,7 +13,7 @@ class LeaderboardBase(abc.ABC):
 
     """
     @abc.abstractmethod
-    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> None:
+    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> bool:
         """Logs mean average precision of an author to the leaderboard.
 
         Parameters
