@@ -141,6 +141,9 @@ jobs:
           TOKEN=${{ secrets.GITHUB_TOKEN }}
           BRANCH=$(echo "${{ github.head_ref || github.ref_name }}")
           ssh -T \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=10 \
+            -o ConnectTimeout=30 \
             -o StrictHostKeyChecking=no \
             -i ~/.ssh/id_ed25519 \
             -o IdentitiesOnly=yes \
