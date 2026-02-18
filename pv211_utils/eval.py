@@ -118,8 +118,8 @@ class EvaluationBase(abc.ABC):
             display(Markdown('Congratulations, you passed the **{:g}%** minimum! 🥳'.format(minimum_map_score)))
 
         if submit_result:
-            self.leaderboard.log_precision_entry(self.author_name, result)
-            display(Markdown('Your result has been submitted to {}! 🏆'.format(leaderboard_text)))
+            if self.leaderboard.log_precision_entry(self.author_name, result):
+                display(Markdown('Your result has been submitted to {}! 🏆'.format(leaderboard_text)))
         else:
             message = (
                 'Set `submit_result = True` and write your name to the `author_name` variable '

@@ -13,7 +13,7 @@ class LeaderboardBase(abc.ABC):
 
     """
     @abc.abstractmethod
-    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> None:
+    def log_precision_entry(self, author_name: str, mean_average_precision: float) -> bool:
         """Logs mean average precision of an author to the leaderboard.
 
         Parameters
@@ -97,7 +97,7 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
     def _get_spreadsheet_key(self) -> str:
         pass
 
-    def log_precision_entry(self, competitor_name: str, precision: float) -> None:
+    def log_precision_entry(self, competitor_name: str, precision: float) -> bool:
         if precision > 1.0 or precision < 0.0:
             message = 'That precision ({:.2f}%) looks suspicious. Is it real?'
             message = message.format(100.0 * precision)
@@ -115,6 +115,12 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         spreadsheet = gc.open_by_key(spreadsheet_key)
         logs_worksheet = spreadsheet.worksheet("submissions")
         scores_worksheet = spreadsheet.worksheet("leaderboard")
+        if competitor_name.strip() == 'Surname, Name':
+            message = "To submit your score to the leaderboard,"
+            message += " you need to write your name in the 'author_name' variable."
+            message += "\nWe expect the name in format '<Surname>, <Name>', like 'Novotný, Vít'"
+            print(message)
+            return False
         if competitor_name not in scores_worksheet.col_values(2):
             message = "We do not have anyone named '{}' in the leaderboard. Is the spelling correct?"
             message += "\nWe expect the name in format '<Surname>, <Name>', like 'Novotný, Vít'"
@@ -128,3 +134,4 @@ class GoogleSpreadsheetLeaderboardBase(LeaderboardBase):
         # append entry
         logs_worksheet.append_row(["", current_len, current_time, current_week, competitor_name, precision])
         logs_worksheet.update_cell(current_len + 1, 1, header_cell)
+        return True

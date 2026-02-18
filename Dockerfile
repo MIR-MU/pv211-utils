@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.3.1-runtime-ubuntu20.04
+FROM docker.io/nvidia/cuda:12.0.1-runtime-ubuntu22.04
 
 ARG AUXILIARY_FILES="\
     /tmp/* \
@@ -21,10 +21,9 @@ ARG DEPENDENCIES="\
     netcat \
     nodejs \
     npm \
-    python3.9 \
-    python3.9-dev \
-    python3.9-distutils \
-    python3-pip \
+    python3.11 \
+    python3.11-dev \
+    python3.11-distutils \ 
     tzdata \
     vim \
     wget \
@@ -48,9 +47,10 @@ RUN apt-get -qy update \
 COPY . /pv211-utils
 WORKDIR /pv211-utils
 # CHANGED: Added "numpy<2" to prevent compilation errors with gensim.
-RUN python3.9 -m pip install --upgrade pip setuptools wheel \
- && python3.9 -m pip install --no-cache-dir "numpy<2" .[notebooks] \
- && python3.9 -m script.download_datasets # all
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 \
+ && python3.11 -m pip install --upgrade pip "setuptools<81" wheel \
+ && python3.11 -m pip install --no-build-isolation --no-cache-dir "numpy<2" .[notebooks] \
+ && python3.11 -m script.download_datasets # all
 # Rewrite "# all" to "all" in order to create a fat Docker image with all dataset formats
 
 # Create home directory
