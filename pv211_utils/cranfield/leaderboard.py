@@ -9,7 +9,7 @@ class CranfieldLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return datetime.date(2026, 2, 19)
 
     def get_competition_end(self) -> datetime.date:
-        return datetime.date(2026, 3, 20)
+        return datetime.date(2026, 3, 21)
 
     def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '18L7dZD1GlRvf-RVEXe9WLr5zmI-ItAfehLMMIDf6YyI'
