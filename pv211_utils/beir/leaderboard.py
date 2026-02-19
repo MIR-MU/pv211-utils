@@ -6,10 +6,10 @@ from ..leaderboard import GoogleSpreadsheetLeaderboardBase
 
 class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
     def get_competition_start(self) -> datetime.date:
-        return datetime.date(2025, 3, 30)
+        return datetime.date(2026, 3, 30)
 
     def get_competition_end(self) -> datetime.date:
-        return datetime.date(2025, 5, 9)
+        return datetime.date(2026, 5, 9)
 
     def _get_spreadsheet_key(self) -> str:
         spreadsheet_key = '1KYCB-cbqk8TZMti8aneJptf4T3E1t1n_9v9UEhRxNSQ'
