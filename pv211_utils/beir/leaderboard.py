@@ -12,7 +12,7 @@ class BeirLeaderboard(GoogleSpreadsheetLeaderboardBase):
         return datetime.date(2026, 5, 9)
 
     def _get_spreadsheet_key(self) -> str:
-        spreadsheet_key = '1KYCB-cbqk8TZMti8aneJptf4T3E1t1n_9v9UEhRxNSQ'
+        spreadsheet_key = '1EoZCyJCDCMEt9IlNNJ4WbVZipIRiBlrIKmAakf2HQKg'
         return spreadsheet_key
 
     def get_public_url(self) -> Optional[str]:
